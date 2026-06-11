@@ -136,6 +136,17 @@ h1 span{color:#f0c040}
 .spinner{width:24px;height:24px;border:2px solid #1e1e3a;border-top-color:#f0c040;border-radius:50%;animation:spin 0.8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+/* Chapter items (expandable) */
+.chapter-item{border:1px solid #1a1a3a;border-radius:6px;margin-bottom:6px}
+.chapter-header{display:flex;align-items:center;gap:8px;padding:8px 10px;cursor:pointer;transition:background 0.2s}
+.chapter-header:active{background:rgba(255,255,255,0.03)}
+.chapter-title{font-size:11px;color:#aaa;flex:1}
+.chapter-toggle{font-size:8px;color:#444;flex-shrink:0;transition:transform 0.2s}
+.chapter-toggle.open{transform:rotate(90deg)}
+.chapter-body{display:none;padding:0 10px 10px 18px;font-size:11px;color:#999;line-height:1.7;border-top:1px solid #1a1a3a}
+.chapter-body.open{display:block}
+.chapter-body p{margin-bottom:6px}
+
 /* Games placeholder */
 .games-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;text-align:center}
 .games-placeholder .icon{font-size:60px;margin-bottom:16px}
@@ -459,8 +470,16 @@ function openBook(id) {
         <span class="arch-toggle" id="archToggle${i}">▼</span>
       </div>
       <div class="arch-body" id="archBody${i}">
-        <ul class="arch-chapters">${a.chapters.map(c => `<li>${c}</li>`).join('')}</ul>
-        <div class="arch-summary">${a.summary}</div>
+        ${a.chapters.map((ch, ci) => `
+          <div class="chapter-item">
+            <div class="chapter-header" onclick="event.stopPropagation();toggleChapter('${b.id}',${i},${ci})">
+              <span class="chapter-toggle" id="chT_${b.id}_${i}_${ci}">▶</span>
+              <span class="chapter-title">${ch.title}</span>
+            </div>
+            <div class="chapter-body" id="chB_${b.id}_${i}_${ci}">${ch.content.replace(/\n/g, '<br>')}</div>
+          </div>
+        `).join('')}
+        <div class="arch-summary" style="margin-top:12px">${a.summary}</div>
       </div>
     </div>
   `).join('')
@@ -521,6 +540,13 @@ function closeBookDetail() {
 function toggleArch(i) {
   const body = document.getElementById('archBody' + i)
   const toggle = document.getElementById('archToggle' + i)
+  body.classList.toggle('open')
+  toggle.classList.toggle('open')
+}
+
+function toggleChapter(bookId, archIdx, chIdx) {
+  const body = document.getElementById('chB_' + bookId + '_' + archIdx + '_' + chIdx)
+  const toggle = document.getElementById('chT_' + bookId + '_' + archIdx + '_' + chIdx)
   body.classList.toggle('open')
   toggle.classList.toggle('open')
 }
