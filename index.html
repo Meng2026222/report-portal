@@ -120,6 +120,15 @@ h1 span{color:var(--accent)}
 .login-gate .gate-btn:disabled{opacity:.4;cursor:default}
 .login-gate .gate-status{font-size:11px;color:var(--m4);margin-top:12px;max-width:260px}
 .login-gate .gate-note{font-size:10px;color:var(--m5);margin-top:8px;line-height:1.5}
+
+/* ===== LOGIN IFRAME OVERLAY ===== */
+.login-iframe-overlay{display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.7);flex-direction:column}
+.login-iframe-overlay.active{display:flex}
+.login-iframe-overlay .lif-header{display:flex;align-items:center;padding:10px 16px;background:var(--bg4);border-bottom:1px solid var(--b2);flex-shrink:0}
+.login-iframe-overlay .lif-title{font-size:14px;color:var(--t1);flex:1;font-weight:600}
+.login-iframe-overlay .lif-close{background:none;border:1px solid var(--b3);color:var(--t4);padding:4px 12px;border-radius:6px;font-size:12px;cursor:pointer;font-family:inherit}
+.login-iframe-overlay .lif-body{flex:1;position:relative;background:var(--bg)}
+.login-iframe-overlay .lif-body iframe{width:100%;height:100%;border:none}
 .report-frame-wrap .loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--m5);font-size:12px;flex-direction:column;gap:8px}
 
 /* ===== DETAIL VIEW (books) ===== */
@@ -300,6 +309,17 @@ h1 span{color:var(--accent)}
   <button class="gate-btn" id="loginBtn" onclick="startLogin()">📧 邮箱验证登录</button>
   <div class="gate-status" id="loginStatus"></div>
   <div class="gate-note">登录即表示同意留言规则：理性发言，勿发广告或人身攻击</div>
+</div>
+
+<!-- ===== LOGIN IFRAME OVERLAY ===== -->
+<div class="login-iframe-overlay" id="loginIframeOverlay">
+  <div class="lif-header">
+    <span class="lif-title">📧 邮箱验证登录</span>
+    <button class="lif-close" onclick="closeLoginIframe()">关闭</button>
+  </div>
+  <div class="lif-body">
+    <iframe id="loginIframe" sandbox="allow-scripts allow-forms allow-same-origin"></iframe>
+  </div>
 </div>
 
 <!-- ===== MAIN SITE CONTENT ===== -->
@@ -1129,53 +1149,36 @@ function startLogin() {
   const btn = document.getElementById('loginBtn')
   const status = document.getElementById('loginStatus')
   btn.disabled = true
-  status.textContent = '正在打开登录窗口…'
+  status.textContent = '正在加载登录页面…'
   
-  const w = 500, h = 550
-  const left = (screen.width - w) / 2
-  const top = (screen.height - h) / 2
-  const popup = window.open(
-    `${WALINE_SRV}/ui/login?lng=zh-CN`,
-    '_blank',
-    `width=${w},height=${h},left=${left},top=${top},scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no`
-  )
+  const overlay = document.getElementById('loginIframeOverlay')
+  overlay.classList.add('active')
+  const iframe = document.getElementById('loginIframe')
+  iframe.src = `${WALINE_SRV}/ui/login?lng=zh-CN`
   
-  if (!popup) {
-    status.textContent = '⚠️ 弹窗被拦截，请允许此网站弹出窗口后重试'
-    btn.disabled = false
-    return
-  }
-  
-  const handler = (event) => {
-    if (event.origin !== WALINE_SRV && event.origin !== 'https://waline-production-c9d2.up.railway.app') return
-    const data = event.data
-    if (data && typeof data === 'object' && data.type === 'userInfo' && data.data && data.data.token) {
-      window.removeEventListener('message', handler)
-      localStorage.setItem('WALINE_USER', JSON.stringify(data.data))
-      status.textContent = '✅ 登录成功！正在进入…'
-      setTimeout(() => {
-        document.getElementById('loginGate').classList.add('hidden')
-        document.getElementById('mainContent').style.display = 'block'
-        // Init Waline for current tab
-        const activeTab = document.querySelector('.tab-content.active')
-        if (activeTab) switchTab(activeTab.id.replace('tab-', ''))
-      }, 800)
-    }
-  }
-  window.addEventListener('message', handler)
-  
-  // Poll for popup close
-  const timer = setInterval(() => {
-    if (popup.closed) {
-      clearInterval(timer)
-      btn.disabled = false
-      const user = getStoredUser()
-      if (!user) {
-        status.textContent = '未完成登录，请重试'
-      }
-    }
-  }, 500)
+  btn.disabled = false
+  status.textContent = ''
 }
+
+function closeLoginIframe() {
+  document.getElementById('loginIframeOverlay').classList.remove('active')
+  document.getElementById('loginIframe').src = ''
+}
+
+// Listen for login success from iframe
+window.addEventListener('message', (event) => {
+  if (event.origin !== WALINE_SRV && event.origin !== 'https://waline-production-c9d2.up.railway.app') return
+  const data = event.data
+  if (data && typeof data === 'object' && data.type === 'userInfo' && data.data && data.data.token) {
+    localStorage.setItem('WALINE_USER', JSON.stringify(data.data))
+    closeLoginIframe()
+    document.getElementById('loginGate').classList.add('hidden')
+    document.getElementById('mainContent').style.display = 'block'
+    // Init Waline for current active tab
+    const activeTab = document.querySelector('.tab-content.active')
+    if (activeTab) switchTab(activeTab.id.replace('tab-', ''))
+  }
+})
 
 // Auto-login check on page load
 document.addEventListener('DOMContentLoaded', () => {
