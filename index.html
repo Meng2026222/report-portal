@@ -507,7 +507,7 @@ h1 span{color:var(--accent)}
   <!-- ===== WALINE COMMENTS ===== -->
   <div class="report-comments" id="reportComments" style="display:none">
     <div class="comments-title">💬 讨论区</div>
-    <p class="comments-subtitle">登录后即可发表留言</p>
+    <p class="comments-subtitle">填写昵称和邮箱即可留言 · 非公开显示</p>
     <div id="waline"></div>
   </div>
 </div>
@@ -632,7 +632,7 @@ function openReport(id) {
       lang: 'zh-CN',
       dark: 'html[data-theme="dark"]',
       requiredMeta: ['nick','mail'],
-      login: 'enable',
+      login: 'disable',
     })
   }, 100)
 }
