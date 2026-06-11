@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>贵州茅台 · 完整投资研究报告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;background:#0a0a1a;color:#e0e0e0;padding:14px;font-size:14px;line-height:1.6}
+h1{font-size:22px;color:#fff;margin:16px 0 4px;text-align:center}
+h2{font-size:16px;color:#f0c040;margin:20px 0 10px;border-left:3px solid #f0c040;padding-left:10px}
+h3{font-size:14px;color:#ccc;margin:14px 0 6px}
+h4{font-size:13px;color:#aaa;margin:10px 0 4px}
+.desc{font-size:12px;color:#888;margin-bottom:10px}
+.card{background:#12122a;border-radius:12px;padding:14px;margin-bottom:12px;border:1px solid #1e1e3a}
+
+/* 评分环 */
+.sc-wrap{text-align:center;margin-bottom:16px}
+.score-ring{width:80px;height:80px;border-radius:50%;background:conic-gradient(#f0c040 0deg 252deg,#333 252deg 360deg);display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+.score-inner{width:62px;height:62px;border-radius:50%;background:#12122a;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-num{font-size:24px;font-weight:bold;color:#f0c040;line-height:1}
+.score-label{font-size:10px;color:#888}
+
+/* 评分条 */
+.dim-row{display:flex;align-items:center;margin:6px 0}
+.dim-label{width:60px;font-size:12px;color:#aaa;flex-shrink:0}
+.dim-bg{flex:1;height:10px;background:#1e1e3a;border-radius:5px;margin:0 8px;overflow:hidden}
+.dim-fill{height:100%;border-radius:5px}
+.dim-sc{width:28px;text-align:right;font-size:12px;font-weight:bold;flex-shrink:0}
+.c9{background:#4caf50}.c7{background:#8bc34a}.c6{background:#ffc107}
+
+/* 表格 */
+.tbl{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}
+.tbl th{background:#1e1e3a;color:#f0c040;padding:7px 5px;text-align:center;font-weight:500}
+.tbl td{padding:6px 5px;text-align:center;border-bottom:1px solid #1e1e3a}
+.tbl tr:last-child td{border-bottom:none}
+.gold{color:#f0c040;font-weight:bold}.green{color:#4caf50}.red{color:#f44336}.orange{color:#ff9800}
+
+/* 指标网格 */
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mi{background:#0d0d20;border-radius:8px;padding:10px;text-align:center}
+.mv{font-size:18px;font-weight:bold;color:#fff}
+.ml{font-size:10px;color:#888;margin-top:2px}
+
+/* 横条 */
+.hb{display:flex;align-items:flex-start;margin:4px 0;min-height:20px}
+.hl{width:72px;font-size:11px;color:#aaa;flex-shrink:0;padding-top:2px}
+.ht{flex:1;height:16px;background:#1e1e3a;border-radius:8px;overflow:visible;margin:0 6px;position:relative}
+.hf{height:16px;border-radius:8px;display:flex;align-items:center;padding-left:6px;font-size:10px;color:#fff;overflow:visible;white-space:nowrap;text-shadow:0 0 3px rgba(0,0,0,.8);min-width:0}
+.hv{font-size:10px;color:#999;white-space:nowrap;flex-shrink:0;padding-top:2px;margin-left:2px}
+
+/* 情景 */
+.scn{display:flex;gap:6px;margin:8px 0}
+.scc{flex:1;border-radius:8px;padding:10px;text-align:center}
+.scc h4{font-size:12px;margin-bottom:4px;color:#fff}
+.scc .pct{font-size:18px;font-weight:bold}
+.scc .dt{font-size:10px;color:#ccc;margin-top:3px}
+.sc1{background:#1a3a1a;border:1px solid #2a5a2a}.sc1 .pct{color:#4caf50}
+.sc2{background:#1a2a3a;border:1px solid #2a3a5a}.sc2 .pct{color:#f0c040}
+.sc3{background:#3a1a1a;border:1px solid #5a2a2a}.sc3 .pct{color:#f44336}
+
+/* 标签 */
+.tg{display:inline-block;font-size:10px;padding:1px 7px;border-radius:10px;margin:1px}
+.tgg{background:#1a3a1a;color:#4caf50;border:1px solid #2a5a2a}
+.tgr{background:#3a1a1a;color:#f44336;border:1px solid #5a2a2a}
+.tgo{background:#3a2a1a;color:#f0c040;border:1px solid #5a3a2a}
+.tgy{background:#222;color:#aaa;border:1px solid #333}
+
+/* 文本块 */
+.txt{padding:6px 0;font-size:13px;color:#ccc;line-height:1.7}
+.txt .dot{color:#f0c040;margin-right:4px}
+.bq{padding:10px;background:#0d0d20;border-radius:8px;border-left:3px solid #f0c040;margin:8px 0;font-size:13px;color:#ddd;line-height:1.7}
+
+/* 对比条 */
+.cp{display:flex;align-items:center;margin:4px 0;font-size:12px}
+.cp .nm{width:88px;color:#aaa;flex-shrink:0}
+.cp .bt{flex:1;height:14px;background:#1e1e3a;border-radius:7px;overflow:hidden;margin:0 6px}
+.cp .bf{height:100%;border-radius:7px}
+.cp .vl{width:48px;text-align:right;font-weight:bold;flex-shrink:0}
+
+.footer{text-align:center;font-size:10px;color:#555;margin:24px 0 10px;padding-top:14px;border-top:1px solid #1e1e3a;line-height:1.8}
+.sticky-top{position:sticky;top:0;z-index:10;background:#0a0a1a;padding:8px 0;border-bottom:1px solid #1e1e3a;margin-bottom:12px}
+.toc{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
+.toc a{font-size:11px;color:#888;text-decoration:none;padding:3px 8px;border-radius:12px;border:1px solid #333}
+.toc a:active{background:#1e1e3a;color:#f0c040}
+</style>
+</head>
+<body>
+
+<!-- ========== 顶部导航 ========== -->
+<div class="sticky-top">
+  <div style="text-align:center;font-size:11px;color:#555;margin-bottom:4px;">📌 点击跳转</div>
+  <div class="toc">
+    <a href="#s0">评分</a><a href="#s1">综合评价</a><a href="#s2">M1商业模式</a>
+    <a href="#s3">M2壁垒</a><a href="#s4">M3管理层</a><a href="#s5">M4财务</a>
+    <a href="#s6">M5产业链</a><a href="#s7">M6估值</a><a href="#s8">M7市占率</a>
+    <a href="#s9">M8催化剂</a><a href="#s10">M9预期差</a><a href="#s11">M10风险</a>
+    <a href="#s12">综合评级</a><a href="#s13">附录</a>
+  </div>
+</div>
+
+<!-- ========== 综合评分 ========== -->
+<div id="s0" class="sc-wrap">
+  <div class="score-ring"><div class="score-inner"><div class="score-num">7.0</div><div class="score-label">/10</div></div></div>
+  <h1 style="margin-top:4px;">贵州茅台 <span style="font-size:14px;color:#888;font-weight:400;">600519</span></h1>
+  <div class="desc">评级：良好 → 中国消费行业核心资产观察</div>
+  <div><span class="tg tgo">综合评级 7.0/10</span><span class="tg tgy">数据截至 2026-06-11</span></div>
+</div>
+
+<!-- ========== 一、综合评价 ========== -->
+<div id="s1" class="card">
+  <h2>一、综合评价</h2>
+  
+  <h3>1. 总评分：7.0分</h3>
+  <div class="txt">评级理由：贵州茅台作为中国高端白酒行业绝对龙头，是A股市场最具代表性的消费类核心资产。2025年公司营收1,899亿元，同比增长约9.1%，归母净利润910亿元，同比增长约5.5%，增速较前两年有所放缓，但仍保持稳健增长。2026年Q1营收471亿元同比+18.4%，归母净利润245.6亿元同比+19.1%，开局良好。公司核心看点在于：无与伦比的品牌护城河（国酒定位+奢侈品属性）、91%+的超高毛利率、零有息负债的极致财务质量、以及持续提升的分红回报。但需关注白酒行业整体需求承压、飞天茅台批价持续下行（散瓶从2,800回落至2,430元）、以及宏观经济放缓对高端消费的潜在冲击。</div>
+
+  <h3>2. 风险等级：中</h3>
+  <table class="tbl">
+    <tr><th>风险类别</th><th>等级</th><th>说明</th></tr>
+    <tr><td>经营风险</td><td><span class="orange">中</span></td><td style="text-align:left;font-size:11px;">飞天茅台批价持续下行（较2025年同期下降约10%），若跌破2,200元可能引发渠道抛售；系列酒增速放缓</td></tr>
+    <tr><td>财务风险</td><td><span class="green">极低</span></td><td style="text-align:left;font-size:11px;">资产负债率约25.6%，货币资金690亿，零有息负债，经营现金流1,120亿，财务质量A股顶级</td></tr>
+    <tr><td>市场风险</td><td><span class="orange">中</span></td><td style="text-align:left;font-size:11px;">宏观经济放缓影响高端消费需求；白酒行业整体产量持续下降；政策风险（消费税改革、公务消费限制）</td></tr>
+  </table>
+
+  <h3>3. 核心结论（一句话逻辑）</h3>
+  <div class="bq">"贵州茅台凭借其无可替代的品牌壁垒（国酒+奢侈品双重属性）、91%+的超高毛利率、零有息负债的极致财务健康度、以及持续提升的股东回报，是A股最具确定性的核心消费资产之一。2025年营收1,899亿、净利910亿创历史新高，2026年Q1营收增速18.4%验证需求韧性。但批价持续下行、白酒行业需求放缓、以及估值从高位回落至20倍PE区间，反映了市场对高端消费可持续性的担忧。公司处于'高确定性+低增长'的价值股定位，需密切关注批价走势和消费复苏节奏。"</div>
+
+  <h3>4. 三年预估增长空间</h3>
+  <div class="txt">
+    <span class="dot">·</span>业绩增长：预计归母净利润从2025年的910亿元增至2028年的1,150-1,280亿元，年化增速约8-12%（取决于提价节奏和系列酒增长）<br>
+    <span class="dot">·</span>估值修复：当前PE(TTM)约20.7倍，处于近5年历史低位（历史PE中枢约30-35倍）；参考全球奢侈品龙头LVMH PE约25倍、帝亚吉欧PE约22倍，估值处于合理偏低区间。若批价企稳+消费复苏，有望修复至25-28倍PE<br>
+    <span class="dot">·</span>股价目标：业绩增长约25-40% × 估值修复约20-35% ≈ 3年预期收益约50-90%（基准情景，含约3%年化股息）
+  </div>
+
+  <h3>5. 季度监控关键点</h3>
+  <div class="txt">
+    <span class="dot">·</span>Q1/Q2：飞天茅台批价走势（关键防线2,200元）、i茅台直销收入占比变化、系列酒（茅台1935）增速<br>
+    <span class="dot">·</span>Q3/Q4：中秋国庆动销数据、经销商打款意愿、全年营收目标完成进度<br>
+    <span class="dot">·</span>风险关注：茅台批价是否跌破2,200元引发渠道抛售、消费税改革进展、宏观经济数据对高端消费的影响
+  </div>
+
+  <h3>6. 逻辑证伪/止损触发点</h3>
+  <div class="txt">
+    1. 如果飞天茅台批价跌破2,200元且连续3个月未能回升，渠道库存风险可能爆发<br>
+    2. 如果单季度营收增速连续2个季度低于5%，说明高端消费需求出现实质性萎缩<br>
+    3. 如果毛利率跌破90%，说明产品结构恶化或被迫降价促销<br>
+    4. 如果消费税改革对高端白酒加征额外税负超过5个百分点，盈利能力将受显著冲击
+  </div>
+</div>
+
+<!-- ========== M1 商业模式 ========== -->
+<div id="s2" class="card">
+  <h2>M1 商业模式 & 收入结构</h2>
+  
+  <h3>核心定位</h3>
+  <div class="txt">中国高端白酒行业绝对龙头——贵州茅台是中国酱香型白酒的开创者和绝对领导者，核心产品"飞天茅台"是中国最具品牌价值的白酒单品，兼具消费品、奢侈品和金融属性（收藏/投资）。公司通过"高端核心单品+系列酒覆盖次高端+直销渠道提升利润"的三层战略，构筑了中国消费品行业最深最宽的护城河。</div>
+
+  <h3>年度财务报表（亿元）</h3>
+  <table class="tbl">
+    <tr><th>年份</th><th>营收</th><th>YoY</th><th>归母净利</th><th>净利率</th><th>毛利率</th></tr>
+    <tr><td>2020</td><td>979.9</td><td class="green">+10.3%</td><td>467.0</td><td>47.7%</td><td>91.4%</td></tr>
+    <tr><td>2021</td><td>1,061.9</td><td>+8.4%</td><td>524.6</td><td>49.4%</td><td>91.5%</td></tr>
+    <tr><td>2022</td><td>1,241.0</td><td class="green">+16.9%</td><td>627.2</td><td class="green">50.6%</td><td>91.9%</td></tr>
+    <tr><td>2023</td><td>1,505.6</td><td class="green">+21.3%</td><td>747.3</td><td>49.6%</td><td class="green">92.0%</td></tr>
+    <tr><td>2024</td><td>1,741.4</td><td>+15.7%</td><td>862.3</td><td>49.5%</td><td>92.0%</td></tr>
+    <tr><td class="gold">2025</td><td class="gold">1,899.0</td><td>+9.1%</td><td class="gold">910.0</td><td>47.9%</td><td>91.7%</td></tr>
+  </table>
+  <div class="desc" style="margin-top:6px;">备注：2023年是公司疫后复苏高峰，营收增速达21.3%；此后增速逐步放缓，2025年降至9.1%，反映了宏观经济压力和基数效应。2025年净利率下降至47.9%（较2022年高点50.6%下降2.7个百分点），主要因系列酒占比提升（毛利率低于飞天）、以及直销渠道费用投入增加。2026年Q1营收471亿（+18.4%），净利245.6亿（+19.1%），增速回升显著，或因春节旺季动销超预期及直销占比持续提升。</div>
+
+  <h3>分品类收入结构（2025年）</h3>
+  <div class="hb"><span class="hl">茅台酒</span><div class="ht"><div class="hf" style="width:76%;background:linear-gradient(90deg,#f0c040,#b8860b);"></div></div><span class="hv">≈76% · 约1,450亿</span></div>
+  <div class="hb"><span class="hl">其中：飞天</span><div class="ht"><div class="hf" style="width:65%;background:linear-gradient(90deg,#f0c040,#d4a017);"></div></div><span class="hv">≈65% · 1,200亿</span></div>
+  <div class="hb"><span class="hl">系列酒</span><div class="ht"><div class="hf" style="width:13%;background:linear-gradient(90deg,#4caf50,#2e7d32);"></div></div><span class="hv">13% · 约250亿</span></div>
+  <div class="hb"><span class="hl">茅台1935</span><div class="ht"><div class="hf" style="width:6%;background:linear-gradient(90deg,#2196f3,#1565c0);"></div></div><span class="hv">6% · 约100亿</span></div>
+  <div class="hb"><span class="hl">其他</span><div class="ht"><div class="hf" style="width:5%;background:#555;"></div></div><span class="hv">5% · 约30亿</span></div>
+
+  <table class="tbl" style="margin-top:10px;">
+    <tr><th>品类</th><th>收入</th><th>占比</th><th>趋势</th><th>毛利率</th></tr>
+    <tr><td>茅台酒</td><td>约1,450亿</td><td>约76%</td><td>→ 稳健</td><td class="green">94-95%</td></tr>
+    <tr><td>飞天茅台</td><td>约1,200亿</td><td>约65%</td><td>→ 稳健</td><td class="green">≈94%</td></tr>
+    <tr><td>系列酒</td><td>约250亿</td><td>约13%</td><td class="green">↑ 较快</td><td>75-80%</td></tr>
+    <tr><td>茅台1935</td><td>约100亿</td><td>约6%</td><td>→ 趋稳</td><td>≈80%</td></tr>
+    <tr><td>其他</td><td>约30亿</td><td>约2%</td><td>↑ 探索</td><td>50-60%</td></tr>
+    <tr><td>直销(i茅台)</td><td>约870亿</td><td>约46%</td><td class="green">↑ 提升</td><td class="green">≈96%</td></tr>
+    <tr><td>批发代理</td><td>约1,030亿</td><td>约54%</td><td class="red">↓ 压缩</td><td>≈89%</td></tr>
+  </table>
+
+  <h3>商业模式评估</h3>
+  <table class="tbl">
+    <tr><th>维度</th><th>评估</th><th>证据</th></tr>
+    <tr><td>核心定位</td><td class="gold">行业绝对龙头</td><td style="text-align:left;font-size:11px;">品牌价值第一，飞天茅台全球最具价值烈酒品牌之一</td></tr>
+    <tr><td>盈利模式</td><td class="gold">品牌溢价+稀缺+直销</td><td style="text-align:left;font-size:11px;">毛利率91%+、净利率48%+、ROE 28.5%，均为A股顶级</td></tr>
+    <tr><td>增长引擎</td><td class="green">提价+系列酒+直销</td><td style="text-align:left;font-size:11px;">2023年11月飞天出厂价提20%至1,169元；茅台1935成百亿单品；i茅台用户超6,000万</td></tr>
+    <tr><td>现金流模式</td><td class="green">印钞机模式</td><td style="text-align:left;font-size:11px;">经营现金流1,120亿，CAPEX仅约20-30亿，FCF超1,000亿</td></tr>
+  </table>
+
+  <div class="bq">
+    <b>核心结论：</b><br>
+    <span class="dot">·</span> 贵州茅台是中国乃至全球最优秀的消费品公司之一——91%毛利率+48%净利率+28%ROE的组合在A股几乎独一无二<br>
+    <span class="dot">·</span> "茅台酒"不仅是消费品，更具备奢侈品和金融属性（收藏、投资、社交货币），这是最深的护城河源泉<br>
+    <span class="dot">·</span> 直销比例提升（从6%到46%）是过去5年最大的利润增量来源，但已接近天花板<br>
+    <span class="dot">·</span> 未来增长驱动力：量（产能极限约10万吨）+ 价（出厂1,169 vs 批价2,400+，有翻倍提价空间）+ 结构（系列酒放量）
+  </div>
+</div>
+
+<!-- ========== M2 壁垒 ========== -->
+<div id="s3" class="card">
+  <h2>M2 壁垒斜率分析</h2>
+  <div class="desc">核心理念：护城河不是静态的，需要关注其演变趋势——拓宽（↑）、稳定（→）、侵蚀（↓）</div>
+
+  <h3>壁垒类型评估</h3>
+  <div class="hb"><span class="hl">品牌</span><div class="ht"><div class="hf" style="width:100%;background:#f0c040;">5.0</div></div></div>
+  <div class="hb"><span class="hl">转换成本</span><div class="ht"><div class="hf" style="width:100%;background:#4caf50;">5.0 ↑</div></div></div>
+  <div class="hb"><span class="hl">网络效应</span><div class="ht"><div class="hf" style="width:60%;background:#ffc107;">3.0 →</div></div></div>
+  <div class="hb"><span class="hl">成本优势</span><div class="ht"><div class="hf" style="width:80%;background:#4caf50;">4.0 →</div></div></div>
+  <div class="hb"><span class="hl">渠道网络</span><div class="ht"><div class="hf" style="width:80%;background:#4caf50;">4.0 ↑</div></div></div>
+  <div class="hb"><span class="hl">技术工艺</span><div class="ht"><div class="hf" style="width:90%;background:#4caf50;">4.5 →</div></div></div>
+  
+  <div style="padding:8px;background:#0d0d20;border-radius:8px;text-align:center;margin-top:8px;">
+    <span style="color:#f0c040;font-size:16px;font-weight:bold;">综合评分 4.5/5.0</span>
+    <span style="color:#888;font-size:12px;margin-left:6px;">→ 护城河全球顶级</span>
+  </div>
+
+  <h3>壁垒深度解析</h3>
+  <div class="txt">
+    <b style="color:#f0c040;">品牌壁垒——中国消费品的"珠穆朗玛峰"</b><br>
+    <span class="dot">·</span> 茅台是唯一被公认的"国酒"，品牌价值超4,000亿元，全球烈酒品牌第一<br>
+    <span class="dot">·</span> 高端宴请、商务送礼中茅台是"标配"，社交货币属性极强<br>
+    <span class="dot">·</span> 出厂价1,169元 vs 批价2,400+元，巨大溢价差额本身就是品牌壁垒的量化证明<br><br>
+    <b style="color:#4caf50;">稀缺性壁垒——物理产量天花板</b><br>
+    <span class="dot">·</span> 核心产区仅15.03平方公里，产能极限约10万吨<br>
+    <span class="dot">·</span> 2025年产能约5.6万吨，距离天花板仍有约一倍空间<br>
+    <span class="dot">·</span> 20万吨基酒储备是平抑年份波动和保证品质一致性的核心资产<br><br>
+    <b style="color:#2196f3;">工艺壁垒——时间成本筑就的天然护城河</b><br>
+    <span class="dot">·</span> 酱香型白酒"12987"工艺：1年生产周期、2次投料、9次蒸煮、8次发酵、7次取酒<br>
+    <span class="dot">·</span> 基酒需陈酿3-5年方可勾兑出厂，竞争至少需要5年以上才能产出成品<br>
+    <span class="dot">·</span> 离开茅台镇就酿不出茅台酒——微生物环境+赤水河水质不可复制
+  </div>
+
+  <h3>护城河陷阱识别</h3>
+  <div class="txt" style="color:#f44336;">
+    <b>警惕信号：</b><br>
+    <span class="dot">·</span> 品牌壁垒极强但非永不褪色（年轻人是否还喝白酒？）<br>
+    <span class="dot">·</span> 批价下跌是护城河的第一道裂缝——若跌破出厂价1,169元，渠道体系可能崩溃<br>
+    <span class="dot">·</span> 产能极限是双刃剑——量上不去意味着长期增长必须靠涨价<br>
+    <span class="dot">·</span> 消费税改革若对高端白酒加税，可能侵蚀盈利能力
+  </div>
+
+  <div class="bq">
+    <b>真正的护城河：</b><br>
+    <span class="dot">·</span> "离开茅台镇酿不出茅台酒"的地理垄断+微生物生态壁垒——物理层面的不可复制性<br>
+    <span class="dot">·</span> 国酒地位+社交货币属性构成的品牌心智垄断，中国消费品的最高护城河水平<br>
+    <span class="dot">·</span> 20万吨基酒储备和5年+酿造周期构筑的时间壁垒，任何竞争者无法短期跨越
+  </div>
+
+  <div class="bq">
+    <b>核心结论：</b><br>
+    <span class="dot">·</span> 贵州茅台拥有中国消费品行业最深最宽的护城河，综合评分4.5/5.0<br>
+    <span class="dot">·</span> 护城河整体保持稳定（→）——品牌壁垒极强但非永不褪色，批价走势是核心观察指标<br>
+    <span class="dot">·</span> 最大的护城河风险：代际消费变迁 + 批价持续下行 + 产能天花板
+  </div>
+</div>
+
+<!-- ========== M3 管理层 ========== -->
+<div id="s4" class="card">
+  <h2>M3 管理层分析</h2>
+
+  <h3>管理层基本信息</h3>
+  <table class="tbl">
+    <tr><th>姓名</th><th>职务</th><th>任职年限</th><th>专业背景</th></tr>
+    <tr><td>张德芹</td><td>董事长</td><td>2年（2024.4上任）</td><td>原习酒董事长，贵州本土白酒行业资深管理者</td></tr>
+    <tr><td>王莉</td><td>总经理</td><td>3年（2023.8上任）</td><td>原茅台副总，技术出身，白酒酿造专家</td></tr>
+    <tr><td>刘刚</td><td>财务总监</td><td>—</td><td>—</td></tr>
+    <tr><td>蒋焰</td><td>董秘</td><td>—</td><td>—</td></tr>
+  </table>
+  <div class="txt" style="font-size:12px;">张德芹风格偏稳健务实，强调质量优先、品牌价值保护和渠道健康，与前任丁雄军的激进改革（大幅提升直营比例）形成鲜明对比。市场对张德芹的评价偏正面——"不折腾、守正业"。茅台属贵州省国资控股，管理层更多是职业经理人角色。</div>
+
+  <h3>管理层能力评估</h3>
+  <div class="hb"><span class="hl">战略执行力</span><div class="ht"><div class="hf" style="width:70%;background:#f0c040;">7/10</div></div></div>
+  <div class="hb"><span class="hl">指引准确性</span><div class="ht"><div class="hf" style="width:80%;background:#4caf50;">8/10</div></div></div>
+  <div class="hb"><span class="hl">股东回报</span><div class="ht"><div class="hf" style="width:90%;background:#4caf50;">9/10</div></div></div>
+  <div class="hb"><span class="hl">危机应对</span><div class="ht"><div class="hf" style="width:70%;background:#f0c040;">7/10</div></div></div>
+  <div class="hb"><span class="hl">信息透明度</span><div class="ht"><div class="hf" style="width:70%;background:#f0c040;">7/10</div></div></div>
+  <div class="hb"><span class="hl">激励对齐</span><div class="ht"><div class="hf" style="width:40%;background:#f44336;">4/10</div></div></div>
+
+  <div class="bq">
+    <b>关键解读：</b><br>
+    <span class="dot">·</span> 茅台管理层受国企体制约束，核心团队几乎不持股，激励机制偏弱<br>
+    <span class="dot">·</span> 但茅台强大的品牌力和商业模式决定了"哪怕平庸的管理层也能经营好"——这是茅台投资逻辑中独特的"管理层冗余"优势<br>
+    <span class="dot">·</span> 张德芹上任后的稳健风格（控量保价、不激进提价）获得渠道和资本市场认可
+  </div>
+
+  <div class="bq">
+    <b>核心结论：</b><br>
+    <span class="dot">·</span> 综合评分：7.0/10<br>
+    <span class="dot">·</span> 亮点：股东回报持续提升（3.2%股息率+回购）、管理风格稳健<br>
+    <span class="dot">·</span> 风险点：国企限薪制下核心团队激励不足、管理层高频变动风险
+  </div>
+</div>
+
+<!-- ========== M4 财务 ========== -->
+<div id="s5" class="card">
+  <h2>M4 财务复盘 & 资本配置</h2>
+
+  <h3>核心财务指标</h3>
+  <table class="tbl">
+    <tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
+    <tr><td>营收（亿）</td><td>1,062</td><td>1,241</td><td>1,506</td><td>1,741</td><td class="gold">1,899</td><td class="green">↑</td></tr>
+    <tr><td>净利（亿）</td><td>525</td><td>627</td><td>747</td><td>862</td><td class="gold">910</td><td class="green">↑</td></tr>
+    <tr><td>毛利率</td><td>91.5%</td><td>91.9%</td><td>92.0%</td><td>92.0%</td><td>91.7%</td><td>→ 微降</td></tr>
+    <tr><td>净利率</td><td>49.4%</td><td class="green">50.6%</td><td>49.6%</td><td>49.5%</td><td>47.9%</td><td class="red">↓</td></tr>
+    <tr><td>ROE</td><td>30.7%</td><td>31.7%</td><td>32.4%</td><td>33.1%</td><td>28.5%</td><td>高位波动</td></tr>
+  </table>
+
+  <h3>现金流 & 资产负债</h3>
+  <table class="tbl">
+    <tr><th>指标</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
+    <tr><td>经营现金流</td><td>667.5亿</td><td>732.8亿</td><td class="gold">1,120亿</td><td class="green">↑ 大幅增长</td></tr>
+    <tr><td>CAPEX</td><td>约25亿</td><td>约28亿</td><td>约30亿</td><td class="green">↑ 扩产</td></tr>
+    <tr><td>FCF</td><td>约642亿</td><td>约705亿</td><td class="gold">约1,090亿</td><td class="green">↑ 充沛</td></tr>
+    <tr><td>FCF/净利</td><td>约86%</td><td>约82%</td><td class="green">约120%</td><td class="green">↑ 极高质量</td></tr>
+    <tr><td>资产负债率</td><td>17.3%</td><td>16.5%</td><td>25.6%</td><td>↑ 合同负债增加</td></tr>
+    <tr><td>货币资金</td><td>690亿</td><td>580亿</td><td class="gold">690亿</td><td>→ 充裕</td></tr>
+    <tr><td>有息负债</td><td>≈0</td><td>≈0</td><td class="green">≈0</td><td class="green">零有息负债</td></tr>
+  </table>
+
+  <h3>费用率结构</h3>
+  <table class="tbl">
+    <tr><th>费用项</th><th>2025年规模</th><th>趋势</th></tr>
+    <tr><td>销售费用</td><td>约50-60亿</td><td class="green">↑ 费用率约3%，远低于行业平均10-20%</td></tr>
+    <tr><td>管理费用</td><td>约80-90亿</td><td>→ 费用率约4.5%，国企体制偏高</td></tr>
+    <tr><td>研发费用</td><td>约5-10亿</td><td>→ 极低（白酒行业）</td></tr>
+    <tr><td>财务费用</td><td>为负（利息收入）</td><td class="green">→ 690亿货币资金产生利息收入</td></tr>
+  </table>
+
+  <h3>杜邦分析</h3>
+  <table class="tbl">
+    <tr><th>年份</th><th>ROE</th><th>净利率</th><th>资产周转率</th><th>权益乘数</th><th>驱动因子</th></tr>
+    <tr><td>2023</td><td>32.4%</td><td>49.6%</td><td>0.55×</td><td>1.21×</td><td>⭐ 超高净利率</td></tr>
+    <tr><td>2024</td><td class="gold">33.1%</td><td>49.5%</td><td>0.61×</td><td>1.20×</td><td>净利率+周转率</td></tr>
+    <tr><td>2025</td><td>28.5%</td><td>47.9%</td><td>0.63×</td><td>1.34×</td><td>净利率下降拖累</td></tr>
+  </table>
+
+  <div class="bq">
+    <b>核心结论：财务质量评分：9.5/10（A股顶级）</b><br>
+    ✅ 毛利率91%+、净利率48%+、ROE 28%+、经营现金流1,120亿、零有息负债、货币资金690亿<br>
+    ⚠️ 净利率从50.6%高点持续下滑至47.9%、ROE有所回落
+  </div>
+</div>
+
+<!-- ========== M5 产业链 ========== -->
+<div id="s6" class="card">
+  <h2>M5 成本结构 & 产业链议价权</h2>
+
+  <h3>成本结构</h3>
+  <div class="txt">茅台毛利率91%以上，意味着产品成本仅占售价的不到9%。产业链最核心的议价权不在于成本控制，而在于品牌赋予的定价权——消费者愿意为茅台酒支付远超其物理成本的溢价。</div>
+  <table class="tbl">
+    <tr><th>成本项目</th><th>占比</th><th>趋势</th><th>议价能力</th></tr>
+    <tr><td>原材料（高粱+小麦）</td><td>25-30%</td><td>→ 稳定</td><td class="green">极高</td></tr>
+    <tr><td>人工成本</td><td>20-25%</td><td class="red">↑</td><td>中</td></tr>
+    <tr><td>包装材料</td><td>15-20%</td><td>→ 稳定</td><td class="green">极高</td></tr>
+    <tr><td>折旧及能源</td><td>10-15%</td><td>→ 稳定</td><td class="green">极高</td></tr>
+  </table>
+
+  <h3>产业链议价权</h3>
+  <table class="tbl">
+    <tr><th>维度</th><th>评估</th><th>证据</th></tr>
+    <tr><td>对上游议价能力</td><td class="green">极高</td><td>采购量大，供应商高度依赖茅台订单</td></tr>
+    <tr><td>对下游议价能力</td><td class="green">极高</td><td>出厂1,169 vs 批价2,400+，渠道利润空间超100%</td></tr>
+    <tr><td>终端消费者议价力</td><td class="gold">极弱</td><td>消费者几乎没有议价能力，只能接受市场价</td></tr>
+  </table>
+
+  <div class="bq">
+    <b>核心结论：</b><br>
+    <span class="dot">·</span> 定价权评估：<b>5.0/5.0</b> —— 茅台拥有中国消费品行业最强的定价权<br>
+    <span class="dot">·</span> 出厂价1,169元 vs 批价2,400+元 = 约1,200元/瓶的渠道利润差价，每提价100元≈增厚净利润约70亿<br>
+    <span class="dot">·</span> 即使批价从2,800元高点回落至2,430元，渠道利润空间仍超100%<br>
+    <span class="dot">·</span> ⚠️ 唯一需警惕：若批价跌破出厂价1,169元，将出现"价格倒挂"，渠道体系可能面临系统性风险
+  </div>
+</div>
+
+<!-- ========== M6 估值 ========== -->
+<div id="s7" class="card">
+  <h2>M6 FCF效率 & 估值</h2>
+
+  <h3>FCF质量</h3>
+  <table class="tbl">
+    <tr><th>指标</th><th>2024年</th><th class="gold">2025年</th><th>正常化水平</th></tr>
+    <tr><td>经营现金流</td><td>约733亿</td><td class="gold">约1,120亿</td><td>800-1,000亿</td></tr>
+    <tr><td>CAPEX</td><td>约28亿</td><td>约30亿</td><td>25-35亿</td></tr>
+    <tr><td>FCF</td><td>约705亿</td><td class="gold">约1,090亿</td><td>750-950亿</td></tr>
+    <tr><td>FCF/净利润</td><td>约82%</td><td class="green">约120%</td><td>90-110%</td></tr>
+  </table>
+  <div class="txt">FCF约1,090亿，FCF/净利润约120%——全球顶级的现金流质量。极低的资本开支（仅约30亿）意味着茅台几乎是一个"印钞机"模式的生意。</div>
+
+  <h3>估值指标</h3>
+  <table class="tbl">
+    <tr><th>指标</th><th>当前值</th><th>历史区间</th><th>评估</th></tr>
+    <tr><td>PE(TTM)</td><td class="gold">约20.7倍</td><td>15-70倍</td><td class="green">偏低（近5年低位）</td></tr>
+    <tr><td>PE(2026E)</td><td class="gold">约18.2倍</td><td>—</td><td class="green">偏低</td></tr>
+    <tr><td>PB</td><td>约7.1倍</td><td>4-18倍</td><td>中性</td></tr>
+    <tr><td>股息率</td><td class="gold">约3.2%</td><td>0.8-2.0%</td><td class="green">历史高位</td></tr>
+  </table>
+  <div class="txt">当前市值约1.78万亿元，PE(TTM)约20.7倍。机构预测2026年归母净利润约980-1,000亿元，对应PE约18.2倍。</div>
+
+  <h3>全球消费品龙头 PE 对比</h3>
+  <div class="cp"><span class="nm">茅台</span><div class="bt"><div class="bf" style="width:74%;background:#f0c040;"></div></div><span class="vl gold">20.7×</span></div>
+  <div class="cp"><span class="nm">可口可乐</span><div class="bt"><div class="bf" style="width:100%;background:#4caf50;"></div></div><span class="vl green">28×</span></div>
+  <div class="cp"><span class="nm">LVMH</span><div class="bt"><div class="bf" style="width:89%;background:#4caf50;"></div></div><span class="vl green">25×</span></div>
+  <div class="cp"><span class="nm">帝亚吉欧</span><div class="bt"><div class="bf" style="width:79%;background:#4caf50;"></div></div><span class="vl green">22×</span></div>
+  <div class="cp"><span class="nm">茅台 2026E</span><div class="bt"><div class="bf" style="width:65%;background:#ff9800;"></div></div><span class="vl orange">18.2×</span></div>
+  <div class="desc" style="margin-top:6px;">📌 茅台PE低于全球主要消费品龙头，处于近5年最低区间</div>
+
+  <div class="bq">
+    <b>关键解读：</b><br>
+    <span class="dot">·</span> FCF质量评分：<b>10/10</b> —— A股FCF质量最高的公司之一<br>
+    <span class="dot">·</span> FCF Yield约4.5-5.6%，叠加约3.2%的股息率，对于稳健增长的消费品龙头已具备配置价值<br>
+    <span class="dot">·</span> 当前约20倍PE的茅台，是近5年来最具性价比的买入区间之一
+  </div>
+</div>
+
+<!-- ========== M7 增量市占率 ========== -->
+<div id="s8" class="card">
+  <h2>M7 增量市占率 & 行业终局</h2>
+
+  <h3>行业空间</h3>
+  <table class="tbl">
+    <tr><th>市场</th><th>规模（2025E）</th><th>增速</th><th>公司收入</th><th>市占率</th></tr>
+    <tr><td>白酒行业</td><td>约7,800亿</td><td>+5%</td><td>1,899亿</td><td class="gold">约24.3%</td></tr>
+    <tr><td>高端白酒（千元+）</td><td>约1,900亿</td><td>+8-10%</td><td>约1,450亿</td><td class="gold">约55%</td></tr>
+    <tr><td>酱香型白酒</td><td>约2,500亿</td><td>+15-20%</td><td>约1,700亿</td><td class="gold">约68%</td></tr>
+  </table>
+
+  <div class="mg" style="margin-top:10px;">
+    <div class="mi"><div class="mv gold">24.3%</div><div class="ml">白酒行业市占率</div></div>
+    <div class="mi"><div class="mv gold">55%</div><div class="ml">高端白酒市占率</div></div>
+    <div class="mi"><div class="mv gold">68%</div><div class="ml">酱酒市占率</div></div>
+    <div class="mi"><div class="mv green">45%</div><div class="ml">行业CR5集中度</div></div>
+  </div>
+
+  <h3>竞争态势</h3>
+  <table class="tbl">
+    <tr><th>竞争对手</th><th>竞争维度</th><th>公司相对优势</th></tr>
+    <tr><td>五粮液</td><td>千元价位</td><td class="green">品牌力+价格带差距显著（飞天2,400+ vs 普五950）</td></tr>
+    <tr><td>泸州老窖</td><td>千元价位</td><td class="green">品牌力差距明显，茅台量价空间更大</td></tr>
+    <tr><td>郎酒/习酒</td><td>300-800元系列酒竞争</td><td>茅台品牌背书，茅台1935快速放量</td></tr>
+  </table>
+
+  <h3>行业终局思考</h3>
+  <div class="txt">白酒行业"少喝酒、喝好酒"的消费升级趋势不可逆，高端白酒集中度持续提升。茅台作为"塔尖"，品牌地位难以被挑战。行业终局大概率呈现"一超多强"格局：茅台在超高端（2,000元+）独占鳌头，五粮液和泸州老窖在千元价位竞争，次高端由茅台系列酒、汾酒、洋河等群雄逐鹿。</div>
+
+  <div class="bq">
+    <b>核心结论：</b><br>
+    <span class="dot">·</span> 增量市占率趋势：→ 高端酒市占率已极高（55%），进一步提升空间有限；酱酒和系列酒仍有空间<br>
+    <span class="dot">·</span> 最大增量来源：飞天提价+直销占比提升+茅台1935放量+产能扩张<br>
+    <span class="dot">·</span> 竞争态势：高端壁垒牢不可破，但次高端竞争激烈
+  </div>
+</div>
+
+<!-- ========== M8 催化剂 ========== -->
+<div id="s9" class="card">
+  <h2>M8 三年资本计划 & 催化剂</h2>
+
+  <h3>催化剂时间表</h3>
+  <table class="tbl">
+    <tr><th>时间</th><th>事件</th><th>预期影响</th></tr>
+    <tr><td>2026H2</td><td>飞天茅台出厂价再次提价</td><td class="green">每提价100元≈增厚净利70亿</td></tr>
+    <tr><td>2026-2027</td><td>直销占比突破50%</td><td class="green">每提升5pct≈增厚净利30-40亿</td></tr>
+    <tr><td>2027H1</td><td>"十四五"扩产投产</td><td>茅台酒产能增至约7万吨</td></tr>
+    <tr><td>2027H2</td><td>茅台1935站稳百亿</td><td>系列酒营收突破300亿</td></tr>
+    <tr><td>2028</td><td>茅台酒产能达8万吨+</td><td>量增驱动营收增长</td></tr>
+  </table>
+
+  <h3>三年业绩预测</h3>
+  <div class="scn">
+    <div class="scc sc1"><h4>😄 乐观</h4><div class="pct">+14% CAGR</div><div class="dt">2028净利1,350亿</div></div>
+    <div class="scc sc2"><h4>😐 基准</h4><div class="pct">+9% CAGR</div><div class="dt">2028净利1,190亿</div></div>
+    <div class="scc sc3"><h4>😟 悲观</h4><div class="pct">+3% CAGR</div><div class="dt">2028净利980亿</div></div>
+  </div>
+
+  <table class="tbl">
+    <tr><th>情景</th><th>2026E</th><th>2027E</th><th>2028E</th><th>毛利率</th></tr>
+    <tr><td class="green">乐观</td><td>净利1,020亿</td><td>1,180亿</td><td>1,350亿</td><td>92.5→93.5%</td></tr>
+    <tr><td class="gold">基准</td><td>净利980亿</td><td>1,080亿</td><td>1,190亿</td><td>→ 92.0%</td></tr>
+    <tr><td class="red">悲观</td><td>净利940亿</td><td>960亿</td><td>980亿</td><td>91.0→89.0%</td></tr>
+  </table>
+
+  <div class="bq">
+    <b>核心结论：</b><br>
+    <span class="dot">·</span> 未来3年净利润CAGR预期：<b>9-14%</b>（基准-乐观）<br>
+    <span class="dot">·</span> 最大增长引擎：飞天提价 + 直销占比提升 + 产能扩张 + 系列酒放量<br>
+    <span class="dot">·</span> 业绩弹性来源：茅台拥有极强的定价权但管理层风格稳健，提价是最具弹性的业绩催化剂
+  </div>
+</div>
+
+<!-- ========== M9 预期差 ========== -->
+<div id="s10" class="card">
+  <h2>M9 预期差 & 市场共识</h2>
+
+  <table class="tbl">
+    <tr><th>议题</th><th>市场共识</th><th>独立判断</th><th>方向</th></tr>
+    <tr>
+      <td>成长性</td>
+      <td style="color:#888;">低增长8-10%，从成长→价值</td>
+      <td style="color:#4caf50;">提价空间被低估，出厂vs批价差1,200+</td>
+      <td><span class="tg tgg">正向</span></td>
+    </tr>
+    <tr>
+      <td>批价走势</td>
+      <td style="color:#888;">仍有下行压力</td>
+      <td>2,200-2,400震荡，跌破出厂价概率极低</td>
+      <td><span class="tg tgo">中性</span></td>
+    </tr>
+    <tr>
+      <td>消费税改革</td>
+      <td style="color:#888;">大概率加税</td>
+      <td style="color:#4caf50;">可通过提价转嫁，影响可控</td>
+      <td><span class="tg tgg">正向</span></td>
+    </tr>
+    <tr>
+      <td>估值水平</td>
+      <td style="color:#888;">PE 20.7合理偏低</td>
+      <td style="color:#4caf50;">对比全球龙头明显偏低</td>
+      <td><span class="tg tgg">正向</span></td>
+    </tr>
+    <tr>
+      <td>代际风险</td>
+      <td style="color:#888;">被高估</td>
+      <td style="color:#4caf50;">商务社交刚需不变</td>
+      <td><span class="tg tgg">正向</span></td>
+    </tr>
+  </table>
+
+  <div class="bq">
+    <b>关键解读：</b><br>
+    <span class="dot">·</span> 市场对茅台的共识已从"成长股"切换为"价值股"——PE从30-40倍中枢回落至20倍区间<br>
+    <span class="dot">·</span> 关键预期差在于：茅台的提价空间和品牌壁垒可能被市场低估——出厂价仅1,169元而批价2,430元，价差空间超过100%<br>
+    <span class="dot">·</span> 市场对消费税改革的担忧可能过度——茅台极强的定价权决定了其可以轻松将税负转嫁给消费者或渠道<br>
+    <span class="dot">·</span> 当前1.78万亿市值对应2026年PE约18倍，对于全球顶级消费品龙头而言，估值已进入偏低区间
+  </div>
+</div>
+
+<!-- ========== M10 风险 ========== -->
+<div id="s11" class="card">
+  <h2>M10 Pre-mortem & 核心风险</h2>
+  <div class="desc">假设3年后亏损30%，最可能的原因：</div>
+
+  <h3>风险类型</h3>
+  <table class="tbl">
+    <tr><th>风险类型</th><th>描述</th><th>概率</th><th>预警信号</th></tr>
+    <tr><td>宏观经济下行</td><td>高端消费需求大幅萎缩</td><td><span class="orange">中</span></td><td>批价跌破2,000元且持续3个月</td></tr>
+    <tr><td>消费税改革</td><td>对高端白酒加征20%+消费税</td><td><span style="color:#ffc107;">中低</span></td><td>政策草案公布</td></tr>
+    <tr><td>批价持续下跌</td><td>跌破2,200元引发渠道恐慌</td><td><span class="orange">中</span></td><td>批价月环比下跌超5%</td></tr>
+    <tr><td>代际消费变迁</td><td>年轻群体大幅减少白酒消费</td><td><span style="color:#ffc107;">中低</span></td><td>30岁以下消费占比持续下降</td></tr>
+    <tr><td>产能延期</td><td>"十四五"扩产项目延期</td><td><span style="color:#ffc107;">中低</span></td><td>进度低于70%</td></tr>
+  </table>
+
+  <h3>敏感性分析</h3>
+  <table class="tbl">
+    <tr><th>压力情景</th><th>净利影响</th><th>股价压力</th></tr>
+    <tr><td>批价下跌20%（破2,000）</td><td>-8%</td><td class="orange">-15%</td></tr>
+    <tr><td>消费税加征20%</td><td>-12%</td><td class="orange">-10%</td></tr>
+    <tr><td>宏观经济衰退</td><td>-15%</td><td class="red">-20%</td></tr>
+    <tr><td class="red">极端叠加</td><td class="red">-32%</td><td class="red" style="font-weight:bold;">-35%</td></tr>
+  </table>
+
+  <h3>三情景估值</h3>
+  <div class="scn">
+    <div class="scc sc1"><h4>😄 乐观</h4><div class="pct">+43%</div><div class="dt">PE 25× · 市值2.55万亿</div></div>
+    <div class="scc sc2"><h4>😐 基准</h4><div class="pct">+21%</div><div class="dt">PE 22× · 市值2.16万亿</div></div>
+    <div class="scc sc3"><h4>😟 悲观</h4><div class="pct">-5%</div><div class="dt">PE 18× · 市值1.69万亿</div></div>
+  </div>
+
+  <h3>避雷清单</h3>
+  <table class="tbl">
+    <tr><th>检查项</th><th>结果</th></tr>
+    <tr><td>商誉占净资产>50%？</td><td><span class="tg tgg">否 ✓ 商誉几乎为零</span></td></tr>
+    <tr><td>应收账款增速>收入增速？</td><td><span class="tg tgg">否 ✓ 先款后货模式</span></td></tr>
+    <tr><td>经营现金流持续为负？</td><td><span class="tg tgg">否 ✓ 1,120亿充沛</span></td></tr>
+    <tr><td>存货异常堆积？</td><td><span style="display:inline-block;font-size:10px;padding:1px 7px;border-radius:10px;background:#3a2a1a;color:#f0c040;border:1px solid #5a3a2a;">需关注</span> 基酒储备属正常</td></tr>
+    <tr><td>关联交易异常？</td><td><span class="tg tgg">否 ✓ 国企治理规范</span></td></tr>
+    <tr><td>大股东高比例质押？</td><td><span class="tg tgg">否 ✓ 国资委持股0质押</span></td></tr>
+    <tr><td>审计意见非标准？</td><td><span class="tg tgg">否 ✓ 标准无保留意见</span></td></tr>
+  </table>
+  <div style="padding:10px;background:#1a3a1a;border-radius:8px;text-align:center;margin-top:8px;border:1px solid #2a5a2a;">
+    <span style="color:#4caf50;">✅ 财务极度健康，不存在财务造假风险。主要风险在于行业周期性和消费趋势变化</span>
+  </div>
+
+  <h3>清算价值</h3>
+  <table class="tbl">
+    <tr><th>资产项</th><th>账面价值</th><th>清算价值</th></tr>
+    <tr><td>货币资金</td><td>690亿</td><td class="gold">690亿</td></tr>
+    <tr><td>存货（含基酒）</td><td>500亿</td><td>400亿</td></tr>
+    <tr><td>固定资产</td><td>250亿</td><td>125亿</td></tr>
+    <tr><td>无形资产</td><td>50亿</td><td>15亿</td></tr>
+    <tr><td class="gold">合计</td><td>约1,490亿</td><td>约1,230亿</td></tr>
+  </table>
+  <div class="txt">清算价值约1,230亿元，当前市值约1.78万亿元。差额约1.66万亿体现了茅台的品牌价值和持续经营能力。</div>
+</div>
+
+<!-- ========== 综合评级 ========== -->
+<div id="s12" class="card">
+  <h2>六、综合评级 & 最终结论</h2>
+
+  <h3>综合评分</h3>
+  <div class="dim-row"><span class="dim-label">商业模式</span><div class="dim-bg"><div class="dim-fill c9" style="width:95%"></div></div><span class="dim-sc" style="color:#4caf50;">9.5</span><span style="font-size:10px;color:#888;margin-left:4px;">全球顶级</span></div>
+  <div class="dim-row"><span class="dim-label">壁垒强度</span><div class="dim-bg"><div class="dim-fill c9" style="width:90%"></div></div><span class="dim-sc" style="color:#4caf50;">9.0</span><span style="font-size:10px;color:#888;margin-left:4px;">A股最深</span></div>
+  <div class="dim-row"><span class="dim-label">管理层</span><div class="dim-bg"><div class="dim-fill c7" style="width:70%"></div></div><span class="dim-sc" style="color:#8bc34a;">7.0</span><span style="font-size:10px;color:#888;margin-left:4px;">国企激励不足</span></div>
+  <div class="dim-row"><span class="dim-label">财务质量</span><div class="dim-bg"><div class="dim-fill c9" style="width:95%"></div></div><span class="dim-sc" style="color:#4caf50;">9.5</span><span style="font-size:10px;color:#888;margin-left:4px;">A股顶级</span></div>
+  <div class="dim-row"><span class="dim-label">成长性</span><div class="dim-bg"><div class="dim-fill c6" style="width:60%"></div></div><span class="dim-sc" style="color:#ffc107;">6.0</span><span style="font-size:10px;color:#888;margin-left:4px;">稳健低增长</span></div>
+  <div class="dim-row"><span class="dim-label">安全边际</span><div class="dim-bg"><div class="dim-fill c7" style="width:75%"></div></div><span class="dim-sc" style="color:#8bc34a;">7.5</span><span style="font-size:10px;color:#888;margin-left:4px;">PE低位</span></div>
+
+  <h3>核心亮点</h3>
+  <div class="txt">
+    <span class="dot">·</span> <b>中国消费行业最强品牌</b>：国酒定位+社交货币属性，品牌价值超4,000亿，全球烈酒第一<br>
+    <span class="dot">·</span> <b>极致财务质量</b>：毛利率91%+、净利率48%+、ROE 28%+、经营现金流1,120亿、零有息负债<br>
+    <span class="dot">·</span> <b>无与伦比的定价权</b>：出厂1,169 vs 批价2,430，渠道利润空间超100%<br>
+    <span class="dot">·</span> <b>直销变革红利</b>：i茅台用户超6,000万，直销占比从6%提升至46%<br>
+    <span class="dot">·</span> <b>股东回报提升</b>：每股分红45元，股息率约3.2%，叠加回购计划<br>
+    <span class="dot">·</span> <b>估值历史低位</b>：PE(TTM)约20.7倍，近5年估值底部区间
+  </div>
+
+  <h3>核心风险</h3>
+  <div class="txt" style="color:#f0c040;">
+    <span class="dot">·</span> 批价持续下行：飞天批价从2,800元回落至2,430元，若跌破2,200元可能引发渠道风险<br>
+    <span class="dot">·</span> 宏观经济拖累高端消费<br>
+    <span class="dot">·</span> 消费税改革风险<br>
+    <span class="dot">·</span> 成长性降速：净利增速从15-20%降至8-12%<br>
+    <span class="dot">·</span> 代际消费变迁 + 国企体制弊端 + 产能天花板
+  </div>
+
+  <h3>价值投资理论应用</h3>
+  <table class="tbl">
+    <tr><th>模块</th><th>大师理念</th><th>应用分析</th></tr>
+    <tr><td>M1</td><td>段永平「本分」</td><td style="text-align:left;font-size:11px;">聚焦白酒主业数十年，"离开茅台镇酿不出茅台酒"是极致"本分"的物理体现</td></tr>
+    <tr><td>M2</td><td>巴菲特「护城河」</td><td style="text-align:left;font-size:11px;">品牌+地理+工艺三重护城河4.5/5.0，中国消费品最深的护城河</td></tr>
+    <tr><td>M3</td><td>巴菲特「德才兼备」</td><td style="text-align:left;font-size:11px;">国企激励不足，但茅台品牌"冗余度"极高，管理层正常履职即可</td></tr>
+    <tr><td>M4</td><td>巴菲特「FCF为王」</td><td style="text-align:left;font-size:11px;">经营现金流1,120亿、FCF超1,000亿，FCF质量A股第一</td></tr>
+    <tr><td>M5</td><td>邱国鹭「定价权」</td><td style="text-align:left;font-size:11px;">出厂1,169 vs 批价2,430，定价权评分5.0/5.0</td></tr>
+    <tr><td>M6</td><td>巴菲特「资本配置」</td><td style="text-align:left;font-size:11px;">零有息负债+几乎无需CAPEX+FCF超1,000亿，资本配置最优</td></tr>
+    <tr><td>M7</td><td>邱国鹭「剩者为王」</td><td style="text-align:left;font-size:11px;">高端白酒市占率55%+，茅台是"剩者为王"的终极形态</td></tr>
+    <tr><td>M8</td><td>彼得·林奇「增长类型」</td><td style="text-align:left;font-size:11px;">从"高速增长型"切换为"稳健增长型"，提价是弹性来源</td></tr>
+    <tr><td>M9</td><td>芒格「逆向思维」</td><td style="text-align:left;font-size:11px;">市场低估了茅台的提价空间和品牌护城河</td></tr>
+    <tr><td>M10</td><td>芒格「Pre-mortem」</td><td style="text-align:left;font-size:11px;">批价下行和消费税是两大核心风险，但品牌护城河提供了极高的安全边际</td></tr>
+    <tr><td>M11</td><td>巴菲特「安全边际」</td><td style="text-align:left;font-size:11px;">PE 20.7倍处于历史低位，全球消费品龙头比较具有吸引力</td></tr>
+  </table>
+</div>
+
+<!-- ========== 附录 ========== -->
+<div id="s13" class="card">
+  <h2>附录</h2>
+  
+  <h3>附录A：数据来源</h3>
+  <table class="tbl">
+    <tr><th>数据类型</th><th>来源平台</th><th>截止日期</th></tr>
+    <tr><td>财务报表</td><td>东方财富数据中心/恒生聚源数据库</td><td>2025年报</td></tr>
+    <tr><td>衍生财务指标</td><td>同花顺iFinD</td><td>2025年报</td></tr>
+    <tr><td>估值数据</td><td>东方财富/同花顺</td><td>2026-06-11</td></tr>
+    <tr><td>行业归属</td><td>中酒协/Euromonitor</td><td>2025</td></tr>
+    <tr><td>机构预测</td><td>中信/华泰/国泰君安等券商研报</td><td>2026-05</td></tr>
+  </table>
+
+  <div class="txt" style="font-size:11px;">
+    <b>数据声明：</b><br>
+    <span class="dot">·</span> 本报告所有数据均来源于东方财富数据中心、同花顺、恒生聚源数据库及上市公司年报、季报等公开披露信息<br>
+    <span class="dot">·</span> 部分行业数据源于中酒协、Euromonitor、券商研报及公开媒体报道<br>
+    <span class="dot">·</span> 不包含任何内幕信息或未公开数据<br>
+    <span class="dot">·</span> 报告使用截止日期：2026年6月11日
+  </div>
+
+  <div style="padding:12px;background:#1a1a2a;border-radius:8px;margin-top:10px;text-align:center;border:1px solid #333;">
+    <b style="color:#f0c040;">⚠️ 重要提示</b><br>
+    <span style="font-size:11px;color:#888;">
+      1. 本报告仅供理论学习和理论练习使用，不构成任何投资建议<br>
+      2. 不能作为投资决策依据，股市有风险，投资需谨慎<br>
+      3. 报告中所有预测和分析均为理论推演，不代表实际投资结果<br>
+      4. 投资者应根据自身风险承受能力独立判断
+    </span>
+  </div>
+</div>
+
+<div class="footer">
+  报告完成日期：2026年6月<br>
+  分析工具：恒生聚源数据库 + 价值投资分析框架
+</div>
+
+</body>
+</html>
