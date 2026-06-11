@@ -381,14 +381,98 @@ function applyThemeToReport() {
   try {
     const iframe = document.getElementById('reportFrame');
     const idoc = iframe.contentDocument || iframe.contentWindow.document;
-    // Remove previous injected style if any
     const old = idoc.getElementById('hermes-theme-override');
     if (old) old.remove();
     if (isLight) {
       const style = idoc.createElement('style');
       style.id = 'hermes-theme-override';
-      style.textContent = 'body{background:#f4f1ea!important;color:#2d2d2d!important}\nh1{color:#1a1a1a!important}\nh2{color:#b8860b!important;border-left-color:#b8860b!important}\nh3{color:#3d3d3d!important}\nh4{color:#505050!important}\n.desc{color:#808080!important}\n.card{background:#ffffff!important;border-color:#d8d4c8!important}\n.sc-inner,.score-inner{background:#ffffff!important}\n.sc-label,.score-label{color:#a0a0a0!important}\n.stats span,.stat-label{color:#707070!important}\n.dim-label,.dim-label span{color:#606060!important}\n.dim-bg{background:#e8e5dc!important}\n.dim-sc{color:#b8860b!important}\n.tag{background:rgba(0,0,0,0.04)!important;color:#707070!important;border-color:rgba(0,0,0,0.08)!important}\ntable{background:#ffffff!important}\ntd,th{border-color:#d8d4c8!important;color:#3d3d3d!important}\nth{background:#f4f1ea!important}\n.data-table td{color:#505050!important}\n.metric-value,.value{color:#1a1a1a!important}\n.metric-label,.metric-label span{color:#808080!important}\nhr{border-color:#e0ddd4!important}\n.quote,.quote-text{color:#505050!important;border-left-color:#b8860b33!important}\n.footer,.footer-text{color:#a0a0a0!important}\n.section,.section-title{color:#3d3d3d!important}\n.sub-section,.sub-section-title{color:#505050!important}\n.risk-item,.risk-item div{color:#606060!important}\n.market-data,.data-row{color:#505050!important}\n.data-label{color:#808080!important}\n.data-value{color:#1a1a1a!important}\na{color:#b8860b!important}\n.glow,.glow-text{color:#b8860b!important}';
+      style.textContent = '\
+body{background:#f4f1ea!important;color:#2d2d2d!important}\
+h1{color:#1a1a1a!important}\
+h2{color:#b8860b!important;border-left-color:#b8860b!important}\
+h3{color:#3d3d3d!important}\
+h4{color:#505050!important}\
+.desc{color:#808080!important}\
+.card{background:#ffffff!important;border-color:#d8d4c8!important}\
+.sc-inner,.score-inner{background:#ffffff!important}\
+.sc-label,.score-label{color:#a0a0a0!important}\
+.stats span,.stat-label{color:#707070!important}\
+.dim-label,.dim-label span{color:#606060!important}\
+.dim-bg{background:#e8e5dc!important}\
+.dim-sc{color:#b8860b!important}\
+.tag{background:rgba(0,0,0,0.04)!important;color:#707070!important;border-color:rgba(0,0,0,0.08)!important}\
+table{background:#ffffff!important}\
+td,th{border-color:#d8d4c8!important;color:#3d3d3d!important}\
+th{background:#f4f1ea!important}\
+.tbl td{border-bottom-color:#d8d4c8!important}\
+.tbl th{background:#f0ede6!important;color:#b8860b!important}\
+.data-table td{color:#505050!important}\
+.metric-value,.value{color:#1a1a1a!important}\
+.metric-label,.metric-label span{color:#808080!important}\
+hr{border-color:#e0ddd4!important}\
+.quote,.quote-text{color:#505050!important;border-left-color:#b8860b33!important}\
+.footer,.footer-text{color:#a0a0a0!important}\
+.section,.section-title{color:#3d3d3d!important}\
+.sub-section,.sub-section-title{color:#505050!important}\
+.risk-item,.risk-item div{color:#606060!important}\
+.market-data,.data-row{color:#505050!important}\
+.data-label{color:#808080!important}\
+.data-value{color:#1a1a1a!important}\
+a{color:#b8860b!important}\
+.glow,.glow-text{color:#b8860b!important}\
+.txt{color:#505050!important}\
+.txt .dot{color:#b8860b!important}\
+.bq{background:#fcfcfa!important;color:#3d3d3d!important;border-left-color:#b8860b!important}\
+.mi{background:#fcfcfa!important}\
+.ml{color:#909090!important}\
+.hl{color:#606060!important}\
+.ht{background:#e8e5dc!important}\
+.hf{color:#333!important;text-shadow:none!important}\
+.hv{color:#707070!important}\
+.cp .nm{color:#606060!important}\
+.cp .bt{background:#e8e5dc!important}\
+.toc a{color:#808080!important;border-color:#d8d4c8!important}\
+.toc a:active{background:#f0ede6!important;color:#b8860b!important}\
+.scn .scc{background:#fcfcfa!important}\
+.scc.sc1{background:#e8f5e9!important;border-color:#a5d6a7!important}\
+.scc.sc1 h4{color:#2e7d32!important}\
+.scc.sc1 .pct{color:#2e7d32!important}\
+.scc.sc1 .dt{color:#66bb6a!important}\
+.scc.sc2{background:#e3f2fd!important;border-color:#90caf9!important}\
+.scc.sc2 h4{color:#1565c0!important}\
+.scc.sc2 .pct{color:#1565c0!important}\
+.scc.sc2 .dt{color:#42a5f5!important}\
+.scc.sc3{background:#fce4ec!important;border-color:#ef9a9a!important}\
+.scc.sc3 h4{color:#c62828!important}\
+.scc.sc3 .pct{color:#c62828!important}\
+.scc.sc3 .dt{color:#ef5350!important}\
+.sticky-top{background:#f4f1ea!important}\
+.gold{color:#b8860b!important}\
+.green{color:#2e7d32!important}\
+.red{color:#c62828!important}\
+.orange{color:#e65100!important}\
+.mv.gold{color:#b8860b!important}\
+.mv.green{color:#2e7d32!important}\
+.vl.gold{color:#b8860b!important}\
+.vl.green{color:#2e7d32!important}\
+.vl.orange{color:#e65100!important}';
       idoc.head.appendChild(style);
+      // Fix inline-style elements that CSS can't override
+      const fixes = [
+        ['[style*="background:#0d0d20"]', 'background:#fcfcfa'],
+        ['[style*="background:#1a1a2a"]', 'background:#fcfcfa;border-color:#d8d4c8'],
+        ['[style*="background:#1a3a1a"]', 'background:#e8f5e9;border-color:#a5d6a7'],
+        ['[style*="color:#888"]', 'color:#808080'],
+        ['[style*="color:#555"]', 'color:#a0a0a0'],
+      ];
+      fixes.forEach(([sel, replace]) => {
+        idoc.querySelectorAll(sel).forEach(el => {
+          const s = el.getAttribute('style');
+          if (s) el.setAttribute('style', s.replace(/background:#[0-9a-f]+/g, match => replace.split(':')[1])
+            .replace(/color:#888/g, 'color:#808080')
+            .replace(/color:#555/g, 'color:#a0a0a0'));
+        });
+      });
     }
   } catch(e) {}
 }
