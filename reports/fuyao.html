@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>福耀玻璃 (600660) 深度分析报告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:#0a0a1a;color:#e0e0e0;line-height:1.7;min-height:100vh;}
+.container{max-width:1100px;margin:0 auto;padding:20px;}
+.header{text-align:center;padding:40px 20px 30px;border-bottom:2px solid #1a1a3a;margin-bottom:30px;}
+.header h1{font-size:2.4em;font-weight:700;background:linear-gradient(135deg,#f0c040,#f0a030);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.header .subtitle{color:#888;font-size:1em;margin-top:8px;}
+.header .stock-code{display:inline-block;background:#1a1a3a;color:#f0c040;padding:4px 16px;border-radius:20px;font-size:0.85em;margin-top:10px;border:1px solid #2a2a4a;}
+.score-section{display:flex;justify-content:center;margin:30px 0;}
+.score-ring{position:relative;width:180px;height:180px;}
+.score-ring svg{transform:rotate(-90deg);width:180px;height:180px;}
+.score-ring .bg{fill:none;stroke:#1a1a3a;stroke-width:8;}
+.score-ring .progress{fill:none;stroke:#f0c040;stroke-width:8;stroke-linecap:round;stroke-dasharray:502.65;stroke-dashoffset:150.80;transition:stroke-dashoffset 1.5s ease;}
+.score-ring .center-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;}
+.score-ring .score-value{font-size:3em;font-weight:700;color:#f0c040;}
+.score-ring .score-label{font-size:0.85em;color:#888;margin-top:2px;}
+.score-label-text{text-align:center;color:#666;font-size:0.9em;margin-top:5px;}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:30px 0;}
+.metric-card{background:#12122a;border:1px solid #1a1a3a;border-radius:12px;padding:20px;transition:all .3s;}
+.metric-card:hover{border-color:#f0c040;transform:translateY(-2px);box-shadow:0 8px 25px rgba(240,192,64,0.08);}
+.metric-card .label{font-size:0.85em;color:#888;margin-bottom:6px;}
+.metric-card .value{font-size:1.5em;font-weight:700;color:#fff;}
+.metric-card .value.gold{color:#f0c040;}
+.metric-card .value.green{color:#4caf50;}
+.metric-card .value.red{color:#ef5350;}
+.metric-card .sub{font-size:0.75em;color:#666;margin-top:4px;}
+.section{margin:30px 0;}
+.section h2{font-size:1.5em;color:#f0c040;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid #1a1a3a;display:flex;align-items:center;gap:10px;}
+.section h2 .icon{font-size:1.2em;}
+.section-content{background:#12122a;border:1px solid #1a1a3a;border-radius:12px;padding:24px;color:#ccc;}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+.info-card{background:#0d0d1e;border:1px solid #1a1a3a;border-radius:10px;padding:18px;transition:all .3s;}
+.info-card:hover{border-color:#333;}
+.risk-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;}
+.risk-tag{background:#1a1a35;border:1px solid #2a2a4a;border-radius:8px;padding:8px 16px;font-size:0.9em;color:#ccc;transition:all .3s;}
+.risk-tag:hover{border-color:#ef5350;color:#ef5350;}
+.risk-tag.high:hover{border-color:#ef5350;color:#ef5350;}
+.risk-tag.medium:hover{border-color:#f0c040;color:#f0c040;}
+.risk-tag.low:hover{border-color:#4caf50;color:#4caf50;}
+.footer{text-align:center;padding:30px;color:#444;font-size:0.8em;border-top:1px solid #1a1a3a;margin-top:40px;}
+.footer span{color:#f0c040;}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🪟 福耀玻璃</h1>
+  <div class="stock-code">600660.SH · 上海证券交易所</div>
+  <p class="subtitle">深度价值分析报告 · 数据截至 2026年6月</p>
+</div>
+
+<div class="score-section">
+  <div class="score-ring">
+    <svg viewBox="0 0 180 180">
+      <circle class="bg" cx="90" cy="90" r="80"/>
+      <circle class="progress" cx="90" cy="90" r="80" style="stroke-dashoffset:150.80;"/>
+    </svg>
+    <div class="center-text">
+      <div class="score-value">7.0</div>
+      <div class="score-label">综合评分</div>
+    </div>
+  </div>
+</div>
+<div class="score-label-text">评分等级：⭐ 优秀 (7.0/10) · 全球汽车玻璃龙头，稳健增长+高分红典范</div>
+
+<div class="metrics">
+  <div class="metric-card">
+    <div class="label">最新股价</div>
+    <div class="value">¥58.60</div>
+    <div class="sub">2026-06-11 收盘</div>
+  </div>
+  <div class="metric-card">
+    <div class="label">总市值</div>
+    <div class="value gold">¥1,530亿</div>
+    <div class="sub">沪市优质蓝筹</div>
+  </div>
+  <div class="metric-card">
+    <div class="label">营业收入 (2024)</div>
+    <div class="value">¥336亿</div>
+    <div class="sub">同比 +18.0%</div>
+  </div>
+  <div class="metric-card">
+    <div class="label">净利润 (2024)</div>
+    <div class="value gold">¥62亿</div>
+    <div class="sub">同比 +20.5%</div>
+  </div>
+  <div class="metric-card">
+    <div class="label">PE (TTM)</div>
+    <div class="value">24.7x</div>
+    <div class="sub">处于历史中位</div>
+  </div>
+  <div class="metric-card">
+    <div class="label">ROE</div>
+    <div class="value gold">17.2%</div>
+    <div class="sub">长期稳定优秀</div>
+  </div>
+  <div class="metric-card">
+    <div class="label">毛利率</div>
+    <div class="value gold">35.8%</div>
+    <div class="sub">纯碱等成本下降利好</div>
+  </div>
+  <div class="metric-card">
+    <div class="label">资产负债率</div>
+    <div class="value green">42.0%</div>
+    <div class="sub">合理可控</div>
+  </div>
+  <div class="metric-card">
+    <div class="label">PB (市净率)</div>
+    <div class="value">4.1x</div>
+    <div class="sub">合理估值</div>
+  </div>
+  <div class="metric-card">
+    <div class="label">股息率</div>
+    <div class="value gold">3.20%</div>
+    <div class="sub">高分红典范，连续多年派息</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2><span class="icon">📋</span> 商业模式分析</h2>
+  <div class="section-content">
+    <p>福耀玻璃是全球最大的汽车玻璃制造商，专注于为全球汽车行业提供<b>安全玻璃、前挡风玻璃、天窗玻璃、侧窗玻璃、后挡风玻璃</b>等全系列汽车玻璃产品及解决方案。公司由创始人曹德旺先生领导，以"敬天爱人、止于至善"为经营哲学。</p>
+    <br>
+    <p><b>核心业务板块：</b></p>
+    <ul style="padding-left:20px;margin-top:8px;">
+      <li><b>汽车玻璃</b>（占营收约90%）：为全球主流车企提供配套玻璃，涵盖传统钢化玻璃、夹层玻璃，以及HUD抬头显示玻璃、天幕玻璃、隔音玻璃、加热玻璃、调光玻璃等高附加值产品</li>
+      <li><b>浮法玻璃</b>（占营收约8%）：主要用于自用生产汽车玻璃，部分对外销售</li>
+      <li><b>其他业务</b>（占营收约2%）：包括机车玻璃、PVB膜、模具等</li>
+    </ul>
+    <br>
+    <p>福耀玻璃的商业模式核心是<b="以技术领先和成本优势服务全球头部车企">。公司在中国（福建、上海、广州、天津、重庆、郑州等）、美国（俄亥俄州、伊利诺伊州）、德国、俄罗斯等11个国家建有生产基地，形成了全球化的产能布局。福耀凭借极高的良率、自动化水平、以及上游浮法玻璃和PVB膜的自供，实现了比竞争对手低10-15%的成本优势。</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2><span class="icon">🏆</span> 行业地位分析</h2>
+  <div class="section-content">
+    <div class="info-grid">
+      <div class="info-card">
+        <b>全球汽车玻璃市占率</b>
+        <p style="color:#f0c040;font-size:1.2em;margin-top:6px;">第1名</p>
+        <p style="color:#888;font-size:0.85em;">市占率约34%，连续多年全球第1</p>
+      </div>
+      <div class="info-card">
+        <b>中国汽车玻璃市占率</b>
+        <p style="color:#f0c040;font-size:1.2em;margin-top:6px;">第1名</p>
+        <p style="color:#888;font-size:0.85em;">市占率超65%，垄断地位</p>
+      </div>
+      <div class="info-card">
+        <b>全球汽车玻璃行业格局</b>
+        <p style="color:#f0c040;font-size:1.2em;margin-top:6px;">寡头垄断</p>
+        <p style="color:#888;font-size:0.85em;">福耀+旭硝子+板硝子占据全球80%+份额</p>
+      </div>
+      <div class="info-card">
+        <b>全球客户覆盖</b>
+        <p style="color:#f0c040;font-size:1.2em;margin-top:6px;">全覆蓋</p>
+        <p style="color:#888;font-size:0.85em;">奔驰/宝马/奥迪/丰田/大众/通用/福特/特斯拉等</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2><span class="icon">🛡️</span> 护城河分析</h2>
+  <div class="section-content">
+    <div class="info-grid">
+      <div class="info-card">
+        <b>🔹 成本优势壁垒</b>
+        <p style="color:#aaa;margin-top:8px;">通过纵向整合（自有浮法玻璃产线、自有PVB膜生产、自有模具厂）实现产业链关键环节的自给自足，成本比竞争对手低10-15%。美国工厂的盈利能力已证明其成本控制体系可在全球复制。</p>
+      </div>
+      <div class="info-card">
+        <b>🔹 客户粘性壁垒</b>
+        <p style="color:#aaa;margin-top:8px;">汽车玻璃需要经过2-3年的认证周期（从报价、送样、路试到正式供货），一旦进入供应链体系，车企极少更换供应商。福耀与全球头部车企保持了平均15年以上的合作历史。</p>
+      </div>
+      <div class="info-card">
+        <b>🔹 制造工艺壁垒</b>
+        <p style="color:#aaa;margin-top:8px;">汽车玻璃制造涉及玻璃熔炼、浮法成型、钢化、夹层、印刷、包边等数十道精密工艺，良率是关键竞争维度。福耀的良率长期保持在95%+，远超行业平均的85-90%。</p>
+      </div>
+      <div class="info-card">
+        <b>🔹 高附加值产品升级</b>
+        <p style="color:#aaa;margin-top:8px;">随着新能源车渗透率提升，天幕玻璃（全景天窗）、HUD抬头显示玻璃、可调光玻璃、加热除霜玻璃等高附加值产品占比持续提升。这些产品单价是传统玻璃的2-5倍，推动ASP和利润率持续增长。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2><span class="icon">💰</span> 估值分析</h2>
+  <div class="section-content">
+    <div class="info-grid">
+      <div class="info-card">
+        <b>当前 PE (TTM)</b>
+        <p style="color:#f0c040;font-size:1.3em;margin-top:6px;">24.7x</p>
+        <p style="color:#888;font-size:0.85em;">处于历史中位（区间 12x-45x）</p>
+      </div>
+      <div class="info-card">
+        <b>PEG</b>
+        <p style="color:#f0c040;font-size:1.3em;margin-top:6px;">1.2x</p>
+        <p style="color:#888;font-size:0.85em;">利润增速约15-20%</p>
+      </div>
+      <div class="info-card">
+        <b>股息率</b>
+        <p style="color:#4caf50;font-size:1.3em;margin-top:6px;">3.2%</p>
+        <p style="color:#888;font-size:0.85em;">连续多年稳定分红</p>
+      </div>
+      <div class="info-card">
+        <b>估值水位</b>
+        <p style="color:#4caf50;font-size:1.3em;margin-top:6px;">合理偏低</p>
+        <p style="color:#888;font-size:0.85em;">充分反映了经济不确定性</p>
+      </div>
+    </div>
+    <br>
+    <p style="color:#aaa;">福耀玻璃当前PE约25倍，在历史估值中处于中等水平。作为全球汽车玻璃寡头，福耀的竞争优势和业绩确定性较高。2024年受益于纯碱等原材料价格下降（+毛利率）以及高附加值产品占比提升（+ASP），利润增速超过营收增速。未来3年核心驱动因素包括：1) 天幕玻璃和HUD玻璃在新能源车中的渗透率持续提升；2) 美国工厂产能利用率和利润率持续改善；3) 全球汽车玻璃行业高寡头格局下议价能力稳定。按15-20%的利润增速，PEG仅1.0-1.2倍，叠加3.2%的股息率，对于稳健型投资者具有较好的配置价值。</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2><span class="icon">⚠️</span> 风险因素</h2>
+  <div class="section-content">
+    <div class="risk-tags">
+      <div class="risk-tag high">⛔ 全球汽车产销周期波动对需求的拖累</div>
+      <div class="risk-tag medium">⚠️ 纯碱、天然气等原材料和能源价格波动</div>
+      <div class="risk-tag medium">⚠️ 美国工厂运营风险（劳资纠纷、合规成本）</div>
+      <div class="risk-tag medium">⚠️ 创始人曹德旺年事已高（79岁），继任风险</div>
+      <div class="risk-tag low">📉 中美贸易关系变化对海外业务的影响</div>
+      <div class="risk-tag low">📉 天幕玻璃渗透率提升但单车面积接近极限</div>
+    </div>
+    <br>
+    <p style="color:#888;font-size:0.9em;">主要关注点：1) 全球汽车行业是强周期性行业，2025-2026年全球经济增速放缓可能影响汽车产销量，进而拖累福耀的出货量；2) 纯碱（碳酸钠）占生产成本约25%，天然气占约20%，这两项价格的波动显著影响毛利率水平；3) 美国工厂虽然已实现盈利，但美国制造业面临工人短缺、工会压力、诉讼风险等运营挑战；4) 创始人曹德旺先生作为福耀的灵魂人物和精神领袖，其接班问题一直是市场关注的焦点，好在公司已建立了较为完善的职业经理人体系；5) 福耀的海外收入占比约45%，美元/欧元对人民币的汇率变化对合并报表利润有显著影响。</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>本报告仅供参考，不构成投资建议 · 数据来源：公司年报、东方财富 · 分析日期：2026-06-11</p>
+  <p style="margin-top:5px;">Generated by <span>Hermes Agent</span> · Nous Research</p>
+</div>
+
+</div>
+</body>
+</html>
