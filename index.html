@@ -304,6 +304,10 @@ function toggleTheme() {
     localStorage.setItem('portal_theme', 'light')
     document.getElementById('themeToggle').textContent = '☀️'
   }
+  // Reload report iframe theme if a report is open
+  if (document.getElementById('reportView').classList.contains('active')) {
+    applyThemeToReport()
+  }
 }
 
 // Restore saved theme
@@ -369,6 +373,24 @@ function closeReport() {
 function onFrameLoaded() {
   document.getElementById('reportLoading').style.display='none'
   document.getElementById('reportFrame').style.display='block'
+  applyThemeToReport()
+}
+
+function applyThemeToReport() {
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  try {
+    const iframe = document.getElementById('reportFrame');
+    const idoc = iframe.contentDocument || iframe.contentWindow.document;
+    // Remove previous injected style if any
+    const old = idoc.getElementById('hermes-theme-override');
+    if (old) old.remove();
+    if (isLight) {
+      const style = idoc.createElement('style');
+      style.id = 'hermes-theme-override';
+      style.textContent = 'body{background:#f4f1ea!important;color:#2d2d2d!important}\nh1{color:#1a1a1a!important}\nh2{color:#b8860b!important;border-left-color:#b8860b!important}\nh3{color:#3d3d3d!important}\nh4{color:#505050!important}\n.desc{color:#808080!important}\n.card{background:#ffffff!important;border-color:#d8d4c8!important}\n.sc-inner,.score-inner{background:#ffffff!important}\n.sc-label,.score-label{color:#a0a0a0!important}\n.stats span,.stat-label{color:#707070!important}\n.dim-label,.dim-label span{color:#606060!important}\n.dim-bg{background:#e8e5dc!important}\n.dim-sc{color:#b8860b!important}\n.tag{background:rgba(0,0,0,0.04)!important;color:#707070!important;border-color:rgba(0,0,0,0.08)!important}\ntable{background:#ffffff!important}\ntd,th{border-color:#d8d4c8!important;color:#3d3d3d!important}\nth{background:#f4f1ea!important}\n.data-table td{color:#505050!important}\n.metric-value,.value{color:#1a1a1a!important}\n.metric-label,.metric-label span{color:#808080!important}\nhr{border-color:#e0ddd4!important}\n.quote,.quote-text{color:#505050!important;border-left-color:#b8860b33!important}\n.footer,.footer-text{color:#a0a0a0!important}\n.section,.section-title{color:#3d3d3d!important}\n.sub-section,.sub-section-title{color:#505050!important}\n.risk-item,.risk-item div{color:#606060!important}\n.market-data,.data-row{color:#505050!important}\n.data-label{color:#808080!important}\n.data-value{color:#1a1a1a!important}\na{color:#b8860b!important}\n.glow,.glow-text{color:#b8860b!important}';
+      idoc.head.appendChild(style);
+    }
+  } catch(e) {}
 }
 
 // ===== BOOKS =====
