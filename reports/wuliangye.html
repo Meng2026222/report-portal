@@ -683,11 +683,17 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 (function() {
   var stockCode = '000858';
   var periodNames = { 'daily': '日线', 'weekly': '周线', 'monthly': '月线', 'yearly': '年线' };
-  var currentPeriod = 'day';
+  var currentPeriod = 'daily';
   var chart = null;
   var series = null;
   var isLoading = false;
   var errorDiv = null;
+
+  // Check if lightweight-charts loaded
+  if (typeof LightweightCharts === 'undefined') {
+    showError('图表库加载失败，请检查网络（vendor/lightweight-charts.js 是否可访问）');
+    return;
+  }
 
   function initChart() {
     chart = LightweightCharts.createChart(document.getElementById('mcap-chart'), {
@@ -798,7 +804,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     var btn = e.target.closest('.mcap-btn');
     if (!btn) return;
     var period = btn.dataset.period;
-    if (period === currentPeriod) return;
+    // Allow re-click even on same period to force reload
     currentPeriod = period;
 
     document.querySelectorAll('.mcap-btn').forEach(function(b) {
