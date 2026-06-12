@@ -14,7 +14,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 .desc{font-size:12px;color:#888;margin-bottom:10px}
 .card{background:#12122a;border-radius:12px;padding:14px;margin-bottom:12px;border:1px solid #1e1e3a}
 .sc-wrap{text-align:center;margin-bottom:16px}
-.score-ring{width:80px;height:80px;border-radius:50%;background:conic-gradient(#ff9800 0deg 252deg,#333 252deg 360deg);display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+.score-ring{width:80px;height:80px;border-radius:50%;background:conic-gradient(#ff9800 0deg 216deg,#333 216deg 360deg);display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
 .score-inner{width:62px;height:62px;border-radius:50%;background:#12122a;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .score-num{font-size:24px;font-weight:bold;color:#ff9800;line-height:1}
 .score-label{font-size:10px;color:#888}
@@ -23,12 +23,12 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 .dim-bg{flex:1;height:10px;background:#1e1e3a;border-radius:5px;margin:0 8px;overflow:hidden}
 .dim-fill{height:100%;border-radius:5px}
 .dim-sc{width:28px;text-align:right;font-size:12px;font-weight:bold;flex-shrink:0}
-.tbl{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}
+.tbl{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0;table-layout:fixed}
 .tbl th{background:#1e1e3a;color:#ff9800;padding:7px 5px;text-align:center;font-weight:500}
 .tbl td{padding:6px 5px;text-align:center;border-bottom:1px solid #1e1e3a;word-break:break-word}
-.tbl td:first-child{white-space:nowrap}
+.tbl td:first-child{white-space:nowrap;width:44px}
 .tbl td:nth-child(2){white-space:nowrap}
-.tbl td:nth-child(3){text-align:left;font-size:11px}
+.tbl td:nth-child(3){text-align:left;font-size:11px;max-width:320px;white-space:normal}
 .tbl tr:last-child td{border-bottom:none}
 .gold{color:#ff9800;font-weight:bold}.green{color:#4caf50}.red{color:#f44336}.orange{color:#ff9800}
 .mg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -66,57 +66,14 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 .toc{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
 .toc a{font-size:11px;color:#888;text-decoration:none;padding:3px 8px;border-radius:12px;border:1px solid #333}
 .toc a:active{background:#1e1e3a;color:#ff9800}
-</style>
-</head>
-<body>
-
-<!-- ========== 顶部导航 ========== -->
-<div class="sticky-top">
-  <div style="text-align:center;font-size:11px;color:#555;margin-bottom:4px;">📌 点击跳转</div>
-  <div class="toc">
-    <a href="#s0">评分</a><a href="#s1">综合评价</a><a href="#s2">M1商业模式</a>
-    <a href="#s3">M2壁垒</a><a href="#s4">M3管理层</a><a href="#s5">M4财务</a>
-    <a href="#s6">M5产业链</a><a href="#s7">M6估值</a><a href="#s8">M7市占率</a>
-    <a href="#s9">M8催化剂</a><a href="#s10">M9预期差</a><a href="#s11">M10风险</a>
-    <a href="#s12">综合评级</a><a href="#s13">附录</a>
-  </div>
-</div>
-
-<!-- ========== 综合评分 ========== -->
-<div id="s0" class="sc-wrap">
-  <div class="score-ring"><div class="score-inner"><div class="score-num">7.0</div><div class="score-label">/10</div></div></div>
-  <h1 style="margin-top:4px;">理想汽车 <span style="font-size:14px;color:#888;font-weight:400;">02015.HK</span></h1>
-  <div class="desc">评级：良好 → 增程式新能源汽车龙头 · 家庭智能SUV赛道</div>
-  <div><span class="tg tgo">综合评级 7.0/10</span><span class="tg tgy">数据截至 2026-06-12</span></div>
-</div>
-
-<!-- 市值走势图 -->
-<div id="s-mcap" class="card">
-  <h2>市值走势</h2>
-  <div class="desc">港股上市以来市值变化 · 鼠标滚轮缩放 · 拖拽平移 · <span style="color:#888;font-size:11px;">(港股数据)</span></div>
-  <div class="mcap-btns">
-    <button class="mcap-btn active" data-period="day">日线</button>
-    <button class="mcap-btn" data-period="week">周线</button>
-    <button class="mcap-btn" data-period="month">月线</button>
-    <button class="mcap-btn" data-period="year">年线</button>
-  </div>
-  <div class="mcap-chart-wrap">
-    <div class="mcap-tooltip" id="mcapTooltip"></div>
-    <svg id="mcapSvg" width="100%" height="380"></svg>
-  </div>
-  <div class="mcap-info">
-    当前市值：<span class="mcap-v" id="mcapCurrent">--</span> 亿 · 历史最高：<span class="mcap-v" id="mcapHigh">--</span> 亿 · 历史最低：<span class="mcap-v" id="mcapLow">--</span> 亿
-  </div>
-</div>
-
-<style>
+/* mcap chart styles */
 .mcap-btns{display:flex;gap:6px;margin:8px 0}
 .mcap-btn{flex:1;padding:6px 0;border:1px solid #333;background:#1e1e3a;color:#888;border-radius:6px;cursor:pointer;font-size:12px;text-align:center;transition:all .2s}
 .mcap-btn:hover{border-color:#ff9800;color:#ff9800}
 .mcap-btn.active{background:#ff9800;color:#0a0a1a;border-color:#ff9800;font-weight:bold}
-.mcap-chart-wrap{position:relative;width:100%;border-radius:8px;background:#0d0d20;border:1px solid #1e1e3a}
+.mcap-chart-wrap{position:relative;width:100%;border-radius:8px;background:#0d0d20;border:1px solid #1e1e3a;overflow:hidden}
 .mcap-chart-wrap svg{display:block}
-.mcap-tooltip{position:absolute;display:none;background:rgba(10,10,26,.92);border:1px solid #ff9800;border-radius:6px;padding:6px 10px;font-size:12px;color:#fff;pointer-events:none;z-index:10;white-space:nowrap}
+.mcap-tooltip{position:relative;display:none;background:rgba(10,10,26,.92);border:1px solid #ff9800;border-radius:6px;padding:6px 10px;font-size:12px;color:#fff;pointer-events:none;z-index:10;white-space:nowrap}
 .mcap-tooltip .tt-date{color:#888;font-size:10px}
 .mcap-tooltip .tt-val{color:#ff9800;font-weight:bold}
 .mcap-info{text-align:center;font-size:12px;color:#888;margin-top:8px;padding:6px;background:#0d0d20;border-radius:6px}
@@ -133,6 +90,46 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 .mcap-light .mcap-info{background:#e8e4dc;color:#808080}
 .mcap-light .mcap-v{color:#bf6a00}
 </style>
+</head>
+<body>
+
+<div class="sticky-top">
+  <div style="text-align:center;font-size:11px;color:#555;margin-bottom:4px;">📌 点击跳转</div>
+  <div class="toc">
+    <a href="#s0">评分</a><a href="#s1">综合评价</a><a href="#s2">M1商业模式</a>
+    <a href="#s3">M2壁垒</a><a href="#s4">M3管理层</a><a href="#s5">M4财务</a>
+    <a href="#s6">M5产业链</a><a href="#s7">M6估值</a><a href="#s8">M7市占率</a>
+    <a href="#s9">M8催化剂</a><a href="#s10">M9预期差</a><a href="#s11">M10风险</a>
+    <a href="#s12">综合评级</a><a href="#s13">附录</a>
+  </div>
+</div>
+
+<div id="s0" class="sc-wrap">
+  <div class="score-ring"><div class="score-inner"><div class="score-num">6.0</div><div class="score-label">/10</div></div></div>
+  <h1 style="margin-top:4px;">理想汽车 <span style="font-size:14px;color:#888;font-weight:400;">02015.HK</span></h1>
+  <div class="desc">评级：一般 → 新能源车企龙头但盈利大幅恶化 · 等待纯电转型验证</div>
+  <div><span class="tg tgo">综合评级 6.0/10</span><span class="tg tgy">数据截至 2026-06-12</span></div>
+</div>
+
+<div id="s-mcap" class="card">
+  <h2>市值走势</h2>
+  <div class="desc">上市以来市值变化（港股收盘价 × 总股本）· 鼠标滚轮缩放 · 拖拽平移 · <span style="color:#888;font-size:11px;">数据来源：腾讯K线API</span></div>
+  <div class="mcap-btns">
+    <button class="mcap-btn active" data-period="day">日线</button>
+    <button class="mcap-btn" data-period="week">周线</button>
+    <button class="mcap-btn" data-period="month">月线</button>
+    <button class="mcap-btn" data-period="year">年线</button>
+  </div>
+  <div class="mcap-chart-wrap">
+    <div class="mcap-tooltip" id="mcapTooltip"></div>
+    <svg id="mcapSvg" width="100%" height="380"></svg>
+  </div>
+  <div class="mcap-info">
+    当前市值：<span class="mcap-v" id="mcapCurrent">--</span> 亿 HKD ·
+    历史最高：<span class="mcap-v" id="mcapHigh">--</span> 亿 HKD ·
+    历史最低：<span class="mcap-v" id="mcapLow">--</span> 亿 HKD
+  </div>
+</div>
 
 <script>
 (function(){
@@ -147,11 +144,8 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 
   function applyThemeClass(){
     var isLight = false;
-    try {
-      isLight = parent && parent.document && parent.document.documentElement.getAttribute('data-theme') === 'light';
-    } catch(e) {
-      isLight = !!document.getElementById('hermes-theme-override');
-    }
+    try { isLight = parent && parent.document && parent.document.documentElement.getAttribute('data-theme') === 'light'; }
+    catch(e) { isLight = !!document.getElementById('hermes-theme-override'); }
     var card = document.getElementById('s-mcap');
     if(!card) return;
     if(isLight){ card.classList.add('mcap-light'); } else { card.classList.remove('mcap-light'); }
@@ -255,657 +249,417 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     h+='</g><g class="mcap-axis">';
     var ls=Math.max(1,Math.floor(n/Math.min(10,n)));
     for(var li=0;li<n;li+=ls){var lx=xS(li);h+='<text x="'+lx.toFixed(1)+'" y="'+(H-5)+'" text-anchor="middle" fill="'+tc.axisText+'" font-size="9" transform="rotate(-30,'+lx.toFixed(1)+','+(H-10)+')">'+visible[li].time+'</text>';}
-    h+='<text x="'+xS(n-1).toFixed(1)+'" y="'+(H-5)+'" text-anchor="middle" fill="'+tc.axisText+'" font-size="9" transform="rotate(-30,'+xS(n-1).toFixed(1)+','+(H-10)+')">'+visible[n-1].time+'</text></g>';
-    var fp='M'+M.left+','+(M.top+ch)+' ';for(var i=0;i<n;i++){fp+='L'+xS(i).toFixed(1)+','+yS(visible[i].value).toFixed(1)+' ';}fp+='L'+(M.left+cw)+','+(M.top+ch)+' Z';
+    h+='</g>';
+    var fp='M'+M.left+','+(M.top+ch)+' ';for(var i=0;i<n;i++){fp+='L'+xS(i).toFixed(1)+','+yS(visible[i].value).toFixed(1)+' ';}
+    fp+='L'+(M.left+cw)+','+(M.top+ch)+' Z';
     h+='<path d="'+fp+'" fill="url(#mgG)" opacity="0.35"/>';
     h+='<polyline points="'+pts+'" fill="none" stroke="'+tc.line+'" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>';
     h+='<line id="mcapCrossV" x1="0" y1="'+M.top+'" x2="0" y2="'+(M.top+ch)+'" stroke="'+tc.line+'" stroke-width="1" stroke-dasharray="4,3" opacity="0" pointer-events="none"/>';
     h+='<line id="mcapCrossH" x1="'+M.left+'" y1="0" x2="'+(M.left+cw)+'" y2="0" stroke="'+tc.line+'" stroke-width="1" stroke-dasharray="4,3" opacity="0" pointer-events="none"/>';
-    h+='<circle id="mcapCrossDot" cx="0" cy="0" r="4" fill="'+tc.line+'" stroke="#fff" stroke-width="1.5" opacity="0" pointer-events="none"/>';
-    h='<defs><linearGradient id="mgG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="'+tc.gradTop+'" stop-opacity="'+tc.gradTo+'"/><stop offset="100%" stop-color="'+tc.gradBot+'" stop-opacity="'+tc.gradBo+'"/></linearGradient></defs>'+h;
-    svg.innerHTML=h;
+    h+='<circle id="mcapCrossDot" cx="0" cy="0" r="4" fill="'+tc.line+'" opacity="0" pointer-events="none"/>';
+    var defs='<defs><linearGradient id="mgG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="'+tc.gradTop+'" stop-opacity="'+tc.gradTo+'"/><stop offset="100%" stop-color="'+tc.gradBot+'" stop-opacity="'+tc.gradBo+'"/></linearGradient></defs>';
+    svg.innerHTML = defs + h;
   }
 
-  function fmtVal(v){return v>=10000?(v/10000).toFixed(1)+'万亿':v.toFixed(0)+'亿';}
-  function doZoom(dir,cx){var n=chartData.length,range=viewEnd-viewStart;if(dir>0)range=Math.max(10,Math.round(range*0.75));else range=Math.min(n,Math.round(range*1.35));if(range<2)range=2;if(range>n)range=n;var rect=svg.getBoundingClientRect(),mx=(cx||rect.left+rect.width/2)-rect.left-M.left;var cw2=W-M.left-M.right,ci=viewStart+(viewEnd-viewStart)*Math.max(0,Math.min(1,mx/cw2));viewStart=Math.round(ci-range/2);viewEnd=viewStart+range;if(viewStart<0){viewStart=0;viewEnd=range;}if(viewEnd>n){viewEnd=n;viewStart=n-range;}render();}
-  function onWheel(e){e.preventDefault();doZoom(e.deltaY<0?1:-1,e.clientX);}
-  function onDragStart(e){isDragging=true;dragStartX=e.clientX;dragViewStart=viewStart;svg.style.cursor='grabbing';}
-  function onDragMove(e){if(!isDragging)return;var dx=e.clientX-dragStartX,range=viewEnd-viewStart;if(range<=1)return;var cw2=W-M.left-M.right;if(cw2<=0)return;var shift=Math.round(-dx/(cw2/range));var ns=Math.max(0,Math.min(chartData.length-range,dragViewStart+shift));if(ns!==viewStart){viewStart=ns;viewEnd=viewStart+range;render();}}
-  function onDragEnd(){isDragging=false;svg.style.cursor='crosshair';}
-  function onHover(e){if(isDragging||!chartData.length)return;var rect=svg.getBoundingClientRect(),mx=e.clientX-rect.left-M.left,cw2=W-M.left-M.right;if(cw2<=0||viewEnd-viewStart<=0)return;var idx=viewStart+Math.round(mx/cw2*(viewEnd-viewStart-1));if(idx<0||idx>=chartData.length)return;var pt=chartData[idx],ri=idx-viewStart,nn=viewEnd-viewStart;var px=M.left+(ri/(nn-1||1))*cw2,vis=chartData.slice(viewStart,viewEnd);var minV=Infinity,maxV=-Infinity;for(var i=0;i<vis.length;i++){var v=vis[i].value;if(v<minV)minV=v;if(v>maxV)maxV=v;}var p=(maxV-minV)*0.05||maxV*0.05||100;minV=Math.max(0,minV-p);maxV=maxV+p;var ch2=H-M.top-M.bottom,py=M.top+ch2-(pt.value-minV)/(maxV-minV)*ch2;var cv=svg.querySelector('#mcapCrossV'),ch22=svg.querySelector('#mcapCrossH'),cd=svg.querySelector('#mcapCrossDot');if(cv){cv.setAttribute('x1',px);cv.setAttribute('x2',px);cv.setAttribute('opacity','0.6');}if(ch22){ch22.setAttribute('y1',py);ch22.setAttribute('y2',py);ch22.setAttribute('opacity','0.6');}if(cd){cd.setAttribute('cx',px);cd.setAttribute('cy',py);cd.setAttribute('opacity','1');}tooltip.innerHTML='<span class="tt-date">'+pt.time+'</span> · 市值 <span class="tt-val">'+pt.value.toFixed(1)+'亿</span>';tooltip.style.display='block';tooltip.style.left=px+'px';if(py<50){tooltip.style.top=(py+24)+'px';tooltip.style.transform='translate(-50%,0%)';}else{tooltip.style.top=py+'px';tooltip.style.transform='translate(-50%,-110%)';}}
+  function doZoom(dir, cx){
+    if(!chartData.length)return;
+    var range=viewEnd-viewStart;if(range<5)return;
+    var rect=svg.getBoundingClientRect();
+    var ratio=(cx-rect.left-M.left)/(rect.width-M.left-M.right);
+    var center=Math.round(viewStart+ratio*range);
+    var nr=dir>0?Math.max(5,Math.round(range*0.6)):Math.min(chartData.length,Math.round(range/0.6));
+    var ns=Math.max(0,Math.min(chartData.length-nr,center-Math.round(ratio*nr)));
+    viewStart=ns;viewEnd=viewStart+nr;render();
+  }
 
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+  function onWheel(e){
+    e.preventDefault();
+    var rect=svg.getBoundingClientRect();
+    doZoom(e.deltaY<0?1:-1,e.clientX-rect.left);
+  }
+
+  function onDragStart(e){
+    isDragging=true;dragStartX=e.clientX;dragViewStart=viewStart;
+  }
+
+  function onDragMove(e){
+    if(!isDragging)return;
+    var dx=e.clientX-dragStartX,range=viewEnd-viewStart;
+    if(range>1){
+      var shift=Math.round(-dx/((W-M.left-M.right)/range));
+      var ns=Math.max(0,Math.min(chartData.length-range,dragViewStart+shift));
+      if(ns!==viewStart){viewStart=ns;viewEnd=viewStart+range;render();dragStartX=e.clientX;dragViewStart=viewStart;}
+    }
+  }
+
+  function onDragEnd(){isDragging=false;}
+
+  function onHover(e){
+    if(!chartData.length)return;
+    var rect=svg.getBoundingClientRect();
+    var mx=e.clientX-rect.left,my=e.clientY-rect.top;
+    var cw=W-M.left-M.right,ch=H-M.top-M.bottom;
+    if(cw<=0||ch<=0)return;
+    var visible=chartData.slice(viewStart,viewEnd),n=visible.length;
+    if(n<2)return;
+    var idx=Math.round((mx-M.left)/cw*(n-1));
+    idx=Math.max(0,Math.min(n-1,idx));
+    var item=visible[idx];
+    var lx=xS(idx),ly=yS(item.value);
+    tooltip.style.display='block';
+    tooltip.innerHTML='<div class="tt-date">'+item.time+'</div><div class="tt-val">'+fmtVal(item.value)+' 亿 HKD</div>';
+    var tw=tooltip.offsetWidth||120,th=tooltip.offsetHeight||40;
+    var tx=lx-tw/2,ty=ly-th-15;
+    tx=Math.max(5,Math.min(W-tw-5,tx));
+    ty=Math.max(5,ty);
+    tooltip.style.left=tx+'px';tooltip.style.top=ty+'px';
+    var cv=svg.querySelector('#mcapCrossV'),ch2=svg.querySelector('#mcapCrossH'),cd=svg.querySelector('#mcapCrossDot');
+    if(cv){cv.setAttribute('x1',lx.toFixed(1));cv.setAttribute('x2',lx.toFixed(1));cv.setAttribute('opacity','1');}
+    if(ch2){ch2.setAttribute('y1',ly.toFixed(1));ch2.setAttribute('y2',ly.toFixed(1));ch2.setAttribute('opacity','1');}
+    if(cd){cd.setAttribute('cx',lx.toFixed(1));cd.setAttribute('cy',ly.toFixed(1));cd.setAttribute('opacity','1');}
+    function xS(i){return M.left+(i/(n-1||1))*cw}
+    function yS(v){return M.top+ch-(v-minV)/(maxV-minV)*ch}
+  }
+
+  function fmtVal(v){
+    if(v>=10000) return (v/10000).toFixed(2)+'万亿';
+    if(v>=1000) return (v/1000).toFixed(2)+'千亿';
+    return v.toFixed(1)+'亿';
+  }
+
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 })();
 </script>
 
-<!-- ========== 一、综合评价 ========== -->
 <div id="s1" class="card">
   <h2>一、综合评价</h2>
+  <div class="mg" style="margin-bottom:10px">
+    <div class="mi"><div class="mv" style="color:#ff9800">6.0</div><div class="ml">综合评级</div></div>
+    <div class="mi"><div class="mv" style="color:#ffc107">中等</div><div class="ml">风险等级</div></div>
+    <div class="mi"><div class="mv" style="color:#4caf50">🏭</div><div class="ml">家庭市场龙头</div></div>
+    <div class="mi"><div class="mv" style="color:#f44336">恶化</div><div class="ml">盈利能力</div></div>
+  </div>
 
-  <h3>1. 总评分：7.0分</h3>
-  <div class="txt">评级理由：理想汽车是中国增程式新能源汽车赛道的开创者和领军者，以"家庭用户"为核心定位，凭借精准的产品定义（L6/L7/L8/L9覆盖25-50万家庭SUV全价位带）在激烈竞争中建立起差异化优势。公司2023年首次实现全年盈利（净利118亿），成为继比亚迪和特斯拉之后全球第三家盈利的新能源车企。核心看点：产品定义能力突出（精准把握中国家庭用户需求）、增程技术路线在补能焦虑背景下具备独特优势、规模效应持续释放驱动盈利改善。但需警惕：纯电转型不确定性（MEGA失利）、竞争加剧（问界/小米/蔚来乐道等竞品冲击）、以及产品结构下移（L6占比提升拉低均价和毛利率）。</div>
+  <div class="bq">核心逻辑：理想汽车是中国新势力销冠（2024年50.5万辆），以"家庭定位+增程技术"建立了独特的品牌壁垒。但2025年报显示营收同比下降20%（1,162亿RMB），净利润暴跌至11.6亿RMB（-86% YoY），H2出现亏损。当前PE超90x、PB 1.68x，股价从128HKD跌至57HKD（-55%）。纯电i8尚未放量，价格战持续，智驾落后华为小鹏。仅适合高风险偏好投资者等待纯电转型验证。</div>
 
-  <h3>2. 风险等级：中</h3>
-  <table class="tbl">
-    <tr><th>风险类别</th><th>等级</th><th>说明</th></tr>
-    <tr><td>经营风险</td><td><span class="orange">中</span></td><td style="text-align:left;font-size:11px;">纯电转型不确定性（MEGA失败后纯电SUV能否成功存疑），竞品大量涌入</td></tr>
-    <tr><td>财务风险</td><td><span class="green">低</span></td><td style="text-align:left;font-size:11px;">已连续2年盈利，经营现金流充裕（~190亿），资产负债率63%可控</td></tr>
-    <tr><td>市场风险</td><td><span class="orange">中</span></td><td style="text-align:left;font-size:11px;">PE约22倍在新能源车企中合理，但产品结构下移和价格战压制毛利率</td></tr>
+  <div class="mg" style="grid-template-columns:1fr 1fr 1fr;margin-top:10px">
+    <div class="mi"><div class="mv" style="font-size:14px;color:#ff9800">经营：承压</div><div class="ml">销量增长放缓，H2亏损</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">财务：尚可</div><div class="ml">账面资金充裕，无债务危机</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#f44336">市场：悲观</div><div class="ml">股价腰斩，市场预期极低</div></div>
+  </div>
+
+  <table class="tbl" style="margin-top:10px">
+    <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+    <tr><td>三年预估空间</td><td class="gold">-20%~+50%</td><td>悲观/乐观区间，取决于纯电车型成败</td></tr>
+    <tr><td>季度监控</td><td>i8纯电SUV交付量</td><td>2026H2上市，月销能否破万是关键信号</td></tr>
+    <tr><td>逻辑证伪点</td><td class="red">纯电i8月销<3000</td><td>纯电转型失败信号，估值将长期承压</td></tr>
+    <tr><td>止损触发</td><td class="red">PB跌破1.0x</td><td>净资产折价交易，市场失去信心</td></tr>
   </table>
-
-  <h3>3. 核心结论（一句话逻辑）</h3>
-  <div class="bq">"理想汽车是中国最懂家庭用户需求的新能源车企，凭借增程技术路线的差异化优势和极致精准的产品定义能力，在25-50万家庭SUV市场建立了强大的品牌认知和用户粘性。公司已实现规模化盈利（2023年净利118亿），经营现金流充沛，是新能源车企中财务状况最健康的公司之一。但2024年净利回落至80亿（产品结构下移+价格战），纯电转型首战MEGA失利，显示公司并非无懈可击。公司本质是'精准产品定义+增程技术+家庭用户运营'三位一体的差异化车企，在新能源淘汰赛中有望成为少数幸存者之一。"</div>
-
-  <h3>4. 三年预估增长空间</h3>
-  <div class="txt">
-    <span class="dot">·</span> 业绩增长：预计归母净利润从2024年的80.5亿增至2027年的100-150亿，年化增速约7-23%（取决于纯电新车型表现和L6占比变化）<br>
-    <span class="dot">·</span> 估值修复：当前PE(TTM)约22倍，处于合理偏低水平。若纯电转型成功+盈利恢复增长，PE有望回升至25-30倍<br>
-    <span class="dot">·</span> 股价目标：机构平均目标价约130港元，对应PE约25倍。业绩增长约20-80%×估值回归→3年预期收益约10-60%（基准情景）<br>
-    <span class="dot">·</span> 当前机构目标价：摩根士丹利135港元、中金125港元、中信130港元
-  </div>
-
-  <h3>5. 季度监控关键点</h3>
-  <div class="txt">
-    <span class="dot">·</span> Q1/Q2：月交付量（目标≥7万辆/月）、L6占比是否继续上升（低于30%为健康）、毛利率走势（关键防线18%）<br>
-    <span class="dot">·</span> Q3/Q4：纯电新车型（M8/M9纯电版）发布及预订情况、智驾能力迭代（端到端大模型上车进展）<br>
-    <span class="dot">·</span> 风险关注：问界M7/M9竞品分流效果、小米SUV上市后的市场格局变化、价格战对毛利率的侵蚀
-  </div>
-
-  <h3>6. 逻辑证伪/止损触发点</h3>
-  <div class="txt">
-    1. 如果连续2个月交付低于6万辆且无恢复趋势，说明产品竞争力或被竞品赶超<br>
-    2. 如果毛利率跌破17%且持续2个季度，说明价格战+产品结构下移已不可逆<br>
-    3. 如果纯电新车型（M8纯电等）上市后月销低于3,000辆，说明纯电转型再度失败<br>
-    4. 如果L6/L7出现重大质量缺陷，品牌信任度将受重创<br>
-    5. 如果公司宣布大规模降价（10%+）跟进价格战，盈利逻辑将受挑战
-  </div>
 </div>
-
-<!-- ========== M1 商业模式 ========== -->
+<!-- M1 商业模式 -->
 <div id="s2" class="card">
   <h2>M1 商业模式 & 收入结构</h2>
 
-  <h3>核心定位</h3>
-  <div class="txt">理想汽车是中国最大的增程式电动乘用车制造商，以"创造移动的家，创造幸福的家"为品牌使命，聚焦于家庭SUV和MPV市场。公司核心商业模式是：精准产品定义（深入研究中国家庭用户需求）+ 增程式电动技术（解决里程焦虑）+ 自研智能座舱（理想AD Max智驾系统）。不同于其他新势力，理想不追求技术炫技，而是以"解决家庭用户真实痛点"为核心产品哲学——大空间、高配置、低能耗、无里程焦虑。公司采用直营模式（零售中心+交付中心），销售费用率约7-8%，高于传统车企但效率在新势力中处于领先水平。</div>
+  <div class="txt"><span class="dot">●</span><b>核心定位：</b>理想汽车是中国最大的增程式电动车制造商（2024年交付50.5万辆，新势力第一），以"创造移动的家"为使命，聚焦家庭用户市场。公司采用"增程+纯电"双技术路线，通过自建工厂+直营门店模式运营，核心产品覆盖25-56万价格带。</div>
 
-  <h3>年度财务报表（亿元）</h3>
+  <div class="txt"><span class="dot">●</span><b>盈利模式：</b>收入来自整车销售（约95%）+ 售后服务（约5%）。毛利率约20%，但2025年H2因价格战和MEGA滞销出现经营亏损。研发费用率约12%，销售管理费用率约10%，远高于传统车企。</div>
+
+  <h3>近6年财务表现（2020-2025，亿元RMB）</h3>
   <table class="tbl">
-    <tr><th>年份</th><th>营收</th><th>YoY</th><th>归母净利</th><th>净利率</th><th>毛利率</th></tr>
-    <tr><td>2021</td><td>270.1</td><td>—</td><td class="red">-3.2</td><td class="red">-1.2%</td><td>21.3%</td></tr>
-    <tr><td>2022</td><td>452.9</td><td class="green">+67.7%</td><td class="red">-20.3</td><td class="red">-4.5%</td><td>19.4%</td></tr>
-    <tr><td>2023</td><td class="green">1,238.5</td><td class="green">+173.5%</td><td class="green">118.1</td><td class="green">9.5%</td><td class="gold">22.2%</td></tr>
-    <tr><td>2024</td><td class="gold">1,445.1</td><td class="green">+16.7%</td><td class="green">80.5</td><td>5.6%</td><td>20.5%</td></tr>
-    <tr><td class="gold">2025E</td><td class="gold">~1,800</td><td class="green">+24.6%</td><td class="gold">~95</td><td>~5.3%</td><td>~20.0%</td></tr>
+    <tr><th>年份</th><th>营收(亿RMB)</th><th>营收增速</th><th>净利(亿RMB)</th><th>毛利率</th><th>净利率</th><th>ROE</th><th>负债率</th><th>经营CF(亿)</th></tr>
+    <tr><td>2020</td><td>94.6</td><td>—</td><td>-1.5</td><td>16.4%</td><td>-1.6%</td><td>-1.8%</td><td>58.9%</td><td>31.7</td></tr>
+    <tr><td>2021</td><td>270.1</td><td class="green">+185.5%</td><td>-3.2</td><td>21.3%</td><td>-1.2%</td><td>-2.5%</td><td>62.3%</td><td>92.4</td></tr>
+    <tr><td>2022</td><td>452.9</td><td class="green">+67.7%</td><td>-20.3</td><td>19.4%</td><td>-4.5%</td><td>-15.0%</td><td>64.8%</td><td>74.3</td></tr>
+    <tr><td>2023</td><td>1,238.5</td><td class="green">+173.5%</td><td>118.1</td><td>22.2%</td><td>9.5%</td><td>25.3%</td><td>59.7%</td><td>305.9</td></tr>
+    <tr><td>2024</td><td>1,458</td><td class="green">+17.7%</td><td>81</td><td>20.5%</td><td>5.6%</td><td>14.2%</td><td>58.1%</td><td>252</td></tr>
+    <tr><td class="gold">2025</td><td class="gold">1,162</td><td class="red">-20.3%</td><td class="red">11.6</td><td>~19%</td><td class="red">~1.0%</td><td class="red">~1.8%</td><td>~55%</td><td>~130</td></tr>
   </table>
-  <div class="desc" style="margin-top:6px;">备注：2023年是理想盈利元年——得益于L7/L8/L9三款车型全面放量（全年交付37.6万辆），营收暴增173%至1,238.5亿，净利率高达9.5%，毛利率22.2%创历史新高。2024年营收增速放缓至16.7%，净利回落至80.5亿（降幅32%），主因L6低价车型占比提升拉低均价+价格战压缩毛利空间。毛利率从22.2%降至20.5%。2025年预测营收约1,800亿，净利约95亿，毛利率约20%。</div>
 
-  <h3>分品类收入结构（2024年估算）</h3>
-  <div class="hb"><span class="hl">L6</span><div class="ht"><div class="hf" style="width:31%;background:linear-gradient(90deg,#ff9800,#e65100);"></div></div><span class="hv">≈31% · 约448亿</span></div>
-  <div class="hb"><span class="hl">L7</span><div class="ht"><div class="hf" style="width:27%;background:linear-gradient(90deg,#ff9800,#e65100);"></div></div><span class="hv">≈27% · 约390亿</span></div>
-  <div class="hb"><span class="hl">L8</span><div class="ht"><div class="hf" style="width:22%;background:linear-gradient(90deg,#ff9800,#e65100);"></div></div><span class="hv">≈22% · 约318亿</span></div>
-  <div class="hb"><span class="hl">L9</span><div class="ht"><div class="hf" style="width:16%;background:linear-gradient(90deg,#f0c040,#d4a000);"></div></div><span class="hv">≈16% · 约232亿</span></div>
-  <div class="hb"><span class="hl">MEGA</span><div class="ht"><div class="hf" style="width:4%;background:#888;"></div></div><span class="hv">≈4% · 约58亿</span></div>
+  <div class="txt" style="margin-top:6px;font-size:11px;color:#888">数据来源：2020-2024年公司年报（RMB）；2025年报数据来自新浪财经港股（单位百万HKD，按0.935换算为RMB）。毛利率及现金流为估算值。2023年为理想首次实现全年盈利。</div>
 
-  <table class="tbl" style="margin-top:10px;">
-    <tr><th>品类</th><th>收入</th><th>占比</th><th>趋势</th><th>毛利率</th></tr>
-    <tr><td>L6（约25万中型SUV）</td><td>约448亿</td><td>约31%</td><td class="green">↑ 上量快</td><td>~18%</td></tr>
-    <tr><td>L7（约32万中大型SUV）</td><td>约390亿</td><td>约27%</td><td>→ 稳定</td><td>~21%</td></tr>
-    <tr><td>L8（约36万大型SUV）</td><td>约318亿</td><td>约22%</td><td class="orange">→ 微降</td><td>~22%</td></tr>
-    <tr><td>L9（约42万旗舰SUV）</td><td>约232亿</td><td>约16%</td><td class="red">↓ 下降</td><td>~24%</td></tr>
-    <tr><td>MEGA（约56万纯电MPV）</td><td>约58亿</td><td>约4%</td><td class="red">↓ 低于预期</td><td>~15%</td></tr>
-  </table>
+  <div class="txt" style="margin-top:6px"><span class="dot">●</span><b>趋势判断：</b>2025年营收同比下降20.3%，净利润从81亿暴跌至11.6亿（-86%），H2实际亏损约6亿RMB。核心原因是L6低价车型占比提升（拉低ASP）+ MEGA高端纯电滞销 + 全行业价格战。2025H1仍有盈利（~18亿RMB），但H2急剧恶化。</div>
+
+  <h3>各车型收入占比（2025年估算）</h3>
+  <div class="hb"><div class="hl">理想L6</div><div class="ht"><div class="hf" style="width:38%;background:#ff9800">38%</div></div><div class="hv">~440亿</div></div>
+  <div class="hb"><div class="hl">理想L7</div><div class="ht"><div class="hf" style="width:22%;background:#ff9800">22%</div></div><div class="hv">~255亿</div></div>
+  <div class="hb"><div class="hl">理想L8</div><div class="ht"><div class="hf" style="width:18%;background:#ff9800">18%</div></div><div class="hv">~210亿</div></div>
+  <div class="hb"><div class="hl">理想L9</div><div class="ht"><div class="hf" style="width:14%;background:#ff9800">14%</div></div><div class="hv">~165亿</div></div>
+  <div class="hb"><div class="hl">MEGA</div><div class="ht"><div class="hf" style="width:5%;background:#ff9800">5%</div></div><div class="hv">~60亿</div></div>
+  <div class="hb"><div class="hl">其他</div><div class="ht"><div class="hf" style="width:3%;background:#666">3%</div></div><div class="hv">~35亿</div></div>
+
+  <div class="txt" style="margin-top:6px;font-size:11px;color:#888">注：均价为保守估算（L6约25万、L7约31万、L8约33万、L9约41万、MEGA约56万），实际含选配和税费差异。</div>
 
   <h3>商业模式评估</h3>
-  <table class="tbl">
-    <tr><th>维度</th><th>评估</th><th>证据</th></tr>
-    <tr><td>核心定位</td><td class="gold">家庭智能SUV标杆</td><td style="text-align:left;font-size:11px;">精准锁定中国家庭用户，L系列月交付超6万辆，品牌认知度在新势力中最高</td></tr>
-    <tr><td>盈利模式</td><td class="green">已盈利+现金充沛</td><td style="text-align:left;font-size:11px;">毛利率20-22%、经营现金流190亿，新势力中财务最健康</td></tr>
-    <tr><td>增长引擎</td><td class="orange">增程红利+纯电拓展</td><td style="text-align:left;font-size:11px;">增程市场随插混渗透率提升而扩大，纯电转型是关键变量</td></tr>
-    <tr><td>现金流模式</td><td class="green">资本支出可控</td><td style="text-align:left;font-size:11px;">CAPEX约70-100亿/年，经营现金流190亿覆盖充分，FCF为正</td></tr>
-  </table>
-
-  <div class="bq">
-    <b>核心结论：</b><br>
-    <span class="dot">·</span> 理想不是"技术驱动型"车企，而是"用户需求驱动型"车企——这是其与华为系（问界）和小米系的核心差异<br>
-    <span class="dot">·</span> 增程路线是理想最大差异化优势：解决了中国家庭用户长途出行的里程焦虑，在充电基础设施不完善的一二线城市之外尤其受欢迎<br>
-    <span class="dot">·</span> 最大优势：极致精准的产品定义能力+家庭用户口碑裂变效应+健康的财务状况<br>
-    <span class="dot">·</span> 最大风险：纯电转型能否成功是决定公司下一个五年命运的关键（MEGA已失败一次）
-  </div>
+  <div class="dim-row"><div class="dim-label">可复制性</div><div class="dim-bg"><div class="dim-fill" style="width:50%;background:#ff9800"></div></div><div class="dim-sc gold">5/10</div></div>
+  <div class="dim-row"><div class="dim-label">护城河</div><div class="dim-bg"><div class="dim-fill" style="width:60%;background:#ff9800"></div></div><div class="dim-sc gold">6/10</div></div>
+  <div class="dim-row"><div class="dim-label">成长性</div><div class="dim-bg"><div class="dim-fill" style="width:40%;background:#ffc107"></div></div><div class="dim-sc gold">4/10</div></div>
+  <div class="dim-row"><div class="dim-label">现金流</div><div class="dim-bg"><div class="dim-fill" style="width:55%;background:#ff9800"></div></div><div class="dim-sc gold">5.5/10</div></div>
+  <div class="dim-row"><div class="dim-label">ROE趋势</div><div class="dim-bg"><div class="dim-fill" style="width:30%;background:#f44336"></div></div><div class="dim-sc gold">3/10</div></div>
 </div>
 
-<!-- ========== M2 壁垒 ========== -->
+<!-- M2 壁垒 -->
 <div id="s3" class="card">
   <h2>M2 壁垒斜率分析</h2>
-  <div class="desc">核心理念：护城河不是静态的，需要关注其演变趋势——拓宽（↑）、稳定（→）、侵蚀（↓）</div>
 
-  <h3>壁垒类型评估</h3>
-  <div class="hb"><span class="hl">品牌认知</span><div class="ht"><div class="hf" style="width:84%;background:#4caf50;">4.2 ↑</div></div><span class="hv">家庭SUV代名词</span></div>
-  <div class="hb"><span class="hl">产品定义</span><div class="ht"><div class="hf" style="width":80%;background:#4caf50;">4.0 ↑</div></div><span class="hv">精准用户需求洞察</span></div>
-  <div class="hb"><span class="hl">规模效应</span><div class="ht"><div class="hf" style="width:74%;background:#4caf50;">3.7 ↑</div></div><span class="hv">年交付68万辆爬坡</span></div>
-  <div class="hb"><span class="hl">技术壁垒</span><div class="ht"><div class="hf" style="width:60%;background:#ffc107;">3.0 →</div></div><span class="hv">增程技术门槛不高</span></div>
-  <div class="hb"><span class="hl">转换成本</span><div class="ht"><div class="hf" style="width:56%;background:#ffc107;">2.8 →</div></div><span class="hv">用户粘性中等</span></div>
-  <div class="hb"><span class="hl">成本优势</span><div class="ht"><div class="hf" style="width:52%;background:#ffc107;">2.6 →</div></div><span class="hv">规模不及比亚迪</span></div>
+  <div class="txt"><span class="dot">●</span><b>理想的核心护城河是「家庭定位+产品定义能力」。</b>理想是中国第一家（也是唯一一家）系统性地围绕家庭出行场景定义产品的车企。L系列"冰箱彩电大沙发"的精准产品定义，在25-45万价位段建立了极强的用户心智。2024年交付50.5万辆、2025年约45万辆，证明了家庭市场龙头的地位。</div>
 
-  <div style="padding:8px;background:#0d0d20;border-radius:8px;text-align:center;margin-top:8px;">
-    <span style="color:#ff9800;font-size:16px;font-weight:bold;">综合评分 3.4/5.0</span>
-    <span style="color:#888;font-size:12px;margin-left:6px;">→ 护城河中上等，核心壁垒在品牌认知和产品定义能力</span>
-  </div>
+  <table class="tbl" style="margin-top:10px">
+    <tr><th>壁垒维度</th><th>评分</th><th>说明</th></tr>
+    <tr><td>品牌定位</td><td class="gold">8/10</td><td>"家庭首选"心智不可复制，竞品模仿但难超越</td></tr>
+    <tr><td>产品定义</td><td class="gold">8/10</td><td>李想的用户洞察力在新势力中最强</td></tr>
+    <tr><td>增程技术</td><td class="gold">7/10</td><td>先发优势，但纯电化趋势下边际价值递减</td></tr>
+    <tr><td>成本控制</td><td class="gold">7/10</td><td>自建工厂+供应链管理能力较强，单车型毛利率优于蔚来小鹏</td></tr>
+    <tr><td>智驾能力</td><td class="gold">5/10</td><td>AD Max落后华为ADS、小鹏XNGP约1-2年</td></tr>
+    <tr><td>资金储备</td><td class="gold">6/10</td><td>账面现金约500亿，可支撑2-3年亏损</td></tr>
+  </table>
 
-  <h3>壁垒深度解析</h3>
-  <div class="txt">
-    <b style="color:#4caf50;">品牌认知壁垒——"家庭SUV=理想"（4.2/5.0）</b><br>
-    <span class="dot">·</span> 理想在中国消费者心智中已成为"家庭SUV"的代名词——这是最宝贵的品牌资产<br>
-    <span class="dot">·</span> L系列（L6/L7/L8/L9）形成了从25-50万的全价位家庭SUV矩阵，产品线壁垒<br>
-    <span class="dot">·</span> 用户口碑效应强——理想的车主推荐率（NPS）在新势力中最高<br><br>
-    <b style="color:#2196f3;">产品定义能力——需求的极致洞察（4.0/5.0）</b><br>
-    <span class="dot">·</span> 李想本人是"产品经理型CEO"，对家庭用户需求的洞察力行业顶级<br>
-    <span class="dot">·</span> L6成功验证了"20-25万家庭SUV"的巨大市场（月销2万+）<br>
-    <span class="dot">·</span> 竞品难以复制的不是技术而是"理解家庭用户"的产品思维<br><br>
-    <b style="color:#f0c040;">规模效应——正在充分释放（3.7/5.0）</b><br>
-    <span class="dot">·</span> 2025年全年交付约68万辆，同比增幅约35%，规模效应持续释放<br>
-    <span class="dot">·</span> 毛利率保持在20%以上（虽低于2023年22%的高点）<br>
-    <span class="dot">·</span> 固定成本摊薄明显，单车摊销费用持续下降
-  </div>
+  <div class="bq" style="margin-top:10px">陷阱识别：理想的产品定义优势面临"竞争对手追赶+纯电化冲击"的双重侵蚀。华为问界的M7/M9在家庭大SUV市场直接对标理想L系列，小米SU7抢夺增换购用户。如果i8纯电SUV不能成功，理想的"家庭定位"将被问界和小米削弱。</div>
 
-  <h3>护城河陷阱识别</h3>
-  <div class="txt" style="color:#f44336;">
-    <b>警惕信号：</b><br>
-    <span class="dot">·</span> 增程技术门槛不高——问界/零跑/深蓝等竞品均有增程产品，技术差异化减弱<br>
-    <span class="dot">·</span> 纯电转型能力未验证——MEGA（56万纯电MPV）市场表现远低于预期<br>
-    <span class="dot">·</span> 智驾能力落后于华为（问界）和小鹏——端到端大模型仍在追赶中<br>
-    <span class="dot">·</span> 产品结构持续下移——L6占比从0%升至31%，拉低均价和品牌定位
-  </div>
-
-  <div class="bq">
-    <b>真正的护城河：</b><br>
-    <span class="dot">·</span> "家庭SUV=理想"的消费者心智占据——这是竞品花再多钱也难以替代的品牌资产<br>
-    <span class="dot">·</span> 极致精准的产品定义方法论——李想的"产品经理基因"嵌入组织DNA<br>
-    <span class="dot">·</span> 已盈利+现金充沛的财务底座——在新势力中独一无二
-  </div>
-
-  <div class="bq">
-    <b>核心结论：</b><br>
-    <span class="dot">·</span> 理想护城河综合评分3.4/5.0，核心壁垒是品牌认知和产品定义而非技术<br>
-    <span class="dot">·</span> 护城河趋势偏正面（↑）——品牌认知加固、规模效应释放、用户基盘扩大<br>
-    <span class="dot">·</span> 最大的护城河风险：纯电转型一旦失败，公司将陷入"只做增程"的战略瓶颈
-  </div>
+  <h3>壁垒趋势</h3>
+  <div class="cp"><div class="nm">品牌心智</div><div class="bt"><div class="bf" style="width:80%;background:#ff9800"></div></div><div class="vl" style="color:#ff9800">稳定→</div></div>
+  <div class="cp"><div class="nm">产品力</div><div class="bt"><div class="bf" style="width:65%;background:#ff9800"></div></div><div class="vl" style="color:#ffc107">需观察→</div></div>
+  <div class="cp"><div class="nm">智驾能力</div><div class="bt"><div class="bf" style="width:45%;background:#ffc107"></div></div><div class="vl" style="color:#f44336">追赶↑</div></div>
+  <div class="cp"><div class="nm">成本优势</div><div class="bt"><div class="bf" style="width:60%;background:#8bc34a"></div></div><div class="vl" style="color:#4caf50">持续↑</div></div>
 </div>
 
-<!-- ========== M3 管理层 ========== -->
+<!-- M3 管理层 -->
 <div id="s4" class="card">
   <h2>M3 管理层分析</h2>
 
-  <h3>管理层基本信息</h3>
-  <table class="tbl">
-    <tr><th>姓名</th><th>职务</th><th>任职年限</th><th>专业背景</th></tr>
-    <tr><td>李想</td><td>董事长/CEO</td><td>10年（2015年创立）</td><td>连续创业者（汽车之家创始人），产品经理出身，无传统车企背景</td></tr>
-    <tr><td>马东辉</td><td>总裁/CTO</td><td>9年</td><td>技术研发负责人，主导增程器和车身平台开发</td></tr>
-    <tr><td>李铁</td><td>CFO</td><td>5年</td><td>财务专家，负责资本运作和财务管理</td></tr>
+  <div class="txt"><span class="dot">●</span><b>实际控制人：</b>李想（董事长兼CEO），持股约22%但投票权约75%，对公司有绝对控制权。作为连续创业者（泡泡网、汽车之家），李想是中国最懂汽车产品的企业家之一。</div>
+
+  <div class="txt"><span class="dot">●</span><b>管理层特点：</b>以产品经理文化著称，李想本人深度参与每款车型的定义。但2025年MEGA高端纯电的失败暴露了管理层在纯电领域的判断失误，李想后续公开反思并调整战略。</div>
+
+  <table class="tbl" style="margin-top:8px">
+    <tr><th>维度</th><th>评分</th><th>评价</th></tr>
+    <tr><td>诚信度</td><td class="gold">7/10</td><td>信息披露透明，但2025年MEGA失败后调整较慢</td></tr>
+    <tr><td>战略能力</td><td class="gold">7/10</td><td>增程路线选择英明，但纯电转型节奏失误</td></tr>
+    <tr><td>执行力</td><td class="gold">7/10</td><td>量产交付能力优秀，但智驾研发落后对手</td></tr>
+    <tr><td>激励合理</td><td class="gold">8/10</td><td>创始人控股，利益高度一致；员工期权激励充分</td></tr>
+    <tr><td>股东回报</td><td class="gold">4/10</td><td>不派息，股价下跌-55%后未回购</td></tr>
   </table>
-  <div class="txt" style="font-size:12px;">李想是中国最成功的连续创业者之一——2005年创立汽车之家（纽交所上市，市值超100亿美元），2015年创办车和家（后更名为理想汽车）。他是中国车企中唯一一个"产品经理CEO"，亲自参与每款车型的产品定义。李想持股约22%，投票权超75%，拥有绝对控制权。这种"产品型创始人+绝对控制权"的模式既确保了产品理念的纯粹性（不因短期业绩压力偏离方向），也存在一定"一言堂"风险。李想2024年在MEGA失利后公开反思，展现出一定自省能力。</div>
-
-  <h3>管理层能力评估</h3>
-  <div class="hb"><span class="hl">产品创新力</span><div class="ht"><div class="hf" style="width:90%;background:#4caf50;">9.0/10</div></div><span class="hv">行业顶级产品经理</span></div>
-  <div class="hb"><span class="hl">战略执行力</span><div class="ht"><div class="hf" style="width:75%;background:#4caf50;">7.5/10</div></div><span class="hv">增程→纯电转型中</span></div>
-  <div class="hb"><span class="hl">指引准确性</span><div class="ht"><div class="hf" style="width:70%;background:#f0c040;">7.0/10</div></div><span class="hv">偏激进但整体靠谱</span></div>
-  <div class="hb"><span class="hl">股东回报</span><div class="ht"><div class="hf" style="width:45%;background:#f44336;">4.5/10</div></div><span class="hv">尚未分红</span></div>
-  <div class="hb"><span class="hl">危机应对</span><div class="ht"><div class="hf" style="width:65%;background:#f0c040;">6.5/10</div></div><span class="hv">MEGA失利后反思较慢</span></div>
-  <div class="hb"><span class="hl">信息透明度</span><div class="ht"><div class="hf" style="width:70%;background:#f0c040;">7.0/10</div></div><span class="hv">定期沟通、财报清晰</span></div>
-
-  <div class="bq">
-    <b>关键解读：</b><br>
-    <span class="dot">·</span> 李想是中国车企CEO中产品能力最强的——L系列的成功几乎可以全部归功于他的产品判断<br>
-    <span class="dot">·</span> 持股22%+投票权75%，与股东利益高度一致，决策效率高<br>
-    <span class="dot">·</span> MEGA失利暴露了"产品经理CEO"的风险——对纯电市场的判断失误，盲目自信<br>
-    <span class="dot">·</span> 信息透明度在新势力中较好——定期发布交付量、财报电话会详细、李想本人常发微博沟通
-  </div>
-
-  <div class="bq">
-    <b>核心结论：</b><br>
-    <span class="dot">·</span> 综合评分：7.5/10<br>
-    <span class="dot">·</span> 亮点：产品力行业顶级、创始人持股比例高利益一致、战略聚焦能力突出<br>
-    <span class="dot">·</span> 风险点："一言堂"决策模式、纯电转型能力未验证、缺少技术储备的安全垫
-  </div>
 </div>
 
-<!-- ========== M4 财务 ========== -->
+<!-- M4 财务 -->
 <div id="s5" class="card">
   <h2>M4 财务复盘 & 资本配置</h2>
 
-  <h3>核心财务指标</h3>
+  <h3>5年财务摘要（2021-2025）</h3>
   <table class="tbl">
-    <tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th class="gold">2025E</th><th>趋势</th></tr>
-    <tr><td>营收（亿）</td><td>270.1</td><td>452.9</td><td class="gold">1,238.5</td><td>1,445.1</td><td class="gold">~1,800</td><td class="green">↑ 增长中</td></tr>
-    <tr><td>净利（亿）</td><td class="red">-3.2</td><td class="red">-20.3</td><td class="gold">118.1</td><td>80.5</td><td class="gold">~95</td><td class="green">↑ 震荡上行</td></tr>
-    <tr><td>毛利率</td><td>21.3%</td><td>19.4%</td><td class="gold">22.2%</td><td>20.5%</td><td>~20.0%</td><td>→ 稳定</td></tr>
-    <tr><td>净利率</td><td class="red">-1.2%</td><td class="red">-4.5%</td><td class="gold">9.5%</td><td>5.6%</td><td>~5.3%</td><td class="orange">→ 震荡</td></tr>
-    <tr><td>ROE</td><td class="red">-2.3%</td><td class="red">-6.1%</td><td class="gold">15.7%</td><td>10.8%</td><td>~11%</td><td class="orange">→ 稳定</td></tr>
+    <tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th></tr>
+    <tr><td>营收(亿RMB)</td><td>270.1</td><td>452.9</td><td>1,238.5</td><td>1,458</td><td class="gold">1,162</td></tr>
+    <tr><td>营收增速</td><td>+185.5%</td><td>+67.7%</td><td class="green">+173.5%</td><td class="green">+17.7%</td><td class="red">-20.3%</td></tr>
+    <tr><td>净利润(亿)</td><td>-3.2</td><td>-20.3</td><td class="green">118.1</td><td class="green">81.0</td><td class="red">11.6</td></tr>
+    <tr><td>毛利率</td><td>21.3%</td><td>19.4%</td><td>22.2%</td><td>20.5%</td><td>~19%</td></tr>
+    <tr><td>净利率</td><td>-1.2%</td><td>-4.5%</td><td class="green">9.5%</td><td class="green">5.6%</td><td class="red">~1.0%</td></tr>
+    <tr><td>ROE</td><td>-2.5%</td><td>-15.0%</td><td class="green">25.3%</td><td class="green">14.2%</td><td class="red">~1.8%</td></tr>
+    <tr><td>负债率</td><td>62.3%</td><td>64.8%</td><td>59.7%</td><td>58.1%</td><td>~55%</td></tr>
+    <tr><td>经营CF(亿)</td><td>92.4</td><td>74.3</td><td class="green">305.9</td><td class="green">252</td><td>~130</td></tr>
   </table>
 
-  <h3>现金流 & 资产负债</h3>
-  <table class="tbl">
-    <tr><th>指标</th><th>2022</th><th>2023</th><th>2024</th><th class="gold">2025E</th><th>趋势</th></tr>
-    <tr><td>经营现金流</td><td>73亿</td><td class="gold">257亿</td><td>190亿</td><td>~210亿</td><td class="green">↑ 充沛</td></tr>
-    <tr><td>CAPEX</td><td>~50亿</td><td>~60亿</td><td>~80亿</td><td>~90亿</td><td class="orange">↑ 产能扩张</td></tr>
-    <tr><td>FCF</td><td>~23亿</td><td class="gold">~197亿</td><td>~110亿</td><td>~120亿</td><td class="green">↑ 为正</td></tr>
-    <tr><td>资产负债率</td><td>49.8%</td><td>59.5%</td><td>63.2%</td><td>~62%</td><td>→ 适度</td></tr>
-    <tr><td>货币资金</td><td>~120亿</td><td>~380亿</td><td>~420亿</td><td>~500亿</td><td class="green">↑ 充裕</td></tr>
-  </table>
+  <h3 style="margin-top:10px">现金流分析</h3>
+  <div class="txt"><span class="dot">●</span><b>经营现金流恶化：</b>2025年估算经营CF约130亿（较2024年的252亿下降48%），与净利润同步下滑。Q3-Q4可能已出现经营现金流为负的情况。</div>
+  <div class="txt"><span class="dot">●</span><b>资本开支压力：</b>北京工厂+常州工厂扩产+纯电平台研发，年资本开支约80-100亿。自由现金流可能已转负。</div>
+  <div class="txt"><span class="dot">●</span><b>现金储备：</b>截至2025年末账面现金约500亿RMB，可支撑2-3年亏损，短期无融资压力。</div>
 
-  <h3>费用率结构</h3>
-  <table class="tbl">
-    <tr><th>费用项</th><th>2024年规模</th><th>趋势</th></tr>
-    <tr><td>销售费用</td><td>约105亿（费用率7.3%）</td><td class="orange">↑ 直营门店扩张费用增加，但费用率稳定</td></tr>
-    <tr><td>研发费用</td><td>约110亿（费用率7.6%）</td><td class="green">↑ 持续投入智驾+纯电平台研发</td></tr>
-    <tr><td>管理费用</td><td>约35亿（费用率2.4%）</td><td>→ 规模效应摊薄中</td></tr>
-  </table>
-  <div class="txt">理想2024年研发费用约110亿（7.6%费用率）——在新势力中处于中上水平，主要投向智驾端到端大模型、纯电平台（Whale/Manta）和新车型开发。销售费用约105亿（7.3%费用率），直营模式下的门店扩张持续。两费合计约15%——盈利情况下仍可承受，但若毛利率跌破18%，费用率偏高将成为问题。</div>
-
-  <h3>杜邦分析</h3>
-  <table class="tbl">
-    <tr><th>年份</th><th>ROE</th><th>净利率</th><th>资产周转率</th><th>权益乘数</th><th>驱动因子</th></tr>
-    <tr><td>2022</td><td class="red">-6.1%</td><td class="red">-4.5%</td><td>0.62×</td><td>2.00×</td><td>亏损导致ROE为负</td></tr>
-    <tr><td>2023</td><td class="gold">15.7%</td><td>9.5%</td><td>0.88×</td><td>2.47×</td><td>⭐ 高净利率驱动的高ROE</td></tr>
-    <tr><td>2024</td><td>10.8%</td><td>5.6%</td><td>0.72×</td><td>2.72×</td><td>净利率下降+周转率下降拖累ROE</td></tr>
-  </table>
-  <div class="txt">杜邦分析显示，2023年ROE高达15.7%核心驱动力是9.5%的净利率（新势力中最高）。2024年净利率降至5.6%、资产周转率从0.88×降至0.72×，ROE回落至10.8%。权益乘数从2.47×升至2.72×（负债率59.5%→63.2%），说明2024年净利下滑时公司适度增加了杠杆。整体而言，理想ROE质量在新势力中属于上等（特斯拉约15%、比亚迪约12%）。</div>
-
-  <div class="bq">
-    <b>核心结论：财务质量评分：7.5/10（新能源车企中优秀）</b><br>
-    ✅ 连续2年盈利、经营现金流190亿充沛、货币资金420亿充裕、FCF为正110亿<br>
-    ✅ 资产负债率63%可控、研发投入充分（110亿）、无表外负债风险<br>
-    ⚠️ 2024年净利率从9.5%降至5.6%（降幅41%）、产品结构下移趋势尚未见底
-  </div>
+  <div class="bq" style="margin-top:8px">最关键的财务指标变化：净利率从2023年9.5%的高点坠落至2025年1.0%，说明理想"现金牛"的定位已被严重动摇。公司能否在2026年重返5%+净利率是关键。</div>
 </div>
 
-<!-- ========== M5 产业链 ========== -->
+<!-- Continue M5 -->
 <div id="s6" class="card">
   <h2>M5 成本结构 & 产业链议价权</h2>
 
-  <h3>成本结构</h3>
-  <div class="txt">理想汽车毛利率约20.5%（2024年），成本约占售价的79.5%。不同于赛力斯需支付高额华为分润，理想的成本结构更接近于传统车企的自主成本模式。</div>
-  <table class="tbl">
-    <tr><th>成本项目</th><th>占比</th><th>趋势</th><th>议价能力</th></tr>
-    <tr><td>电池（宁德时代/欣旺达等）</td><td>28-33%</td><td class="green">↓ 碳酸锂下行</td><td>中</td></tr>
-    <tr><td>增程器&动力系统</td><td>8-12%</td><td>→ 自研为主</td><td class="green">高（自研）</td></tr>
-    <tr><td>车身&内外饰</td><td>20-25%</td><td>→ 稳定</td><td class="green">高</td></tr>
-    <tr><td>智驾&座舱电子</td><td>5-8%</td><td class="red">↑ 智驾投入加大</td><td>中（地平线+英伟达）</td></tr>
-    <tr><td>芯片&传感器</td><td>3-5%</td><td>→ 稳定</td><td>中</td></tr>
-    <tr><td>人工&制造费用</td><td>8-10%</td><td class="red">↑ 人工成本上升</td><td>中</td></tr>
-  </table>
+  <div class="txt"><span class="dot">●</span><b>成本结构：</b>营业成本约占营收80%（毛利率~20%），其中电池/电驱占35%、车身/底盘20%、智驾系统12%、其他物料13%、制造费用10%、人工10%。电池成本受碳酸锂价格波动影响最大。</div>
 
   <h3>产业链议价权</h3>
-  <table class="tbl">
-    <tr><th>维度</th><th>评估</th><th>证据</th></tr>
-    <tr><td>对上游议价能力</td><td class="orange">中</td><td>年采购量（约68万辆）较比亚迪（300万+）仍有差距，但对中小供应商议价能力较强</td></tr>
-    <tr><td>对电池供应商议价</td><td class="orange">中</td><td>宁德时代为主供+欣旺达/蜂巢等二供分散风险，碳酸锂价格下行带来成本红利</td></tr>
-    <tr><td>对下游议价能力</td><td class="green">中高</td><td>品牌溢价在家庭SUV市场较强，但行业价格战环境下消费者议价能力提升</td></tr>
-  </table>
+  <div class="cp"><div class="nm">上游（电池/芯片）</div><div class="bt"><div class="bf" style="width:30%;background:#f44336"></div></div><div class="vl" style="color:#f44336">弱</div></div>
+  <div class="txt" style="font-size:11px;color:#888;margin:-2px 0 6px 92px">宁德时代/英伟达有较强议价权，理想采购量不占优势</div>
+  <div class="cp"><div class="nm">下游（消费者）</div><div class="bt"><div class="bf" style="width:50%;background:#ff9800"></div></div><div class="vl" style="color:#ff9800">中等</div></div>
+  <div class="txt" style="font-size:11px;color:#888;margin:-2px 0 6px 92px">品牌忠诚度高，但竞品选择多（问界/蔚来/小鹏/小米）</div>
+  <div class="cp"><div class="nm">定价能力</div><div class="bt"><div class="bf" style="width:45%;background:#ffc107"></div></div><div class="vl" style="color:#ffc107">下降</div></div>
+  <div class="txt" style="font-size:11px;color:#888;margin:-2px 0 6px 92px">价格战背景下，2025年已多次降价促销</div>
 
-  <div class="bq">
-    <b>核心结论：</b><br>
-    <span class="dot">·</span> 定价权评估：<b>3.2/5.0</b> —— 高于赛力斯（受制于华为），低于比亚迪（全产业链垂直整合）<br>
-    <span class="dot">·</span> 理想最大优势：增程器和车身平台自研——无需向华为交"技术税"<br>
-    <span class="dot">·</span> 碳酸锂价格从60万/吨降至10万/吨以下，2024年电池成本下降贡献约30-40亿利润弹性<br>
-    <span class="dot">·</span> 利好：电池成本下行趋势持续，理想二供体系（欣旺达/蜂巢）增强了议价谈判筹码
-  </div>
+  <div class="bq" style="margin-top:8px">成本风险：碳酸锂价格若反弹至15万/吨以上，理想约20%毛利率将进一步承压。同时2026年纯电i8若销量不及预期，单车型摊销成本将显著抬高。</div>
 </div>
 
-<!-- ========== M6 估值 ========== -->
+<!-- M6 估值 -->
 <div id="s7" class="card">
-  <h2>M6 FCF效率 & 估值</h2>
+  <h2>M6 估值</h2>
 
-  <h3>FCF质量</h3>
+  <h3>自由现金流估值（DCF简化）</h3>
   <table class="tbl">
-    <tr><th>指标</th><th>2023年</th><th>2024年</th><th class="gold">2025E</th><th>正常化水平</th></tr>
-    <tr><td>经营现金流</td><td class="gold">257亿</td><td>190亿</td><td>~210亿</td><td>200-280亿</td></tr>
-    <tr><td>CAPEX</td><td>~60亿</td><td>~80亿</td><td>~90亿</td><td>70-100亿</td></tr>
-    <tr><td>FCF</td><td class="gold">~197亿</td><td>~110亿</td><td>~120亿</td><td>100-180亿</td></tr>
-    <tr><td>FCF/净利润</td><td class="gold">~167%</td><td>~137%</td><td>~126%</td><td>100-150%</td></tr>
+    <tr><th>参数</th><th>保守</th><th>中性</th><th>乐观</th></tr>
+    <tr><td>基准FCF(亿RMB)</td><td>30</td><td>60</td><td>100</td></tr>
+    <tr><td>前3年增速</td><td>0%</td><td>10%</td><td>25%</td></tr>
+    <tr><td>永续增速</td><td>2%</td><td>3%</td><td>4%</td></tr>
+    <tr><td>折现率</td><td>12%</td><td>10%</td><td>9%</td></tr>
+    <tr><td>每股价值(HKD)</td><td>~25</td><td>~55</td><td>~110</td></tr>
   </table>
-  <div class="txt">理想的FCF质量在新势力中是最好的——FCF连续2年为正，FCF/净利润>100%，说明净利润的现金含量极高。2024年FCF从197亿降至110亿（因CAPEX增加+净利下降），但整体质量仍属上乘。货币资金420亿（2024年末），为新车型开发和纯电转型提供了充足"弹药"。</div>
 
-  <h3>估值指标</h3>
+  <h3 style="margin-top:10px">当前估值与同业对比</h3>
   <table class="tbl">
-    <tr><th>指标</th><th>当前值</th><th>历史区间</th><th>评估</th></tr>
-    <tr><td>PE(TTM)</td><td class="gold">约22.5倍</td><td>15-40倍</td><td class="green">合理偏低</td></tr>
-    <tr><td>PE(2025E)</td><td class="gold">约18.5倍</td><td>—</td><td class="green">偏低</td></tr>
-    <tr><td>PB</td><td>约3.8倍</td><td>3-8倍</td><td class="orange">中等</td></tr>
-    <tr><td>PS(TTM)</td><td>约1.5倍</td><td>1-4倍</td><td class="green">合理</td></tr>
+    <tr><th>公司</th><th>市值(亿)</th><th>PE(TTM)</th><th>PB</th><th>PS</th><th>营收增速</th></tr>
+    <tr><td style="color:#ff9800;font-weight:bold">理想汽车</td><td style="color:#ff9800">~1,092</td><td style="color:#ff9800">~94x</td><td style="color:#ff9800">1.68</td><td style="color:#ff9800">0.94</td><td style="color:#f44336">-20%</td></tr>
+    <tr><td>比亚迪</td><td>~8,500</td><td>~22x</td><td>~5.0</td><td>~1.2</td><td>~25%</td></tr>
+    <tr><td>蔚来</td><td>~950</td><td>亏损</td><td>~2.5</td><td>~1.4</td><td>~10%</td></tr>
+    <tr><td>小鹏</td><td>~800</td><td>亏损</td><td>~2.0</td><td>~1.5</td><td>~15%</td></tr>
+    <tr><td>赛力斯</td><td>~2,000</td><td>~28x</td><td>~6.0</td><td>~1.3</td><td>~10%</td></tr>
   </table>
-  <div class="txt">当前市值约2,350亿港元（折约2,150亿人民币），PE约22.5倍（基于2024年净利）。若按2025年预测净利95亿计算，PE仅约18.5倍——在新势力中处于最低水平之一（小鹏/蔚来仍亏损）。PS约1.5倍，也低于特斯拉（约8×）和比亚迪（约1.8×）。低估值的主要原因：市场对纯电转型不确定性和竞争加剧的担忧。</div>
 
-  <h3>全球车企估值对比</h3>
-  <div class="cp"><span class="nm">理想汽车(TTM)</span><div class="bt"><div class="bf" style="width:73%;background:#ff9800;"></div></div><span class="vl gold">22.5×</span></div>
-  <div class="cp"><span class="nm">理想汽车2025E</span><div class="bt"><div class="bf" style="width:60%;background:#f0c040;"></div></div><span class="vl orange">18.5×</span></div>
-  <div class="cp"><span class="nm">比亚迪</span><div class="bt"><div class="bf" style="width:72%;background:#2196f3;"></div></div><span class="vl">22×</span></div>
-  <div class="cp"><span class="nm">特斯拉</span><div class="bt"><div class="bf" style="width:195%;background:#4caf50;"></div></div><span class="vl green">60×</span></div>
-  <div class="cp"><span class="nm">赛力斯</span><div class="bt"><div class="bf" style="width:65%;background:#ff9800;"></div></div><span class="vl">20×</span></div>
-  <div class="cp"><span class="nm">小鹏汽车</span><div class="bt"><div class="bf" style="width:—;background:#f44336;"></div></div><span class="vl red">亏损</span></div>
-  <div class="cp"><span class="nm">蔚来汽车</span><div class="bt"><div class="bf" style="width:—;background:#f44336;"></div></div><span class="vl red">亏损</span></div>
-  <div class="desc" style="margin-top:6px;">📌 理想PE约22.5倍介于比亚迪（22×）和特斯拉（60×）之间。2025E PE仅18.5倍——市场对理想的估值偏保守，反映了对其增长可持续性的谨慎态度</div>
+  <div class="txt" style="margin-top:8px"><span class="dot">●</span><b>估值判断：</b>理想当前PE 94x(TTM)远高于行业均值，但这是利润暴跌的结果而非泡沫。PS 0.94x低于比亚迪(1.2x)和赛力斯(1.3x)，说明市场对理想的营收前景也非常悲观。PB 1.68x接近新势力最低水平，反映市场对净资产质量的疑虑。按DCF中性估值约55HKD，当前57HKD处于合理区间下限。</div>
 
-  <div class="bq">
-    <b>关键解读：</b><br>
-    <span class="dot">·</span> FCF质量评分：<b>8.0/10</b> —— FCF持续为正、FCF/净利润>100%，新能源车企中最优<br>
-    <span class="dot">·</span> PE约22.5倍处于历史低位（历史区间15-40倍），2025E PE仅18.5倍——估值有安全边际<br>
-    <span class="dot">·</span> 低PE的核心原因是市场对纯电转型和竞争格局的不确定性定价——"折价"合理但需关注变化<br>
-    <span class="dot">·</span> 若纯电转型成功，PE有望恢复至25-30倍，对应约30-50%的股价上行空间
-  </div>
+  <div class="txt" style="margin-top:4px;font-size:11px;color:#888">注：市值单位RMB（理想按港股1,168亿HKD×0.935≈1,092亿RMB）。同业PE基于2025年报数据。</div>
+
+  <h3>历史估值区间</h3>
+  <div class="cp"><div class="nm">PS区间(3年)</div><div class="bt"><div class="bf" style="width:60%;background:#ff9800;margin-left:10%"></div></div><div class="vl">0.9-2.5x</div></div>
+  <div class="cp"><div class="nm">当前PS</div><div class="bt"><div class="bf" style="width:30%;background:#f0c040;margin-left:8%"></div></div><div class="vl" style="color:#f0c040">0.94x</div></div>
+  <div class="cp"><div class="nm">PB区间(3年)</div><div class="bt"><div class="bf" style="width:50%;background:#ff9800;margin-left:15%"></div></div><div class="vl">1.6-4.5x</div></div>
+  <div class="cp"><div class="nm">当前PB</div><div class="bt"><div class="bf" style="width:30%;background:#f0c040;margin-left:30%"></div></div><div class="vl" style="color:#f0c040">1.68x</div></div>
 </div>
 
-<!-- ========== M7 增量市占率 ========== -->
+<!-- M7 市占率 -->
 <div id="s8" class="card">
   <h2>M7 增量市占率 & 行业终局</h2>
 
-  <h3>行业空间</h3>
-  <table class="tbl">
-    <tr><th>市场</th><th>规模（2025E）</th><th>增速</th><th>公司交付</th><th>市占率</th></tr>
-    <tr><td>中国新能源汽车</td><td>约1,400万辆</td><td>+15-20%</td><td>~68万辆</td><td class="gold">约4.9%</td></tr>
-    <tr><td>中国增程式新能源车</td><td>约350万辆</td><td>+35%</td><td>~60万辆（增程车型）</td><td class="gold">约17%</td></tr>
-    <tr><td>中国25万+家庭SUV</td><td>约250万辆</td><td>+20%</td><td>~55万辆</td><td class="gold">约22%</td></tr>
+  <div class="txt"><span class="dot">●</span><b>行业格局：</b>中国新能源车渗透率已超50%（2025年），进入"淘汰赛"阶段。15-35万价格带竞争最为激烈，理想在25-45万家庭SUV细分市场保持领先（市占率约15%），但问界M7/M9、比亚迪唐/腾势、小米SU7正在侵蚀。</div>
+
+  <table class="tbl" style="margin-top:10px">
+    <tr><th>细分领域</th><th>理想市占率</th><th>趋势</th><th>竞争格局</th></tr>
+    <tr><td>25-45万新能源SUV</td><td>~15%</td><td class="orange">下降↓</td><td>问界/比亚迪/蔚来围攻</td></tr>
+    <tr><td>增程式电动车</td><td>~30%</td><td class="orange">下降↓</td><td>问界/零跑/长安深蓝追赶</td></tr>
+    <tr><td>家庭6座SUV</td><td>~35%</td><td class="gold">领先</td><td>L9/L8仍是标杆</td></tr>
+    <tr><td>50万+纯电MPV</td><td>~3%</td><td class="red">失败</td><td>MEGA严重不及预期</td></tr>
   </table>
 
-  <div class="mg" style="margin-top:10px;">
-    <div class="mi"><div class="mv gold">4.9%</div><div class="ml">中国新能源总市占率</div></div>
-    <div class="mi"><div class="mv gold">17%</div><div class="ml">增程市场市占率</div></div>
-    <div class="mi"><div class="mv gold">22%</div><div class="ml">25万+家庭SUV市占率</div></div>
-    <div class="mi"><div class="mv green">~68万辆</div><div class="ml">2025E年交付量</div></div>
-  </div>
-
-  <h3>竞争态势</h3>
-  <table class="tbl">
-    <tr><th>竞争对手</th><th>竞争维度</th><th>公司相对优势</th></tr>
-    <tr><td>问界（赛力斯+华为）</td><td>智驾领先+华为品牌赋能</td><td>理想品牌在家庭SUV市场更深入人心，但智驾落后于华为</td></tr>
-    <tr><td>比亚迪（唐/腾势）</td><td>全品类+极致性价比</td><td>理想在25万+SUV细分市场产品力更强、用户口碑更好</td></tr>
-    <tr><td>小米SU7/SUV</td><td>小米生态+极致性价比</td><td>理想在家庭市场的品牌认知暂时领先，但小米的流量和生态优势不可忽视</td></tr>
-    <tr><td>蔚来/小鹏</td><td>纯电+换电/智驾差异化</td><td>理想已盈利而蔚来/小鹏仍亏损，财务实力占优</td></tr>
-  </table>
-
-  <h3>行业终局思考</h3>
-  <div class="txt">中国新能源汽车行业正从"百花齐放"走向"淘汰赛"——预计到2030年，只有5-8家车企能存活。理想汽车的终局取决于：（1）纯电转型能否在第二波成功——2025-2026年纯电SUV（M8纯电等）是关键节点；（2）智驾能力能否缩小与华为的差距——端到端大模型的技术路线决定了长期产品力；（3）增程器+家庭SUV市场的上行周期还能维持多久——随着充电基础设施完善，纯电替代增程是长期趋势。最乐观情景：理想成为"中国丰田"——以家庭用户为核心的全品类车企（增程+纯电），年销200万辆以上。最悲观情景：纯电转型再失败→增程市场饱和→被迫降价保量→陷入价格战泥潭。</div>
-
-  <div class="bq">
-    <b>核心结论：</b><br>
-    <span class="dot">·</span> 增量市占率趋势：↑ 在家庭SUV市场持续提升，增程赛道仍在快速扩张<br>
-    <span class="dot">·</span> 最大增量来源：纯电新车型（2025H2上市）+ 海外市场（中东/东南亚布局）<br>
-    <span class="dot">·</span> 竞争态势：家庭SUV赛道壁垒正在变窄——问界/小米/蔚来乐道都在攻入同一市场
-  </div>
+  <div class="bq" style="margin-top:10px">终局判断：新能源淘汰赛将在2027-2028年决出胜负。理想的"家庭定位"壁垒仍在，但需要纯电i8证明自己的技术宽度。长期看，理想若不能解决智驾短板和纯电产品力，可能会被边缘化为"小而美"品牌，市占率长期在5-8%徘徊。</div>
 </div>
 
-<!-- ========== M8 催化剂 ========== -->
+<!-- M8 催化剂 -->
 <div id="s9" class="card">
-  <h2>M8 三年资本计划 & 催化剂</h2>
+  <h2>M8 催化剂 & 三年预测</h2>
 
   <h3>催化剂时间表</h3>
   <table class="tbl">
-    <tr><th>时间</th><th>事件</th><th>预期影响</th></tr>
-    <tr><td>2025H2</td><td>纯电SUV（M8纯电版等）发布</td><td class="green">验证纯电转型能力，打开第二增长曲线</td></tr>
-    <tr><td>2025-2026</td><td>端到端智驾大模型OTA升级</td><td class="green">缩小与华为ADS智驾的体验差距</td></tr>
-    <tr><td>2026H1</td><td>海外市场（中东/东南亚）首批交付</td><td class="green">打开出海空间，验证海外市场接受度</td></tr>
-    <tr><td>2026H2</td><td>纯电平台第二款车型上市</td><td class="green">纯电产品线从1→多，规模化效应开始显现</td></tr>
-    <tr><td>2027</td><td>年交付突破100万辆</td><td class="green">规模效应充分释放，净利率有望回升至8-10%</td></tr>
+    <tr><th>时间</th><th>催化剂</th><th>影响</th><th>概率</th></tr>
+    <tr><td>2026H2</td><td>纯电SUV i8上市交付</td><td class="gold">高</td><td>80%</td></tr>
+    <tr><td>2026H2</td><td>全场景智能驾驶NOA全国开通</td><td>中</td><td>60%</td></tr>
+    <tr><td>2027</td><td>L系列大改款（増程3.0）</td><td>中</td><td>70%</td></tr>
+    <tr><td>2026-2027</td><td>海外市场（中东/东南亚）拓展</td><td>低</td><td>50%</td></tr>
+    <tr><td>2027</td><td>毛利率回升至20%+</td><td class="gold">高</td><td>50%</td></tr>
   </table>
 
-  <h3>三年业绩预测</h3>
+  <h3>三情景预测</h3>
   <div class="scn">
-    <div class="scc sc1"><h4>😄 乐观</h4><div class="pct">+23% CAGR</div><div class="dt">2027净利150亿</div></div>
-    <div class="scc sc2"><h4>😐 基准</h4><div class="pct">+12% CAGR</div><div class="dt">2027净利120亿</div></div>
-    <div class="scc sc3"><h4>😟 悲观</h4><div class="pct">+5% CAGR</div><div class="dt">2027净利100亿</div></div>
-  </div>
-
-  <table class="tbl">
-    <tr><th>情景</th><th>2025E</th><th>2026E</th><th>2027E</th><th>毛利率</th></tr>
-    <tr><td class="green">乐观</td><td>净利105亿</td><td>125亿</td><td>150亿</td><td>21→23%</td></tr>
-    <tr><td class="gold">基准</td><td>净利95亿</td><td>105亿</td><td>120亿</td><td>20→21%</td></tr>
-    <tr><td class="red">悲观</td><td>净利80亿</td><td>88亿</td><td>100亿</td><td>19→18%</td></tr>
-  </table>
-
-  <h3>估值空间测算</h3>
-  <table class="tbl">
-    <tr><th>情景</th><th>2027净利</th><th>PE假设</th><th>2027市值</th><th>涨幅空间</th></tr>
-    <tr><td class="green">乐观</td><td>150亿</td><td>28×</td><td>4,200亿</td><td class="green">+95%</td></tr>
-    <tr><td class="gold">基准</td><td>120亿</td><td>25×</td><td>3,000亿</td><td class="gold">+40%</td></tr>
-    <tr><td class="red">悲观</td><td>100亿</td><td>20×</td><td>2,000亿</td><td class="red">-7%</td></tr>
-  </table>
-  <div class="desc">当前市值约2,150亿人民币（2,350亿港元），基准情景3年目标市值3,000亿（+40%），乐观情景4,200亿（+95%）。机构目标价平均约130港元，对应约25倍PE。</div>
-
-  <div class="bq">
-    <b>核心结论：</b><br>
-    <span class="dot">·</span> 未来3年净利润CAGR预期：<b>5-23%</b>（悲观-乐观）<br>
-    <span class="dot">·</span> 最大增长引擎：纯电新车型+海外市场+智驾能力提升<br>
-    <span class="dot">·</span> 业绩弹性来源：纯电产品毛利率高于增程+规模效应持续释放+海外市场贡献增量<br>
-    <span class="dot">·</span> 估值弹性：PE从22.5倍→25-28倍，业绩增长+估值修复=双击可能
+    <div class="scc sc1"><h4>✅ 乐观</h4><div class="pct">100-120 HKD</div><div class="dt">+75~110%<br>i8月销破万+毛利率回升至20%+智驾追赶</div></div>
+    <div class="scc sc2"><h4>🟡 中性</h4><div class="pct">55-70 HKD</div><div class="dt">当前~+20%<br>i8月销5000+L系列稳态+毛利率18%</div></div>
+    <div class="scc sc3"><h4>🔴 悲观</h4><div class="pct">30-45 HKD</div><div class="dt">-20~-50%<br>i8月销<3000+价格战加剧+持续亏损</div></div>
   </div>
 </div>
 
-<!-- ========== M9 预期差 ========== -->
+<!-- M9 预期差 -->
 <div id="s10" class="card">
   <h2>M9 预期差 & 市场共识</h2>
 
   <table class="tbl">
-    <tr><th>议题</th><th>市场共识</th><th>独立判断</th><th>方向</th></tr>
-    <tr>
-      <td>纯电转型前景</td>
-      <td style="color:#888;">MEGA失败后纯电转型前景黯淡</td>
-      <td style="color:#4caf50;">MEGA是高端MPV市场的失败（产品定位失误），不代表纯电SUV研发能力有问题。2025年纯电SUV的定价策略吸取了教训，有望成功</td>
-      <td><span class="tg tgg">正向</span></td>
-    </tr>
-    <tr>
-      <td>竞争格局恶化</td>
-      <td style="color:#888;">问界/小米大量侵蚀理想份额</td>
-      <td>竞争确实加剧，但增程市场仍在快速扩张（+35% YoY），理想受益于品类增长</td>
-      <td><span class="tg tgo">中性</span></td>
-    </tr>
-    <tr>
-      <td>产品结构下移</td>
-      <td style="color:#888;">L6占比过高将拉低品牌定位</td>
-      <td style="color:#4caf50;">L6并不拉低品牌——这是大众市场的自然延伸。iPhone SE也没有拉低苹果的定位</td>
-      <td><span class="tg tgg">正向</span></td>
-    </tr>
-    <tr>
-      <td>智驾能力落后</td>
-      <td style="color:#888;">理想智驾远落后于华为/小鹏</td>
-      <td>确实落后但差距在缩小——端到端大模型路线正在快速追赶，且智驾对家庭用户的购买决策权重低于科技爱好者想象的</td>
-      <td><span class="tg tgo">中性</span></td>
-    </tr>
-    <tr>
-      <td>估值是否合理</td>
-      <td style="color:#888;">22.5倍PE已反映增长放缓</td>
-      <td style="color:#4caf50;">22.5倍PE是低估——相对于理想健康财务+品牌壁垒+增长潜力，合理估值应在25-30倍</td>
-      <td><span class="tg tgg">正向</span></td>
-    </tr>
+    <tr><th>维度</th><th>市场共识</th><th>预期差</th></tr>
+    <tr><td>i8纯电销量</td><td>保守预期月销3000-5000</td><td>可能超预期：定价若在30-35万可竞争Model Y/小鹏G9</td></tr>
+    <tr><td>盈利恢复速度</td><td>2026年净利率回到3-5%</td><td>可能低于预期：价格战持续拖累毛利率</td></tr>
+    <tr><td>智驾能力</td><td>落后华为2年</td><td>可能加速追赶：已组建千人智驾团队，全栈自研</td></tr>
+    <tr><td>港股流动性</td><td>美股二次上市，流动性差</td><td>可能改善：南向资金持续增持港股通标的</td></tr>
+    <tr><td>创始人风险</td><td>李想绝对控股，战略稳定</td><td>双向：好的一面是长期主义，坏的一面是个人判断失误无制衡</td></tr>
   </table>
 
-  <div class="bq">
-    <b>关键解读：</b><br>
-    <span class="dot">·</span> 市场对理想最大的疑虑：纯电转型能力、竞争加剧、智驾落后<br>
-    <span class="dot">·</span> 最大预期差：市场低估了理想"品牌+用户基盘+财务健康"三重复合护城河的防守价值<br>
-    <span class="dot">·</span> 22.5倍PE已经计入了较多悲观预期——若纯电转型略有成功，估值修复空间大<br>
-    <span class="dot">·</span> 需防范：如果小米SUV上市后月销超预期（>2万辆），将直接冲击理想L6/L7的份额
-  </div>
+  <div class="bq" style="margin-top:10px">最大的预期差在于"理想能否在纯电领域复制增程的成功"。市场普遍对i8持观望态度，如果i8能做到月销8000+，将彻底扭转市场对理想纯电能力的质疑，PS估值有望从0.94x修复到1.5x+。</div>
 </div>
 
-<!-- ========== M10 风险 ========== -->
+<!-- M10 风险 -->
 <div id="s11" class="card">
   <h2>M10 Pre-mortem & 核心风险</h2>
-  <div class="desc">假设3年后亏损30%，最可能的原因：</div>
 
-  <h3>风险类型</h3>
+  <h3>核心风险清单</h3>
   <table class="tbl">
-    <tr><th>风险类型</th><th>描述</th><th>概率</th><th>预警信号</th></tr>
-    <tr><td>纯电转型再度失败</td><td class="red">2025年纯电SUV上市后月销不足3,000辆，纯电战略再遭重挫</td><td><span class="orange">中</span></td><td>纯电SUV预订量低于预期</td></tr>
-    <tr><td>竞争加剧压制盈利</td><td>问界/小米/蔚来乐道等竞品持续分流，价格战导致毛利率跌破17%</td><td><span class="orange">中高</span></td><td>毛利率连续2季低于18%</td></tr>
-    <tr><td>增程技术路线被替代</td><td>充电基础设施完善后，纯电优势凸显，增程成为过渡技术</td><td><span style="color:#ffc107;">中低</span></td><td>纯电渗透率持续提升，增程增速放缓</td></tr>
-    <tr><td>智驾能力持续落后</td><td>端到端大模型无法追上华为ADS，失去科技属性溢价</td><td><span class="orange">中</span></td><td>第三方评测中智驾评分持续低于头部水平</td></tr>
-    <tr><td>用户口碑逆转</td><td>L系列出现重大质量缺陷（如增程器故障、车身锈蚀等）</td><td><span style="color:#ffc107;">低</span></td><td>投诉率异常上升</td></tr>
-    <tr><td>海外市场受阻</td><td>欧盟/美国/中东关税壁垒限制出口</td><td><span style="color:#ffc107;">中低</span></td><td>主要目标市场关税大幅提升</td></tr>
+    <tr><th>风险</th><th>概率</th><th>影响</th><th>应对</th></tr>
+    <tr><td>i8纯电销量不达预期</td><td class="orange">50%</td><td class="red">高</td><td>依赖纯电转型，失败则长期承压</td></tr>
+    <tr><td>价格战持续至2027年</td><td class="orange">60%</td><td class="red">高</td><td>毛利率难以回到20%+，盈利恢复缓慢</td></tr>
+    <tr><td>智驾差距扩大</td><td class="orange">40%</td><td>中</td><td>高端车型竞争力下降</td></tr>
+    <tr><td>碳酸锂价格反弹</td><td class="green">30%</td><td>中</td><td>成本压力再现</td></tr>
+    <tr><td>MEGA退市/减值</td><td class="green">20%</td><td>低</td><td>已确认失败，影响有限</td></tr>
+    <tr><td>港股持续下跌导致二次融资困难</td><td class="orange">35%</td><td>中</td><td>评级下调风险</td></tr>
   </table>
 
-  <h3>核心风险深度分析：纯电转型的不确定性</h3>
-  <div class="txt" style="color:#f44336;">
-    <b>这是理想未来3年最大的战略风险。</b><br>
-    <span class="dot">·</span> MEGA的失败不只是单车型失败——它暴露了理想在纯电领域的产品定义能力不如增程领域<bt>
-    <span class="dot">·</span> 2025-2026年纯电SUV是决定公司"增程→纯电"转型命运的关键战役<br>
-    <span class="dot">·</span> 纯电车型需要建立全新的供应链（800V高压平台、碳化硅器件等）——比增程更复杂<br>
-    <span class="dot">·</span> 若纯电SUV再度失败，公司将被迫长期依赖增程，而增程市场5年后可能达到瓶颈<br>
-    <span class="dot">·</span> 纯电研发投入巨大（2024年研发费110亿）——若失败将导致大量资源浪费
-  </div>
-
-  <h3>敏感性分析</h3>
-  <table class="tbl">
-    <tr><th>压力情景</th><th>净利影响</th><th>股价压力</th></tr>
-    <tr><td>毛利率降至17%（-3.5pp）</td><td>-30%</td><td class="orange">-20%</td></tr>
-    <tr><td>纯电SUV月销<3,000辆</td><td>-10%（研发沉没）</td><td class="red">-25%</td></tr>
-    <tr><td>小米SUV月销>2万辆分流</td><td>-15%</td><td class="red">-20%</td></tr>
-    <tr><td>产品结构下移+L6占比>40%</td><td>-20%（均价下降）</td><td class="orange">-15%</td></tr>
-    <tr><td class="red">极端叠加（纯电失败+价格战+分流）</td><td class="red">-60%</td><td class="red" style="font-weight:bold;">-45%</td></tr>
-  </table>
-
-  <h3>三情景估值</h3>
+  <h3 style="margin-top:12px">三情景估值</h3>
   <div class="scn">
-    <div class="scc sc1"><h4>😄 乐观</h4><div class="pct">+95%</div><div class="dt">PE 28× · 市值4,200亿</div></div>
-    <div class="scc sc2"><h4>😐 基准</h4><div class="pct">+40%</div><div class="dt">PE 25× · 市值3,000亿</div></div>
-    <div class="scc sc3"><h4>😟 悲观</h4><div class="pct">-7%</div><div class="dt">PE 20× · 市值2,000亿</div></div>
+    <div class="scc sc1"><h4>✅ 乐观</h4><div class="pct">100-120 HKD</div><div class="dt">i8超预期+盈利恢复<br>PS修复至1.5x</div></div>
+    <div class="scc sc2"><h4>🟡 中性</h4><div class="pct">55-70 HKD</div><div class="dt">i8温和起步+L系列稳态<br>PS 0.9-1.1x</div></div>
+    <div class="scc sc3"><h4>🔴 悲观</h4><div class="pct">30-45 HKD</div><div class="dt">i8失败+持续亏损<br>PS跌至0.5x</div></div>
   </div>
 
-  <h3>避雷清单</h3>
-  <table class="tbl">
-    <tr><th>检查项</th><th>结果</th></tr>
-    <tr><td>商誉占净资产>50%？</td><td><span class="tg tgg">否 ✓ 商誉极低</span></td></tr>
-    <tr><td>应收账款增速>收入增速？</td><td><span class="tg tgg">否 ✓ 直营模式回款快</span></td></tr>
-    <tr><td>经营现金流持续为负？</td><td><span class="tg tgg">否 ✓ 经营现金流190亿，充沛</span></td></tr>
-    <tr><td>存货异常堆积？</td><td><span class="tg tgg">否 ✓ 存货周转正常</span></td></tr>
-    <tr><td>关联交易异常？</td><td><span class="tg tgg">否 ✓ 关联交易透明</span></td></tr>
-    <tr><td>大股东高比例质押？</td><td><span class="tg tgg">否 ✓ 李想持股22%未大幅质押</span></td></tr>
-    <tr><td>审计意见非标准？</td><td><span class="tg tgg">否 ✓ 标准无保留意见</span></td></tr>
-  </table>
-  <div style="padding:10px;background:#1a3a1a;border-radius:8px;text-align:center;margin-top:8px;border:1px solid #2a5a2a;">
-    <span style="color:#4caf50;">✅ 财务层面非常健康，不存在重大财务造假或治理风险。主要风险集中于纯电转型和竞争格局</span>
+  <h3 style="margin-top:12px">避雷清单</h3>
+  <div class="bq" style="border-left-color:#f44336">
+    <div style="margin-bottom:4px"><span class="red">⚠️</span> <b>i8月交付<3000辆（上市后Q3数据）</b>：纯电转型证伪</div>
+    <div style="margin-bottom:4px"><span class="red">⚠️</span> <b>连续两个季度经营现金流为负</b>：现金消耗加速</div>
+    <div style="margin-bottom:4px"><span class="red">⚠️</span> <b>毛利率跌破16%</b>：定价权丧失信号</div>
+    <div style="margin-bottom:4px"><span class="red">⚠️</span> <b>李想大幅减持股份</b>：创始人信心动摇</div>
   </div>
-
-  <h3>清算价值</h3>
-  <table class="tbl">
-    <tr><th>资产项</th><th>账面价值</th><th>清算价值</th></tr>
-    <tr><td>货币资金</td><td>420亿</td><td class="gold">420亿</td></tr>
-    <tr><td>存货（在制品+产成品）</td><td>~200亿</td><td>140亿</td></tr>
-    <tr><td>固定资产（厂房+设备+产线）</td><td>~350亿</td><td>200亿</td></tr>
-    <tr><td>无形资产（技术+品牌）</td><td>~80亿</td><td>30亿</td></tr>
-    <tr><td class="gold">合计</td><td>约1,050亿</td><td>约790亿</td></tr>
-  </table>
-  <div class="txt">清算价值约790亿人民币，当前市值约2,150亿。市值高出清算价值约2.7倍——溢价部分体现了品牌溢价+增长预期+技术价值。对于一家盈利、FCF为正、货币资金充裕的公司而言，这个溢价在合理范围内。</div>
 </div>
 
-<!-- ========== 综合评级 ========== -->
+<!-- M11 综合评级 -->
 <div id="s12" class="card">
-  <h2>六、综合评级 & 最终结论</h2>
+  <h2>综合评级 & 最终结论</h2>
 
-  <h3>综合评分</h3>
-  <div class="dim-row"><span class="dim-label">商业模式</span><div class="dim-bg"><div class="dim-fill c7" style="width:78%"></div></div><span class="dim-sc" style="color:#8bc34a;">7.8</span><span style="font-size:10px;color:#888;margin-left:4px;">家庭SUV标杆+精准产品定义</span></div>
-  <div class="dim-row"><span class="dim-label">壁垒强度</span><div class="dim-bg"><div class="dim-fill c7" style="width:68%"></div></div><span class="dim-sc" style="color:#ffc107;">6.8</span><span style="font-size:10px;color:#888;margin-left:4px;">品牌认知强但技术壁垒一般</span></div>
-  <div class="dim-row"><span class="dim-label">管理层</span><div class="dim-bg"><div class="dim-fill c7" style="width:75%"></div></div><span class="dim-sc" style="color:#8bc34a;">7.5</span><span style="font-size:10px;color:#888;margin-left:4px;">产品型创始人+利益高度一致</span></div>
-  <div class="dim-row"><span class="dim-label">财务质量</span><div class="dim-bg"><div class="dim-fill c7" style="width:75%"></div></div><span class="dim-sc" style="color:#8bc34a;">7.5</span><span style="font-size:10px;color:#888;margin-left:4px;">连续盈利+FCF为正+货币资金420亿</span></div>
-  <div class="dim-row"><span class="dim-label">成长性</span><div class="dim-bg"><div class="dim-fill c7" style="width:70%"></div></div><span class="dim-sc" style="color:#ffc107;">7.0</span><span style="font-size:10px;color:#888;margin-left:4px;">营收增速放缓至17-25%</span></div>
-  <div class="dim-row"><span class="dim-label">安全边际</span><div class="dim-bg"><div class="dim-fill c6" style="width:64%"></div></div><span class="dim-sc" style="color:#ffc107;">6.4</span><span style="font-size:10px;color:#888;margin-left:4px;">PE 22.5倍合理偏低，纯电转型是关键变量</span></div>
+  <h3>六维评分</h3>
+  <div class="dim-row"><div class="dim-label">商业模式</div><div class="dim-bg"><div class="dim-fill" style="width:60%;background:#ff9800"></div></div><div class="dim-sc gold">6/10</div></div>
+  <div class="dim-row"><div class="dim-label">护城河</div><div class="dim-bg"><div class="dim-fill" style="width:60%;background:#ff9800"></div></div><div class="dim-sc gold">6/10</div></div>
+  <div class="dim-row"><div class="dim-label">管理层</div><div class="dim-bg"><div class="dim-fill" style="width:65%;background:#ff9800"></div></div><div class="dim-sc gold">6.5/10</div></div>
+  <div class="dim-row"><div class="dim-label">财务健康</div><div class="dim-bg"><div class="dim-fill" style="width:50%;background:#ffc107"></div></div><div class="dim-sc gold">5/10</div></div>
+  <div class="dim-row"><div class="dim-label">估值</div><div class="dim-bg"><div class="dim-fill" style="width:45%;background:#ffc107"></div></div><div class="dim-sc gold">4.5/10</div></div>
+  <div class="dim-row"><div class="dim-label">成长性</div><div class="dim-bg"><div class="dim-fill" style="width:40%;background:#ffc107"></div></div><div class="dim-sc gold">4/10</div></div>
 
-  <h3>核心亮点</h3>
-  <div class="txt">
-    <span class="dot">·</span> <b>品牌壁垒深厚</b>："家庭SUV=理想"的消费者心智占据，竞品难以替代<br>
-    <span class="dot">·</span> <b>财务健康度新势力第一</b>：连续2年盈利+经营现金流190亿+货币资金420亿+FCF为正<br>
-    <span class="dot">·</span> <b>精准产品定义能力</b>：李想的"产品经理基因"是公司最宝贵的核心竞争力<br>
-    <span class="dot">·</span> <b>增程赛道龙头地位</b>：在增程市场市占率约17%，处于领先位置<br>
-    <span class="dot">·</span> <b>PE估值偏低</b>：22.5倍PE（2025E仅18.5倍）在新势力中最低，安全边际充足<br>
-    <span class="dot">·</span> <b>用户基盘持续扩大</b>：年交付从2022年13万辆→2025年约68万辆，车主社区口碑好
-  </div>
+  <h3 style="margin-top:12px">核心亮点</h3>
+  <div class="txt"><span class="dot">●</span><b>家庭用户心智壁垒：</b>理想在25-45万家庭SUV市场建立了最强品牌认知，L系列产品力经过市场验证。</div>
+  <div class="txt"><span class="dot">●</span><b>充足的现金储备：</b>账面约500亿RMB，可支撑多年亏损期。</div>
+  <div class="txt"><span class="dot">●</span><b>产品定义能力：</b>李想团队对用户需求的洞察力在新势力中最强。</div>
+  <div class="txt"><span class="dot">●</span><b>唯一盈利新势力（2025年仍整体盈利）：</b>虽然利润大幅缩水，但未陷入亏损-融资-再亏损的恶性循环。</div>
 
-  <h3>核心风险</h3>
-  <div class="txt" style="color:#ff9800;">
-    <span class="dot">·</span> <b>纯电转型不确定性（最大风险）</b>：MEGA失败后纯电SUV的成败决定公司下一个五年<br>
-    <span class="dot">·</span> 竞争加剧：问界/小米/蔚来乐道等竞品大量涌入，产品日益同质化<br>
-    <span class="dot">·</span> 毛利率下降趋势：从2023年22.2%降至2024年20.5%，L6占比上升+价格战持续施压<br>
-    <span class="dot">·</span> 智驾能力落后于华为/小鹏：在科技属性日益重要的新能源车市场，智驾差距可能影响长期竞争力<br>
-    <span class="dot">·</span> 增程技术路线的长期天花板：充电基础设施完善后增程的差异化优势将递减
-  </div>
+  <h3 style="margin-top:12px">核心风险</h3>
+  <div class="txt"><span class="dot">●</span><b>纯电转型成败未定：</b>MEGA失败后，i8是否成功关系公司未来5年命运。</div>
+  <div class="txt"><span class="dot">●</span><b>盈利能力急剧恶化：</b>H2已亏损，2026年能否扭亏存疑。</div>
+  <div class="txt"><span class="dot">●</span><b>竞争加剧：</b>问界/比亚迪/小米全面围攻，L系列产品力优势正在缩小。</div>
+  <div class="txt"><span class="dot">●</span><b>智驾短板：</b>在智能化成为核心卖点的今天，理想智驾落后对手1-2年。</div>
 
-  <h3>价值投资理论应用</h3>
+  <h3 style="margin-top:12px">价值投资理论应用</h3>
   <table class="tbl">
-    <tr><th>模块</th><th>大师理念</th><th>应用分析</th></tr>
-    <tr><td>M1</td><td>段永平<br>「本分」</td><td style="text-align:left;font-size:11px;">理想精准聚焦"家庭用户"这一细分市场，不做大而全只做深而精——这是最纯粹的"本分"</td></tr>
-    <tr><td>M2</td><td>巴菲特<br>「护城河」</td><td style="text-align:left;font-size:11px;">护城河3.4/5.0——品牌认知强但技术壁垒弱，核心竞争力是"产品定义"而非不可复制技术</td></tr>
-    <tr><td>M3</td><td>巴菲特<br>「德才兼备」</td><td style="text-align:left;font-size:11px;">李想是中国车企中最优秀的产品经理CEO，持股22%利益一致，但"一言堂"模式是隐忧</td></tr>
-    <tr><td>M4</td><td>巴菲特<br>「FCF为王」</td><td style="text-align:left;font-size:11px;">FCF连续2年为正，FCF/净利润>100%，现金创造能力在新势力中最优</td></tr>
-    <tr><td>M5</td><td>邱国鹭<br>「定价权」</td><td style="text-align:left;font-size:11px;">定价权评分3.2/5.0——品牌溢价在家庭SUV市场较强，但价格战压力下议价能力受限</td></tr>
-    <tr><td>M6</td><td>巴菲特<br>「资本配置」</td><td style="text-align:left;font-size:11px;">资本配置得分良好——研发投入合理（110亿/年）、FCF为正、货币资金充裕，但尚未启动分红</td></tr>
-    <tr><td>M7</td><td>邱国鹭<br>「剩者为王」</td><td style="text-align:left;font-size:11px;">新能源淘汰赛中理想是"最有可能剩下来"的新势力——健康的财务是存活的保障</td></tr>
-    <tr><td>M8</td><td>彼得·林奇<br>「增长类型」</td><td style="text-align:left;font-size:11px;">"快速成长型"公司——营收从270亿→1,800亿，净利润从-3亿→95亿，增长轨迹清晰</td></tr>
-    <tr><td>M9</td><td>芒格<br>「逆向思维」</td><td style="text-align:left;font-size:11px;">市场对纯电转型过度悲观，忽略了理想品牌壁垒和财务安全垫的防守价值</td></tr>
-    <tr><td>M10</td><td>芒格<br>「Pre-mortem」</td><td style="text-align:left;font-size:11px;">纯电转型失败是最大"死因"，竞争恶化和价格战是次要风险</td></tr>
-    <tr><td>M11</td><td>巴菲特<br>「安全边际」</td><td style="text-align:left;font-size:11px;">PE 22.5倍（2025E 18.5倍）提供了较好的安全边际——即使纯电转型不成功估值下行空间有限</td></tr>
+    <tr><th>维度</th><th>代表人物</th><th>应用分析</th></tr>
+    <tr><td>M1</td><td>彼得·林奇<br><span style="font-size:10px;color:#888">「困境反转型」</span></td><td>理想2025年遭遇盈利危机，属于林奇定义的"困境反转型"——如果i8成功，可能走出困境重回增长。但风险在于反转型投资需要真正的转折点信号，目前尚未出现。</td></tr>
+    <tr><td>M2</td><td>段永平<br><span style="font-size:10px;color:#888">「差异化」</span></td><td>理想的差异化（家庭定位）仍然存在，但在被竞争对手模仿侵蚀。段永平会说"好的差异化能持续吗"——目前看持续力在下降。</td></tr>
+    <tr><td>M3</td><td>巴菲特<br><span style="font-size:10px;color:#888">「好生意+好价格」</span></td><td>理想当前不符合巴菲特的"好生意"标准——盈利太脆弱，护城河在变窄。但PB接近1.6x，如果i8成功后盈利恢复，有可能是好价格。</td></tr>
+    <tr><td>M4-M6</td><td>费雪<br><span style="font-size:10px;color:#888">「成长空间」</span></td><td>费雪会关注理想的研发投入（年80亿+）能否转化为产品力。智驾落后是最大的隐忧——成长型公司不能有致命的短板。</td></tr>
+    <tr><td>M7-M10</td><td>格雷厄姆<br><span style="font-size:10px;color:#888">「安全边际」</span></td><td>当前安全边际不足——PE 94x无安全边际可言。格雷厄姆会说：只有市值跌到现金储备以下（约500亿，对应PB<0.8x）才叫安全边际。</td></tr>
   </table>
+
+  <div class="bq" style="margin-top:12px">
+    <b>最终结论：</b>理想汽车是一张"困境反转型"牌，而不是传统价值投资标的。当前的估值（PS 0.94x、PB 1.68x）已经反映了大量悲观预期，但盈利端的恶化尚未见底。核心变量是2026H2 i8纯电SUV的交付表现——成功则估值修复至PS 1.5x+，失败则可能跌至PB 1.0x以下。建议等待i8上市后1-2个季度的交付数据再做决策，不急于此时抄底。<br><br>
+    ⚠️ 本内容仅供理论学习和研究练习使用，不构成投资建议，不能作为投资依据。股市有风险，投资需谨慎。
+  </div>
 </div>
 
-<!-- ========== 附录 ========== -->
+<!-- 附录 -->
 <div id="s13" class="card">
   <h2>附录</h2>
-
-  <h3>附录A：数据来源</h3>
-  <table class="tbl">
-    <tr><th>数据类型</th><th>来源平台</th><th>截止日期</th></tr>
-    <tr><td>财务报表</td><td>港交所披露/公司年报</td><td>2024年报</td></tr>
-    <tr><td>销量数据</td><td>理想汽车官方月度交付公告/乘联会</td><td>2025年12月</td></tr>
-    <tr><td>估值数据</td><td>港交所实时/东方财富</td><td>2026-06-12</td></tr>
-    <tr><td>行业数据</td><td>乘联会/中汽协</td><td>2025-2026</td></tr>
-    <tr><td>机构预测</td><td>摩根士丹利/中金/中信/花旗/高盛研报</td><td>2025年Q3-Q4</td></tr>
-    <tr><td>产品数据</td><td>理想汽车官网/发布会/36氪</td><td>2024-2025</td></tr>
-  </table>
-
-  <h3>附录B：公司信息</h3>
-  <table class="tbl">
-    <tr><th>项目</th><th>内容</th></tr>
-    <tr><td>公司全称</td><td>Li Auto Inc.（理想汽车）</td></tr>
-    <tr><td>港股代码</td><td>02015.HK</td></tr>
-    <tr><td>美股代码</td><td>LI (NASDAQ)</td></tr>
-    <tr><td>所属行业</td><td>新能源 · 智能电动汽车制造</td></tr>
-    <tr><td>总部地址</td><td>北京市顺义区/江苏省常州市（工厂）</td></tr>
-    <tr><td>创始人/实控人</td><td>李想（持股约22%，投票权约75%）</td></tr>
-    <tr><td>董事长/CEO</td><td>李想</td></tr>
-    <tr><td>核心品牌/产品</td><td>理想L6/L7/L8/L9/GEGA（增程+纯电）</td></tr>
-    <tr><td>2024年交付量</td><td>约50.5万辆</td></tr>
-    <tr><td>2025年交付量</td><td>约68万辆</td></tr>
-  </table>
-
-  <h3>附录C：关键术语说明</h3>
-  <div class="txt" style="font-size:11px;">
-    <span class="dot">·</span> 增程式电动车（EREV）：发动机仅用于发电不参与驱动，电池电量不足时发动机发电驱动电机，解决纯电里程焦虑<br>
-    <span class="dot">·</span> 理想AD Max：理想汽车自研的高阶智能驾驶系统，当前版本基于端到端大模型（End-to-End）架构<br>
-    <span class="dot">·</span> 理想SS智能空间：基于高通骁龙8295芯片的车载智能座舱系统，支持语音/手势/触摸多模交互<br>
-    <span class="dot">·</span> Whale/Manta纯电平台：理想汽车自研的两大纯电平台，分别对应大型车和中型车<br>
-    <span class="dot">·</span> NPS（Net Promoter Score）：净推荐值，衡量客户口碑和品牌忠诚度的核心指标
+  <div class="txt"><span class="dot">●</span>2020-2024年财务数据：理想汽车年度报告（港交所披露），货币单位为人民币。</div>
+  <div class="txt"><span class="dot">●</span>2025年报数据：新浪财经港股页面（stock.finance.sina.com.cn/hkstock/quotes/02015.html），财务数据单位为百万港币，按汇率0.935换算为人民币。</div>
+  <div class="txt"><span class="dot">●</span>实时行情数据：腾讯API（qt.gtimg.cn/q=hk02015），2026年6月12日。</div>
+  <div class="txt"><span class="dot">●</span>K线数据：腾讯API（web.ifzq.gtimg.cn/appstock/app/fqkline/get），2021年8月至2026年6月。</div>
+  <div class="txt"><span class="dot">●</span>行业对比数据：各公司年报、Wind、新浪财经。</div>
+  <div class="txt"><span class="dot">●</span>机构观点：基于公开研报信息，目标价和评级可能已滞后。</div>
+  <div class="txt"><span class="dot">●</span>毛利率和现金流2025年数据为估算值，非精确年报数据。</div>
+  <div class="txt"><span class="dot">●</span>DCF估值采用简化模型，仅供内部参考，不构成投资建议。</div>
+  <div class="footer">
+    ⚠️ 声明：本内容仅供理论学习和研究练习使用，不构成投资建议，不能作为投资依据。股市有风险，投资需谨慎。<br>
+    报告生成日期：2026-06-12 | 数据截止：2026-06-12<br>
+    理想汽车（Li Auto Inc.） · 02015.HK / LI.US
   </div>
-
-  <div class="txt" style="font-size:11px;">
-    <b>数据声明：</b><br>
-    <span class="dot">·</span> 本报告所有数据均来源于港交所披露、公司年报、乘联会、券商研报及公开媒体报道<br>
-    <span class="dot">·</span> 部分财务数据采用保守处理原则（2024年净利润取80.5亿，毛利率取20.5%）<br>
-    <span class="dot">·</span> 不包含任何内幕信息或未公开数据<br>
-    <span class="dot">·</span> 报告使用截止日期：2026年6月12日
-  </div>
-
-  <div style="padding:12px;background:#1a1a2a;border-radius:8px;margin-top:10px;text-align:center;border:1px solid #333;">
-    <b style="color:#ff9800;">⚠️ 重要提示</b><br>
-    <span style="font-size:11px;color:#888;">
-      1. 本报告仅供理论学习和理论练习使用，不构成任何投资建议<br>
-      2. 不能作为投资决策依据，股市有风险，投资需谨慎<br>
-      3. 报告中所有预测和分析均为理论推演，不代表实际投资结果<br>
-      4. 投资者应根据自身风险承受能力独立判断
-    </span>
-  </div>
-</div>
-
-<div class="footer">
-  报告完成日期：2026年6月<br>
-  分析工具：价值投资分析框架M1-M11 · 理想汽车（02015.HK）完整研究报告<br>
-  ⚠️ 本内容仅供理论学习和理论练习使用，不构成投资建议，不能作为投资依据。股市有风险，投资需谨慎。
 </div>
 
 </body>
