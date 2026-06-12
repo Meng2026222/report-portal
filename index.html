@@ -1196,7 +1196,7 @@ function renderComments(el, comments, replies, path) {
     html += '<textarea class="comment-input" id="commentInput-' + path.replace(/[^a-zA-Z0-9]/g,'') + '" placeholder="写下你的评论..." rows="3"></textarea>'
     html += '<div class="comment-form-actions">'
     html += '<span class="comment-user-label">' + (user.user_metadata?.name || user.email.split('@')[0]) + '</span>'
-    html += '<button class="comment-submit" onclick="submitComment('' + path + '')">发表评论</button>'
+    html += '<button class="comment-submit" onclick="submitComment(\"' + path + '\")">发表评论</button>'
     html += '<button class="comment-logout-btn" onclick="logout()">退出</button>'
     html += '</div></div>'
   } else {
@@ -1230,14 +1230,14 @@ function renderCommentCard(comment, childReplies, path) {
   html += '<div class="comment-body">' + escHtml(comment.content).replace(/\n/g, '<br>') + '</div>'
   html += '<div class="comment-actions">'
   if (user && user.email) {
-    html += '<a href="#" class="comment-reply-btn" onclick="showReplyForm('' + comment.id + '','' + path + '');return false">回复</a>'
+    html += '<a href="#" class="comment-reply-btn" data-action="showreply" data-cid="' + comment.id + '" data-path="' + path + '">回复</a>'
   }
   html += '</div>'
 
   // Reply form (hidden)
   html += '<div class="comment-reply-form" id="replyForm-' + comment.id + '" style="display:none">'
   html += '<textarea class="comment-input" id="replyInput-' + comment.id + '" placeholder="回复 ' + escHtml(comment.author_name) + '..." rows="2"></textarea>'
-  html += '<button class="comment-submit" onclick="submitReply('' + comment.id + '','' + path + '')">回复</button>'
+  html += '<button class="comment-submit" data-action="reply" data-cid="' + comment.id + '" data-path="' + path + '">回复</button>'
   html += '</div>'
 
   // Replies
@@ -1349,6 +1349,22 @@ getSupabase().auth.getSession().then(({ data: { session } }) => {
     localStorage.setItem('SUPABASE_USER', JSON.stringify(session.user))
   }
   updateHeaderBtn()
+})
+
+// Event delegation for dynamic comment buttons
+document.addEventListener('click', function(e) {
+  var target = e.target
+  if (target.getAttribute('data-action') === 'showreply') {
+    var cid = target.getAttribute('data-cid')
+    var form = document.getElementById('replyForm-' + cid)
+    if (form) form.style.display = form.style.display === 'none' ? 'block' : 'none'
+    e.preventDefault()
+  }
+  if (target.getAttribute('data-action') === 'reply') {
+    var cid = target.getAttribute('data-cid')
+    var path = target.getAttribute('data-path')
+    submitReply(cid, path)
+  }
 })
 
 // Init on load
