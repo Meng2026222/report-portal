@@ -1332,7 +1332,7 @@ function escHtml(s) {
 }
 
 // Auth state listener
-getSupabase().auth.onAuthStateChange((event, session) => {
+try { getSupabase().auth.onAuthStateChange(function(event, session) {
   if (event === 'SIGNED_IN' && session) {
     localStorage.setItem('SUPABASE_USER', JSON.stringify(session.user))
     updateHeaderBtn()
@@ -1341,15 +1341,15 @@ getSupabase().auth.onAuthStateChange((event, session) => {
     localStorage.removeItem('SUPABASE_USER')
     updateHeaderBtn()
   }
-})
+}) } catch(e) { console.warn('Supabase auth init:', e) }
 
 // Check if user is already logged in on load
-getSupabase().auth.getSession().then(({ data: { session } }) => {
-  if (session) {
-    localStorage.setItem('SUPABASE_USER', JSON.stringify(session.user))
+try { getSupabase().auth.getSession().then(function(res) {
+  if (res.data && res.data.session) {
+    localStorage.setItem('SUPABASE_USER', JSON.stringify(res.data.session.user))
   }
   updateHeaderBtn()
-})
+}) } catch(e) { console.warn('Supabase session:', e); updateHeaderBtn() }
 
 // Event delegation for dynamic comment buttons
 document.addEventListener('click', function(e) {
