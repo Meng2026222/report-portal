@@ -8,9 +8,12 @@ REPO_DIR = '/data/data/com.termux/files/home/.hermes/hermes-agent/report-portal'
 FETCH_SCRIPT = os.path.join(REPO_DIR, 'scripts', 'fetch_kline.py')
 
 STOCKS = [
+    # A-share
     'sh600519', 'sz000858', 'sh600887', 'sh603288', 'sz300750',
     'sz002594', 'sh601127', 'sh601318', 'sh600036', 'sz300308',
     'sz002475', 'sz002415', 'sh600660', 'sh600276', 'sz300760',
+    # HK stocks (prefix hk)
+    'hk02015',  # 理想汽车-W
 ]
 
 def run(cmd, cwd=None):
