@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>宋城演艺 · 完整投资研究报告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;background:#0a0a1a;color:#e0e0e0;padding:14px;font-size:14px;line-height:1.6}
+h1{font-size:22px;color:#fff;margin:16px 0 4px;text-align:center}
+h2{font-size:16px;color:#f0c040;margin:20px 0 10px;border-left:3px solid #f0c040;padding-left:10px}
+h3{font-size:14px;color:#ccc;margin:14px 0 6px}
+h4{font-size:13px;color:#aaa;margin:10px 0 4px}
+.desc{font-size:12px;color:#888;margin-bottom:10px}
+.card{background:#1a1a12;border-radius:12px;padding:14px;margin-bottom:12px;border:1px solid #3a3a1a}
+.sc-wrap{text-align:center;margin-bottom:16px}
+.score-ring{width:80px;height:80px;border-radius:50%;background:conic-gradient(#f0c040 0deg 223deg,#333 223deg 360deg);display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+.score-inner{width:62px;height:62px;border-radius:50%;background:#1a1a12;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-num{font-size:24px;font-weight:bold;color:#f0c040;line-height:1}
+.score-label{font-size:10px;color:#888}
+.dim-row{display:flex;align-items:center;margin:6px 0}
+.dim-label{width:60px;font-size:12px;color:#aaa;flex-shrink:0}
+.dim-bg{flex:1;height:10px;background:#3a3a1e;border-radius:5px;margin:0 8px;overflow:hidden}
+.dim-fill{height:100%;border-radius:5px}
+.dim-sc{width:28px;text-align:right;font-size:12px;font-weight:bold;flex-shrink:0}
+.c9{background:#f0c040}.c7{background:#d4a030}.c6{background:#b8860b}.c5{background:#8b6914}.c4{background:#6b5010}
+.tbl{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}
+.tbl th{background:#3a3a1e;color:#f0c040;padding:7px 5px;text-align:center;font-weight:500}
+.tbl td{padding:6px 5px;text-align:center;border-bottom:1px solid #3a3a1e;font-size:11px}
+.tbl td:first-child{white-space:nowrap;font-size:12px}
+.tbl tr:last-child td{border-bottom:none}
+.gold{color:#f0c040;font-weight:bold}.green{color:#4caf50}.red{color:#f44336}.orange{color:#ff9800}.gray{color:#666}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mi{background:#0a0a0a;border-radius:8px;padding:10px;text-align:center}
+.mv{font-size:18px;font-weight:bold;color:#fff}
+.ml{font-size:10px;color:#888;margin-top:2px}
+.hb{display:flex;align-items:flex-start;margin:4px 0;min-height:20px}
+.hl{width:72px;font-size:11px;color:#aaa;flex-shrink:0;padding-top:2px}
+.ht{flex:1;height:16px;background:#3a3a1e;border-radius:8px;overflow:visible;margin:0 6px;position:relative}
+.hf{height:16px;border-radius:8px;display:flex;align-items:center;padding-left:6px;font-size:10px;color:#0a0a0a;overflow:visible;white-space:nowrap;text-shadow:none;min-width:0}
+.hv{font-size:10px;color:#999;white-space:nowrap;flex-shrink:0;padding-top:2px;margin-left:2px}
+.scn{display:flex;gap:6px;margin:8px 0}
+.scc{flex:1;border-radius:8px;padding:10px;text-align:center}
+.scc h4{font-size:12px;margin-bottom:4px;color:#fff}
+.scc .pct{font-size:18px;font-weight:bold}
+.scc .dt{font-size:10px;color:#ccc;margin-top:3px}
+.sc1{background:#1a3a1a;border:1px solid #2a5a2a}.sc1 .pct{color:#4caf50}
+.sc2{background:#1a1a2a;border:1px solid #3a3a4a}.sc2 .pct{color:#f0c040}
+.sc3{background:#3a1a1a;border:1px solid #5a2a2a}.sc3 .pct{color:#f44336}
+.tg{display:inline-block;font-size:10px;padding:1px 7px;border-radius:10px;margin:1px}
+.tgg{background:#3a3a1a;color:#f0c040;border:1px solid #5a5a2a}
+.tgr{background:#3a1a1a;color:#f44336;border:1px solid #5a2a2a}
+.tgo{background:#3a2a1a;color:#ff9800;border:1px solid #5a4a2a}
+.tgy{background:#222;color:#aaa;border:1px solid #333}
+.txt{padding:6px 0;font-size:13px;color:#ccc;line-height:1.7}
+.txt .dot{color:#f0c040;margin-right:4px}
+.bq{padding:10px;background:#0a0a0a;border-radius:8px;border-left:3px solid #f0c040;margin:8px 0;font-size:13px;color:#ddd;line-height:1.7}
+.cp{display:flex;align-items:center;margin:4px 0;font-size:12px}
+.cp .nm{width:88px;color:#aaa;flex-shrink:0}
+.cp .bt{flex:1;height:14px;background:#3a3a1e;border-radius:7px;overflow:hidden;margin:0 6px}
+.cp .bf{height:100%;border-radius:7px}
+.cp .vl{width:48px;text-align:right;font-weight:bold;flex-shrink:0}
+.footer{text-align:center;font-size:10px;color:#555;margin:24px 0 10px;padding-top:14px;border-top:1px solid #3a3a1e;line-height:1.8}
+.sticky-top{position:sticky;top:0;z-index:10;background:#0a0a1a;padding:8px 0;border-bottom:1px solid #3a3a1e;margin-bottom:12px}
+.toc{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
+.toc a{font-size:11px;color:#888;text-decoration:none;padding:3px 8px;border-radius:12px;border:1px solid #333}
+.toc a:active{background:#3a3a1e;color:#f0c040}
+</style>
+</head>
+<body>
+
+<div class="sticky-top">
+  <div style="text-align:center;font-size:11px;color:#555;margin-bottom:4px;">📌 点击跳转</div>
+  <div class="toc">
+    <a href="#s0">评分</a><a href="#s1">综合评价</a><a href="#s2">M1商业模式</a>
+    <a href="#s3">M2壁垒</a><a href="#s4">M3管理层</a><a href="#s5">M4财务</a>
+    <a href="#s6">M5产业链</a><a href="#s7">M6估值</a><a href="#s8">M7市占率</a>
+    <a href="#s9">M8催化剂</a><a href="#s10">M9预期差</a><a href="#s11">M10风险</a>
+    <a href="#s12">综合评级</a><a href="#s13">附录</a>
+  </div>
+</div>
+
+<div id="s0" class="sc-wrap">
+  <div class="score-ring"><div class="score-inner"><div class="score-num">6.2</div><div class="score-label">/10</div></div></div>
+  <h1 style="margin-top:4px;">宋城演艺 <span style="font-size:14px;color:#888;font-weight:400;">300144</span></h1>
+  <div class="desc">评级：良好 → 中国旅游演艺龙头，疫后业绩恢复但2025年再度承压，关注新项目贡献</div>
+  <div><span class="tg tgg">综合评级 6.2/10</span><span class="tg tgy">数据截至2025年报+2026Q1</span></div>
+</div>
+
+<div id="s-mcap" class="card">
+  <h2>市值走势</h2>
+  <div class="desc">上市以来市值变化（不复权收盘价 × 总股本）· 鼠标滚轮缩放 · 拖拽平移</div>
+  <div class="mcap-btns">
+    <button class="mcap-btn active" data-period="day">日线</button>
+    <button class="mcap-btn" data-period="week">周线</button>
+    <button class="mcap-btn" data-period="month">月线</button>
+    <button class="mcap-btn" data-period="year">年线</button>
+  </div>
+  <div class="mcap-chart-wrap">
+    <div class="mcap-tooltip" id="mcapTooltip"></div>
+    <svg id="mcapSvg" width="100%" height="380"></svg>
+  </div>
+  <div class="mcap-info">
+    当前市值：<span class="mcap-v" id="mcapCurrent">--</span> 亿 ·
+    历史最高：<span class="mcap-v" id="mcapHigh">--</span> 亿 ·
+    历史最低：<span class="mcap-v" id="mcapLow">--</span> 亿 ·
+    总股本：<span class="mcap-v" id="mcapShares">25.97</span> 亿股
+  </div>
+</div>
+
+<style>
+.mcap-btns{display:flex;gap:6px;margin:8px 0}
+.mcap-btn{flex:1;padding:6px 0;border:1px solid #333;background:#3a3a1e;color:#888;border-radius:6px;cursor:pointer;font-size:12px;text-align:center;transition:all .2s}
+.mcap-btn:hover{border-color:#f0c040;color:#f0c040}
+.mcap-btn.active{background:#f0c040;color:#0a0a0a;border-color:#f0c040;font-weight:bold}
+.mcap-chart-wrap{position:relative;width:100%;border-radius:8px;background:#0d0d10;border:1px solid #3a3a1e}
+.mcap-chart-wrap svg{display:block}
+.mcap-tooltip{position:absolute;display:none;background:rgba(10,10,10,.92);border:1px solid #f0c040;border-radius:6px;padding:6px 10px;font-size:12px;color:#fff;pointer-events:none;z-index:10;white-space:nowrap;transform:translate(-50%,-110%)}
+.mcap-tooltip .tt-date{color:#888;font-size:10px}
+.mcap-tooltip .tt-val{color:#f0c040;font-weight:bold}
+.mcap-info{text-align:center;font-size:12px;color:#888;margin-top:8px;padding:6px;background:#0d0d10;border-radius:6px}
+.mcap-v{color:#f0c040;font-weight:bold}
+.mcap-axis path,.mcap-axis line{stroke:#333;stroke-width:1}
+.mcap-axis text{fill:#666;font-size:10px}
+.mcap-grid line{stroke:#3a3a1e;stroke-width:0.5;stroke-dasharray:3,3}
+.mcap-light .mcap-btn{border-color:#c8c0b0;background:#e8e4dc;color:#707070}
+.mcap-light .mcap-btn:hover{border-color:#b8860b;color:#b8860b}
+.mcap-light .mcap-btn.active{background:#b8860b;color:#fff;border-color:#b8860b}
+.mcap-light .mcap-chart-wrap{background:#f4f1ea;border-color:#d8d4c8}
+.mcap-light .mcap-tooltip{background:rgba(255,255,255,.95);border-color:#b8860b;color:#3d3d3d}
+.mcap-light .mcap-tooltip .tt-date{color:#808080}
+.mcap-light .mcap-tooltip .tt-val{color:#b8860b}
+.mcap-light .mcap-info{background:#e8e4dc;color:#808080}
+.mcap-light .mcap-v{color:#b8860b}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  var PERIODS = ['day','week','month','year'];
+  var stockCode = '300144';
+  var chartData = [];
+  var viewStart = 0, viewEnd = 0;
+  var isDragging = false, dragStartX = 0, dragViewStart = 0;
+  var svg, tooltip, wrap;
+  var W = 0, H = 380;
+  var M = {top:20, right:20, bottom:35, left:65};
+
+  function applyThemeClass(){
+    var isLight = false;
+    try { isLight = parent && parent.document && parent.document.documentElement.getAttribute('data-theme') === 'light'; }
+    catch(e){ isLight = !!document.getElementById('hermes-theme-override'); }
+    var card = document.getElementById('s-mcap');
+    if(!card) return;
+    if(isLight){ card.classList.add('mcap-light'); } else { card.classList.remove('mcap-light'); }
+    if(chartData.length) render();
+  }
+
+  function init(){
+    svg = document.getElementById('mcapSvg');
+    tooltip = document.getElementById('mcapTooltip');
+    wrap = svg.parentElement;
+    svg.style.cursor = 'crosshair';
+    applyThemeClass();
+    setInterval(applyThemeClass, 1000);
+    document.querySelectorAll('.mcap-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        document.querySelectorAll('.mcap-btn').forEach(function(b){b.classList.remove('active')});
+        btn.classList.add('active');
+        loadPeriod(btn.getAttribute('data-period'));
+      });
+    });
+    svg.addEventListener('wheel', onWheel, {passive:false});
+    svg.addEventListener('mousedown', onDragStart);
+    window.addEventListener('mousemove', onDragMove);
+    window.addEventListener('mouseup', onDragEnd);
+    svg.addEventListener('mousemove', onHover);
+    svg.addEventListener('mouseleave', function(){
+      tooltip.style.display='none';
+      var cv=svg.querySelector('#mcapCrossV');if(cv)cv.setAttribute('opacity','0');
+      var ch2=svg.querySelector('#mcapCrossH');if(ch2)ch2.setAttribute('opacity','0');
+      var cd2=svg.querySelector('#mcapCrossDot');if(cd2)cd2.setAttribute('opacity','0');
+    });
+    window.addEventListener('resize', function(){if(chartData.length)render()});
+    loadPeriod('day');
+  }
+
+  function getThemeColors(){
+    var light = false;
+    try { light = parent && parent.document && parent.document.documentElement.getAttribute('data-theme') === 'light'; }
+    catch(e){ light = !!document.getElementById('hermes-theme-override'); }
+    return {
+      line: light ? '#b8860b' : '#f0c040',
+      grid: light ? '#e0dcd0' : '#3a3a1e',
+      axisText: light ? '#999' : '#666',
+      axisLine: light ? '#d8d4c8' : '#333',
+      gradTop: light ? '#b8860b' : '#f0c040',
+      gradBot: light ? '#b8860b' : '#f0c040',
+      gradTopOpacity: '0.25',
+      gradBotOpacity: '0.01'
+    };
+  }
+
+  function loadPeriod(period){
+    var url = '../kline/' + stockCode + '_' + period + '.json?t=' + Date.now();
+    fetch(url).then(function(r){return r.json()}).then(function(data){
+      chartData = data;
+      var defaultWindow = period === 'day' ? Math.min(500, data.length) : data.length;
+      viewStart = Math.max(0, data.length - defaultWindow);
+      viewEnd = data.length;
+      updateStats(data, period);
+      render();
+    }).catch(function(err){
+      console.error('Failed to load chart data:', err);
+    });
+  }
+
+  function updateStats(data, period){
+    if(!data.length) return;
+    var last = data[data.length-1];
+    var high = data.reduce(function(a,b){return a.value>b.value?a:b});
+    var low = data.reduce(function(a,b){return a.value<b.value?a:b});
+    document.getElementById('mcapCurrent').textContent = last.value.toFixed(1);
+    document.getElementById('mcapHigh').textContent = high.value.toFixed(1);
+    document.getElementById('mcapLow').textContent = low.value.toFixed(1);
+  }
+
+  function Mchart(){return W - M.left - M.right}
+
+  function render(){
+    if(!chartData.length) return;
+    var rect = wrap.getBoundingClientRect();
+    W = Math.max(300, rect.width || 600);
+    H = 380;
+    svg.style.width = W + 'px';
+    svg.style.height = H + 'px';
+    var cw = Mchart();
+    var ch = H - M.top - M.bottom;
+    if(cw <= 0 || ch <= 0) return;
+    var visible = chartData.slice(viewStart, viewEnd);
+    var n = visible.length;
+    if(n === 0) return;
+    var minVal = Infinity, maxVal = -Infinity;
+    for(var i=0;i<n;i++){var v=visible[i].value;if(v<minVal)minVal=v;if(v>maxVal)maxVal=v;}
+    var pad = (maxVal - minVal) * 0.05 || maxVal * 0.05 || 100;
+    minVal = Math.max(0, minVal - pad);
+    maxVal = maxVal + pad;
+    var xScale = function(i){return M.left + (i/(n-1||1))*cw};
+    var yScale = function(v){return M.top + ch - (v-minVal)/(maxVal-minVal)*ch};
+    var points = '';
+    for(var i=0;i<n;i++){points += (i===0?'':' ') + xScale(i).toFixed(1)+','+yScale(visible[i].value).toFixed(1);}
+    var tc = getThemeColors();
+    var html = '';
+    var gridCount = 5;
+    html += '<g class="mcap-grid">';
+    for(var gi=0;gi<=gridCount;gi++){
+      var gv = minVal + (maxVal-minVal)*(gi/gridCount);
+      var gy = yScale(gv);
+      html += '<line x1="'+M.left+'" y1="'+gy.toFixed(1)+'" x2="'+(M.left+cw)+'" y2="'+gy.toFixed(1)+'" stroke="'+tc.grid+'"/>';
+      html += '<text x="'+(M.left-8)+'" y="'+(gy+4)+'" text-anchor="end" fill="'+tc.axisText+'" font-size="10">'+fmtVal(gv)+'</text>';
+    }
+    html += '</g>';
+    var labelCount = Math.min(10, n);
+    var step = Math.max(1, Math.floor(n / labelCount));
+    html += '<g class="mcap-axis">';
+    for(var li=0;li<n;li+=step){
+      var lx = xScale(li);
+      html += '<text x="'+lx.toFixed(1)+'" y="'+(H-5)+'" text-anchor="middle" fill="'+tc.axisText+'" font-size="9" transform="rotate(-30,'+lx.toFixed(1)+','+(H-10)+')">'+visible[li].time+'</text>';
+    }
+    html += '</g>';
+    var fillPath = 'M'+M.left+','+(M.top+ch)+' ';
+    for(var i=0;i<n;i++){fillPath += 'L'+xScale(i).toFixed(1)+','+yScale(visible[i].value).toFixed(1)+' ';}
+    fillPath += 'L'+(M.left+cw).toFixed(1)+','+(M.top+ch)+' Z';
+    html += '<path d="'+fillPath+'" fill="url(#mcapGrad)" opacity="0.35"/>';
+    html += '<polyline points="'+points+'" fill="none" stroke="'+tc.line+'" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>';
+    html += '<line id="mcapCrossV" x1="0" y1="'+M.top+'" x2="0" y2="'+(M.top+ch)+'" stroke="'+tc.line+'" stroke-width="1" stroke-dasharray="4,3" opacity="0" pointer-events="none"/>';
+    html += '<line id="mcapCrossH" x1="'+M.left+'" y1="0" x2="'+(M.left+cw)+'" y2="0" stroke="'+tc.line+'" stroke-width="1" stroke-dasharray="4,3" opacity="0" pointer-events="none"/>';
+    html += '<circle id="mcapCrossDot" cx="0" cy="0" r="4" fill="'+tc.line+'" stroke="#fff" stroke-width="1.5" opacity="0" pointer-events="none"/>';
+    var defs = '<defs><linearGradient id="mcapGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="'+tc.gradTop+'" stop-opacity="'+tc.gradTopOpacity+'"/><stop offset="100%" stop-color="'+tc.gradBot+'" stop-opacity="'+tc.gradBotOpacity+'"/></linearGradient></defs>';
+    svg.innerHTML = defs + html;
+  }
+
+  function fmtVal(v){
+    if(v >= 10000) return (v/10000).toFixed(1)+'万亿';
+    return v.toFixed(0)+'亿';
+  }
+
+  function doZoom(dir, cx){
+    var n = chartData.length;
+    var range = viewEnd - viewStart;
+    var center = cx !== undefined ? viewStart + (cx-M.left)/(Mchart())*range : (viewStart+viewEnd)/2;
+    var newRange = dir > 0 ? Math.max(20, range * 0.7) : Math.min(n, range * 1.4);
+    var cIdx = Math.max(0, Math.min(n, center));
+    viewStart = Math.max(0, Math.round(cIdx - newRange/2));
+    viewEnd = Math.min(n, viewStart + Math.round(newRange));
+    if(viewEnd-viewStart < newRange) viewStart = Math.max(0, viewEnd - Math.round(newRange));
+    render();
+  }
+
+  function onWheel(e){
+    e.preventDefault();
+    var rect = svg.getBoundingClientRect();
+    var cx = e.clientX - rect.left;
+    doZoom(e.deltaY < 0 ? 1 : -1, cx);
+  }
+
+  function onDragStart(e){
+    isDragging = true;
+    dragStartX = e.clientX;
+    dragViewStart = viewStart;
+    svg.style.cursor = 'grabbing';
+  }
+
+  function onDragMove(e){
+    if(!isDragging) return;
+    var n = chartData.length;
+    var range = viewEnd - viewStart;
+    var dx = e.clientX - dragStartX;
+    var dataPerPx = range / Mchart();
+    viewStart = Math.max(0, Math.min(n - range, Math.round(dragViewStart - dx * dataPerPx)));
+    viewEnd = viewStart + range;
+    render();
+  }
+
+  function onDragEnd(){isDragging=false;svg.style.cursor='crosshair';}
+
+  function onHover(e){
+    if(isDragging || !chartData.length) return;
+    var rect = svg.getBoundingClientRect();
+    var mx = e.clientX - rect.left;
+    var visible = chartData.slice(viewStart, viewEnd);
+    var n = visible.length;
+    if(n < 2) return;
+    var idx = Math.round((mx - M.left) / Mchart() * (n-1));
+    idx = Math.max(0, Math.min(n-1, idx));
+    var pt = visible[idx];
+    var cw2 = Mchart();
+    var px = M.left + (idx/(n-1))*cw2;
+    tooltip.innerHTML = '<div class="tt-date">'+pt.time+'</div><div class="tt-val">'+fmtVal(pt.value)+'</div>';
+    tooltip.style.left = px + 'px';
+    tooltip.style.top = (M.top+10) + 'px';
+    tooltip.style.display = 'block';
+    var cv=svg.querySelector('#mcapCrossV');if(cv){cv.setAttribute('x1',px);cv.setAttribute('x2',px);cv.setAttribute('opacity','0.7');}
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+
+<div id="s1" class="card">
+  <h2>一、综合评价</h2>
+
+  <div class="mg" style="margin-bottom:10px">
+    <div class="mi"><div class="mv" style="color:#f0c040">6.2</div><div class="ml">综合评级</div></div>
+    <div class="mi"><div class="mv" style="color:#ff9800">待观察</div><div class="ml">风险等级</div></div>
+    <div class="mi"><div class="mv" style="color:#f0c040">🎭</div><div class="ml">旅游演艺龙头</div></div>
+    <div class="mi"><div class="mv" style="color:#ff9800">承压</div><div class="ml">短期业绩</div></div>
+  </div>
+
+  <div class="bq">核心逻辑：宋城演艺是中国旅游演艺行业绝对龙头，独创"主题公园+文化演艺"模式，旗下"千古情"系列演出在多地形成品牌壁垒。公司运营固定资产轻（无地产重负）、现金流好（净现比>100%）、无有息负债（负债率<15%）。但业绩受宏观经济和旅游消费景气度影响大——2025年营收22.58亿（-6.6%）、净利8.18亿（-22%），2026Q1继续下滑15%。当前PE 20x处于历史中低位，但业绩拐点未明确。新项目青岛（2026年6月开业）和轻资产输出提供增量看点，高分红率（~80%）提供防御属性。</div>
+
+  <div class="mg" style="grid-template-columns:1fr 1fr 1fr;margin-top:10px">
+    <div class="mi"><div class="mv" style="font-size:14px;color:#f0c040">模式：独特</div><div class="ml">主题公园+演艺，轻资产扩张</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#ff9800">业绩：承压</div><div class="ml">连续下滑，等待拐点</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">估值：合理</div><div class="ml">PE 20x，分红率80%</div></div>
+  </div>
+
+  <table class="tbl" style="margin-top:10px">
+    <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+    <tr><td>三年预估空间</td><td class="gold">-10%~+30%</td><td>取决于旅游消费复苏+新项目爬坡</td></tr>
+    <tr><td>季度监控</td><td>千古情演出场次+青岛项目收入</td><td>旺季（暑期）数据尤关键</td></tr>
+    <tr><td>逻辑证伪点</td><td class="red">新项目持续亏损/大额减值</td><td>若青岛项目开业1年仍未止损则扩张逻辑证伪</td></tr>
+    <tr><td>止损触发</td><td class="red">营收连续3季下滑>10%</td><td>或再次出现大额资产减值损失</td></tr>
+  </table>
+</div>
+
+<div id="s2" class="card">
+  <h2>M1 商业模式 & 收入结构</h2>
+
+  <div class="txt"><span class="dot">●</span><b>核心定位：</b>宋城演艺是中国最大的旅游演艺公司，独创"主题公园+文化演艺"的商业模式。公司在杭州、三亚、丽江、桂林、西安等热门旅游城市运营"宋城"主题公园和"千古情"系列演出。核心产品是以当地历史文化为主题的室内大型歌舞秀（如《宋城千古情》《三亚千古情》），搭配主题公园的游乐设施和商业配套。</div>
+
+  <div class="txt"><span class="dot">●</span><b>盈利模式：</b>主要分三种：①重资产自营（杭州/三亚/丽江/桂林/西安等）——自建公园和剧场，收入来自门票（演出票+公园门票打包），毛利率约60-70%；②轻资产输出（炭河千古情/明月千古情等）——输出品牌和管理，收取管理费和收入分成，毛利率近100%；③网络票务——通过自营平台和OTA代售门票。重资产贡献约85%收入，轻资产约15%但毛利率极高。</div>
+
+  <h3>分业务收入结构（2025年估算）</h3>
+  <div class="hb"><div class="hl">杭州宋城</div><div class="ht"><div class="hf" style="width:25%;background:#f0c040;color:#0a0a0a">25%</div></div><div class="hv">~5.6亿</div></div>
+  <div class="hb"><div class="hl">三亚千古情</div><div class="ht"><div class="hf" style="width:14%;background:#d4a030;color:#0a0a0a">14%</div></div><div class="hv">~3.2亿</div></div>
+  <div class="hb"><div class="hl">丽江千古情</div><div class="ht"><div class="hf" style="width:12%;background:#d4a030;color:#0a0a0a">12%</div></div><div class="hv">~2.7亿</div></div>
+  <div class="hb"><div class="hl">西安/桂林等</div><div class="ht"><div class="hf" style="width:18%;background:#b8860b;color:#0a0a0a">18%</div></div><div class="hv">~4.1亿</div></div>
+  <div class="hb"><div class="hl">轻资产输出</div><div class="ht"><div class="hf" style="width:15%;background:#8b6914;color:#0a0a0a">15%</div></div><div class="hv">~3.4亿</div></div>
+  <div class="hb"><div class="hl">其他/电商</div><div class="ht"><div class="hf" style="width:16%;background:#6b5010;color:#0a0a0a">16%</div></div><div class="hv">~3.6亿</div></div>
+
+  <h3 style="margin-top:12px">近6年财务表现</h3>
+  <table class="tbl">
+    <tr><th>年份</th><th>营收(亿)</th><th>净利(亿)</th><th>毛利率</th><th>净利率</th><th>ROE</th><th>负债率</th><th>经营CF(亿)</th></tr>
+    <tr><td>2020 <span class="red">↓</span></td><td class="red">~9.0</td><td class="red">-17.52</td><td class="gray">~55%</td><td class="red">—</td><td class="red">—</td><td class="green">~16%</td><td class="orange">~2.0</td></tr>
+    <tr><td>2021</td><td>11.80</td><td>3.20</td><td>60.2%</td><td>27.1%</td><td>4.5%</td><td>15.8%</td><td>6.8</td></tr>
+    <tr><td>2022 <span class="red">↓</span></td><td class="red">4.58</td><td class="red">0.10</td><td class="gray">~52%</td><td class="red">2.1%</td><td class="red">0.1%</td><td class="green">14.2%</td><td class="red">1.2</td></tr>
+    <tr><td>2023</td><td>19.26</td><td class="red">-10.99</td><td>64.5%</td><td class="red">—</td><td class="red">—</td><td>15.1%</td><td>8.5</td></tr>
+    <tr><td>2024</td><td class="gold">24.17</td><td class="gold">10.49</td><td>66.8%</td><td>43.4%</td><td>12.8%</td><td class="green">14.1%</td><td class="gold">14.5</td></tr>
+    <tr><td>2025</td><td>22.58</td><td>8.18</td><td>64.1%</td><td>36.2%</td><td>9.5%</td><td class="green">13.5%</td><td>11.2</td></tr>
+  </table>
+  <div class="txt" style="font-size:11px;color:#888;margin-top:2px">注：2020年亏损含花房集团减值损失；2023年亏损含花房集团剩余股权投资减值约9.5亿。扣除减值后2023年经营利润约5.5亿。</div>
+
+  <div class="txt" style="margin-top:6px"><span class="dot">●</span><b>趋势判断：</b>公司经历COVID极端冲击（2022年仅4.58亿营收）后，2023-2024年强势恢复，2024年营收24.17亿已接近2019年峰值26亿水平。但2025年再度承压（-6.6%），反映旅游消费复苏动力减弱。2026年青岛项目开业有望贡献增量。整体看，公司盈利弹性大（经营杠杆高）——门票收入每增减10%，利润波动约20-30%。</div>
+
+  <h3>商业模式评估</h3>
+  <div class="dim-row"><div class="dim-label">可复制性</div><div class="dim-bg"><div class="dim-fill c7" style="width:65%"></div></div><div class="dim-sc gold">6.5/10</div></div>
+  <div class="dim-row"><div class="dim-label">护城河</div><div class="dim-bg"><div class="dim-fill c7" style="width:70%"></div></div><div class="dim-sc gold">7/10</div></div>
+  <div class="dim-row"><div class="dim-label">成长性</div><div class="dim-bg"><div class="dim-fill c5" style="width:45%"></div></div><div class="dim-sc gold">4.5/10</div></div>
+  <div class="dim-row"><div class="dim-label">现金流</div><div class="dim-bg"><div class="dim-fill c9" style="width:85%"></div></div><div class="dim-sc gold">8.5/10</div></div>
+  <div class="dim-row"><div class="dim-label">ROE趋势</div><div class="dim-bg"><div class="dim-fill c5" style="width:40%"></div></div><div class="dim-sc gold">4/10</div></div>
+</div>
+
+<div id="s3" class="card">
+  <h2>M2 壁垒斜率分析</h2>
+
+  <div class="txt"><span class="dot">●</span><b>宋城的核心护城河是「品牌壁垒+规模效应+先发占位」。'千古情'品牌经过20+年运营，已在中国旅游演艺市场形成极强的品牌认知——消费者去杭州/三亚/丽江旅游时，"看千古情"已成为标配项目。公司在核心旅游城市占据最佳选址，新进入者几乎无法在同样位置复制大型演艺项目。此外，宋城通过独创的"主题公园+演艺"复合模式提升了客单价和重游率。</div>
+
+  <table class="tbl" style="margin-top:10px">
+    <tr><th>壁垒维度</th><th>评分</th><th>说明</th></tr>
+    <tr><td>品牌壁垒</td><td class="gold">8/10</td><td>"千古情"已成为旅游演艺代名词，辨识度极高</td></tr>
+    <tr><td>选址壁垒</td><td class="gold">8/10</td><td>核心旅游城市最佳位置已被占据，稀缺资源</td></tr>
+    <tr><td>规模效应</td><td class="gold">7/10</td><td>多项目运营带来管理和采购规模优势</td></tr>
+    <tr><td>轻资产可复制性</td><td class="gold">7/10</td><td>品牌和管理输出模式已验证可行，但属地文化差异是挑战</td></tr>
+    <tr><td>转换成本</td><td class="gold">5/10</td><td>消费者可选的替代娱乐方式多（剧本杀/密室/其他演艺）</td></tr>
+    <tr><td>政策壁垒</td><td class="gold">6/10</td><td>大型演出需审批，新演艺项目有政府准入限制</td></tr>
+  </table>
+
+  <div class="bq" style="margin-top:10px">陷阱识别：宋城的护城河存在"时效衰减"风险——千古情的演出形式和内容已运行20年，年轻一代消费者对传统歌舞秀的兴趣可能在降低。如果新一代消费者偏好互动式/沉浸式/科技感更强的娱乐方式，千古情的吸引力将逐步下降。桂林"千古情"项目的市场表现不如预期即为警示信号。</div>
+
+  <h3>壁垒趋势</h3>
+  <div class="cp"><div class="nm">品牌壁垒</div><div class="bt"><div class="bf" style="width:80%;background:#f0c040"></div></div><div class="vl" style="color:#f0c040">稳定→</div></div>
+  <div class="cp"><div class="nm">选址壁垒</div><div class="bt"><div class="bf" style="width:80%;background:#f0c040"></div></div><div class="vl" style="color:#f0c040">稳定→</div></div>
+  <div class="cp"><div class="nm">产品力</div><div class="bt"><div class="bf" style="width:55%;background:#d4a030"></div></div><div class="vl" style="color:#ff9800">需关注↓</div></div>
+  <div class="cp"><div class="nm">轻资产扩张</div><div class="bt"><div class="bf" style="width:65%;background:#b8860b"></div></div><div class="vl" style="color:#f0c040">缓慢扩张→</div></div>
+</div>
+
+<div id="s4" class="card">
+  <h2>M3 管理层分析</h2>
+
+  <div class="txt"><span class="dot">●</span><b>实际控制人：</b>黄巧灵（创始人、董事长），通过杭州宋城集团控股有限公司持股约32%。黄巧灵是宋城品牌的缔造者，从1996年杭州宋城景区起家，主导了公司从单一景区到全国连锁旅游演艺集团的蜕变。</div>
+
+  <div class="txt"><span class="dot">●</span><b>管理层特征：</b>作为民营企业，管理层对大股东的依赖度较高。公司近几年在花房集团投资上遭遇重大减值损失（累计减值超15亿），暴露出管理层在非主业投资上的能力短板。</div>
+
+  <table class="tbl" style="margin-top:8px">
+    <tr><th>维度</th><th>评分</th><th>评价</th></tr>
+    <tr><td>诚信度</td><td class="gold">7/10</td><td>信息披露总体规范，花房减值充分披露</td></tr>
+    <tr><td>战略能力</td><td class="gold">6/10</td><td>文旅主业战略清晰，但花房投资是重大失误</td></tr>
+    <tr><td>执行力</td><td class="gold">7/10</td><td>新项目推进能力较强，青岛项目按计划开业</td></tr>
+    <tr><td>激励合理</td><td class="gold">6/10</td><td>民企激励机制灵活，但与业绩挂钩可更强</td></tr>
+    <tr><td>股东回报</td><td class="gold">9/10</td><td>2025年分红率近80%，对股东非常友好</td></tr>
+  </table>
+</div>
+
+<div id="s5" class="card">
+  <h2>M4 财务复盘 & 资本配置</h2>
+
+  <h3>5年财务摘要（2021-2025）</h3>
+  <table class="tbl">
+    <tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th></tr>
+    <tr><td>营收(亿)</td><td>11.80</td><td class="red">4.58</td><td>19.26</td><td class="gold">24.17</td><td>22.58</td></tr>
+    <tr><td>营收增速</td><td>+31.3%</td><td class="red">-61.2%</td><td>+320.8%</td><td>+25.5%</td><td class="red">-6.6%</td></tr>
+    <tr><td>净利润(亿)</td><td>3.20</td><td class="red">0.10</td><td class="red">-10.99</td><td class="gold">10.49</td><td>8.18</td></tr>
+    <tr><td>净利增速</td><td>扭亏</td><td class="red">-97%</td><td>亏损</td><td>扭亏为盈</td><td class="red">-22.0%</td></tr>
+    <tr><td>毛利率</td><td>60.2%</td><td>~52%</td><td>64.5%</td><td>66.8%</td><td>64.1%</td></tr>
+    <tr><td>净利率（经营）</td><td>27.1%</td><td>2.1%</td><td>~28%*</td><td>43.4%</td><td>36.2%</td></tr>
+    <tr><td>ROE</td><td>4.5%</td><td>0.1%</td><td>—</td><td>12.8%</td><td>9.5%</td></tr>
+    <tr><td>负债率</td><td>15.8%</td><td>14.2%</td><td>15.1%</td><td>14.1%</td><td>13.5%</td></tr>
+    <tr><td>经营CF(亿)</td><td>6.8</td><td>1.2</td><td>8.5</td><td>14.5</td><td>11.2</td></tr>
+    <tr><td>自由CF(亿)</td><td>5.5</td><td>0.5</td><td>7.0</td><td>12.8</td><td>9.5</td></tr>
+  </table>
+  <div class="txt" style="font-size:11px;color:#888">*2023年经营净利率约28%（扣除9.5亿减值后经营利润约5.5亿）</div>
+
+  <h3 style="margin-top:10px">现金流分析</h3>
+  <div class="txt"><span class="dot">●</span><b>盈利质量优秀：</b>经营现金流/净利润持续>120%（2024年达138%），说明利润真实且应收账款极少（门票业务现收现付）。</div>
+  <div class="txt"><span class="dot">●</span><b>资本开支可控：</b>新建一个主题公园+剧场需投资3-8亿，扩建周期1-2年。轻重资产结合模式降低了资本压力。</div>
+  <div class="txt"><span class="dot">●</span><b>分红慷慨：</b>2025年分红率近80%，对中小股东极为友好。</div>
+
+  <h3 style="margin-top:10px">杜邦分析（2024年）</h3>
+  <div class="dim-row"><div class="dim-label">净利率</div><div class="dim-bg"><div class="dim-fill c9" style="width:85%"></div></div><div class="dim-sc gold">8.5/10</div></div>
+  <div class="dim-row"><div class="dim-label">资产周转</div><div class="dim-bg"><div class="dim-fill c5" style="width:35%"></div></div><div class="dim-sc gold">3.5/10</div></div>
+  <div class="dim-row"><div class="dim-label">权益乘数</div><div class="dim-bg"><div class="dim-fill c9" style="width:90%"></div></div><div class="dim-sc gold">9/10</div></div>
+  <div class="txt" style="margin-top:4px;font-size:12px;color:#888">ROE 12.8% = 净利率43.4% × 资产周转率0.28 × 权益乘数1.16。高净利率驱动ROE，但资产周转率极低（主题公园属于重资产，每1元资产只能产生0.28元收入）。2025年受累于营收下降，ROE回落至9.5%。</div>
+</div>
+
+<div id="s6" class="card">
+  <h2>M5 成本结构 & 产业链议价权</h2>
+
+  <div class="txt"><span class="dot">●</span><b>成本结构：</b>营业成本占营收约36%（毛利率64%），其中人工成本（演员+运营人员）占比约45%、折旧摊销约25%、景区维护约15%、营销推广约10%、其他5%。公司毛利率对门票价格的敏感度极高——固定成本占比高（人工+折旧约70%），经营杠杆大。</div>
+
+  <h3>产业链议价权</h3>
+  <div class="cp"><div class="nm">上游（供应商）</div><div class="bt"><div class="bf" style="width:65%;background:#b8860b"></div></div><div class="vl" style="color:#f0c040">较强</div></div>
+  <div class="txt" style="font-size:11px;color:#888;margin:-2px 0 6px 92px">演艺设备、服装道具等可标准化采购，供应商竞争充分</div>
+  <div class="cp"><div class="nm">下游（OTA/旅行社）</div><div class="bt"><div class="bf" style="width:55%;background:#b8860b"></div></div><div class="vl" style="color:#f0c040">中等</div></div>
+  <div class="txt" style="font-size:11px;color:#888;margin:-2px 0 6px 92px">对携程/美团等OTA依赖度中等，但自营渠道占比提升中</div>
+  <div class="cp"><div class="nm">终端（消费者）</div><div class="bt"><div class="bf" style="width:70%;background:#f0c040"></div></div><div class="vl" style="color:#f0c040">较强</div></div>
+  <div class="txt" style="font-size:11px;color:#888;margin:-2px 0 6px 92px">千古情品牌有溢价能力，但受旅游消费景气度影响</div>
+
+  <div class="bq" style="margin-top:8px">核心风险：高经营杠杆意味着业绩弹性大但下行风险也大。如果宏观经济持续走弱导致旅游消费降级，门票收入下滑将大幅压缩利润。2025年营收仅降6.6%但净利降22%，正是经营杠杆的双刃剑效应。</div>
+</div>
+
+<div id="s7" class="card">
+  <h2>M6 FCF效率 & 估值</h2>
+
+  <h3>自由现金流估值（DCF简化）</h3>
+  <table class="tbl">
+    <tr><th>参数</th><th>保守</th><th>中性</th><th>乐观</th></tr>
+    <tr><td>基准FCF(亿)</td><td>7.5</td><td>9.5</td><td>12.0</td></tr>
+    <tr><td>前3年增速</td><td>2%</td><td>5%</td><td>8%</td></tr>
+    <tr><td>后5年增速</td><td>4%</td><td>6%</td><td>8%</td></tr>
+    <tr><td>永续增速</td><td>2%</td><td>3%</td><td>4%</td></tr>
+    <tr><td>折现率</td><td>10%</td><td>9%</td><td>8%</td></tr>
+    <tr><td>每股价值</td><td>~3.5元</td><td>~6.5元</td><td>~11元</td></tr>
+  </table>
+
+  <h3 style="margin-top:10px">当前估值与同业对比</h3>
+  <table class="tbl">
+    <tr><th>公司</th><th>市值</th><th>PE(TTM)</th><th>PB</th><th>ROE</th><th>营收增速</th><th>净利率</th></tr>
+    <tr><td style="color:#f0c040;font-weight:bold">宋城演艺</td><td style="color:#f0c040">~165亿</td><td style="color:#f0c040">~20x</td><td style="color:#f0c040">~2.0x</td><td style="color:#f0c040">9.5%</td><td style="color:#f44336">-6.6%</td><td style="color:#f0c040">36%</td></tr>
+    <tr><td>中青旅</td><td>~120亿</td><td>~25x</td><td>~1.5x</td><td>~6%</td><td>~3%</td><td>~8%</td></tr>
+    <tr><td>黄山旅游</td><td>~90亿</td><td>~22x</td><td>~1.8x</td><td>~7%</td><td>~2%</td><td>~15%</td></tr>
+    <tr><td>大连圣亚</td><td>~25亿</td><td>亏损</td><td>~3x</td><td>—</td><td>—</td><td>—</td></tr>
+  </table>
+
+  <div class="txt" style="margin-top:8px"><span class="dot">●</span><b>估值判断：</b>当前PE 20x在旅游行业中处于合理偏低水平（行业均值22-25x），但需注意这是基于2025年净利8.18亿计算的。如果2026年净利降至6.5亿（中性预期），则前瞻PE将升至25x。若2027年恢复至10亿+，则前瞻PE约16x。整体PE 20x基本合理，但缺乏明确向上催化剂。高分红率（股息率约4.5%*）提供一定下保护。</div>
+
+  <h3>历史估值区间</h3>
+  <div class="cp"><div class="nm">PE区间(5年)</div><div class="bt"><div class="bf" style="width:50%;background:#f0c040;margin-left:5%"></div></div><div class="vl">15-80x</div></div>
+  <div class="cp"><div class="nm">当前PE</div><div class="bt"><div class="bf" style="width:25%;background:#d4a030;margin-left:10%"></div></div><div class="vl" style="color:#f0c040">20x</div></div>
+  <div class="cp"><div class="nm">历史分位</div><div class="bt"><div class="bf" style="width:22%;background:#f0c040;margin-left:5%"></div></div><div class="vl" style="color:#f0c040">~15%（低）</div></div>
+</div>
+
+<div id="s8" class="card">
+  <h2>M7 增量市占率 & 行业终局</h2>
+
+  <div class="txt"><span class="dot">●</span><b>行业空间：</b>中国旅游演艺市场规模约200亿元（2025年），宋城演艺以22.6亿收入占据约11%市场份额，在主题旅游演艺领域市占率超过40%，是第一梯队龙头。旅游演艺行业受旅游人次和人均消费双重驱动，长期增长逻辑是中国人均GDP提升带动的旅游消费升级。</div>
+
+  <h3>行业空间测算</h3>
+  <table class="tbl">
+    <tr><th>细分市场</th><th>市场规模</th><th>宋城收入</th><th>市占率</th><th>增长潜力</th></tr>
+    <tr><td>主题旅游演艺</td><td>~50亿</td><td>~16亿(重资产)</td><td>~32%</td><td>新项目落地+存量提价</td></tr>
+    <tr><td>轻资产输出</td><td>~30亿</td><td>~3.4亿</td><td>~11%</td><td>成熟可复制模式</td></tr>
+    <tr><td>其他文旅</td><td>~120亿</td><td>~3.2亿</td><td>~3%</td><td>非核心</td></tr>
+  </table>
+
+  <div class="mg" style="margin:10px 0">
+    <div class="mi"><div class="mv" style="font-size:13px;color:#f0c040">~11%</div><div class="ml">整体旅游演艺市占率</div></div>
+    <div class="mi"><div class="mv" style="font-size:13px;color:#f0c040">~32%</div><div class="ml">主题演艺细分市占率</div></div>
+    <div class="mi"><div class="mv" style="font-size:13px;color:#f0c040">9个</div><div class="ml">运营千古情景区</div></div>
+    <div class="mi"><div class="mv" style="font-size:13px;color:#f0c040">3个</div><div class="ml">轻资产输出项目</div></div>
+  </div>
+
+  <div class="txt"><span class="dot">●</span><b>行业终局判断：</b>宋城演艺有望成为中国旅游演艺市场最集中的受益者——"千古情"品牌+先发布局双轮驱动，市场份额有望从11%提升至15-20%。但行业天花板相对有限（全国大型旅游演艺项目约300个），公司未来的增长更多来自：①新开项目（青岛/珠海等）；②存量项目提价（3-5年提价周期）；③轻资产输出扩大。总体增速可能保持在5-10%的中速水平。</div>
+</div>
+
+<div id="s9" class="card">
+  <h2>M8 催化剂 & 三年预测</h2>
+
+  <h3>未来催化剂时间表</h3>
+  <table class="tbl">
+    <tr><th>时间</th><th>催化剂</th><th>影响</th></tr>
+    <tr><td>2026年6月</td><td>青岛项目开业（预计）</td><td>贡献2026H2增量收入，预计首年收入1-2亿</td></tr>
+    <tr><td>2026暑期</td><td>旅游旺季演出场次恢复</td><td>旺季贡献全年约40%收入</td></tr>
+    <tr><td>2026-27</td><td>存量项目票价上调</td><td>直接增厚利润，提价5%可增利~1亿</td></tr>
+    <tr><td>2027</td><td>珠海/佛山等项目储备落地</td><td>打开新一线城市市场</td></tr>
+    <tr><td>持续</td><td>轻资产项目持续签约</td><td>高毛利收入占比提升</td></tr>
+  </table>
+
+  <h3 style="margin-top:12px">三情景预测</h3>
+  <div class="scn">
+    <div class="scc sc3">
+      <h4>🌱 保守</h4>
+      <div class="pct">~20亿</div>
+      <div class="dt">2027E营收</div>
+      <div class="pct" style="font-size:14px;margin-top:4px">~6.5亿</div>
+      <div class="dt">归母净利润</div>
+      <div class="dt" style="margin-top:6px;color:#888">旅游消费继续走弱，青岛项目爬坡慢</div>
+    </div>
+    <div class="scc sc2">
+      <h4>📈 中性</h4>
+      <div class="pct">~25亿</div>
+      <div class="dt">2027E营收</div>
+      <div class="pct" style="font-size:14px;margin-top:4px">~9.5亿</div>
+      <div class="dt">归母净利润</div>
+      <div class="dt" style="margin-top:6px;color:#888">旅游消费企稳+青岛放量+轻资产扩张</div>
+    </div>
+    <div class="scc sc1">
+      <h4>🚀 乐观</h4>
+      <div class="pct">~30亿</div>
+      <div class="dt">2027E营收</div>
+      <div class="pct" style="font-size:14px;margin-top:4px">~13亿</div>
+      <div class="dt">归母净利润</div>
+      <div class="dt" style="margin-top:6px;color:#888">旅游强复苏+多项目齐放量+提价成功</div>
+    </div>
+  </div>
+</div>
+
+<div id="s10" class="card">
+  <h2>M9 预期差 & 市场共识</h2>
+
+  <table class="tbl">
+    <tr><th>议题</th><th>市场共识</th><th>独立判断</th><th>预期差</th></tr>
+    <tr><td>业绩底部</td><td>2025年就是底部，26年恢复</td><td>2026Q1继续-15%，底部最早H2</td><td class="red">更谨慎</td></tr>
+    <tr><td>青岛项目</td><td>重大增量、超预期</td><td>首年贡献有限（<收入5%），爬坡需2-3年</td><td class="red">更谨慎</td></tr>
+    <tr><td>分红率</td><td>高分红支撑股价</td><td>80%分红率可持续性存疑（若利润继续降）</td><td class="red">需关注</td></tr>
+    <tr><td>估值水平</td><td>PE 20x便宜</td><td>旅游股合理PE 18-25x，目前中等偏下</td><td class="gold">中性</td></tr>
+    <tr><td>花房减值风险</td><td>减值已出清</td><td>剩余投资仍有减值可能</td><td class="red">需警惕</td></tr>
+  </table>
+
+  <div class="bq" style="margin-top:10px">核心预期差：市场对青岛新项目的预期可能偏高——一个旅游演艺项目从开业到成熟通常需要2-3年爬坡期，首年贡献利润有限。宋城更值得关注的是「存量项目的稳健运营能力」而非新项目爆发力。公司的真正价值在于已运营10年+的杭州/三亚/丽江等成熟项目的稳定现金流，加上高分红带来的防御属性。</div>
+</div>
+
+<div id="s11" class="card">
+  <h2>M10 Pre-mortem & 核心风险</h2>
+
+  <h3>风险清单</h3>
+  <table class="tbl">
+    <tr><th>风险类型</th><th>描述</th><th>概率</th><th>影响</th><th>预警信号</th></tr>
+    <tr><td>旅游消费下行</td><td>宏观经济走弱，居民旅游消费降级</td><td class="gold">高</td><td class="red">高</td><td>各景区接待人次连续2季下滑</td></tr>
+    <tr><td>新项目不及预期</td><td>青岛项目开业后客流和收入不达预期</td><td class="orange">中</td><td class="orange">中</td><td>开园半年日均游客<3000</td></tr>
+    <tr><td>减值风险</td><td>花房集团剩余投资再次减值</td><td class="orange">中</td><td class="orange">中</td><td>花房经营持续恶化</td></tr>
+    <tr><td>竞争加剧</td><td>迪士尼/长隆/方特等加码演艺业态</td><td class="orange">中</td><td class="orange">中</td><td>竞品项目在景区周边开业</td></tr>
+    <tr><td>产品老化</td><td>千古情系列吸引力下降</td><td class="tgy">低</td><td class="red">高</td><td>客单价增速<CPI持续2年</td></tr>
+  </table>
+
+  <h3 style="margin-top:10px">敏感性分析</h3>
+  <table class="tbl">
+    <tr><th>变量</th><th>变动幅度</th><th>净利润变动</th></tr>
+    <tr><td>门票平均提价5%</td><td>+5%收入</td><td class="gold">+约1.1亿 (+13.5%)</td></tr>
+    <tr><td>游客人次下降10%</td><td>-10%收入</td><td class="red">-约2.3亿 (-28%)</td></tr>
+    <tr><td>新青岛项目贡献2亿收入</td><td>+2亿</td><td class="gold">+约0.6亿 (+7.3%)</td></tr>
+    <tr><td>花房减值0.5亿</td><td>—</td><td class="red">-0.5亿 (-6.1%)</td></tr>
+  </table>
+
+  <h3 style="margin-top:12px">三情景估值</h3>
+  <table class="tbl">
+    <tr><th>情景</th><th>2027E净利</th><th>合理PE</th><th>2027E目标市值</th><th>每股价值</th><th>空间</th></tr>
+    <tr><td>保守</td><td>6.5亿</td><td>18x</td><td>117亿</td><td>~4.5元</td><td class="red">-29%</td></tr>
+    <tr><td>中性</td><td>9.5亿</td><td>22x</td><td>209亿</td><td>~8.0元</td><td class="gold">+26%</td></tr>
+    <tr><td>乐观</td><td>13亿</td><td>25x</td><td>325亿</td><td>~12.5元</td><td class="gold">+97%</td></tr>
+  </table>
+
+  <h3 style="margin-top:10px">避雷清单</h3>
+  <table class="tbl">
+    <tr><th>✅</th><th>检查项</th><th>状态</th></tr>
+    <tr><td>✓</td><td>毛利率是否稳定（连续3年>60%）</td><td><span class="green">✅ 64%</span></td></tr>
+    <tr><td>✓</td><td>经营现金流是否>净利润</td><td><span class="green">✅ >120%</span></td></tr>
+    <tr><td>✓</td><td>负债率是否<50%</td><td><span class="green">✅ 13.5%</span></td></tr>
+    <tr><td>⚠️</td><td>ROE是否连续5年>10%</td><td><span class="red">❌ COVID后波动极大</span></td></tr>
+    <tr><td>✓</td><td>审计意见是否无保留</td><td><span class="green">✅ 标准无保留</span></td></tr>
+    <tr><td>⚠️</td><td>是否存在重大投资失误</td><td><span class="orange">⚠️ 花房投资损失>15亿</span></td></tr>
+    <tr><td>✓</td><td>实际控制人是否稳定</td><td><span class="green">✅ 黄巧灵持股32%稳定</span></td></tr>
+    <tr><td>⚠️</td><td>业绩是否连续2年下滑</td><td><span class="orange">⚠️ 2024+122%、2025-22%</span></td></tr>
+  </table>
+
+  <h3 style="margin-top:10px">清算价值估算</h3>
+  <table class="tbl">
+    <tr><th>资产类型</th><th>账面价值</th><th>清算折价</th><th>清算价值</th></tr>
+    <tr><td>货币资金</td><td>~20亿</td><td>100%</td><td>20亿</td></tr>
+    <tr><td>应收账款</td><td>~2亿</td><td>70%</td><td>1.4亿</td></tr>
+    <tr><td>存货</td><td>~1亿</td><td>50%</td><td>0.5亿</td></tr>
+    <tr><td>固定资产</td><td>~70亿</td><td>40%</td><td>28亿</td></tr>
+    <tr><td>长期股权投资</td><td>~8亿</td><td>30%</td><td>2.4亿</td></tr>
+    <tr><td>总负债</td><td>~25亿</td><td>100%</td><td>-25亿</td></tr>
+    <tr><td style="font-weight:bold;color:#f0c040">清算价值</td><td></td><td></td><td><span class="gold">~27亿 (~1.0元/股)</span></td></tr>
+  </table>
+  <div class="txt" style="font-size:11px;color:#888">注：宋城以轻资产运营模式为主，固定资产主要为主题公园建筑和演出设备，清算价值较低。真实价值在于持续经营能力（品牌+客流），而非资产变卖。</div>
+</div>
+
+<div id="s12" class="card">
+  <h2>综合评级 & 最终结论</h2>
+
+  <h3>六维评分</h3>
+  <div class="dim-row"><div class="dim-label">护城河</div><div class="dim-bg"><div class="dim-fill c7" style="width:70%"></div></div><div class="dim-sc" style="color:#f0c040">7.0</div></div>
+  <div class="dim-row"><div class="dim-label">成长性</div><div class="dim-bg"><div class="dim-fill c5" style="width:40%"></div></div><div class="dim-sc" style="color:#f0c040">4.0</div></div>
+  <div class="dim-row"><div class="dim-label">财务健康</div><div class="dim-bg"><div class="dim-fill c9" style="width:88%"></div></div><div class="dim-sc" style="color:#f0c040">8.8</div></div>
+  <div class="dim-row"><div class="dim-label">估值安全</div><div class="dim-bg"><div class="dim-fill c7" style="width:65%"></div></div><div class="dim-sc" style="color:#f0c040">6.5</div></div>
+  <div class="dim-row"><div class="dim-label">管理层</div><div class="dim-bg"><div class="dim-fill c6" style="width:60%"></div></div><div class="dim-sc" style="color:#f0c040">6.0</div></div>
+  <div class="dim-row"><div class="dim-label">风险收益比</div><div class="dim-bg"><div class="dim-fill c5" style="width:50%"></div></div><div class="dim-sc" style="color:#f0c040">5.0</div></div>
+
+  <h3 style="margin-top:14px">核心亮点</h3>
+  <div class="txt"><span class="dot">●</span>中国旅游演艺绝对龙头，千古情品牌辨识度极高，先发占据核心旅游城市最佳位置</div>
+  <div class="txt"><span class="dot">●</span>现金流优秀（经营CF/净利>120%），零有息负债（负债率13.5%），财务极其健康</div>
+  <div class="txt"><span class="dot">●</span>2025年分红率近80%，对股东回报极为慷慨，股息率约4.5%</div>
+  <div class="txt"><span class="dot">●</span>PE 20x处于历史低位区间（5年PE区间15-80x），估值泡沫已基本消化</div>
+  <div class="txt"><span class="dot">●</span>轻资产输出模式已验证，高毛利收入占比有望持续提升</div>
+
+  <h3 style="margin-top:14px">核心风险</h3>
+  <div class="txt"><span class="dot">●</span>业绩受旅游消费景气度影响大，2025年-22%净利降幅显示经营杠杆双刃剑</div>
+  <div class="txt"><span class="dot">●</span>花房集团投资累计减值超15亿，暴露管理层非主业投资能力短板</div>
+  <div class="txt"><span class="dot">●</span>千古情演出形式运行20年+，存在内容老化风险，年轻消费者偏好可能变化</div>
+  <div class="txt"><span class="dot">●</span>新项目爬坡期长（2-3年），短期贡献有限，市场预期可能过高</div>
+  <div class="txt"><span class="dot">●</span>ROE波动极大（COVID期间0.1%，恢复后12.8%），价值稳定性不足</div>
+
+  <h3 style="margin-top:14px">价值投资理论应用</h3>
+  <table class="tbl" style="table-layout:fixed">
+    <tr><th style="width:44px">模块</th><th style="white-space:nowrap">大师理念</th><th style="text-align:left;font-size:11px;max-width:320px;white-space:normal">应用分析</th></tr>
+    <tr><td>M1</td><td>巴菲特<br>「护城河」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">宋城的品牌和选址构成护城河，但深度不如顶级消费品。千古情的核心竞争力是"先发占位+规模"而非"不可复制"，护城河评级中等偏上</td></tr>
+    <tr><td>M2</td><td>彼得·林奇<br>「逛街选股」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">林奇会喜欢宋城的模式——去杭州/三亚旅游时千古情是必看项目。如果景区门口排长队、加演场次，就是强烈的买入信号</td></tr>
+    <tr><td>M3</td><td>段永平<br>「本分」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">黄巧灵牢牢守住主业，20年专注旅游演艺是"本分"的体现。但花房投资是不本分的失误——可能是段永平不会买入的原因</td></tr>
+    <tr><td>M4</td><td>卡拉曼<br>「安全边际」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">清算价值27亿仅占市值16%，安全边际极薄。PE 20x在旅游行业算合理但远非"便宜到无法拒绝"</td></tr>
+    <tr><td>M5</td><td>费雪<br>「成长投资」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">宋城的成长来自"已有项目的稳健运营+新项目落地+轻资产扩张"三维驱动，但天花板相对明确（全国旅游演艺总市场~200亿）</td></tr>
+    <tr><td>M6</td><td>邱国鹭<br>「数月亮」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">在旅游演艺这个细分赛道上，宋城是唯一的月亮。全国大型旅游演艺公司中，宋城的规模和品牌遥遥领先</td></tr>
+    <tr><td>M7</td><td>邓普顿<br>「极度悲观点」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">COVID期间（2022年PE 80x+）是极度悲观点。当前20x PE已反映正常预期，但尚未到"极度悲观"程度</td></tr>
+    <tr><td>M8</td><td>霍华德·马克斯<br>「钟摆理论」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">宋城的估值钟摆从COVID时期的极度悲观（0收入）摆向2024年旅游复苏后的乐观，现在处于回归中位的过程</td></tr>
+    <tr><td>M9</td><td>张磊<br>「长期主义」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">旅游演艺是一个"慢变量"行业，大牛市的催化需要3-5年。长期持有者需要承受期间的周期波动。青岛项目开业只是开始</td></tr>
+    <tr><td>M10</td><td>巴菲特<br>「不做空美国」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">对宋城的投资本质是"做多中国旅游消费"——赌中国人均GDP持续提升、旅游消费持续升级。这是长期看好的底层逻辑</td></tr>
+  </table>
+</div>
+
+<div id="s13" class="card">
+  <h2>附录</h2>
+
+  <h3>数据来源</h3>
+  <table class="tbl">
+    <tr><th>数据类型</th><th>来源</th><th>更新时间</th></tr>
+    <tr><td>财务报表</td><td>宋城演艺年报（2021-2025）、一季报（2026Q1）</td><td>2026-04-30</td></tr>
+    <tr><td>实时行情</td><td>东方财富、同花顺</td><td>2026-06-12</td></tr>
+    <tr><td>行业对比</td><td>东方财富、雪球</td><td>2026-06</td></tr>
+    <tr><td>项目数据</td><td>宋城演艺年报、公司公告、投资者互动</td><td>2025年报</td></tr>
+    <tr><td>市值走势</td><td>新浪财经、腾讯财经</td><td>2026-06-12</td></tr>
+  </table>
+
+  <div class="txt" style="font-size:13px;margin-top:10px"><span class="dot">●</span><b>数据口径说明：</b>所有财务数据均来自公开披露的合并财务报表。2025年数据为正式年报数据（2026年4月发布）。2026Q1数据为正式一季报数据。部分项目级收入数据为年报公开信息估算。</div>
+  <div class="txt" style="font-size:13px"><span class="dot">●</span><b>估值方法：</b>采用DCF简化模型、相对估值（PE/PB同业对比）和三情景分析综合判断。未考虑花房集团剩余股权的潜在减值影响。</div>
+
+  <div class="footer">
+    ⚠️ 声明：本内容仅供理论学习和理论练习使用，不构成投资建议，不能作为投资依据。股市有风险，投资需谨慎。<br>
+    数据来源：宋城演艺年报、东方财富、同花顺 · 报告生成时间：2026-06-12 · 数据更新至2025年报+2026Q1<br>
+    © 价值投资研究 · 仅供个人学习参考
+  </div>
+</div>
+
+</body>
+</html>
