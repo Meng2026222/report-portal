@@ -2,9 +2,6 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>五粮液 · 完整投资研究报告</title>
 <!-- v2.1 -->
@@ -686,112 +683,12 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 <script>
 (function() {
   var stockCode = '000858';
-  var periodNames = { 'daily': '日线', 'weekly': '周线', 'monthly': '月线', 'yearly': '年线' };
   var periodMap = { 'daily': 'day', 'weekly': 'week', 'monthly': 'month', 'yearly': 'year' };
+  var periodNames = { 'daily': '日线', 'weekly': '周线', 'monthly': '月线', 'yearly': '年线' };
   var currentPeriod = 'daily';
   var chart = null;
-  var isLoading = false;
-
-  function initChart(data, period) {
-    var el = document.getElementById('mcap-chart');
-    if (!el) { showError('图表容器不存在'); return; }
-    
-    if (chart) { chart.dispose(); chart = null; }
-    
-    chart = echarts.init(el, null, { renderer: 'canvas' });
-    
-    var dates = data.map(function(d) { return d.time; });
-    var values = data.map(function(d) { return d.value; });
-    
-    var zoomMap = { 'daily': [90, 100], 'weekly': [80, 100], 'monthly': [70, 100], 'yearly': [0, 100] };
-    var zr = zoomMap[period] || [0, 100];
-
-    var minV = Math.min.apply(null, values);
-    var maxV = Math.max.apply(null, values);
-    var pad = (maxV - minV) * 0.05;
-
-    chart.setOption({
-      backgroundColor: 'transparent',
-      grid: { left: '3%', right: '4%', top: '8%', height: '72%' },
-      xAxis: {
-        type: 'category', data: dates,
-        axisLine: { lineStyle: { color: '#333' } },
-        axisLabel: { color: '#888', fontSize: 10,
-          formatter: function(v) {
-            if (typeof v !== 'string') return v;
-            if (period === 'yearly') return v.slice(0,4);
-            return v.length >= 10 ? v.slice(5, 10) : v.slice(5);
-          }
-        },
-        splitLine: { show: true, lineStyle: { color: '#1a1a2a', type: 'dashed' } },
-        axisTick: { show: false }
-      },
-      yAxis: {
-        type: 'value',
-        min: Math.floor(minV - pad),
-        max: Math.ceil(maxV + pad),
-        axisLine: { show: false },
-        axisLabel: { color: '#888', fontSize: 10, formatter: function(v) { return (v/100).toFixed(0) + '亿'; } },
-        splitLine: { lineStyle: { color: '#1a1a2a', type: 'dashed' } },
-        axisTick: { show: false }
-      },
-      series: [{
-        type: 'line', data: values,
-        smooth: true,
-        symbol: 'none',
-        lineStyle: { width: 2, color: '#f0c040' },
-        areaStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-          { offset: 0, color: 'rgba(240,192,64,0.25)' },
-          { offset: 1, color: 'rgba(240,192,64,0.02)' }
-        ])},
-        markLine: { silent: true, symbol: 'none', data: [{ yAxis: values[values.length-1], label: { show: false } }], lineStyle: { opacity: 0 } }
-      }],
-      tooltip: {
-        trigger: 'axis',
-        backgroundColor: '#1a1a2a', borderColor: '#333',
-        textStyle: { color: '#e0e0e0', fontSize: 12 },
-        formatter: function(params) {
-          if (!params || !params[0]) return '';
-          var p = params[0];
-          var idx = p.dataIndex;
-          var v = values[idx];
-          var prev = idx > 0 ? values[idx-1] : v;
-          var ch = v - prev;
-          var pct = prev > 0 ? (ch/prev*100).toFixed(2) : '0.00';
-          var c = ch >= 0 ? '#f44336' : '#4caf50', sgn = ch >= 0 ? '+' : '';
-          return '<b>'+dates[idx]+'</b><br/>市值: <b>'+v.toFixed(0)+'亿</b><br/>涨跌: <span style="color:'+c+'">'+sgn+ch.toFixed(0)+'亿 ('+sgn+pct+'%)</span>';
-        }
-      },
-      dataZoom: [
-        { type: 'inside', xAxisIndex: 0, filterMode: 'filter', start: zr[0], end: zr[1],
-          zoomOnMouseWheel: true, moveOnMouseMove: true, moveOnMouseWheel: false },
-        { type: 'slider', xAxisIndex: 0, show: true, filterMode: 'filter',
-          height: 14, bottom: 2,
-          borderColor: '#333', backgroundColor: '#0d0d20', fillerColor: 'rgba(240,192,64,0.15)',
-          handleStyle: { borderColor: '#f0c040', color: '#f0c040' },
-          textStyle: { color: '#888', fontSize: 9 },
-          labelFormatter: function(v) {
-            if (typeof v !== 'string') return '' + v;
-            if (period === 'yearly') return v;
-            return v.length >= 10 ? v.slice(5,10) : v.slice(5);
-          },
-          start: zr[0], end: zr[1] }
-      ]
-    }, true);
-    
-    window.addEventListener('resize', function() { if (chart) chart.resize(); });
-  }
-
-  function showError(msg) {
-    var container = document.getElementById('mcap-chart');
-    if (!container) return;
-    container.innerHTML = '<div style="text-align:center;padding:60px 20px;color:#f44336;font-size:13px;">⚠ ' + msg + '</div>';
-  }
 
   function loadData(period) {
-    if (isLoading) return;
-    isLoading = true;
-    
     var btn = document.querySelector('.mcap-btn[data-period="' + period + '"]');
     if (btn) btn.textContent = '加载中...';
     
@@ -799,22 +696,37 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     var filename = '../kline/' + stockCode + '_' + fileKey + '.json';
     
     fetch(filename)
-      .then(function(r) {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.json();
-      })
+      .then(function(r) { return r.json(); })
       .then(function(data) {
-        isLoading = false;
         if (btn) btn.textContent = periodNames[period] || period;
-        if (!data || data.length === 0) { showError('数据为空'); return; }
+        if (!data || data.length === 0) return;
         
-        if (typeof echarts === 'undefined') { showError('ECharts库加载失败'); return; }
-        initChart(data, period);
+        if (chart) { chart.dispose(); chart = null; }
+        
+        var el = document.getElementById('mcap-chart');
+        if (!el) return;
+        chart = echarts.init(el);
+        
+        chart.setOption({
+          xAxis: {
+            type: 'category',
+            data: data.map(function(d) { return d.time; }),
+            axisLabel: { color: '#888', fontSize: 10 }
+          },
+          yAxis: {
+            type: 'value',
+            axisLabel: { color: '#888', fontSize: 10, formatter: function(v) { return (v/100).toFixed(0) + '亿'; } }
+          },
+          series: [{ type: 'line', data: data.map(function(d) { return d.value; }), smooth: true, symbol: 'none', lineStyle: { color: '#f0c040', width: 2 } }],
+          dataZoom: [{ type: 'inside' }],
+          tooltip: { trigger: 'axis' }
+        });
+        
+        window.addEventListener('resize', function() { if (chart) chart.resize(); });
       })
       .catch(function(err) {
-        isLoading = false;
         if (btn) btn.textContent = periodNames[period] || period;
-        showError('加载失败：' + err.message);
+        document.getElementById('mcap-chart').innerHTML = '<div style="padding:60px;text-align:center;color:#f44336;">加载失败: ' + err.message + '</div>';
       });
   }
 
@@ -822,7 +734,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     var btn = e.target.closest('.mcap-btn');
     if (!btn) return;
     var period = btn.dataset.period;
-    if (period === currentPeriod && chart) return;
+    if (period === currentPeriod) return;
     currentPeriod = period;
     document.querySelectorAll('.mcap-btn').forEach(function(b) { b.classList.toggle('active', b.dataset.period === period); });
     loadData(period);
