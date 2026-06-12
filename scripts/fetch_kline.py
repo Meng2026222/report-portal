@@ -148,13 +148,16 @@ def fetch_total_shares(stock_code):
 
 
 def calc_market_cap(kline_data, total_shares):
-    """Calculate market cap: close * total_shares / 1e8 -> 亿元."""
+    """Calculate market cap: close * total_shares / 1e8 -> 亿元.
+    前复权(fqt=1)价格可能因累计分红使早期数据为负，下限保护cap为0。"""
     results = []
     for item in kline_data:
         close = float(item.get('close', 0))
         day = item.get('day', '')
         if close and day:
             mcap = round(close * total_shares / 1e8, 2)
+            if mcap < 0:
+                mcap = 0  # 前复权导致的价格为负，cap为0
             results.append({"time": day, "value": mcap})
     return results
 
