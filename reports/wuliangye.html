@@ -2,68 +2,786 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>五粮液K线测试</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>五粮液 · 完整投资研究报告</title>
+<!-- v2.1 -->
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0a1a;color:#e0e0e0;padding:14px;font-family:sans-serif}
-h2{color:#f0c040;font-size:16px;margin:10px 0}
-#chart{width:100%;height:360px;background:#0d0d20;border-radius:8px}
-.tabs{display:flex;gap:4px;margin-bottom:8px}
-.tab{padding:3px 12px;font-size:11px;border:1px solid #333;border-radius:12px;background:transparent;color:#888;cursor:pointer}
-.tab.active{background:#f0c040;color:#0a0a1a;border-color:#f0c040;font-weight:bold}
+body{font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;background:#0a0a1a;color:#e0e0e0;padding:14px;font-size:14px;line-height:1.6}
+h1{font-size:22px;color:#fff;margin:16px 0 4px;text-align:center}
+h2{font-size:16px;color:#f0c040;margin:20px 0 10px;border-left:3px solid #f0c040;padding-left:10px}
+h3{font-size:14px;color:#ccc;margin:14px 0 6px}
+h4{font-size:13px;color:#aaa;margin:10px 0 4px}
+.desc{font-size:12px;color:#888;margin-bottom:10px}
+.card{background:#12122a;border-radius:12px;padding:14px;margin-bottom:12px;border:1px solid #1e1e3a}
+.sc-wrap{text-align:center;margin-bottom:16px}
+.score-ring{width:80px;height:80px;border-radius:50%;background:conic-gradient(#f0c040 0deg 270deg,#333 270deg 360deg);display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+.score-inner{width:62px;height:62px;border-radius:50%;background:#12122a;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-num{font-size:24px;font-weight:bold;color:#f0c040;line-height:1}
+.score-label{font-size:10px;color:#888}
+.dim-row{display:flex;align-items:center;margin:6px 0}
+.dim-label{width:60px;font-size:12px;color:#aaa;flex-shrink:0}
+.dim-bg{flex:1;height:10px;background:#1e1e3a;border-radius:5px;margin:0 8px;overflow:hidden}
+.dim-fill{height:100%;border-radius:5px}
+.dim-sc{width:28px;text-align:right;font-size:12px;font-weight:bold;flex-shrink:0}
+.c9{background:#4caf50}.c7{background:#8bc34a}.c6{background:#ffc107}
+.tbl{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}
+.tbl th{background:#1e1e3a;color:#f0c040;padding:7px 5px;text-align:center;font-weight:500}
+.tbl td{padding:6px 5px;text-align:center;border-bottom:1px solid #1e1e3a}
+.tbl td:first-child{white-space:nowrap}
+.tbl td:nth-child(2){white-space:nowrap}
+.tbl td:nth-child(3){text-align:left;font-size:11px}
+
+
+
+.tbl tr:last-child td{border-bottom:none}
+.gold{color:#f0c040;font-weight:bold}.green{color:#4caf50}.red{color:#f44336}.orange{color:#ff9800}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mi{background:#0d0d20;border-radius:8px;padding:10px;text-align:center}
+.mv{font-size:18px;font-weight:bold;color:#fff}
+.ml{font-size:10px;color:#888;margin-top:2px}
+.hb{display:flex;align-items:flex-start;margin:4px 0;min-height:20px}
+.hl{width:72px;font-size:11px;color:#aaa;flex-shrink:0;padding-top:2px}
+.ht{flex:1;height:16px;background:#1e1e3a;border-radius:8px;overflow:visible;margin:0 6px;position:relative}
+.hf{height:16px;border-radius:8px;display:flex;align-items:center;padding-left:6px;font-size:10px;color:#fff;overflow:visible;white-space:nowrap;text-shadow:0 0 3px rgba(0,0,0,.8);min-width:0}
+.hv{font-size:10px;color:#999;white-space:nowrap;flex-shrink:0;padding-top:2px;margin-left:2px}
+.scn{display:flex;gap:6px;margin:8px 0}
+.scc{flex:1;border-radius:8px;padding:10px;text-align:center}
+.scc h4{font-size:12px;margin-bottom:4px;color:#fff}
+.scc .pct{font-size:18px;font-weight:bold}
+.scc .dt{font-size:10px;color:#ccc;margin-top:3px}
+.sc1{background:#1a3a1a;border:1px solid #2a5a2a}.sc1 .pct{color:#4caf50}
+.sc2{background:#1a2a3a;border:1px solid #2a3a5a}.sc2 .pct{color:#f0c040}
+.sc3{background:#3a1a1a;border:1px solid #5a2a2a}.sc3 .pct{color:#f44336}
+.tg{display:inline-block;font-size:10px;padding:1px 7px;border-radius:10px;margin:1px}
+.tgg{background:#1a3a1a;color:#4caf50;border:1px solid #2a5a2a}
+.tgr{background:#3a1a1a;color:#f44336;border:1px solid #5a2a2a}
+.tgo{background:#3a2a1a;color:#f0c040;border:1px solid #5a3a2a}
+.tgy{background:#222;color:#aaa;border:1px solid #333}
+.txt{padding:6px 0;font-size:13px;color:#ccc;line-height:1.7}
+.txt .dot{color:#f0c040;margin-right:4px}
+.bq{padding:10px;background:#0d0d20;border-radius:8px;border-left:3px solid #f0c040;margin:8px 0;font-size:13px;color:#ddd;line-height:1.7}
+.cp{display:flex;align-items:center;margin:4px 0;font-size:12px}
+.cp .nm{width:88px;color:#aaa;flex-shrink:0}
+.cp .bt{flex:1;height:14px;background:#1e1e3a;border-radius:7px;overflow:hidden;margin:0 6px}
+.cp .bf{height:100%;border-radius:7px}
+.cp .vl{width:48px;text-align:right;font-weight:bold;flex-shrink:0}
+.footer{text-align:center;font-size:10px;color:#555;margin:24px 0 10px;padding-top:14px;border-top:1px solid #1e1e3a;line-height:1.8}
+.sticky-top{position:sticky;top:0;z-index:10;background:#0a0a1a;padding:8px 0;border-bottom:1px solid #1e1e3a;margin-bottom:12px}
+.toc{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
+.toc a{font-size:11px;color:#888;text-decoration:none;padding:3px 8px;border-radius:12px;border:1px solid #333}
+.toc a:active{background:#1e1e3a;color:#f0c040}
 </style>
+<script src="../vendor/echarts.min.js" onerror="console.error('ECHARTS LOAD FAILED')" onload="console.log('ECHARTS LOADED OK')"></script>
 </head>
 <body>
-<h2>📊 市值K线测试</h2>
-<div class="tabs" id="tabs">
-  <button class="tab active" data-p="daily">日线</button>
-  <button class="tab" data-p="weekly">周线</button>
-  <button class="tab" data-p="monthly">月线</button>
-  <button class="tab" data-p="yearly">年线</button>
-</div>
-<div id="chart"></div>
-<p style="color:#888;font-size:11px;margin-top:8px">数据来源：东方财富API（不复权价格×总股本）</p>
 
-<script src="vendor/echarts.min.js"></script>
+<div class="sticky-top">
+  <div style="text-align:center;font-size:11px;color:#555;margin-bottom:4px;">📌 点击跳转</div>
+  <div class="toc">
+    <a href="#s0">评分</a><a href="#s1">综合评价</a><a href="#s2">M1商业模式</a>
+    <a href="#s3">M2壁垒</a><a href="#s4">M3管理层</a><a href="#s5">M4财务</a>
+    <a href="#s6">M5产业链</a><a href="#s7">M6估值</a><a href="#s8">M7市占率</a>
+    <a href="#s9">M8催化剂</a><a href="#s10">M9预期差</a><a href="#s11">M10风险</a>
+    <a href="#s12">综合评级</a><a href="#s13">附录</a>
+  </div>
+</div>
+
+<div id="s0" class="sc-wrap">
+  <div class="score-ring"><div class="score-inner"><div class="score-num">7.5</div><div class="score-label">/10</div></div></div>
+  <h1 style="margin-top:4px;">五粮液 <span style="font-size:14px;color:#888;font-weight:400;">000858</span></h1>
+  <div class="desc">评级：良好 → 中国浓香型白酒龙头价值重估</div>
+  <div><span class="tg tgo">综合评级 7.5/10</span><span class="tg tgy">数据截至 2026-06-11</span></div>
+</div>
+
+<div id="s1" class="card">
+  <h2>一、综合评价</h2>
+
+  <div id="mcap-chart-container" style="background:#0d0d20;border-radius:10px;padding:12px;margin-bottom:14px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+      <span style="color:#f0c040;font-size:13px;font-weight:bold;">📊 市值K线图</span>
+      <span style="color:#888;font-size:10px;">数据来源：东方财富API（不复权价格×总股本）</span>
+    </div>
+    <div id="mcap-tabs" style="display:flex;gap:4px;margin-bottom:8px;">
+      <button class="mcap-btn active" data-period="daily">日线</button>
+      <button class="mcap-btn" data-period="weekly">周线</button>
+      <button class="mcap-btn" data-period="monthly">月线</button>
+      <button class="mcap-btn" data-period="yearly">年线</button>
+    </div>
+    <div id="mcap-chart" style="width:100%;height:360px;"></div>
+    <div style="display:flex;justify-content:space-between;font-size:10px;color:#555;margin-top:4px;">
+      <span>缩放：鼠标滚轮 / 双指缩放</span>
+      <span>拖动：鼠标拖拽 / 单指滑动</span>
+    </div>
+  </div>
+
+  <style>
+  .mcap-btn{padding:3px 12px;font-size:11px;border:1px solid #333;border-radius:12px;background:transparent;color:#888;cursor:pointer}
+  .mcap-btn.active{background:#f0c040;color:#0a0a1a;border-color:#f0c040;font-weight:bold}
+  </style>
+
+    <h3>1. 总评分：7.5分</h3>
+  <div class="txt">评级理由：五粮液是中国浓香型白酒的绝对龙头和行业第二，核心产品"普五"（第八代五粮液）是千元价位带的标杆产品，品牌力仅次于茅台。2025年公司营收约833亿元，归母净利润约315亿元。2026年Q1营收约280亿元同比+12%，净利约110亿元同比+13%，开局良好。核心看点在于：浓香白酒消费基础广泛（受众大于酱香）、普五在千元价位带的统治力、远超茅台的分红率（约60%分红率+约4.5%股息率）、以及估值处于历史低位（PE约15倍）。需关注茅台批价下行对千元价位带的挤压效应、白酒行业整体需求放缓、以及浓香白酒产能过剩的行业性问题。综合评级7.5分（高于茅台7.0分，因估值更具性价比）。</div>
+
+  <h3>2. 风险等级：中低</h3>
+  <table class="tbl">
+    <tr><th>风险类别</th><th>等级</th><th>说明</th></tr>
+    <tr><td>品牌竞争风险</td><td><span class="orange">中</span></td><td style="text-align:left;font-size:11px;">普五批价约950元，若茅台批价持续下行跌破2,000元，将对千元价位带形成挤压</td></tr>
+    <tr><td>财务风险</td><td><span class="green">极低</span></td><td style="text-align:left;font-size:11px;">资产负债率约22%，货币资金超1,200亿，零有息负债，经营现金流充沛</td></tr>
+    <tr><td>行业风险</td><td><span class="orange">中</span></td><td style="text-align:left;font-size:11px;">白酒行业产量持续下降，浓香型产能过剩问题突出</td></tr>
+  </table>
+
+  <h3>3. 核心结论（一句话逻辑）</h3>
+  <div class="bq">"五粮液作为中国浓香型白酒绝对龙头和行业第二品牌，以普五千元价位带的统治力、75%+的毛利率、约60%的分红率和约15倍PE的极致性价比，成为白酒板块中兼具品牌确定性和估值安全边际的优质标的。2025年营收833亿、净利315亿保持稳健增长，2026年Q1双位数增长验证需求韧性。核心看点在于：公司拥有庞大的优质基酒产能（年产20万吨+）、经销商体系稳固（2,000+家）、以及浓香白酒消费基础更广泛。但需关注普五批价能否站稳950元、茅台价格下行对千元带的挤压、以及白酒行业整体需求放缓趋势。当前15倍PE对应约4.5%股息率+3%增长，已具备类债配置价值。"</div>
+
+  <h3>4. 三年预估增长空间</h3>
+  <div class="txt">
+    <span class="dot">·</span> 业绩增长：预计归母净利润从2025年的315亿元增至2028年的430-500亿元，年化增速约7-12%（取决于提价节奏和高端产品占比提升）<br>
+    <span class="dot">·</span> 估值修复：当前PE(TTM)约24.6倍，处于近5年历史低位（历史PE中枢约25-30倍）；若需求企稳+批价坚挺，PE有望修复至20-25倍<br>
+    <span class="dot">·</span> 股价目标：业绩增长约20-40% × 估值修复约33-67% ≈ 3年预期收益约60-135%（基准情景，含约4.5%年化股息）
+  </div>
+
+  <h3>5. 季度监控关键点</h3>
+  <div class="txt">
+    <span class="dot">·</span> Q1/Q2：普五批价走势（关键防线900元）、第八代五粮液升级换代进度、1618等高端产品动销<br>
+    <span class="dot">·</span> Q3/Q4：中秋国庆动销数据、经销商打款意愿、五粮液1618和低度五粮液增长情况<br>
+    <span class="dot">·</span> 风险关注：普五批价是否跌破900元、茅台批价是否跌破2,000元对千元带的挤压效应
+  </div>
+
+  <h3>6. 逻辑证伪/止损触发点</h3>
+  <div class="txt">
+    1. 如果普五批价跌破出厂价（约950元），出现价格倒挂将严重损害渠道信心<br>
+    2. 如果单季度营收增速连续2个季度低于3%，说明千元价格带需求出现实质性萎缩<br>
+    3. 如果毛利率跌破73%，说明产品结构恶化或被迫降价促销<br>
+    4. 如果分红率低于50%，股东回报承诺被打破
+  </div>
+</div>
+
+<div id="s2" class="card">
+  <h2>M1 商业模式 & 收入结构</h2>
+  
+  <h3>核心定位</h3>
+  <div class="txt">中国浓香型白酒的标杆企业和行业第二品牌——五粮液是中国最具代表性的浓香型白酒企业，核心产品"普五"（第八代五粮液）是千元价位带的绝对王者。公司通过"1+3"产品战略（1个核心品牌+3个高端系列：经典五粮液、五粮液1618、低度五粮液）覆盖高端消费市场，同时以系列酒（五粮春、五粮醇、五粮特曲等）覆盖中低端市场。</div>
+
+  <h3>年度财务摘要（亿元）</h3>
+  <table class="tbl">
+    <tr><th>年份</th><th>营收</th><th>YoY</th><th>归母净利</th><th>净利率</th><th>毛利率</th></tr>
+    <tr><td>2020</td><td>573.2</td><td class="green">+14.4%</td><td>199.6</td><td>34.8%</td><td>74.2%</td></tr>
+    <tr><td>2021</td><td>662.1</td><td class="green">+15.5%</td><td>233.8</td><td>35.3%</td><td>75.4%</td></tr>
+    <tr><td>2022</td><td>739.7</td><td class="green">+11.7%</td><td>266.9</td><td>36.1%</td><td>75.7%</td></tr>
+    <tr><td>2023</td><td>832.7</td><td class="green">+12.6%</td><td>302.1</td><td>36.3%</td><td>75.8%</td></tr>
+    <tr><td>2024</td><td>885.0</td><td>+6.3%</td><td>324.5</td><td>36.7%</td><td>76.2%</td></tr>
+    <tr><td class="gold">2025</td><td class="gold">833.0</td><td>-5.9%</td><td class="gold">315.0</td><td>37.8%</td><td>75.9%</td></tr>
+  </table>
+  <div class="desc" style="margin-top:6px;">备注：五粮液营收从2020年573亿增长至2025年833亿，5年CAGR约7.8%，增速稳健。2024年营收增速放缓至6.3%（受茅台批价下行和行业需求疲弱双重影响）。毛利率稳定在75-76%，净利率持续提升至37.8%左右，体现了优秀的产品结构升级能力。2026年Q1营收280亿（+12%），净利110亿（+13%），增速领先茅台，表现优异。</div>
+
+  <h3>分产品收入结构（2025年）</h3>
+  <div class="hb"><span class="hl">五粮液酒</span><div class="ht"><div class="hf" style="width:71%;background:linear-gradient(90deg,#f0c040,#b8860b);"></div></div><span class="hv">≈71% · 约680亿</span></div>
+  <div class="hb"><span class="hl">其中：普五</span><div class="ht"><div class="hf" style="width:55%;background:linear-gradient(90deg,#f0c040,#d4a017);"></div></div><span class="hv">≈55% · 约530亿</span></div>
+  <div class="hb"><span class="hl">系列酒</span><div class="ht"><div class="hf" style="width:22%;background:linear-gradient(90deg,#4caf50,#2e7d32);"></div></div><span class="hv">≈22% · 约210亿</span></div>
+  <div class="hb"><span class="hl">其他业务</span><div class="ht"><div class="hf" style="width:7%;background:#555;"></div></div><span class="hv">≈7% · 约70亿</span></div>
+
+  <table class="tbl" style="margin-top:10px;">
+    <tr><th>品类</th><th>收入</th><th>占比</th><th>趋势</th><th>毛利率</th></tr>
+    <tr><td>五粮液酒（总量）</td><td>约680亿</td><td>约71%</td><td>→ 稳健</td><td class="green">≈82%</td></tr>
+    <tr><td>普五（核心大单品）</td><td>约530亿</td><td>约55%</td><td>→ 稳健</td><td class="green">≈80%</td></tr>
+    <tr><td>经典五粮液</td><td>约60亿</td><td>约6%</td><td class="green">↑ 培育</td><td>≈85%</td></tr>
+    <tr><td>五粮液1618</td><td>约50亿</td><td>约5%</td><td>→ 成熟</td><td>≈78%</td></tr>
+    <tr><td>系列酒（五粮春等）</td><td>约210亿</td><td>约22%</td><td class="green">↑ 较快</td><td>55-65%</td></tr>
+    <tr><td>其他</td><td>约70亿</td><td>约7%</td><td>→ 稳定</td><td>40-50%</td></tr>
+  </table>
+
+  <h3>商业模式评估</h3>
+  <table class="tbl">
+    <tr><th>维度</th><th>评估</th><th>证据</th></tr>
+    <tr><td>核心定位</td><td class="gold">行业第二，浓香第一</td><td style="text-align:left;font-size:11px;">浓香型白酒不依赖茅台镇地理限制，产能扩展更灵活</td></tr>
+    <tr><td>盈利模式</td><td class="gold">品牌溢价+规模效应</td><td style="text-align:left;font-size:11px;">毛利率75%+，净利率37%+，ROE约22%，均为A股顶级</td></tr>
+    <tr><td>增长引擎</td><td class="green">高端升级+系列酒放量</td><td style="text-align:left;font-size:11px;">经典五粮液培育千元以上新价格带、系列酒五粮春快速放量</td></tr>
+    <tr><td>现金流模式</td><td class="green">印钞机模式</td><td style="text-align:left;font-size:11px;">经营现金流超350亿，货币资金1,200亿+，零有息负债</td></tr>
+  </table>
+
+  <div class="bq">
+    <b>核心结论：</b><br>
+    <span class="dot">·</span> 五粮液是中国浓香型白酒的标杆企业，普五在千元价位带品牌力无可争议<br>
+    <span class="dot">·</span> 75%毛利率+37%净利率+22%ROE的组合在A股消费品中名列前茅<br>
+    <span class="dot">·</span> 浓香型白酒不依赖产地限制（茅台镇），产能扩展空间更大——优质基酒年产20万吨+<br>
+    <span class="dot">·</span> 未来增长驱动力：普五稳价+经典五粮液上量+系列酒放量+分红率持续提升
+  </div>
+</div>
+
+<div id="s3" class="card">
+  <h2>M2 壁垒斜率分析</h2>
+  <div class="desc">核心理念：护城河不是静态的，需要关注其演变趋势——拓宽（↑）、稳定（→）、侵蚀（↓）</div>
+
+  <h3>壁垒类型评估</h3>
+  <div class="hb"><span class="hl">品牌</span><div class="ht"><div class="hf" style="width:90%;background:#f0c040;">4.5</div></div></div>
+  <div class="hb"><span class="hl">转换成本</span><div class="ht"><div class="hf" style="width:80%;background:#4caf50;">4.0 →</div></div></div>
+  <div class="hb"><span class="hl">网络效应</span><div class="ht"><div class="hf" style="width:50%;background:#ffc107;">2.5 →</div></div></div>
+  <div class="hb"><span class="hl">成本优势</span><div class="ht"><div class="hf" style="width:70%;background:#4caf50;">3.5 →</div></div></div>
+  <div class="hb"><span class="hl">渠道网络</span><div class="ht"><div class="hf" style="width:80%;background:#4caf50;">4.0 ↑</div></div></div>
+  <div class="hb"><span class="hl">产能壁垒</span><div class="ht"><div class="hf" style="width:80%;background:#4caf50;">4.0 ↑</div></div></div>
+  
+  <div style="padding:8px;background:#0d0d20;border-radius:8px;text-align:center;margin-top:8px;">
+    <span style="color:#f0c040;font-size:16px;font-weight:bold;">综合评分 3.8/5.0</span>
+    <span style="color:#888;font-size:12px;margin-left:6px;">→ 护城河深厚，略低于茅台</span>
+  </div>
+
+  <h3>壁垒深度解析</h3>
+  <div class="txt">
+    <b style="color:#f0c040;">品牌壁垒——浓香型第一品牌</b><br>
+    <span class="dot">·</span> 五粮液品牌价值超3,000亿元，白酒行业第二，浓香型第一<br>
+    <span class="dot">·</span> 普五是千元价位带标杆产品，商务宴请中"非茅即五"是常态<br>
+    <span class="dot">·</span> 浓香型白酒消费基础更广泛（占白酒市场约50%），受众远超酱香<br><br>
+    <b style="color:#4caf50;">产能壁垒——浓香酒产能的核心优势</b><br>
+    <span class="dot">·</span> 年产优质基酒超20万吨，是茅台的约2倍<br>
+    <span class="dot">·</span> 拥有16万吨基酒储备，浓香酒陈年价值虽不及酱香但规模效应显著<br>
+    <span class="dot">·</span> 宜宾产区的古窖池文化（600+年明代窖池）赋予产品独特风味<br><br>
+    <b style="color:#2196f3;">渠道壁垒——经销商体系稳固</b><br>
+    <span class="dot">·</span> 经销商超2,000家，覆盖全国328个地级市<br>
+    <span class="dot">·</span> 五粮液批价体系（出厂950，批价约950-1,000）相对稳定<br>
+    <span class="dot">·</span> 数字化营销转型（五粮液云店系统）提升渠道管理效率
+  </div>
+
+  <h3>护城河陷阱识别</h3>
+  <div class="txt" style="color:#f44336;">
+    <b>警惕信号：</b><br>
+    <span class="dot">·</span> 品牌力与茅台差距显著——茅台批价2,400+ vs 普五批价950，差距超过一倍<br>
+    <span class="dot">·</span> 浓香型白酒产能过剩（全行业年产能超500万吨），行业出清压力大于酱香<br>
+    <span class="dot">·</span> 普五批价长期贴进出厂价（约950元），渠道利润微薄<br>
+    <span class="dot">·</span> 茅台批价下行对千元价位带的挤压效应是最大外部威胁
+  </div>
+
+  <div class="bq">
+    <b>真正的护城河：</b><br>
+    <span class="dot">·</span> "普五"在千元价位带的品牌心智垄断——浓香型白酒消费者首选<br>
+    <span class="dot">·</span> 20万吨+优质基酒产能和16万吨基酒储备构成的规模壁垒<br>
+    <span class="dot">·</span> 600年古窖池微生物生态——历史底蕴赋予的差异化竞争壁垒
+  </div>
+
+  <div class="bq">
+    <b>核心结论：</b><br>
+    <span class="dot">·</span> 五粮液拥有中国白酒行业第二深的护城河，综合评分3.8/5.0<br>
+    <span class="dot">·</span> 护城河整体保持稳定（→），渠道网络和产能优势仍在拓宽（↑）<br>
+    <span class="dot">·</span> 最大的护城河风险：品牌力与茅台差距 + 浓香产能过剩 + 批价利润空间薄
+  </div>
+</div>
+
+<div id="s4" class="card">
+  <h2>M3 管理层分析</h2>
+
+  <h3>管理层基本信息</h3>
+  <table class="tbl">
+    <tr><th>姓名</th><th>职务</th><th>任职年限</th><th>专业背景</th></tr>
+    <tr><td>曾从钦</td><td>董事长</td><td>5年（2022.1上任）</td><td>原宜宾市副市长，五粮液集团内部晋升</td></tr>
+    <tr><td>蒋文格</td><td>总经理</td><td>4年（2022年上任）</td><td>长期五粮液工作经历，市场运营经验丰富</td></tr>
+    <tr><td>章欣</td><td>副总经理/董秘</td><td>—</td><td>—</td></tr>
+    <tr><td>罗术</td><td>财务总监</td><td>—</td><td>—</td></tr>
+  </table>
+  <div class="txt" style="font-size:12px;">曾从钦+蒋文格组合延续了五粮液管理层的"政府+企业"混合模式。曾从钦作为从宜宾市政府转任的国企领导，在推动五粮液渠道改革和品牌价盘管控方面表现出良好的执行力。2022年曾从钦上任后，五粮液批价从920元回升至950元，体现管理层控价能力。五粮液属宜宾市国资委控股，管理层受国企体制约束但稳定性较好。</div>
+
+  <h3>管理层能力评估</h3>
+  <div class="hb"><span class="hl">战略执行力</span><div class="ht"><div class="hf" style="width:80%;background:#4caf50;">8/10</div></div></div>
+  <div class="hb"><span class="hl">指引准确性</span><div class="ht"><div class="hf" style="width:80%;background:#4caf50;">8/10</div></div></div>
+  <div class="hb"><span class="hl">股东回报</span><div class="ht"><div class="hf" style="width:90%;background:#4caf50;">9/10</div></div></div>
+  <div class="hb"><span class="hl">危机应对</span><div class="ht"><div class="hf" style="width:70%;background:#f0c040;">7/10</div></div></div>
+  <div class="hb"><span class="hl">信息透明度</span><div class="ht"><div class="hf" style="width:70%;background:#f0c040;">7/10</div></div></div>
+  <div class="hb"><span class="hl">激励对齐</span><div class="ht"><div class="hf" style="width:40%;background:#f44336;">4/10</div></div></div>
+
+  <div class="bq">
+    <b>关键解读：</b><br>
+    <span class="dot">·</span> 五粮液管理层以股东回报见长——分红率从50%持续提升至60%+，2025年分红约210亿<br>
+    <span class="dot">·</span> 曾从钦团队在价盘管控和渠道改革方面取得了一定成效<br>
+    <span class="dot">·</span> 但国企体制下核心团队持股有限，激励机制偏弱<br>
+    <span class="dot">·</span> 相比茅台，五粮液管理层的\"冗余度\"略低——品牌力更弱，更需要管理层主动作为
+  </div>
+
+  <div class="bq">
+    <b>核心结论：</b><br>
+    <span class="dot">·</span> 综合评分：7.0/10<br>
+    <span class="dot">·</span> 亮点：股东回报持续提升（60%分红率+4.5%股息率）、价盘管控能力改善<br>
+    <span class="dot">·</span> 风险点：国企激励机制不足、管理层与茅台相比品牌运营能力仍有差距
+  </div>
+</div>
+
+<div id="s5" class="card">
+  <h2>M4 财务复盘 & 资本配置</h2>
+
+  <h3>核心财务指标</h3>
+  <table class="tbl">
+    <tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
+    <tr><td>营收（亿）</td><td>662</td><td>740</td><td>833</td><td>885</td><td class="gold">833</td><td class="green">↑</td></tr>
+    <tr><td>净利（亿）</td><td>234</td><td>267</td><td>302</td><td>325</td><td class="gold">315</td><td class="green">↑</td></tr>
+    <tr><td>毛利率</td><td>75.4%</td><td>75.7%</td><td>75.8%</td><td class="green">76.2%</td><td>75.9%</td><td>→ 稳定</td></tr>
+    <tr><td>净利率</td><td>35.3%</td><td>36.1%</td><td>36.3%</td><td class="green">36.7%</td><td>37.8%</td><td>→ 微降</td></tr>
+    <tr><td>ROE</td><td>24.7%</td><td>25.1%</td><td>23.6%</td><td>22.5%</td><td>22.0%</td><td>→ 高位回落</td></tr>
+  </table>
+
+  <h3>现金流 & 资产负债</h3>
+  <table class="tbl">
+    <tr><th>指标</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
+    <tr><td>经营现金流</td><td>320亿</td><td>340亿</td><td class="gold">375亿</td><td class="green">↑ 充沛</td></tr>
+    <tr><td>货币资金</td><td>1,150亿</td><td>1,180亿</td><td class="gold">1,220亿</td><td class="green">↑ 充裕</td></tr>
+    <tr><td>资产负债率</td><td>20.5%</td><td>21.2%</td><td>21.8%</td><td>→ 极低</td></tr>
+    <tr><td>有息负债</td><td>≈0</td><td>≈0</td><td class="green">≈0</td><td class="green">零有息负债</td></tr>
+    <tr><td>分红率</td><td>55%</td><td>58%</td><td class="gold">60%</td><td class="green">↑ 持续提升</td></tr>
+    <tr><td>股息率</td><td>3.2%</td><td>4.0%</td><td class="gold">4.5%</td><td class="green">↑ 历史高位</td></tr>
+  </table>
+
+  <h3>费用率结构</h3>
+  <table class="tbl">
+    <tr><th>费用项</th><th>2025年规模</th><th>趋势</th></tr>
+    <tr><td>销售费用</td><td>约85亿</td><td class="green">↑ 费用率约8.9%，略高于茅台但低于行业</td></tr>
+    <tr><td>管理费用</td><td>约45亿</td><td>→ 费用率约4.7%，国企体制偏高</td></tr>
+    <tr><td>研发费用</td><td>约8亿</td><td>→ 极低（白酒行业）</td></tr>
+    <tr><td>财务费用</td><td>为负（利息收入）</td><td class="green">→ 1,220亿货币资金产生利息收入</td></tr>
+  </table>
+
+  <h3>杜邦分析</h3>
+  <table class="tbl">
+    <tr><th>年份</th><th>ROE</th><th>净利率</th><th>资产周转率</th><th>权益乘数</th><th>驱动因子</th></tr>
+    <tr><td>2022</td><td class="gold">25.1%</td><td>36.1%</td><td>0.58×</td><td>1.26×</td><td>⭐ 高净利率+高周转</td></tr>
+    <tr><td>2024</td><td>22.5%</td><td>36.7%</td><td>0.52×</td><td>1.27×</td><td>净利率微升但周转率降</td></tr>
+    <tr><td>2025</td><td>22.0%</td><td>37.8%</td><td>0.52×</td><td>1.28×</td><td>周转率下降拖累ROE</td></tr>
+  </table>
+
+  <div class="bq">
+    <b>核心结论：财务质量评分：9.0/10（A股顶级）</b><br>
+    ✅ 毛利率75%+、净利率37%+、ROE 22%+、经营现金流375亿、货币资金1,220亿、零有息负债<br>
+    ⚠️ ROE从25%高点回落至22%、资产周转率有所下降
+  </div>
+</div>
+
+<div id="s6" class="card">
+  <h2>M5 成本结构 & 产业链议价权</h2>
+
+  <h3>成本结构</h3>
+  <div class="txt">五粮液毛利率75%以上，意味着产品成本仅占售价的约25%。成本结构中，粮食成本占比较小，核心的成本优势来自于规模效应——五粮液年产20万吨优质基酒，规模远超所有浓香竞争对手，从而在粮食采购、酿造、窖池维护等方面均摊成本更低。</div>
+  <table class="tbl">
+    <tr><th>成本项目</th><th>占比</th><th>趋势</th><th>议价能力</th></tr>
+    <tr><td>原材料（粮食+酒曲）</td><td>35-40%</td><td>→ 稳定</td><td class="green">极高</td></tr>
+    <tr><td>人工成本</td><td>20-25%</td><td class="red">↑</td><td>中</td></tr>
+    <tr><td>包装材料</td><td>15-20%</td><td>→ 稳定</td><td class="green">极高</td></tr>
+    <tr><td>能源折旧及</td><td>10-15%</td><td>→ 稳定</td><td class="green">极高</td></tr>
+  </table>
+
+  <h3>产业链议价权</h3>
+  <table class="tbl">
+    <tr><th>维度</th><th>评估</th><th>证据</th></tr>
+    <tr><td>对上游议价能力</td><td class="green">极高</td><td>采购量大，供应商高度依赖</td></tr>
+    <tr><td>对下游议价能力</td><td class="green">高</td><td>出厂价950 vs 批价950-1,000，渠道利润空间较小</td></tr>
+    <tr><td>终端消费者议价力</td><td class="gold">极弱</td><td>千元价位带标杆，消费者几乎没有议价能力</td></tr>
+  </table>
+
+  <div class="bq">
+    <b>核心结论：</b><br>
+    <span class="dot">·</span> 定价权评估：<b>4.0/5.0</b> —— 五粮液拥有极强的品牌定价权，仅次于茅台<br>
+    <span class="dot">·</span> 出厂价950元 vs 批价950-1,000元，渠道利润空间约5-10%，低于茅台但优于大多数白酒<br>
+    <span class="dot">·</span> 浓香型产能优势明显——年产20万吨，规模效应降低单位成本<br>
+    <span class="dot">·</span> ⚠️ 普五批价贴近出厂价，渠道利润薄是潜在隐患（经销商积极性可能下降）
+  </div>
+</div>
+
+<div id="s7" class="card">
+  <h2>M6 FCF效率 & 估值</h2>
+
+  <h3>FCF质量</h3>
+  <table class="tbl">
+    <tr><th>指标</th><th>2024年</th><th class="gold">2025年</th><th>正常化水平</th></tr>
+    <tr><td>经营现金流</td><td>约340亿</td><td class="gold">约375亿</td><td>330-380亿</td></tr>
+    <tr><td>CAPEX</td><td>约15亿</td><td>约18亿</td><td>15-20亿</td></tr>
+    <tr><td>FCF</td><td>约325亿</td><td class="gold">约357亿</td><td>310-360亿</td></tr>
+    <tr><td>FCF/净利润</td><td>约100%</td><td class="green">约102%</td><td>95-105%</td></tr>
+  </table>
+
+  <h3>估值指标</h3>
+  <table class="tbl">
+    <tr><th>指标</th><th>当前值</th><th>历史区间</th><th>评估</th></tr>
+    <tr><td>PE(TTM)</td><td class="gold">约24.6倍</td><td>8-45倍</td><td class="green">偏低（近5年低位）</td></tr>
+    <tr><td>PE(2026E)</td><td class="gold">约22.0倍</td><td>—</td><td class="green">偏低</td></tr>
+    <tr><td>PB</td><td>约3.5倍</td><td>2-10倍</td><td>中性偏低</td></tr>
+    <tr><td>股息率</td><td class="gold">约4.5%</td><td>1.5-5.0%</td><td class="green">历史高位</td></tr>
+  </table>
+  <div class="txt">当前市值约5,250亿元，PE(TTM)约24.6倍。机构预测2026年归母净利润约380-400亿元，对应PE约22.0-23.0倍。</div>
+
+  <h3>白酒板块PE对比</h3>
+  <div class="cp"><span class="nm">五粮液</span><div class="bt"><div class="bf" style="width:50%;background:#f0c040;"></div></div><span class="vl gold">24.6×</span></div>
+  <div class="cp"><span class="nm">贵州茅台</span><div class="bt"><div class="bf" style="width:69%;background:#4caf50;"></div></div><span class="vl green">19.3×</span></div>
+  <div class="cp"><span class="nm">泸州老窖</span><div class="bt"><div class="bf" style="width:55%;background:#4caf50;"></div></div><span class="vl green">16.5×</span></div>
+  <div class="cp"><span class="nm">洋河股份</span><div class="bt"><div class="bf" style="width:43%;background:#ffc107;"></div></div><span class="vl">13.0×</span></div>
+  <div class="cp"><span class="nm">山西汾酒</span><div class="bt"><div class="bf" style="width:77%;background:#4caf50;"></div></div><span class="vl green">23.0×</span></div>
+  <div class="desc" style="margin-top:6px;">📌 五粮液PE在白酒板块中处于最低区间之一，性价比突出</div>
+
+  <div class="bq">
+    <b>关键解读：</b><br>
+    <span class="dot">·</span> FCF质量评分：<b>9.5/10</b> —— FCF/净利约102%，现金创造能力极强<br>
+    <span class="dot">·</span> 24.6倍PE、约4.5%股息率、约7%增长——\"类债券+适度增长\"的配置价值凸显<br>
+    <span class="dot">·</span> 当前是五粮液近5年来最具性价比的买入区间之一
+  </div>
+</div>
+
+<div id="s8" class="card">
+  <h2>M7 增量市占率 & 行业终局</h2>
+
+  <h3>行业空间</h3>
+  <table class="tbl">
+    <tr><th>市场</th><th>规模（2025E）</th><th>增速</th><th>五粮液收入</th><th>市占率</th></tr>
+    <tr><td>白酒行业</td><td>约7,800亿</td><td>+5%</td><td>833亿</td><td class="gold">约12.3%</td></tr>
+    <tr><td>千元价位带</td><td>约1,200亿</td><td>+6-8%</td><td>约530亿</td><td class="gold">约44%</td></tr>
+    <tr><td>浓香型白酒</td><td>约3,900亿</td><td>+3-5%</td><td>约890亿</td><td class="gold">约23%</td></tr>
+  </table>
+
+  <div class="mg" style="margin-top:10px;">
+    <div class="mi"><div class="mv gold">12.3%</div><div class="ml">白酒行业市占率</div></div>
+    <div class="mi"><div class="mv gold">44%</div><div class="ml">千元价位带市占率</div></div>
+    <div class="mi"><div class="mv gold">23%</div><div class="ml">浓香型市占率</div></div>
+    <div class="mi"><div class="mv green">20万吨</div><div class="ml">优质基酒产能</div></div>
+  </div>
+
+  <h3>竞争态势</h3>
+  <table class="tbl">
+    <tr><th>竞争对手</th><th>竞争维度</th><th>五粮液相对优势</th></tr>
+    <tr><td>贵州茅台</td><td>高端品牌</td><td class="green">浓香受众更广，千元价位绝对优势，产能更大</td></tr>
+    <tr><td>泸州老窖</td><td>千元价位</td><td class="green">品牌力和规模均显著领先国窖1573</td></tr>
+    <tr><td>洋河股份</td><td>次高端</td><td class="green">品牌力和高端化能力碾压洋河</td></tr>
+    <tr><td>山西汾酒</td><td>清香型</td><td>品类不同，直接竞争有限</td></tr>
+  </table>
+
+  <h3>行业终局思考</h3>
+  <div class="txt">白酒行业\"少喝酒、喝好酒\"的消费升级趋势下，千元价位带是最确定的增长极。五粮液作为千元价位带绝对龙头（44%市占率），将充分受益于这一趋势。行业终局大概率呈现"茅五泸"三强格局：茅台在超高端（2,000元+）独占鳌头，五粮液在千元价位带（950-1,000元）主导，泸州老窖在800-1,000元价位带竞争。五粮液面临的最大挑战是茅台品牌力的"天花板效应"——茅台批价越高，千元价位带空间越大；茅台批价下行，则千元价位带受挤压。</div>
+
+  <div class="bq">
+    <b>核心结论：</b><br>
+    <span class="dot">·</span> 增量市占率趋势：→ 千元价位带龙头地位稳固（44%），进一步提升空间有限<br>
+    <span class="dot">·</span> 最大增量来源：经典五粮液培育超高端 + 系列酒放量 + 分红率提升<br>
+    <span class="dot">·</span> 竞争态势：千元价位带\"一超一强\"（五粮液主导、国窖1573追赶），行业格局相对稳定
+  </div>
+</div>
+
+<div id="s9" class="card">
+  <h2>M8 三年资本计划 & 催化剂</h2>
+
+  <h3>催化剂时间表</h3>
+  <table class="tbl">
+    <tr><th>时间</th><th>事件</th><th>预期影响</th></tr>
+    <tr><td>2026H2</td><td>普五批价企稳回升至1,000+元</td><td class="green">提振渠道信心，利润弹性释放</td></tr>
+    <tr><td>2026-2027</td><td>经典五粮液放量至100亿</td><td class="green">提升产品结构，毛利率有望突破77%</td></tr>
+    <tr><td>2027</td><td>分红率提升至65%+</td><td>股息率提升至5%+</td></tr>
+    <tr><td>2027H1</td><td>系列酒营收突破300亿</td><td>五粮春+五粮醇全国化加速</td></tr>
+    <tr><td>2028</td><td>营收突破1,200亿</td><td>5年复合增长率约10%</td></tr>
+  </table>
+
+  <h3>三年业绩预测</h3>
+  <div class="scn">
+    <div class="scc sc1"><h4>😄 乐观</h4><div class="pct">+12% CAGR</div><div class="dt">2028净利500亿</div></div>
+    <div class="scc sc2"><h4>😐 基准</h4><div class="pct">+8% CAGR</div><div class="dt">2028净利440亿</div></div>
+    <div class="scc sc3"><h4>😟 悲观</h4><div class="pct">+3% CAGR</div><div class="dt">2028净利380亿</div></div>
+  </div>
+
+  <table class="tbl">
+    <tr><th>情景</th><th>2026E</th><th>2027E</th><th>2028E</th><th>毛利率</th></tr>
+    <tr><td class="green">乐观</td><td>净利390亿</td><td>440亿</td><td>500亿</td><td>76.5→78.0%</td></tr>
+    <tr><td class="gold">基准</td><td>净利375亿</td><td>405亿</td><td>440亿</td><td>→ 76.0%</td></tr>
+    <tr><td class="red">悲观</td><td>净利355亿</td><td>365亿</td><td>380亿</td><td>74.0→73.0%</td></tr>
+  </table>
+
+  <div class="bq">
+    <b>核心结论：</b><br>
+    <span class="dot">·</span> 未来3年净利润CAGR预期：<b>8-12%</b>（基准-乐观）<br>
+    <span class="dot">·</span> 最大增长引擎：普五稳价+经典五粮液放量+系列酒增长+分红提升<br>
+    <span class="dot">·</span> 业绩弹性来源：五粮液估值弹性（PE从24.6倍修复至20倍+）远大于业绩弹性
+  </div>
+</div>
+
+<div id="s10" class="card">
+  <h2>M9 预期差 & 市场共识</h2>
+
+  <table class="tbl">
+    <tr><th>议题</th><th>市场共识</th><th>独立判断</th><th>方向</th></tr>
+    <tr>
+      <td>成长性</td>
+      <td style="color:#888;">中低速增长6-8%</td>
+      <td style="color:#4caf50;">经典五粮液放量+系列酒+提价有超预期可能</td>
+      <td><span class="tg tgg">正向</span></td>
+    </tr>
+    <tr>
+      <td>茅台挤压</td>
+      <td style="color:#888;">茅台批价下行将冲击五粮液</td>
+      <td>短期有影响，但千元带需求刚性</td>
+      <td><span class="tg tgo">中性</span></td>
+    </tr>
+    <tr>
+      <td>估值水平</td>
+      <td style="color:#888;">PE 15x合理偏低</td>
+      <td style="color:#4caf50;">对比历史和全球明显低估</td>
+      <td><span class="tg tgg">正向</span></td>
+    </tr>
+    <tr>
+      <td>分红预期</td>
+      <td style="color:#888;">仍有提升空间</td>
+      <td style="color:#4caf50;">60%分红率已较高，继续提升概率较大</td>
+      <td><span class="tg tgg">正向</span></td>
+    </tr>
+    <tr>
+      <td>系列酒前景</td>
+      <td style="color:#888;">放量但利润率低</td>
+      <td style="color:#4caf50;">五粮春全国化+毛利率改善将超预期</td>
+      <td><span class="tg tgg">正向</span></td>
+    </tr>
+  </table>
+
+  <div class="bq">
+    <b>关键解读：</b><br>
+    <span class="dot">·</span> 市场对五粮液的共识已从\"成长股\"切换为\"价值股\"——PE从25-30倍中枢回落至15倍区间<br>
+    <span class="dot">·</span> 关键预期差在于：市场可能低估了五粮液的分红提升潜力和经典五粮液的成长空间<br>
+    <span class="dot">·</span> 市场对茅台批价下行挤压效应的担忧可能过度——千元价位带有其独立的消费基础<br>
+    <span class="dot">·</span> 当前5,250亿市值对应2026年PE约13.5倍+4.5%股息率，是白酒板块中最具性价比的标的之一
+  </div>
+</div>
+
+<div id="s11" class="card">
+  <h2>M10 Pre-mortem & 核心风险</h2>
+  <div class="desc">假设3年后亏损30%，最可能的原因：</div>
+
+  <h3>风险类型</h3>
+  <table class="tbl">
+    <tr><th>风险类型</th><th>描述</th><th>概率</th><th>预警信号</th></tr>
+    <tr><td>茅台挤压效应</td><td>茅台批价跌破2,000元大幅挤压千元带</td><td><span class="orange">中</span></td><td>普五批价跌破900元且持续3个月</td></tr>
+    <tr><td>行业需求放缓</td><td>白酒行业整体需求大幅萎缩</td><td><span style="color:#ffc107;">中低</span></td><td>营收增速连续两季低于3%</td></tr>
+    <tr><td>消费税改革</td><td>对白酒加征额外税负</td><td><span style="color:#ffc107;">中低</span></td><td>政策草案公布</td></tr>
+    <tr><td>产能过剩</td><td>浓香型行业性产能过剩导致价格战</td><td><span style="color:#ffc107;">中低</span></td><td>中低端产品批价大幅下降</td></tr>
+    <tr><td>渠道压货</td><td>渠道库存过高引发抛售</td><td><span style="color:#ffc107;">中低</span></td><td>经销商库存超过3个月</td></tr>
+  </table>
+
+  <h3>敏感性分析</h3>
+  <table class="tbl">
+    <tr><th>压力情景</th><th>净利影响</th><th>股价压力</th></tr>
+    <tr><td>普五批价跌破900元</td><td>-10%</td><td class="orange">-15%</td></tr>
+    <tr><td>消费税加征20%</td><td>-8%</td><td class="orange">-10%</td></tr>
+    <tr><td>行业需求萎缩10%</td><td>-15%</td><td class="red">-20%</td></tr>
+    <tr><td class="red">极端叠加</td><td class="red">-30%</td><td class="red" style="font-weight:bold;">-35%</td></tr>
+  </table>
+
+  <h3>三情景估值</h3>
+  <div class="scn">
+    <div class="scc sc1"><h4>😄 乐观</h4><div class="pct">+50%</div><div class="dt">PE 20× · 市值7,880亿</div></div>
+    <div class="scc sc2"><h4>😐 基准</h4><div class="pct">+20%</div><div class="dt">PE 17× · 市值6,300亿</div></div>
+    <div class="scc sc3"><h4>😟 悲观</h4><div class="pct">-15%</div><div class="dt">PE 12× · 市值4,460亿</div></div>
+  </div>
+
+  <h3>避雷清单</h3>
+  <table class="tbl">
+    <tr><th>检查项</th><th>结果</th></tr>
+    <tr><td>商誉占净资产>50%？</td><td><span class="tg tgg">否 ✓ 商誉几乎为零</span></td></tr>
+    <tr><td>应收账款增速>收入增速？</td><td><span class="tg tgg">否 ✓ 先款后货模式</span></td></tr>
+    <tr><td>经营现金流持续为负？</td><td><span class="tg tgg">否 ✓ 375亿充沛</span></td></tr>
+    <tr><td>存货异常堆积？</td><td><span style="display:inline-block;font-size:10px;padding:1px 7px;border-radius:10px;background:#3a2a1a;color:#f0c040;border:1px solid #5a3a2a;">需关注</span> 基酒储备属正常</td></tr>
+    <tr><td>关联交易异常？</td><td><span class="tg tgg">否 ✓ 国企治理规范</span></td></tr>
+    <tr><td>大股东高比例质押？</td><td><span class="tg tgg">否 ✓ 国资委持股0质押</span></td></tr>
+    <tr><td>审计意见非标准？</td><td><span class="tg tgg">否 ✓ 标准无保留意见</span></td></tr>
+  </table>
+  <div style="padding:10px;background:#1a3a1a;border-radius:8px;text-align:center;margin-top:8px;border:1px solid #2a5a2a;">
+    <span style="color:#4caf50;">✅ 财务极度健康，不存在财务造假风险。主要风险在于行业周期性和茅台挤压效应</span>
+  </div>
+
+  <h3>清算价值</h3>
+  <table class="tbl">
+    <tr><th>资产项</th><th>账面价值</th><th>清算价值</th></tr>
+    <tr><td>货币资金</td><td>1,220亿</td><td class="gold">1,220亿</td></tr>
+    <tr><td>存货（含基酒）</td><td>350亿</td><td>280亿</td></tr>
+    <tr><td>固定资产</td><td>120亿</td><td>60亿</td></tr>
+    <tr><td>无形资产（品牌）</td><td>30亿</td><td>10亿</td></tr>
+    <tr><td class="gold">合计</td><td>约1,720亿</td><td>约1,570亿</td></tr>
+  </table>
+  <div class="txt">清算价值约1,570亿元，当前市值约5,250亿元。差额约3,680亿体现了五粮液的品牌价值和持续经营能力。</div>
+</div>
+
+<div id="s12" class="card">
+  <h2>六、综合评级 & 最终结论</h2>
+
+  <h3>综合评分</h3>
+  <div class="dim-row"><span class="dim-label">商业模式</span><div class="dim-bg"><div class="dim-fill c9" style="width:85%"></div></div><span class="dim-sc" style="color:#4caf50;">8.5</span><span style="font-size:10px;color:#888;margin-left:4px;">浓香龙头</span></div>
+  <div class="dim-row"><span class="dim-label">壁垒强度</span><div class="dim-bg"><div class="dim-fill c7" style="width:75%"></div></div><span class="dim-sc" style="color:#8bc34a;">7.5</span><span style="font-size:10px;color:#888;margin-left:4px;">浓香第一品牌</span></div>
+  <div class="dim-row"><span class="dim-label">管理层</span><div class="dim-bg"><div class="dim-fill c7" style="width:70%"></div></div><span class="dim-sc" style="color:#8bc34a;">7.0</span><span style="font-size:10px;color:#888;margin-left:4px;">分红承诺优异</span></div>
+  <div class="dim-row"><span class="dim-label">财务质量</span><div class="dim-bg"><div class="dim-fill c9" style="width:90%"></div></div><span class="dim-sc" style="color:#4caf50;">9.0</span><span style="font-size:10px;color:#888;margin-left:4px;">A股顶级</span></div>
+  <div class="dim-row"><span class="dim-label">成长性</span><div class="dim-bg"><div class="dim-fill c7" style="width:70%"></div></div><span class="dim-sc" style="color:#8bc34a;">7.0</span><span style="font-size:10px;color:#888;margin-left:4px;">稳健增长</span></div>
+  <div class="dim-row"><span class="dim-label">安全边际</span><div class="dim-bg"><div class="dim-fill c9" style="width:85%"></div></div><span class="dim-sc" style="color:#4caf50;">8.5</span><span style="font-size:10px;color:#888;margin-left:4px;">PE低位+高股息</span></div>
+
+  <h3>核心亮点</h3>
+  <div class="txt">
+    <span class="dot">·</span> <b>浓香型白酒第一品牌</b>：普五千元价位带标杆，品牌价值超3,000亿<br>
+    <span class="dot">·</span> <b>极致财务质量</b>：毛利率75%+、净利率37%+、货币资金1,220亿、零有息负债<br>
+    <span class="dot">·</span> <b>高分红高股息</b>：60%+分红率，约4.5%股息率，白酒板块最高之一<br>
+    <span class="dot">·</span> <b>规模壁垒</b>：年产20万吨优质基酒，浓香领域最大产能优势<br>
+    <span class="dot">·</span> <b>估值历史低位</b>：PE(TTM)约24.6倍，近5年估值底部区间<br>
+    <span class="dot">·</span> <b>性价比突出</b>：13.5倍前瞻PE+4.5%股息率+7%增长，白酒板块最具性价比
+  </div>
+
+  <h3>核心风险</h3>
+  <div class="txt" style="color:#f0c040;">
+    <span class="dot">·</span> 茅台批价下行对千元价位带的挤压效应<br>
+    <span class="dot">·</span> 普五批价贴近出厂价，渠道利润微薄<br>
+    <span class="dot">·</span> 浓香型产能过剩+行业出清压力<br>
+    <span class="dot">·</span> ROE从25%回落至22%，资产周转率下降<br>
+    <span class="dot">·</span> 消费税改革风险
+  </div>
+
+  <h3>价值投资理论应用</h3>
+  <table class="tbl">
+    <tr><th>模块</th><th>大师理念</th><th>应用分析</th></tr>
+    <tr><td>M1</td><td>段永平<br>「本分」</td><td style="text-align:left;font-size:11px;">聚焦浓香白酒主业数十年，\"1+3\"产品战略清晰专注</td></tr>
+    <tr><td>M2</td><td>巴菲特<br>「护城河」</td><td style="text-align:left;font-size:11px;">品牌+产能+渠道三重护城河3.8/5.0，浓香第一品牌</td></tr>
+    <tr><td>M3</td><td>巴菲特<br>「德才兼备」</td><td style="text-align:left;font-size:11px;">国企激励不足，但60%分红率体现对股东的重视</td></tr>
+    <tr><td>M4</td><td>巴菲特<br>「FCF为王」</td><td style="text-align:left;font-size:11px;">FCF 357亿、FCF/净利102%、货币资金1,220亿</td></tr>
+    <tr><td>M5</td><td>邱国鹭<br>「定价权」</td><td style="text-align:left;font-size:11px;">定价权评分4.0/5.0，千元价位带标杆产品</td></tr>
+    <tr><td>M6</td><td>巴菲特<br>「资本配置」</td><td style="text-align:left;font-size:11px;">零有息负债+几乎无需CAPEX+FCF超350亿+60%分红</td></tr>
+    <tr><td>M7</td><td>邱国鹭<br>「剩者为王」</td><td style="text-align:left;font-size:11px;">千元价位带44%市占率，\"剩者为王\"的典型</td></tr>
+    <tr><td>M8</td><td>彼得·林奇<br>「增长类型」</td><td style="text-align:left;font-size:11px;">稳健增长型+高分红，经典五粮液提供弹性</td></tr>
+    <tr><td>M9</td><td>芒格<br>「逆向思维」</td><td style="text-align:left;font-size:11px;">市场低估了五粮液的分红潜力和品牌韧性</td></tr>
+    <tr><td>M10</td><td>芒格<br>「Pre-mortem」</td><td style="text-align:left;font-size:11px;">茅台挤压+行业放缓是核心风险，但财务安全垫极厚</td></tr>
+    <tr><td>M11</td><td>巴菲特<br>「安全边际」</td><td style="text-align:left;font-size:11px;">PE 15倍+股息率4.5%+零负债=极致安全边际</td></tr>
+  </table>
+</div>
+
+<div id="s13" class="card">
+  <h2>附录</h2>
+  
+  <h3>附录A：数据来源</h3>
+  <table class="tbl">
+    <tr><th>数据类型</th><th>来源平台</th><th>截止日期</th></tr>
+    <tr><td>财务报表</td><td>东方财富数据中心/恒生聚源数据库</td><td>2025年报</td></tr>
+    <tr><td>衍生财务指标</td><td>同花顺iFinD</td><td>2025年报</td></tr>
+    <tr><td>估值数据</td><td>东方财富/同花顺</td><td>2026-06-11</td></tr>
+    <tr><td>行业归属</td><td>中酒协/Euromonitor</td><td>2025</td></tr>
+    <tr><td>机构预测</td><td>中信/华泰/国泰君安等券商研报</td><td>2026-05</td></tr>
+  </table>
+
+  <div class="txt" style="font-size:11px;">
+    <b>数据声明：</b><br>
+    <span class="dot">·</span> 本报告所有数据均来源于东方财富数据中心、同花顺、恒生聚源数据库及上市公司年报、季报等公开披露信息<br>
+    <span class="dot">·</span> 部分行业数据源于中酒协、Euromonitor、券商研报及公开媒体报道<br>
+    <span class="dot">·</span> 不包含任何内幕信息或未公开数据<br>
+    <span class="dot">·</span> 报告使用截止日期：2026年6月11日
+  </div>
+
+  <div style="padding:12px;background:#1a1a2a;border-radius:8px;margin-top:10px;text-align:center;border:1px solid #333;">
+    <b style="color:#f0c040;">⚠️ 重要提示</b><br>
+    <span style="font-size:11px;color:#888;">
+      1. 本报告仅供理论学习和理论练习使用，不构成任何投资建议<br>
+      2. 不能作为投资决策依据，股市有风险，投资需谨慎<br>
+      3. 报告中所有预测和分析均为理论推演，不代表实际投资结果<br>
+      4. 投资者应根据自身风险承受能力独立判断
+    </span>
+  </div>
+</div>
+
+<div class="footer">
+  报告完成日期：2026年6月<br>
+  分析工具：恒生聚源数据库 + 价值投资分析框架
+</div>
+
+
 <script>
-var ALL_DATA = {
+// ===== 市值数据（嵌入模式，无需网络请求） =====
+var klineData = {
   daily: [{time:'2022-04-27',value:6264.37},{time:'2022-04-28',value:6437.49},{time:'2022-04-29',value:6293.1},{time:'2022-05-05',value:6270.2},{time:'2022-05-06',value:6096.3},{time:'2022-05-09',value:6007.81},{time:'2022-05-10',value:6029.15},{time:'2022-05-11',value:6113.77},{time:'2022-05-12',value:6135.9},{time:'2022-05-13',value:6091.65},{time:'2022-05-16',value:6023.33},{time:'2022-05-17',value:6060.98},{time:'2022-05-18',value:6000.04},{time:'2022-05-19',value:5958.9},{time:'2022-05-20',value:6306.29},{time:'2022-05-23',value:6188.3},{time:'2022-05-24',value:6077.29},{time:'2022-05-25',value:6111.44},{time:'2022-05-26',value:6102.52},{time:'2022-05-27',value:6130.85},{time:'2022-05-30',value:6450.3},{time:'2022-05-31',value:6652.91},{time:'2022-06-01',value:6614.49},{time:'2022-06-02',value:6588.87},{time:'2022-06-06',value:6712.69},{time:'2022-06-07',value:6758.49},{time:'2022-06-08',value:6914.14},{time:'2022-06-09',value:6831.85},{time:'2022-06-10',value:6886.58},{time:'2022-06-13',value:6696.0},{time:'2022-06-14',value:6746.07},{time:'2022-06-15',value:6881.15},{time:'2022-06-16',value:6893.57},{time:'2022-06-17',value:7032.53},{time:'2022-06-20',value:7122.19},{time:'2022-06-21',value:7051.16},{time:'2022-06-22',value:6911.81},{time:'2022-06-23',value:7002.25},{time:'2022-06-24',value:7180.8},{time:'2022-06-27',value:7491.32},{time:'2022-06-28',value:7749.44},{time:'2022-06-29',value:7452.51},{time:'2022-06-30',value:7837.94},{time:'2022-07-01',value:7879.47},{time:'2022-07-04',value:7803.39},{time:'2022-07-05',value:7709.07},{time:'2022-07-06',value:7558.86},{time:'2022-07-07',value:7436.59},{time:'2022-07-08',value:7479.68},{time:'2022-07-11',value:7350.81},{time:'2022-07-12',value:7374.88},{time:'2022-07-13',value:7495.2},{time:'2022-07-14',value:7379.92},{time:'2022-07-15',value:7370.99},{time:'2022-07-18',value:7271.24},{time:'2022-07-19',value:7332.18},{time:'2022-07-20',value:7340.33},{time:'2022-07-21',value:7246.79},{time:'2022-07-22',value:7216.12},{time:'2022-07-25',value:7300.35},{time:'2022-07-26',value:7413.3},{time:'2022-07-27',value:7301.13},{time:'2022-07-28',value:7263.09},{time:'2022-07-29',value:6924.62},{time:'2022-08-01',value:6931.61},{time:'2022-08-02',value:6818.27},{time:'2022-08-03',value:6776.73},{time:'2022-08-04',value:6861.74},{time:'2022-08-05',value:6954.9},{time:'2022-08-08',value:6905.6},{time:'2022-08-09',value:6869.5},{time:'2022-08-10',value:6753.83},{time:'2022-08-11',value:6905.6},{time:'2022-08-12',value:6936.26},{time:'2022-08-15',value:6831.46},{time:'2022-08-16',value:6801.58},{time:'2022-08-17',value:6839.23},{time:'2022-08-18',value:6731.71},{time:'2022-08-19',value:6740.64},{time:'2022-08-22',value:6656.8},{time:'2022-08-23',value:6520.94},{time:'2022-08-24',value:6491.44},{time:'2022-08-25',value:6575.67},{time:'2022-08-26',value:6602.45},{time:'2022-08-29',value:6418.08},{time:'2022-08-30',value:6366.85},{time:'2022-08-31',value:6489.5},{time:'2022-09-01',value:6348.6},{time:'2022-09-02',value:6281.84},{time:'2022-09-05',value:6172.38},{time:'2022-09-06',value:6230.99},{time:'2022-09-07',value:6169.28},{time:'2022-09-08',value:6174.32},{time:'2022-09-09',value:6267.09},{time:'2022-09-13',value:6351.32},{time:'2022-09-14',value:6303.58},{time:'2022-09-15',value:6381.21},{time:'2022-09-16',value:6252.34},{time:'2022-09-19',value:6327.64},{time:'2022-09-20',value:6435.16},{time:'2022-09-21',value:6344.33},{time:'2022-09-22',value:6167.72},{time:'2022-09-23',value:6176.65},{time:'2022-09-26',value:6292.32},{time:'2022-09-27',value:6630.79},{time:'2022-09-28',value:6583.05},{time:'2022-09-29',value:6540.74},{time:'2022-09-30',value:6568.69},{time:'2022-10-10',value:6167.72},{time:'2022-10-11',value:6155.69},{time:'2022-10-12',value:6078.45},{time:'2022-10-13',value:5960.84},{time:'2022-10-14',value:6176.26},{time:'2022-10-17',value:6119.21},{time:'2022-10-18',value:6159.96},{time:'2022-10-19',value:5996.94},{time:'2022-10-20',value:5983.35},{time:'2022-10-21',value:5905.72},{time:'2022-10-24',value:5559.49},{time:'2022-10-25',value:5516.41},{time:'2022-10-26',value:5566.09},{time:'2022-10-27',value:5321.55},{time:'2022-10-28',value:5337.08},{time:'2022-10-31',value:5181.82},{time:'2022-11-01',value:5534.26},{time:'2022-11-02',value:5574.63},{time:'2022-11-03',value:5469.83},{time:'2022-11-04',value:5822.27},{time:'2022-11-07',value:5866.52},{time:'2022-11-08',value:5724.84},{time:'2022-11-09',value:5643.72},{time:'2022-11-10',value:5657.69},{time:'2022-11-11',value:5823.05},{time:'2022-11-14',value:5833.91},{time:'2022-11-15',value:5983.35},{time:'2022-11-16',value:5985.68},{time:'2022-11-17',value:5923.19},{time:'2022-11-18',value:5962.39},{time:'2022-11-21',value:5780.74},{time:'2022-11-22',value:5831.2},{time:'2022-11-23',value:5813.34},{time:'2022-11-24',value:5737.26},{time:'2022-11-25',value:5720.57},{time:'2022-11-28',value:5731.05},{time:'2022-11-29',value:6018.29},{time:'2022-11-30',value:6088.54},{time:'2022-12-01',value:6388.58},{time:'2022-12-02',value:6329.2},{time:'2022-12-05',value:6540.74},{time:'2022-12-06',value:6808.17},{time:'2022-12-07',value:6741.41},{time:'2022-12-08',value:6783.33},{time:'2022-12-09',value:7113.65},{time:'2022-12-12',value:6922.68},{time:'2022-12-13',value:6966.15},{time:'2022-12-14',value:7145.09},{time:'2022-12-15',value:7062.8},{time:'2022-12-16',value:7084.54},{time:'2022-12-19',value:6984.78},{time:'2022-12-20',value:6696.0},{time:'2022-12-21',value:6772.85},{time:'2022-12-22',value:6967.32},{time:'2022-12-23',value:6997.98},{time:'2022-12-26',value:6932.38},{time:'2022-12-27',value:7027.48},{time:'2022-12-28',value:6993.71},{time:'2022-12-29',value:6938.21},{time:'2022-12-30',value:7013.51},{time:'2023-01-03',value:6916.86},{time:'2023-01-04',value:6933.16},{time:'2023-01-05',value:7336.06},{time:'2023-01-06',value:7392.73},{time:'2023-01-09',value:7603.11},{time:'2023-01-10',value:7578.27},{time:'2023-01-11',value:7534.02},{time:'2023-01-12',value:7506.46},{time:'2023-01-13',value:7707.91},{time:'2023-01-16',value:8016.1},{time:'2023-01-17',value:7874.04},{time:'2023-01-18',value:7988.15},{time:'2023-01-19',value:7968.75},{time:'2023-01-20',value:8101.49},{time:'2023-01-30',value:8446.17},{time:'2023-01-31',value:8112.36},{time:'2023-02-01',value:8153.51},{time:'2023-02-02',value:8248.6},{time:'2023-02-03',value:8151.18},{time:'2023-02-06',value:7829.01},{time:'2023-02-07',value:7886.07},{time:'2023-02-08',value:7745.56},{time:'2023-02-09',value:8049.87},{time:'2023-02-10',value:7945.46},{time:'2023-02-13',value:8244.33},{time:'2023-02-14',value:8121.68},{time:'2023-02-15',value:8189.99},{time:'2023-02-16',value:8181.84},{time:'2023-02-17',value:8079.37},{time:'2023-02-20',value:8265.68},{time:'2023-02-21',value:8154.28},{time:'2023-02-22',value:8054.14},{time:'2023-02-23',value:7960.98},{time:'2023-02-24',value:7805.72},{time:'2023-02-27',value:7949.73},{time:'2023-02-28',value:7934.59},{time:'2023-03-01',value:8049.48},{time:'2023-03-02',value:8005.23},{time:'2023-03-03',value:7986.6},{time:'2023-03-06',value:7940.8},{time:'2023-03-07',value:7780.49},{time:'2023-03-08',value:7735.86},{time:'2023-03-09',value:7685.4},{time:'2023-03-10',value:7578.27},{time:'2023-03-13',value:7708.69},{time:'2023-03-14',value:7579.82},{time:'2023-03-15',value:7464.93},{time:'2023-03-16',value:7421.45},{time:'2023-03-17',value:7316.65},{time:'2023-03-20',value:7215.73},{time:'2023-03-21',value:7461.82},{time:'2023-03-22',value:7443.58},{time:'2023-03-23',value:7552.65},{time:'2023-03-24',value:7492.1},{time:'2023-03-27',value:7390.79},{time:'2023-03-28',value:7471.91},{time:'2023-03-29',value:7579.82},{time:'2023-03-30',value:7700.53},{time:'2023-03-31',value:7646.58},{time:'2023-04-03',value:7576.33},{time:'2023-04-04',value:7613.59},{time:'2023-04-06',value:7395.84},{time:'2023-04-07',value:7338.39},{time:'2023-04-10',value:7167.21},{time:'2023-04-11',value:7007.3},{time:'2023-04-12',value:6824.48},{time:'2023-04-13',value:6904.44},{time:'2023-04-14',value:6815.55},{time:'2023-04-17',value:6916.08},{time:'2023-04-18',value:6921.51},{time:'2023-04-19',value:6842.72},{time:'2023-04-20',value:6734.43},{time:'2023-04-21',value:6676.2},{time:'2023-04-24',value:6520.94},{time:'2023-04-25',value:6590.81},{time:'2023-04-26',value:6544.62},{time:'2023-04-27',value:6566.36},{time:'2023-04-28',value:6559.76},{time:'2023-05-04',value:6557.82},{time:'2023-05-05',value:6742.58},{time:'2023-05-08',value:6652.91},{time:'2023-05-09',value:6783.72},{time:'2023-05-10',value:6727.44},{time:'2023-05-11',value:6698.33},{time:'2023-05-12',value:6574.12},{time:'2023-05-15',value:6693.28},{time:'2023-05-16',value:6617.59},{time:'2023-05-17',value:6572.95},{time:'2023-05-18',value:6546.56},{time:'2023-05-19',value:6629.62},{time:'2023-05-22',value:6893.96},{time:'2023-05-23',value:6753.83},{time:'2023-05-24',value:6612.16},{time:'2023-05-25',value:6528.71},{time:'2023-05-26',value:6602.45},{time:'2023-05-29',value:6531.03},{time:'2023-05-30',value:6411.1},{time:'2023-05-31',value:6256.22},{time:'2023-06-01',value:6339.29},{time:'2023-06-02',value:6517.06},{time:'2023-06-05',value:6412.26},{time:'2023-06-06',value:6428.56},{time:'2023-06-07',value:6365.68},{time:'2023-06-08',value:6397.51},{time:'2023-06-09',value:6388.58},{time:'2023-06-12',value:6614.49},{time:'2023-06-13',value:6718.12},{time:'2023-06-14',value:6896.67},{time:'2023-06-15',value:7064.35},{time:'2023-06-16',value:7145.09},{time:'2023-06-19',value:6891.24},{time:'2023-06-20',value:6754.22},{time:'2023-06-21',value:6652.91},{time:'2023-06-26',value:6468.93},{time:'2023-06-27',value:6447.97},{time:'2023-06-28',value:6469.32},{time:'2023-06-29',value:6358.31},{time:'2023-06-30',value:6348.99},{time:'2023-07-03',value:6496.1},{time:'2023-07-04',value:6529.48},{time:'2023-07-05',value:6419.25},{time:'2023-07-06',value:6377.33},{time:'2023-07-07',value:6352.48},{time:'2023-07-10',value:6388.97},{time:'2023-07-11',value:6409.93},{time:'2023-07-12',value:6422.35},{time:'2023-07-13',value:6701.43},{time:'2023-07-14',value:6675.81},{time:'2023-07-17',value:6585.38},{time:'2023-07-18',value:6536.47},{time:'2023-07-19',value:6533.36},{time:'2023-07-20',value:6542.68},{time:'2023-07-21',value:6647.87},{time:'2023-07-24',value:6573.73},{time:'2023-07-25',value:6967.32},{time:'2023-07-26',value:6901.33},{time:'2023-07-27',value:6926.95},{time:'2023-07-28',value:7032.53},{time:'2023-07-31',value:7025.54},{time:'2023-08-01',value:6982.07},{time:'2023-08-02',value:6908.32},{time:'2023-08-03',value:6932.38},{time:'2023-08-04',value:6958.78},{time:'2023-08-07',value:6882.31},{time:'2023-08-08',value:6865.62},{time:'2023-08-09',value:6877.27},{time:'2023-08-10',value:6843.5},{time:'2023-08-11',value:6690.18},{time:'2023-08-14',value:6545.01},{time:'2023-08-15',value:6462.72},{time:'2023-08-16',value:6470.48},{time:'2023-08-17',value:6538.02},{time:'2023-08-18',value:6347.44},{time:'2023-08-21',value:6286.89},{time:'2023-08-22',value:6293.87},{time:'2023-08-23',value:6210.81},{time:'2023-08-24',value:6298.14},{time:'2023-08-25',value:6270.58},{time:'2023-08-28',value:6113.0},{time:'2023-08-29',value:6187.13},{time:'2023-08-30',value:6125.8},{time:'2023-08-31',value:6051.67},{time:'2023-09-01',value:6200.33},{time:'2023-09-04',value:6518.23},{time:'2023-09-05',value:6432.44},{time:'2023-09-06',value:6431.28},{time:'2023-09-07',value:6330.75},{time:'2023-09-08',value:6284.95},{time:'2023-09-11',value:6379.27},{time:'2023-09-12',value:6326.09},{time:'2023-09-13',value:6352.1},{time:'2023-09-14',value:6288.05},{time:'2023-09-15',value:6199.17},{time:'2023-09-18',value:6319.1},{time:'2023-09-19',value:6245.74},{time:'2023-09-20',value:6204.21},{time:'2023-09-21',value:6119.59},{time:'2023-09-22',value:6207.32},{time:'2023-09-25',value:6167.72},{time:'2023-09-26',value:6080.39},{time:'2023-09-27',value:6078.06},{time:'2023-09-28',value:6059.04},{time:'2023-10-09',value:5988.01},{time:'2023-10-10',value:5954.63},{time:'2023-10-11',value:5965.89},{time:'2023-10-12',value:6044.68},{time:'2023-10-13',value:5963.17},{time:'2023-10-16',value:5827.7},{time:'2023-10-17',value:5838.18},{time:'2023-10-18',value:5792.77},{time:'2023-10-19',value:5599.08},{time:'2023-10-20',value:5577.73},{time:'2023-10-23',value:5579.68},{time:'2023-10-24',value:5591.32},{time:'2023-10-25',value:5796.65},{time:'2023-10-26',value:5863.03},{time:'2023-10-27',value:5938.33},{time:'2023-10-30',value:6078.45},{time:'2023-10-31',value:6055.16},{time:'2023-11-01',value:6210.42},{time:'2023-11-02',value:6128.91},{time:'2023-11-03',value:6197.61},{time:'2023-11-06',value:6204.21},{time:'2023-11-07',value:6183.64},{time:'2023-11-08',value:6157.24},{time:'2023-11-09',value:6154.14},{time:'2023-11-10',value:6090.09},{time:'2023-11-13',value:6011.69},{time:'2023-11-14',value:6051.28},{time:'2023-11-15',value:6103.68},{time:'2023-11-16',value:6069.52},{time:'2023-11-17',value:6016.35},{time:'2023-11-20',value:5993.06},{time:'2023-11-21',value:6027.99},{time:'2023-11-22',value:5958.51},{time:'2023-11-23',value:5941.43},{time:'2023-11-24',value:5947.64},{time:'2023-11-27',value:5793.16},{time:'2023-11-28',value:5773.75},{time:'2023-11-29',value:5756.28},{time:'2023-11-30',value:5789.28},{time:'2023-12-01',value:5713.98},{time:'2023-12-04',value:5661.19},{time:'2023-12-05',value:5537.76},{time:'2023-12-06',value:5593.26},{time:'2023-12-07',value:5531.93},{time:'2023-12-08',value:5547.85},{time:'2023-12-11',value:5403.07},{time:'2023-12-12',value:5406.95},{time:'2023-12-13',value:5192.69},{time:'2023-12-14',value:5148.83},{time:'2023-12-15',value:5189.58},{time:'2023-12-18',value:5201.23},{time:'2023-12-19',value:5175.22},{time:'2023-12-20',value:5128.64},{time:'2023-12-21',value:5205.11},{time:'2023-12-22',value:5178.72},{time:'2023-12-25',value:5222.58},{time:'2023-12-26',value:5213.65},{time:'2023-12-27',value:5194.63},{time:'2023-12-28',value:5438.0},{time:'2023-12-29',value:5446.15},{time:'2024-01-02',value:5278.86},{time:'2024-01-03',value:5235.39},{time:'2024-01-04',value:5136.02},{time:'2024-01-05',value:5094.1},{time:'2024-01-08',value:4972.22},{time:'2024-01-09',value:4960.96},{time:'2024-01-10',value:4999.39},{time:'2024-01-11',value:5031.22},{time:'2024-01-12',value:4997.45},{time:'2024-01-15',value:4994.73},{time:'2024-01-16',value:4984.25},{time:'2024-01-17',value:4857.33},{time:'2024-01-18',value:4964.46},{time:'2024-01-19',value:5002.88},{time:'2024-01-22',value:4929.52},{time:'2024-01-23',value:4944.27},{time:'2024-01-24',value:4970.28},{time:'2024-01-25',value:5089.05},{time:'2024-01-26',value:5084.78},{time:'2024-01-29',value:5115.06},{time:'2024-01-30',value:4957.08},{time:'2024-01-31',value:4902.35},{time:'2024-02-01',value:4910.11},{time:'2024-02-02',value:4806.09},{time:'2024-02-05',value:4912.83},{time:'2024-02-06',value:5162.02},{time:'2024-02-07',value:5196.18},{time:'2024-02-08',value:5185.31},{time:'2024-02-19',value:5284.68},{time:'2024-02-20',value:5215.98},{time:'2024-02-21',value:5473.71},{time:'2024-02-22',value:5476.82},{time:'2024-02-23',value:5500.49},{time:'2024-02-26',value:5424.8},{time:'2024-02-27',value:5424.8},{time:'2024-02-28',value:5415.88},{time:'2024-02-29',value:5521.45},{time:'2024-03-01',value:5534.65},{time:'2024-03-04',value:5446.93},{time:'2024-03-05',value:5495.83},{time:'2024-03-06',value:5397.63},{time:'2024-03-07',value:5366.19},{time:'2024-03-08',value:5372.79},{time:'2024-03-11',value:5479.14},{time:'2024-03-12',value:5756.67},{time:'2024-03-13',value:5735.32},{time:'2024-03-14',value:5805.19},{time:'2024-03-15',value:5918.92},{time:'2024-03-18',value:5958.12},{time:'2024-03-19',value:6108.34},{time:'2024-03-20',value:6092.04},{time:'2024-03-21',value:6078.84},{time:'2024-03-22',value:5955.41},{time:'2024-03-25',value:5889.03},{time:'2024-03-26',value:6024.89},{time:'2024-03-27',value:5925.52},{time:'2024-03-28',value:5942.6},{time:'2024-03-29',value:5958.51},{time:'2024-04-01',value:6104.84},{time:'2024-04-02',value:6035.75},{time:'2024-04-03',value:6000.82},{time:'2024-04-08',value:5717.08},{time:'2024-04-09',value:5685.64},{time:'2024-04-10',value:5555.22},{time:'2024-04-11',value:5524.95},{time:'2024-04-12',value:5453.14},{time:'2024-04-15',value:5718.25},{time:'2024-04-16',value:5627.03},{time:'2024-04-17',value:5639.84},{time:'2024-04-18',value:5627.42},{time:'2024-04-19',value:5546.68},{time:'2024-04-22',value:5611.12},{time:'2024-04-23',value:5706.99},{time:'2024-04-24',value:5782.68},{time:'2024-04-25',value:5782.68},{time:'2024-04-26',value:5909.6},{time:'2024-04-29',value:5890.2},{time:'2024-04-30',value:5838.96},{time:'2024-05-06',value:6016.73},{time:'2024-05-07',value:6052.83},{time:'2024-05-08',value:6016.35},{time:'2024-05-09',value:6010.14},{time:'2024-05-10',value:5994.22},{time:'2024-05-13',value:5864.97},{time:'2024-05-14',value:5874.28},{time:'2024-05-15',value:5875.45},{time:'2024-05-16',value:5979.47},{time:'2024-05-17',value:6071.08},{time:'2024-05-20',value:6105.62},{time:'2024-05-21',value:6076.12},{time:'2024-05-22',value:6021.0},{time:'2024-05-23',value:5962.0},{time:'2024-05-24',value:5866.91},{time:'2024-05-27',value:5883.6},{time:'2024-05-28',value:5823.43},{time:'2024-05-29',value:5791.61},{time:'2024-05-30',value:5677.1},{time:'2024-05-31',value:5694.18},{time:'2024-06-03',value:5666.23},{time:'2024-06-04',value:5736.1},{time:'2024-06-05',value:5657.69},{time:'2024-06-06',value:5624.31},{time:'2024-06-07',value:5524.95},{time:'2024-06-11',value:5375.12},{time:'2024-06-12',value:5352.61},{time:'2024-06-13',value:5222.96},{time:'2024-06-14',value:5266.44},{time:'2024-06-17',value:5268.38},{time:'2024-06-18',value:5196.96},{time:'2024-06-19',value:5209.77},{time:'2024-06-20',value:5131.36},{time:'2024-06-21',value:5053.73},{time:'2024-06-24',value:5085.95},{time:'2024-06-25',value:5104.58},{time:'2024-06-26',value:5096.43},{time:'2024-06-27',value:5032.38},{time:'2024-06-28',value:4969.89},{time:'2024-07-01',value:4979.98},{time:'2024-07-02',value:5106.52},{time:'2024-07-03',value:5084.78},{time:'2024-07-04',value:5068.87},{time:'2024-07-05',value:5005.21},{time:'2024-07-08',value:4887.21},{time:'2024-07-09',value:4932.24},{time:'2024-07-10',value:4911.67},{time:'2024-07-11',value:5064.6},{time:'2024-07-12',value:4945.05},{time:'2024-07-15',value:4948.93},{time:'2024-07-16',value:4948.15},{time:'2024-07-17',value:5075.47},{time:'2024-07-18',value:5088.66},{time:'2024-07-19',value:5178.72},{time:'2024-07-22',value:5093.32},{time:'2024-07-23',value:4921.76},{time:'2024-07-24',value:4893.04},{time:'2024-07-25',value:4882.17},{time:'2024-07-26',value:4898.47},{time:'2024-07-29',value:4816.96},{time:'2024-07-30',value:4785.52},{time:'2024-07-31',value:4924.09},{time:'2024-08-01',value:4813.08},{time:'2024-08-02',value:4801.43},{time:'2024-08-05',value:4890.71},{time:'2024-08-06',value:4886.83},{time:'2024-08-07',value:4929.52},{time:'2024-08-08',value:4981.92},{time:'2024-08-09',value:4971.44},{time:'2024-08-12',value:4957.08},{time:'2024-08-13',value:4875.18},{time:'2024-08-14',value:4825.89},{time:'2024-08-15',value:4849.95},{time:'2024-08-16',value:4852.28},{time:'2024-08-19',value:4811.14},{time:'2024-08-20',value:4780.08},{time:'2024-08-21',value:4743.21},{time:'2024-08-22',value:4696.24},{time:'2024-08-23',value:4700.9},{time:'2024-08-26',value:4584.84},{time:'2024-08-27',value:4568.54},{time:'2024-08-28',value:4424.93},{time:'2024-08-29',value:4610.46},{time:'2024-08-30',value:4775.43},{time:'2024-09-02',value:4619.0},{time:'2024-09-03',value:4670.24},{time:'2024-09-04',value:4623.27},{time:'2024-09-05',value:4640.35},{time:'2024-09-06',value:4561.94},{time:'2024-09-09',value:4511.09},{time:'2024-09-10',value:4519.25},{time:'2024-09-11',value:4502.94},{time:'2024-09-12',value:4400.08},{time:'2024-09-13',value:4238.61},{time:'2024-09-18',value:4180.0},{time:'2024-09-19',value:4304.6},{time:'2024-09-20',value:4280.53},{time:'2024-09-23',value:4358.55},{time:'2024-09-24',value:4671.79},{time:'2024-09-25',value:4739.33},{time:'2024-09-26',value:5213.26},{time:'2024-09-27',value:5734.55},{time:'2024-09-30',value:6307.85},{time:'2024-10-08',value:6367.62},{time:'2024-10-09',value:5732.22},{time:'2024-10-10',value:5899.12},{time:'2024-10-11',value:5808.68},{time:'2024-10-14',value:5812.95},{time:'2024-10-15',value:5589.38},{time:'2024-10-16',value:5498.16},{time:'2024-10-17',value:5354.55},{time:'2024-10-18',value:5550.56},{time:'2024-10-21',value:5550.95},{time:'2024-10-22',value:5645.27},{time:'2024-10-23',value:5765.21},{time:'2024-10-24',value:5684.86},{time:'2024-10-25',value:5748.91},{time:'2024-10-28',value:5976.37},{time:'2024-10-29',value:5853.32},{time:'2024-10-30',value:5775.69},{time:'2024-10-31',value:5699.23},{time:'2024-11-01',value:5741.53},{time:'2024-11-04',value:5767.93},{time:'2024-11-05',value:5930.95},{time:'2024-11-06',value:5870.79},{time:'2024-11-07',value:6297.37},{time:'2024-11-08',value:6073.4},{time:'2024-11-11',value:6009.36},{time:'2024-11-12',value:5989.18},{time:'2024-11-13',value:5975.2},{time:'2024-11-14',value:5957.73},{time:'2024-11-15',value:5872.34},{time:'2024-11-18',value:5796.26},{time:'2024-11-19',value:5762.11},{time:'2024-11-20',value:5806.74},{time:'2024-11-21',value:5802.86},{time:'2024-11-22',value:5623.92},{time:'2024-11-25',value:5581.62},{time:'2024-11-26',value:5620.43},{time:'2024-11-27',value:5707.77},{time:'2024-11-28',value:5589.38},{time:'2024-11-29',value:5696.9},{time:'2024-12-02',value:5721.35},{time:'2024-12-03',value:5705.44},{time:'2024-12-04',value:5656.53},{time:'2024-12-05',value:5629.36},{time:'2024-12-06',value:5684.09},{time:'2024-12-09',value:5657.69},{time:'2024-12-10',value:5787.34},{time:'2024-12-11',value:5798.98},{time:'2024-12-12',value:5892.91},{time:'2024-12-13',value:5746.19},{time:'2024-12-16',value:5612.28},{time:'2024-12-17',value:5623.92},{time:'2024-12-18',value:5635.96},{time:'2024-12-19',value:5571.91},{time:'2024-12-20',value:5558.72},{time:'2024-12-23',value:5529.22},{time:'2024-12-24',value:5569.2},{time:'2024-12-25',value:5553.67},{time:'2024-12-26',value:5530.77},{time:'2024-12-27',value:5531.93},{time:'2024-12-30',value:5481.09},{time:'2024-12-31',value:5435.67},{time:'2025-01-02',value:5317.29},{time:'2025-01-03',value:5255.57},{time:'2025-01-06',value:5078.18},{time:'2025-01-07',value:5078.96},{time:'2025-01-08',value:5034.32},{time:'2025-01-09',value:5068.48},{time:'2025-01-10',value:4991.63},{time:'2025-01-13',value:5014.92},{time:'2025-01-14',value:5163.19},{time:'2025-01-15',value:5153.49},{time:'2025-01-16',value:5103.41},{time:'2025-01-17',value:5135.24},{time:'2025-01-20',value:5212.87},{time:'2025-01-21',value:5177.55},{time:'2025-01-22',value:5059.55},{time:'2025-01-23',value:4993.57},{time:'2025-01-24',value:4957.47},{time:'2025-01-27',value:4937.29},{time:'2025-02-05',value:4852.28},{time:'2025-02-06',value:4886.83},{time:'2025-02-07',value:4953.98},{time:'2025-02-10',value:4950.09},{time:'2025-02-11',value:4900.8},{time:'2025-02-12',value:4956.69},{time:'2025-02-13',value:5104.58},{time:'2025-02-14',value:5093.71},{time:'2025-02-17',value:5106.13},{time:'2025-02-18',value:5053.73},{time:'2025-02-19',value:5089.05},{time:'2025-02-20',value:5065.37},{time:'2025-02-21',value:5089.44},{time:'2025-02-24',value:5119.72},{time:'2025-02-25',value:4997.45},{time:'2025-02-26',value:5038.2},{time:'2025-02-27',value:5152.71},{time:'2025-02-28',value:5107.3},{time:'2025-03-03',value:5078.57},{time:'2025-03-04',value:5036.26},{time:'2025-03-05',value:4992.01},{time:'2025-03-06',value:5111.18},{time:'2025-03-07',value:5232.28},{time:'2025-03-10',value:5150.38},{time:'2025-03-11',value:5247.81},{time:'2025-03-12',value:5161.25},{time:'2025-03-13',value:5138.74},{time:'2025-03-14',value:5465.17},{time:'2025-03-17',value:5427.91},{time:'2025-03-18',value:5416.65},{time:'2025-03-19',value:5392.2},{time:'2025-03-20',value:5278.47},{time:'2025-03-21',value:5224.52},{time:'2025-03-24',value:5213.26},{time:'2025-03-25',value:5184.15},{time:'2025-03-26',value:5176.0},{time:'2025-03-27',value:5197.35},{time:'2025-03-28',value:5171.34},{time:'2025-03-31',value:5098.37},{time:'2025-04-01',value:5115.45},{time:'2025-04-02',value:5090.6},{time:'2025-04-03',value:5123.6},{time:'2025-04-07',value:4920.98},{time:'2025-04-08',value:5075.47},{time:'2025-04-09',value:5133.3},{time:'2025-04-10',value:5168.24},{time:'2025-04-11',value:5108.07},{time:'2025-04-14',value:5086.34},{time:'2025-04-15',value:5098.37},{time:'2025-04-16',value:5135.24},{time:'2025-04-17',value:5144.17},{time:'2025-04-18',value:5113.89},{time:'2025-04-21',value:5059.16},{time:'2025-04-22',value:5049.85},{time:'2025-04-23',value:5044.8},{time:'2025-04-24',value:5009.48},{time:'2025-04-25',value:5009.09},{time:'2025-04-28',value:5078.96},{time:'2025-04-29',value:5028.5},{time:'2025-04-30',value:4995.51},{time:'2025-05-06',value:5026.17},{time:'2025-05-07',value:5045.58},{time:'2025-05-08',value:5115.83},{time:'2025-05-09',value:5107.3},{time:'2025-05-12',value:5161.25},{time:'2025-05-13',value:5162.02},{time:'2025-05-14',value:5250.14},{time:'2025-05-15',value:5188.42},{time:'2025-05-16',value:5087.89},{time:'2025-05-19',value:5018.8},{time:'2025-05-20',value:5012.2},{time:'2025-05-21',value:5017.24},{time:'2025-05-22',value:5010.65},{time:'2025-05-23',value:4974.16},{time:'2025-05-26',value:4906.62},{time:'2025-05-27',value:4896.92},{time:'2025-05-28',value:4926.42},{time:'2025-05-29',value:4941.94},{time:'2025-05-30',value:4907.79},{time:'2025-06-03',value:4839.47},{time:'2025-06-04',value:4834.42},{time:'2025-06-05',value:4853.06},{time:'2025-06-06',value:4855.39},{time:'2025-06-09',value:4850.34},{time:'2025-06-10',value:4828.21},{time:'2025-06-11',value:4840.25},{time:'2025-06-12',value:4754.85},{time:'2025-06-13',value:4623.66},{time:'2025-06-16',value:4590.67},{time:'2025-06-17',value:4568.93},{time:'2025-06-18',value:4592.99},{time:'2025-06-19',value:4552.24},{time:'2025-06-20',value:4640.74},{time:'2025-06-23',value:4591.05},{time:'2025-06-24',value:4648.11},{time:'2025-06-25',value:4664.8},{time:'2025-06-26',value:4647.34},{time:'2025-06-27',value:4625.99},{time:'2025-06-30',value:4615.12},{time:'2025-07-01',value:4604.64},{time:'2025-07-02',value:4625.99},{time:'2025-07-03',value:4643.07},{time:'2025-07-04',value:4672.95},{time:'2025-07-07',value:4654.32},{time:'2025-07-08',value:4688.09},{time:'2025-07-09',value:4719.92},{time:'2025-07-10',value:4757.96},{time:'2025-07-11',value:4824.72},{time:'2025-07-14',value:4867.81},{time:'2025-07-15',value:4851.89},{time:'2025-07-16',value:4862.76},{time:'2025-07-17',value:4883.72},{time:'2025-07-18',value:4804.54},{time:'2025-07-21',value:4757.18},{time:'2025-07-22',value:4872.46},{time:'2025-07-23',value:4859.65},{time:'2025-07-24',value:4873.24},{time:'2025-07-25',value:4795.22},{time:'2025-07-28',value:4815.41},{time:'2025-07-29',value:4794.45},{time:'2025-07-30',value:4833.26},{time:'2025-07-31',value:4702.45},{time:'2025-08-01',value:4696.63},{time:'2025-08-04',value:4693.53},{time:'2025-08-05',value:4733.51},{time:'2025-08-06',value:4741.66},{time:'2025-08-07',value:4756.79},{time:'2025-08-08',value:4743.99},{time:'2025-08-11',value:4810.75},{time:'2025-08-12',value:4781.64},{time:'2025-08-13',value:4781.64},{time:'2025-08-14',value:4768.05},{time:'2025-08-15',value:4778.14},{time:'2025-08-18',value:4803.37},{time:'2025-08-19',value:4828.99},{time:'2025-08-20',value:4882.17},{time:'2025-08-21',value:4869.36},{time:'2025-08-22',value:4882.56},{time:'2025-08-25',value:5043.25},{time:'2025-08-26',value:5035.88},{time:'2025-08-27',value:4914.77},{time:'2025-08-28',value:4870.13},{time:'2025-08-29',value:5027.72},{time:'2025-09-01',value:5002.11},{time:'2025-09-02',value:4990.07},{time:'2025-09-03',value:4914.77},{time:'2025-09-04',value:4871.69},{time:'2025-09-05',value:4922.15},{time:'2025-09-08',value:5010.65},{time:'2025-09-09',value:4999.39},{time:'2025-09-10',value:4970.67},{time:'2025-09-11',value:4988.52},{time:'2025-09-12',value:4936.9},{time:'2025-09-15',value:4915.94},{time:'2025-09-16',value:4882.94},{time:'2025-09-17',value:4889.15},{time:'2025-09-18',value:4810.75},{time:'2025-09-19',value:4816.18},{time:'2025-09-22',value:4754.85},{time:'2025-09-23',value:4742.82},{time:'2025-09-24',value:4749.81},{time:'2025-09-25',value:4716.82},{time:'2025-09-26',value:4664.41},{time:'2025-09-29',value:4732.34},{time:'2025-09-30',value:4715.26},{time:'2025-10-09',value:4702.84},{time:'2025-10-10',value:4686.15},{time:'2025-10-13',value:4651.99},{time:'2025-10-14',value:4738.16},{time:'2025-10-15',value:4738.16},{time:'2025-10-16',value:4764.17},{time:'2025-10-17',value:4699.35},{time:'2025-10-20',value:4675.67},{time:'2025-10-21',value:4678.0},{time:'2025-10-22',value:4661.7},{time:'2025-10-23',value:4709.44},{time:'2025-10-24',value:4669.07},{time:'2025-10-27',value:4669.07},{time:'2025-10-28',value:4661.7},{time:'2025-10-29',value:4612.4},{time:'2025-10-30',value:4598.43},{time:'2025-10-31',value:4618.61},{time:'2025-11-03',value:4618.22},{time:'2025-11-04',value:4547.58},{time:'2025-11-05',value:4509.54},{time:'2025-11-06',value:4509.15},{time:'2025-11-07',value:4531.67},{time:'2025-11-10',value:4688.87},{time:'2025-11-11',value:4688.09},{time:'2025-11-12',value:4672.57},{time:'2025-11-13',value:4704.39},{time:'2025-11-14',value:4665.97},{time:'2025-11-17',value:4663.64},{time:'2025-11-18',value:4671.79},{time:'2025-11-19',value:4653.55},{time:'2025-11-20',value:4667.52},{time:'2025-11-21',value:4645.4},{time:'2025-11-24',value:4600.37},{time:'2025-11-25',value:4599.98},{time:'2025-11-26',value:4590.28},{time:'2025-11-27',value:4577.86},{time:'2025-11-28',value:4574.36},{time:'2025-12-01',value:4566.6},{time:'2025-12-02',value:4524.68},{time:'2025-12-03',value:4487.03},{time:'2025-12-04',value:4442.39},{time:'2025-12-05',value:4462.19},{time:'2025-12-08',value:4396.59},{time:'2025-12-09',value:4303.82},{time:'2025-12-10',value:4332.55},{time:'2025-12-11',value:4343.41},{time:'2025-12-12',value:4331.77},{time:'2025-12-15',value:4364.76},{time:'2025-12-16',value:4386.11},{time:'2025-12-17',value:4401.64},{time:'2025-12-18',value:4286.36},{time:'2025-12-19',value:4290.24},{time:'2025-12-22',value:4282.47},{time:'2025-12-23',value:4258.8},{time:'2025-12-24',value:4241.72},{time:'2025-12-25',value:4292.95},{time:'2025-12-26',value:4261.13},{time:'2025-12-29',value:4194.36},{time:'2025-12-30',value:4167.19},{time:'2025-12-31',value:4112.08},{time:'2026-01-05',value:4188.15},{time:'2026-01-06',value:4198.63},{time:'2026-01-07',value:4173.4},{time:'2026-01-08',value:4149.34},{time:'2026-01-09',value:4158.65},{time:'2026-01-12',value:4213.38},{time:'2026-01-13',value:4192.03},{time:'2026-01-14',value:4154.77},{time:'2026-01-15',value:4117.9},{time:'2026-01-16',value:4081.8},{time:'2026-01-19',value:4058.12},{time:'2026-01-20',value:4072.1},{time:'2026-01-21',value:3999.9},{time:'2026-01-22',value:3988.64},{time:'2026-01-23',value:3997.57},{time:'2026-01-26',value:3972.34},{time:'2026-01-27',value:3921.1},{time:'2026-01-28',value:3908.68},{time:'2026-01-29',value:4299.55},{time:'2026-01-30',value:4075.59},{time:'2026-02-02',value:4164.48},{time:'2026-02-03',value:4164.09},{time:'2026-02-04',value:4212.22},{time:'2026-02-05',value:4226.58},{time:'2026-02-06',value:4153.22},{time:'2026-02-09',value:4167.19},{time:'2026-02-10',value:4133.81},{time:'2026-02-11',value:4115.96},{time:'2026-02-12',value:4060.84},{time:'2026-02-13',value:4116.73},{time:'2026-02-24',value:4081.8},{time:'2026-02-25',value:4082.19},{time:'2026-02-26',value:4032.12},{time:'2026-02-27',value:4038.71},{time:'2026-03-02',value:4006.5},{time:'2026-03-03',value:3980.49},{time:'2026-03-04',value:3921.1},{time:'2026-03-05',value:3937.8},{time:'2026-03-06',value:3974.67},{time:'2026-03-09',value:3940.51},{time:'2026-03-10',value:3961.08},{time:'2026-03-11',value:3966.13},{time:'2026-03-12',value:3969.62},{time:'2026-03-13',value:3996.02},{time:'2026-03-16',value:4057.73},{time:'2026-03-17',value:4067.44},{time:'2026-03-18',value:4025.91},{time:'2026-03-19',value:3979.72},{time:'2026-03-20',value:3974.67},{time:'2026-03-23',value:3890.44},{time:'2026-03-24',value:3933.53},{time:'2026-03-25',value:3976.61},{time:'2026-03-26',value:3931.2},{time:'2026-03-27',value:3984.37},{time:'2026-03-30',value:4015.81},{time:'2026-03-31',value:4008.44},{time:'2026-04-01',value:4051.91},{time:'2026-04-02',value:4075.59},{time:'2026-04-03',value:4016.98},{time:'2026-04-07',value:4002.23},{time:'2026-04-08',value:4044.15},{time:'2026-04-09',value:3982.43},{time:'2026-04-10',value:3961.86},{time:'2026-04-13',value:3975.45},{time:'2026-04-14',value:4001.84},{time:'2026-04-15',value:4019.31},{time:'2026-04-16',value:4015.04},{time:'2026-04-17',value:3953.71},{time:'2026-04-20',value:3933.91},{time:'2026-04-21',value:3927.32},{time:'2026-04-22',value:3906.36},{time:'2026-04-23',value:3927.32},{time:'2026-04-24',value:3930.81},{time:'2026-04-27',value:3889.28},{time:'2026-04-28',value:3889.28},{time:'2026-04-29',value:3817.08},{time:'2026-04-30',value:3768.17},{time:'2026-05-06',value:3581.08},{time:'2026-05-07',value:3594.28},{time:'2026-05-08',value:3576.04},{time:'2026-05-11',value:3563.62},{time:'2026-05-12',value:3515.1},{time:'2026-05-13',value:3460.37},{time:'2026-05-14',value:3454.16},{time:'2026-05-15',value:3371.87},{time:'2026-05-18',value:3321.41},{time:'2026-05-19',value:3329.56},{time:'2026-05-20',value:3317.53},{time:'2026-05-21',value:3312.87},{time:'2026-05-22',value:3261.64},{time:'2026-05-25',value:3265.91},{time:'2026-05-26',value:3235.63},{time:'2026-05-27',value:3256.2},{time:'2026-05-28',value:3163.05},{time:'2026-05-29',value:3295.02},{time:'2026-06-01',value:3237.57},{time:'2026-06-02',value:3210.4},{time:'2026-06-03',value:3196.43},{time:'2026-06-04',value:3147.91},{time:'2026-06-05',value:3147.13},{time:'2026-06-08',value:3103.66},{time:'2026-06-09',value:3070.67},{time:'2026-06-10',value:3071.83},{time:'2026-06-11',value:3097.06},{time:'2026-06-12',value:3093.57}],
   weekly: [{time:'2006-08-04',value:495.28},{time:'2006-08-11',value:496.06},{time:'2006-08-18',value:487.13},{time:'2006-08-25',value:479.76},{time:'2006-09-01',value:502.27},{time:'2006-09-08',value:487.91},{time:'2006-09-15',value:500.72},{time:'2006-09-22',value:501.49},{time:'2006-09-29',value:504.21},{time:'2006-10-13',value:489.85},{time:'2006-10-20',value:484.41},{time:'2006-10-27',value:481.31},{time:'2006-11-03',value:482.47},{time:'2006-11-10',value:507.7},{time:'2006-11-17',value:570.97},{time:'2006-11-24',value:567.87},{time:'2006-12-01',value:656.75},{time:'2006-12-08',value:611.34},{time:'2006-12-15',value:723.13},{time:'2006-12-22',value:749.13},{time:'2006-12-29',value:886.93},{time:'2007-01-05',value:919.92},{time:'2007-01-12',value:1059.65},{time:'2007-01-18',value:1203.27},{time:'2007-01-26',value:1091.87},{time:'2007-02-02',value:938.55},{time:'2007-02-09',value:989.01},{time:'2007-02-16',value:1119.82},{time:'2007-03-02',value:947.09},{time:'2007-03-09',value:931.56},{time:'2007-03-16',value:988.62},{time:'2007-03-23',value:1049.56},{time:'2007-03-30',value:1012.69},{time:'2007-04-06',value:1152.42},{time:'2007-04-13',value:1491.67},{time:'2007-04-19',value:1275.08},{time:'2007-04-27',value:1300.31},{time:'2007-04-30',value:1384.15},{time:'2007-05-11',value:934.28},{time:'2007-05-18',value:1014.63},{time:'2007-05-25',value:1030.15},{time:'2007-06-01',value:1180.76},{time:'2007-06-08',value:1211.03},{time:'2007-06-14',value:1274.3},{time:'2007-06-22',value:1199.0},{time:'2007-06-29',value:1221.12},{time:'2007-07-06',value:1150.87},{time:'2007-07-13',value:1130.3},{time:'2007-07-20',value:1162.51},{time:'2007-07-27',value:1195.89},{time:'2007-08-03',value:1256.83},{time:'2007-08-10',value:1261.1},{time:'2007-08-17',value:1228.5},{time:'2007-08-24',value:1376.38},{time:'2007-08-31',value:1383.76},{time:'2007-09-06',value:1401.61},{time:'2007-09-14',value:1525.43},{time:'2007-09-21',value:1587.54},{time:'2007-09-28',value:1647.7},{time:'2007-10-12',value:1893.4},{time:'2007-10-19',value:1746.68},{time:'2007-10-26',value:1659.35},{time:'2007-11-02',value:1703.98},{time:'2007-11-09',value:1411.32},{time:'2007-11-16',value:1445.09},{time:'2007-11-23',value:1405.11},{time:'2007-11-30',value:1361.25},{time:'2007-12-07',value:1506.03},{time:'2007-12-14',value:1632.56},{time:'2007-12-21',value:1682.25},{time:'2007-12-28',value:1765.31},{time:'2008-01-04',value:1750.95},{time:'2008-01-11',value:1771.91},{time:'2008-01-18',value:1696.22},{time:'2008-01-25',value:1633.34},{time:'2008-02-01',value:1399.67},{time:'2008-02-05',value:1524.27},{time:'2008-02-15',value:1448.97},{time:'2008-02-22',value:1433.83},{time:'2008-02-29',value:1405.11},{time:'2008-03-07',value:1401.23},{time:'2008-03-14',value:1280.9},{time:'2008-03-21',value:1097.3},{time:'2008-03-27',value:946.7},{time:'2008-04-03',value:881.1},{time:'2008-04-11',value:957.96},{time:'2008-04-18',value:910.21},{time:'2008-04-25',value:1101.96},{time:'2008-04-30',value:1104.29},{time:'2008-05-09',value:1034.04},{time:'2008-05-16',value:1060.82},{time:'2008-05-23',value:909.05},{time:'2008-05-30',value:877.22},{time:'2008-06-06',value:877.22},{time:'2008-06-13',value:706.82},{time:'2008-06-20',value:662.96},{time:'2008-06-27',value:690.52},{time:'2008-07-04',value:753.01},{time:'2008-07-11',value:780.18},{time:'2008-07-18',value:807.35},{time:'2008-08-08',value:816.67},{time:'2008-08-15',value:741.37},{time:'2008-08-22',value:737.88},{time:'2008-08-29',value:730.89},{time:'2008-09-05',value:605.9},{time:'2008-09-12',value:593.1},{time:'2008-09-19',value:658.69},{time:'2008-09-26',value:648.21},{time:'2008-10-10',value:535.65},{time:'2008-10-17',value:496.83},{time:'2008-10-24',value:510.81},{time:'2008-10-31',value:474.32},{time:'2008-11-07',value:471.6},{time:'2008-11-14',value:552.34},{time:'2008-11-21',value:572.14},{time:'2008-11-28',value:600.86},{time:'2008-12-05',value:618.33},{time:'2008-12-12',value:577.18},{time:'2008-12-19',value:617.16},{time:'2008-12-26',value:553.5},{time:'2008-12-31',value:517.79},{time:'2009-01-09',value:553.89},{time:'2009-01-16',value:570.19},{time:'2009-01-23',value:548.46},{time:'2009-02-06',value:611.34},{time:'2009-02-13',value:705.27},{time:'2009-02-20',value:645.11},{time:'2009-02-27',value:581.84},{time:'2009-03-06',value:600.08},{time:'2009-03-13',value:555.44},{time:'2009-03-20',value:593.48},{time:'2009-03-27',value:609.01},{time:'2009-04-02',value:624.54},{time:'2009-04-10',value:609.79},{time:'2009-04-17',value:636.18},{time:'2009-04-24',value:669.56},{time:'2009-04-30',value:643.17},{time:'2009-05-08',value:667.62},{time:'2009-05-15',value:668.4},{time:'2009-05-22',value:647.82},{time:'2009-05-27',value:645.88},{time:'2009-06-05',value:693.24},{time:'2009-06-12',value:688.19},{time:'2009-06-19',value:774.75},{time:'2009-06-26',value:733.99},{time:'2009-07-03',value:770.87},{time:'2009-07-08',value:800.76},{time:'2009-07-17',value:927.68},{time:'2009-07-24',value:922.25},{time:'2009-07-31',value:912.93},{time:'2009-08-07',value:917.98},{time:'2009-08-14',value:834.53},{time:'2009-08-21',value:852.38},{time:'2009-08-28',value:875.67},{time:'2009-09-04',value:907.5},{time:'2009-09-11',value:867.52},{time:'2009-09-18',value:871.01},{time:'2009-09-23',value:838.41},{time:'2009-09-30',value:811.62},{time:'2009-10-09',value:841.9},{time:'2009-10-16',value:831.03},{time:'2009-10-23',value:917.98},{time:'2009-10-30',value:870.62},{time:'2009-11-06',value:908.66},{time:'2009-11-13',value:1002.59},{time:'2009-11-20',value:1063.92},{time:'2009-11-27',value:1003.37},{time:'2009-12-04',value:1124.47},{time:'2009-12-11',value:1164.07},{time:'2009-12-18',value:1076.73},{time:'2009-12-25',value:1235.87},{time:'2009-12-31',value:1228.89},{time:'2010-01-08',value:1162.13},{time:'2010-01-15',value:1225.01},{time:'2010-01-22',value:1149.32},{time:'2010-01-29',value:1133.01},{time:'2010-02-05',value:1120.2},{time:'2010-02-12',value:1145.82},{time:'2010-02-26',value:1088.38},{time:'2010-03-05',value:1098.08},{time:'2010-03-12',value:1056.55},{time:'2010-03-19',value:1087.99},{time:'2010-03-26',value:1102.35},{time:'2010-04-02',value:1098.47},{time:'2010-04-09',value:1088.76},{time:'2010-04-15',value:1125.64},{time:'2010-04-23',value:1125.64},{time:'2010-04-30',value:1020.45},{time:'2010-05-07',value:996.0},{time:'2010-05-14',value:975.04},{time:'2010-05-21',value:962.62},{time:'2010-05-28',value:988.62},{time:'2010-06-04',value:970.38},{time:'2010-06-11',value:1032.87},{time:'2010-06-18',value:976.2},{time:'2010-06-25',value:997.55},{time:'2010-07-02',value:914.48},{time:'2010-07-09',value:970.38},{time:'2010-07-16',value:1001.43},{time:'2010-07-23',value:1064.31},{time:'2010-07-30',value:1078.28},{time:'2010-08-06',value:1155.91},{time:'2010-08-13',value:1171.83},{time:'2010-08-20',value:1156.69},{time:'2010-08-27',value:1164.07},{time:'2010-09-03',value:1249.85},{time:'2010-09-10',value:1315.44},{time:'2010-09-17',value:1289.05},{time:'2010-09-21',value:1290.6},{time:'2010-09-30',value:1332.52},{time:'2010-10-08',value:1385.7},{time:'2010-10-15',value:1267.7},{time:'2010-10-22',value:1397.34},{time:'2010-10-29',value:1416.75},{time:'2010-11-05',value:1443.92},{time:'2010-11-12',value:1432.28},{time:'2010-11-19',value:1436.16},{time:'2010-11-26',value:1569.68},{time:'2010-12-03',value:1483.51},{time:'2010-12-10',value:1453.63},{time:'2010-12-17',value:1480.8},{time:'2010-12-24',value:1348.05},{time:'2010-12-31',value:1344.17},{time:'2011-01-07',value:1292.54},{time:'2011-01-14',value:1311.95},{time:'2011-01-21',value:1253.73},{time:'2011-01-28',value:1272.36},{time:'2011-02-01',value:1283.23},{time:'2011-02-11',value:1323.6},{time:'2011-02-18',value:1337.96},{time:'2011-02-25',value:1279.73},{time:'2011-03-04',value:1249.85},{time:'2011-03-11',value:1270.03},{time:'2011-03-18',value:1280.9},{time:'2011-03-25',value:1256.45},{time:'2011-04-01',value:1234.71},{time:'2011-04-08',value:1202.88},{time:'2011-04-15',value:1219.96},{time:'2011-04-21',value:1240.14},{time:'2011-04-29',value:1279.73},{time:'2011-05-06',value:1301.86},{time:'2011-05-13',value:1282.45},{time:'2011-05-20',value:1335.24},{time:'2011-05-27',value:1249.07},{time:'2011-06-03',value:1339.9},{time:'2011-06-10',value:1344.94},{time:'2011-06-17',value:1340.29},{time:'2011-06-24',value:1381.82},{time:'2011-07-01',value:1384.54},{time:'2011-07-08',value:1441.98},{time:'2011-07-15',value:1453.63},{time:'2011-07-22',value:1517.67},{time:'2011-07-29',value:1474.98},{time:'2011-08-05',value:1467.99},{time:'2011-08-12',value:1535.53},{time:'2011-08-19',value:1537.08},{time:'2011-08-26',value:1529.7},{time:'2011-09-02',value:1529.32},{time:'2011-09-09',value:1485.07},{time:'2011-09-16',value:1476.92},{time:'2011-09-23',value:1414.04},{time:'2011-09-30',value:1408.99},{time:'2011-10-14',value:1396.57},{time:'2011-10-21',value:1385.7},{time:'2011-10-28',value:1459.84},{time:'2011-11-04',value:1452.46},{time:'2011-11-11',value:1404.72},{time:'2011-11-18',value:1363.19},{time:'2011-11-25',value:1477.69},{time:'2011-12-02',value:1451.69},{time:'2011-12-09',value:1377.94},{time:'2011-12-16',value:1348.44},{time:'2011-12-23',value:1325.54},{time:'2011-12-30',value:1273.14},{time:'2012-01-06',value:1223.06},{time:'2012-01-13',value:1250.24},{time:'2012-01-20',value:1232.77},{time:'2012-02-03',value:1244.03},{time:'2012-02-10',value:1267.7},{time:'2012-02-17',value:1284.0},{time:'2012-02-24',value:1326.7},{time:'2012-03-02',value:1363.96},{time:'2012-03-09',value:1383.37},{time:'2012-03-16',value:1449.75},{time:'2012-03-23',value:1387.64},{time:'2012-03-30',value:1274.69},{time:'2012-04-06',value:1347.27},{time:'2012-04-13',value:1348.05},{time:'2012-04-19',value:1318.55},{time:'2012-04-27',value:1382.6},{time:'2012-05-04',value:1438.49},{time:'2012-05-11',value:1387.64},{time:'2012-05-18',value:1302.25},{time:'2012-05-25',value:1240.14},{time:'2012-06-01',value:1289.44},{time:'2012-06-08',value:1263.43},{time:'2012-06-15',value:1281.68},{time:'2012-06-21',value:1255.67},{time:'2012-06-29',value:1271.58},{time:'2012-07-06',value:1358.92},{time:'2012-07-13',value:1489.72},{time:'2012-07-20',value:1395.79},{time:'2012-07-27',value:1377.94},{time:'2012-08-03',value:1395.4},{time:'2012-08-10',value:1419.86},{time:'2012-08-17',value:1325.92},{time:'2012-08-24',value:1327.48},{time:'2012-08-31',value:1264.21},{time:'2012-09-07',value:1346.89},{time:'2012-09-14',value:1343.78},{time:'2012-09-21',value:1262.66},{time:'2012-09-28',value:1315.83},{time:'2012-10-12',value:1295.26},{time:'2012-10-19',value:1363.58},{time:'2012-10-26',value:1303.41},{time:'2012-11-02',value:1337.18},{time:'2012-11-09',value:1270.42},{time:'2012-11-16',value:1199.78},{time:'2012-11-23',value:1075.57},{time:'2012-11-30',value:1046.84},{time:'2012-12-07',value:994.06},{time:'2012-12-14',value:983.19},{time:'2012-12-21',value:1078.28},{time:'2012-12-28',value:1095.75},{time:'2013-01-04',value:1082.94},{time:'2013-01-11',value:1117.1},{time:'2013-01-18',value:1070.52},{time:'2013-01-25',value:975.04},{time:'2013-02-01',value:992.89},{time:'2013-02-08',value:1005.7},{time:'2013-02-22',value:1000.27},{time:'2013-03-01',value:953.3},{time:'2013-03-08',value:962.62},{time:'2013-03-15',value:931.56},{time:'2013-03-22',value:897.79},{time:'2013-03-29',value:867.13},{time:'2013-04-03',value:851.99},{time:'2013-04-12',value:872.56},{time:'2013-04-19',value:878.77},{time:'2013-04-26',value:851.99},{time:'2013-05-03',value:839.18},{time:'2013-05-10',value:898.57},{time:'2013-05-17',value:908.27},{time:'2013-05-24',value:938.94},{time:'2013-05-31',value:921.86},{time:'2013-06-07',value:862.47},{time:'2013-06-14',value:833.75},{time:'2013-06-21',value:821.72},{time:'2013-06-28',value:777.86},{time:'2013-07-05',value:780.96},{time:'2013-07-12',value:783.29},{time:'2013-07-19',value:749.13},{time:'2013-07-26',value:747.19},{time:'2013-08-02',value:747.19},{time:'2013-08-09',value:741.76},{time:'2013-08-16',value:779.8},{time:'2013-08-23',value:752.24},{time:'2013-08-30',value:751.85},{time:'2013-09-06',value:724.68},{time:'2013-09-13',value:752.63},{time:'2013-09-18',value:716.14},{time:'2013-09-27',value:697.12},{time:'2013-09-30',value:698.67},{time:'2013-10-11',value:694.01},{time:'2013-10-18',value:699.84},{time:'2013-10-25',value:678.1},{time:'2013-11-01',value:626.86},{time:'2013-11-08',value:631.13},{time:'2013-11-15',value:644.33},{time:'2013-11-22',value:642.78},{time:'2013-11-29',value:650.15},{time:'2013-12-06',value:654.42},{time:'2013-12-13',value:634.24},{time:'2013-12-20',value:589.99},{time:'2013-12-27',value:589.6},{time:'2014-01-03',value:589.6},{time:'2014-01-10',value:569.03},{time:'2014-01-17',value:570.97},{time:'2014-01-24',value:585.72},{time:'2014-01-30',value:568.25},{time:'2014-02-07',value:570.58},{time:'2014-02-14',value:602.41},{time:'2014-02-21',value:619.1},{time:'2014-02-28',value:592.71},{time:'2014-03-07',value:627.25},{time:'2014-03-14',value:682.37},{time:'2014-03-21',value:675.38},{time:'2014-03-28',value:644.33},{time:'2014-04-04',value:666.46},{time:'2014-04-11',value:705.27},{time:'2014-04-18',value:685.48},{time:'2014-04-25',value:669.17},{time:'2014-04-30',value:683.15},{time:'2014-05-09',value:656.36},{time:'2014-05-16',value:652.87},{time:'2014-05-23',value:640.45},{time:'2014-05-30',value:651.32},{time:'2014-06-06',value:657.92},{time:'2014-06-13',value:687.03},{time:'2014-06-20',value:661.41},{time:'2014-06-27',value:692.46},{time:'2014-07-04',value:673.83},{time:'2014-07-11',value:695.18},{time:'2014-07-18',value:749.13},{time:'2014-07-25',value:761.94},{time:'2014-08-01',value:749.13},{time:'2014-08-08',value:738.65},{time:'2014-08-15',value:756.9},{time:'2014-08-22',value:754.57},{time:'2014-08-29',value:727.01},{time:'2014-09-05',value:753.4},{time:'2014-09-12',value:737.88},{time:'2014-09-19',value:725.07},{time:'2014-09-26',value:712.65},{time:'2014-09-30',value:716.92},{time:'2014-10-10',value:712.26},{time:'2014-10-17',value:699.84},{time:'2014-10-24',value:659.86},{time:'2014-10-31',value:686.64},{time:'2014-11-07',value:666.46},{time:'2014-11-14',value:707.21},{time:'2014-11-21',value:685.09},{time:'2014-11-28',value:702.55},{time:'2014-12-05',value:761.94},{time:'2014-12-12',value:790.66},{time:'2014-12-19',value:777.08},{time:'2014-12-26',value:838.8},{time:'2014-12-31',value:834.53},{time:'2015-01-09',value:920.69},{time:'2015-01-16',value:907.11},{time:'2015-01-23',value:869.85},{time:'2015-01-30',value:861.7},{time:'2015-02-06',value:789.11},{time:'2015-02-13',value:833.75},{time:'2015-02-17',value:825.6},{time:'2015-02-27',value:829.87},{time:'2015-03-06',value:812.01},{time:'2015-03-13',value:839.96},{time:'2015-03-20',value:878.39},{time:'2015-03-27',value:897.79},{time:'2015-04-03',value:908.66},{time:'2015-04-10',value:938.16},{time:'2015-04-17',value:1038.3},{time:'2015-04-24',value:1043.74},{time:'2015-04-30',value:1013.46},{time:'2015-05-08',value:991.73},{time:'2015-05-15',value:980.08},{time:'2015-05-22',value:1051.5},{time:'2015-05-29',value:1041.41},{time:'2015-06-05',value:1090.32},{time:'2015-06-12',value:1195.89},{time:'2015-06-19',value:1094.97},{time:'2015-06-26',value:1147.38},{time:'2015-07-03',value:972.32},{time:'2015-07-10',value:1029.38},{time:'2015-07-17',value:1044.13},{time:'2015-07-24',value:1075.18},{time:'2015-07-29',value:998.71},{time:'2015-11-06',value:1006.09},{time:'2015-11-13',value:999.49},{time:'2015-11-20',value:1009.19},{time:'2015-11-27',value:941.66},{time:'2015-12-04',value:982.02},{time:'2015-12-11',value:954.85},{time:'2015-12-18',value:1007.25},{time:'2015-12-25',value:1052.67},{time:'2015-12-31',value:1058.88},{time:'2016-01-08',value:1005.7},{time:'2016-01-15',value:916.04},{time:'2016-01-22',value:934.67},{time:'2016-01-29',value:918.37},{time:'2016-02-05',value:919.14},{time:'2016-02-19',value:904.39},{time:'2016-02-26',value:909.83},{time:'2016-03-04',value:976.98},{time:'2016-03-11',value:985.9},{time:'2016-03-18',value:1013.07},{time:'2016-03-25',value:1057.71},{time:'2016-04-01',value:1086.44},{time:'2016-04-08',value:1057.71},{time:'2016-04-15',value:1075.18},{time:'2016-04-22',value:1040.25},{time:'2016-04-29',value:1102.35},{time:'2016-05-06',value:1137.67},{time:'2016-05-13',value:1159.8},{time:'2016-05-20',value:1142.72},{time:'2016-05-27',value:1120.2},{time:'2016-06-03',value:1216.08},{time:'2016-06-08',value:1191.62},{time:'2016-06-17',value:1269.64},{time:'2016-06-24',value:1211.42},{time:'2016-07-01',value:1256.45},{time:'2016-07-08',value:1385.7},{time:'2016-07-15',value:1441.59},{time:'2016-07-22',value:1355.04},{time:'2016-07-29',value:1403.94},{time:'2016-08-05',value:1336.02},{time:'2016-08-12',value:1384.15},{time:'2016-08-19',value:1382.6},{time:'2016-08-26',value:1341.84},{time:'2016-09-02',value:1313.89},{time:'2016-09-09',value:1296.43},{time:'2016-09-14',value:1246.74},{time:'2016-09-23',value:1291.77},{time:'2016-09-30',value:1294.87},{time:'2016-10-14',value:1285.95},{time:'2016-10-21',value:1303.02},{time:'2016-10-28',value:1371.34},{time:'2016-11-04',value:1330.58},{time:'2016-11-11',value:1350.38},{time:'2016-11-18',value:1337.57},{time:'2016-11-25',value:1365.13},{time:'2016-12-02',value:1387.64},{time:'2016-12-09',value:1422.96},{time:'2016-12-16',value:1376.0},{time:'2016-12-23',value:1336.02},{time:'2016-12-30',value:1338.35},{time:'2017-01-06',value:1401.23},{time:'2017-01-13',value:1385.31},{time:'2017-01-20',value:1432.67},{time:'2017-01-26',value:1436.16},{time:'2017-02-03',value:1413.26},{time:'2017-02-10',value:1468.38},{time:'2017-02-17',value:1511.85},{time:'2017-02-24',value:1563.86},{time:'2017-03-03',value:1552.22},{time:'2017-03-10',value:1578.22},{time:'2017-03-17',value:1582.1},{time:'2017-03-24',value:1678.37},{time:'2017-03-31',value:1669.05},{time:'2017-04-07',value:1657.02},{time:'2017-04-14',value:1643.82},{time:'2017-04-21',value:1771.91},{time:'2017-04-28',value:1766.09},{time:'2017-05-05',value:1714.08},{time:'2017-05-12',value:1717.57},{time:'2017-05-19',value:1827.42},{time:'2017-05-26',value:1846.05},{time:'2017-06-02',value:1861.57},{time:'2017-06-09',value:2024.99},{time:'2017-06-16',value:2019.16},{time:'2017-06-23',value:2134.83},{time:'2017-06-30',value:2160.45},{time:'2017-07-07',value:2010.62},{time:'2017-07-14',value:2039.35},{time:'2017-07-21',value:2123.58},{time:'2017-07-28',value:2163.17},{time:'2017-08-04',value:2099.51},{time:'2017-08-11',value:2173.65},{time:'2017-08-18',value:2166.27},{time:'2017-08-25',value:2099.9},{time:'2017-09-01',value:2154.24},{time:'2017-09-08',value:2012.56},{time:'2017-09-15',value:2132.12},{time:'2017-09-22',value:2176.75},{time:'2017-09-29',value:2223.33},{time:'2017-10-13',value:2391.79},{time:'2017-10-20',value:2426.33},{time:'2017-10-27',value:2639.04},{time:'2017-11-03',value:2652.24},{time:'2017-11-10',value:2895.61},{time:'2017-11-17',value:2905.7},{time:'2017-11-24',value:2657.28},{time:'2017-12-01',value:2534.63},{time:'2017-12-08',value:2635.55},{time:'2017-12-15',value:2831.56},{time:'2017-12-22',value:3127.72},{time:'2017-12-29',value:3100.55},{time:'2018-01-05',value:3209.24},{time:'2018-01-12',value:3546.54},{time:'2018-01-19',value:3305.88},{time:'2018-01-26',value:3370.71},{time:'2018-02-02',value:3193.71},{time:'2018-02-09',value:2763.64},{time:'2018-02-14',value:2973.24},{time:'2018-02-23',value:3091.24},{time:'2018-03-02',value:2849.81},{time:'2018-03-09',value:2992.65},{time:'2018-03-16',value:2983.72},{time:'2018-03-23',value:2770.24},{time:'2018-03-30',value:2575.77},{time:'2018-04-04',value:2713.18},{time:'2018-04-13',value:2638.65},{time:'2018-04-20',value:2702.7},{time:'2018-04-27',value:2638.65},{time:'2018-05-04',value:2829.62},{time:'2018-05-11',value:2991.09},{time:'2018-05-18',value:3011.67},{time:'2018-05-25',value:2883.96},{time:'2018-06-01',value:3051.65},{time:'2018-06-08',value:3120.35},{time:'2018-06-15',value:3231.36},{time:'2018-06-22',value:3112.2},{time:'2018-06-29',value:2949.95},{time:'2018-07-06',value:2741.12},{time:'2018-07-13',value:2940.25},{time:'2018-07-20',value:2850.2},{time:'2018-07-27',value:2879.69},{time:'2018-08-03',value:2548.99},{time:'2018-08-10',value:2563.74},{time:'2018-08-17',value:2352.59},{time:'2018-08-24',value:2443.8},{time:'2018-08-31',value:2402.66},{time:'2018-09-07',value:2358.8},{time:'2018-09-14',value:2388.3},{time:'2018-09-21',value:2578.1},{time:'2018-09-28',value:2637.49},{time:'2018-10-12',value:2337.06},{time:'2018-10-19',value:2309.11},{time:'2018-10-26',value:2107.66},{time:'2018-11-02',value:2083.98},{time:'2018-11-09',value:1941.14},{time:'2018-11-16',value:1967.54},{time:'2018-11-23',value:1941.53},{time:'2018-11-30',value:2033.52},{time:'2018-12-07',value:2064.97},{time:'2018-12-14',value:2056.81},{time:'2018-12-21',value:1964.05},{time:'2018-12-28',value:1974.91},{time:'2019-01-04',value:1922.9},{time:'2019-01-11',value:1967.54},{time:'2019-01-18',value:2091.36},{time:'2019-01-25',value:2144.54},{time:'2019-02-01',value:2374.71},{time:'2019-02-15',value:2577.32},{time:'2019-02-22',value:2658.84},{time:'2019-03-01',value:2946.07},{time:'2019-03-08',value:2772.95},{time:'2019-03-15',value:3057.86},{time:'2019-03-22',value:3340.04},{time:'2019-03-29',value:3687.44},{time:'2019-04-04',value:3890.44},{time:'2019-04-12',value:3866.76},{time:'2019-04-19',value:3945.95},{time:'2019-04-26',value:3969.62},{time:'2019-04-30',value:3973.12},{time:'2019-05-10',value:3850.46},{time:'2019-05-17',value:4132.26},{time:'2019-05-24',value:3921.1},{time:'2019-05-31',value:3930.03},{time:'2019-06-06',value:3776.32},{time:'2019-06-14',value:4074.04},{time:'2019-06-21',value:4385.33},{time:'2019-06-28',value:4578.25},{time:'2019-07-05',value:5038.59},{time:'2019-07-12',value:4874.4},{time:'2019-07-19',value:4740.88},{time:'2019-07-26',value:4706.33},{time:'2019-08-02',value:4584.84},{time:'2019-08-09',value:4580.96},{time:'2019-08-16',value:4902.35},{time:'2019-08-23',value:5049.85},{time:'2019-08-30',value:5492.34},{time:'2019-09-06',value:5434.51},{time:'2019-09-12',value:5106.13},{time:'2019-09-20',value:5311.46},{time:'2019-09-27',value:5193.46},{time:'2019-09-30',value:5038.2},{time:'2019-10-11',value:5094.49},{time:'2019-10-18',value:4941.17},{time:'2019-10-25',value:4976.1},{time:'2019-11-01',value:5189.58},{time:'2019-11-08',value:5224.13},{time:'2019-11-15',value:5175.22},{time:'2019-11-22',value:5005.99},{time:'2019-11-29',value:4950.87},{time:'2019-12-06',value:5084.01},{time:'2019-12-13',value:5027.34},{time:'2019-12-20',value:5011.03},{time:'2019-12-27',value:5007.15},{time:'2020-01-03',value:5067.32},{time:'2020-01-10',value:5186.48},{time:'2020-01-17',value:5377.84},{time:'2020-01-23',value:4896.92},{time:'2020-02-07',value:4680.33},{time:'2020-02-14',value:4790.95},{time:'2020-02-21',value:5045.97},{time:'2020-02-28',value:4681.11},{time:'2020-03-06',value:5048.68},{time:'2020-03-13',value:4758.74},{time:'2020-03-20',value:4211.83},{time:'2020-03-27',value:4495.18},{time:'2020-04-03',value:4561.55},{time:'2020-04-10',value:4910.89},{time:'2020-04-17',value:5000.17},{time:'2020-04-24',value:5100.31},{time:'2020-04-30',value:5269.93},{time:'2020-05-08',value:5546.68},{time:'2020-05-15',value:5636.73},{time:'2020-05-22',value:5599.08},{time:'2020-05-29',value:5752.4},{time:'2020-06-05',value:6213.91},{time:'2020-06-12',value:6268.64},{time:'2020-06-19',value:6426.62},{time:'2020-06-24',value:6544.62},{time:'2020-07-03',value:7325.19},{time:'2020-07-10',value:8034.73},{time:'2020-07-17',value:7972.24},{time:'2020-07-24',value:7816.98},{time:'2020-07-31',value:8442.29},{time:'2020-08-07',value:8044.82},{time:'2020-08-14',value:8263.74},{time:'2020-08-21',value:8477.23},{time:'2020-08-28',value:9335.04},{time:'2020-09-04',value:8936.02},{time:'2020-09-11',value:8845.19},{time:'2020-09-18',value:8908.85},{time:'2020-09-25',value:8430.65},{time:'2020-09-30',value:8578.14},{time:'2020-10-09',value:8833.16},{time:'2020-10-16',value:9194.53},{time:'2020-10-23',value:9184.83},{time:'2020-10-30',value:9484.48},{time:'2020-11-06',value:10064.76},{time:'2020-11-13',value:10286.01},{time:'2020-11-20',value:10420.7},{time:'2020-11-27',value:10181.21},{time:'2020-12-04',value:10371.02},{time:'2020-12-11',value:10383.82},{time:'2020-12-18',value:10746.36},{time:'2020-12-25',value:10709.87},{time:'2020-12-31',value:11328.2},{time:'2021-01-08',value:12304.4},{time:'2021-01-15',value:11167.11},{time:'2021-01-22',value:11472.2},{time:'2021-01-29',value:11300.64},{time:'2021-02-05',value:12411.53},{time:'2021-02-10',value:13300.01},{time:'2021-02-19',value:13367.93},{time:'2021-02-26',value:10868.24},{time:'2021-03-05',value:10344.23},{time:'2021-03-12',value:10264.66},{time:'2021-03-19',value:10122.6},{time:'2021-03-26',value:10322.88},{time:'2021-04-02',value:11045.23},{time:'2021-04-09',value:10297.66},{time:'2021-04-16',value:10161.8},{time:'2021-04-23',value:10868.24},{time:'2021-04-30',value:11062.31},{time:'2021-05-07',value:10561.6},{time:'2021-05-14',value:11139.94},{time:'2021-05-21',value:11512.57},{time:'2021-05-28',value:12300.52},{time:'2021-06-04',value:12238.41},{time:'2021-06-11',value:11705.48},{time:'2021-06-18',value:11295.2},{time:'2021-06-25',value:11641.43},{time:'2021-07-02',value:11102.29},{time:'2021-07-09',value:10374.51},{time:'2021-07-16',value:10771.98},{time:'2021-07-23',value:10527.05},{time:'2021-07-30',value:8568.44},{time:'2021-08-06',value:8772.22},{time:'2021-08-13',value:9346.68},{time:'2021-08-20',value:8010.67},{time:'2021-08-27',value:7983.5},{time:'2021-09-03',value:7991.65},{time:'2021-09-10',value:8294.79},{time:'2021-09-17',value:7838.72},{time:'2021-09-24',value:7783.21},{time:'2021-09-30',value:8515.65},{time:'2021-10-08',value:8858.39},{time:'2021-10-15',value:9095.16},{time:'2021-10-22',value:8734.57},{time:'2021-10-29',value:8403.86},{time:'2021-11-05',value:8163.21},{time:'2021-11-12',value:7912.47},{time:'2021-11-19',value:8252.1},{time:'2021-11-26',value:8650.34},{time:'2021-12-03',value:8906.13},{time:'2021-12-10',value:9587.34},{time:'2021-12-17',value:9127.77},{time:'2021-12-24',value:9390.93},{time:'2021-12-31',value:8642.58},{time:'2022-01-07',value:8448.5},{time:'2022-01-14',value:8042.5},{time:'2022-01-21',value:8432.98},{time:'2022-01-28',value:7700.15},{time:'2022-02-11',value:7540.62},{time:'2022-02-18',value:7724.21},{time:'2022-02-25',value:7393.51},{time:'2022-03-04',value:6845.83},{time:'2022-03-11',value:6667.28},{time:'2022-03-18',value:6517.06},{time:'2022-03-25',value:6101.35},{time:'2022-04-01',value:6206.54},{time:'2022-04-08',value:6233.32},{time:'2022-04-15',value:6594.69},{time:'2022-04-22',value:6421.19},{time:'2022-04-29',value:6293.1},{time:'2022-05-06',value:6096.3},{time:'2022-05-13',value:6091.65},{time:'2022-05-20',value:6306.29},{time:'2022-05-27',value:6130.85},{time:'2022-06-02',value:6588.87},{time:'2022-06-10',value:6886.58},{time:'2022-06-17',value:7032.53},{time:'2022-06-24',value:7180.8},{time:'2022-07-01',value:7879.47},{time:'2022-07-08',value:7479.68},{time:'2022-07-15',value:7370.99},{time:'2022-07-22',value:7216.12},{time:'2022-07-29',value:6924.62},{time:'2022-08-05',value:6954.9},{time:'2022-08-12',value:6936.26},{time:'2022-08-19',value:6740.64},{time:'2022-08-26',value:6602.45},{time:'2022-09-02',value:6281.84},{time:'2022-09-09',value:6267.09},{time:'2022-09-16',value:6252.34},{time:'2022-09-23',value:6176.65},{time:'2022-09-30',value:6568.69},{time:'2022-10-14',value:6176.26},{time:'2022-10-21',value:5905.72},{time:'2022-10-28',value:5337.08},{time:'2022-11-04',value:5822.27},{time:'2022-11-11',value:5823.05},{time:'2022-11-18',value:5962.39},{time:'2022-11-25',value:5720.57},{time:'2022-12-02',value:6329.2},{time:'2022-12-09',value:7113.65},{time:'2022-12-16',value:7084.54},{time:'2022-12-23',value:6997.98},{time:'2022-12-30',value:7013.51},{time:'2023-01-06',value:7392.73},{time:'2023-01-13',value:7707.91},{time:'2023-01-20',value:8101.49},{time:'2023-02-03',value:8151.18},{time:'2023-02-10',value:7945.46},{time:'2023-02-17',value:8079.37},{time:'2023-02-24',value:7805.72},{time:'2023-03-03',value:7986.6},{time:'2023-03-10',value:7578.27},{time:'2023-03-17',value:7316.65},{time:'2023-03-24',value:7492.1},{time:'2023-03-31',value:7646.58},{time:'2023-04-07',value:7338.39},{time:'2023-04-14',value:6815.55},{time:'2023-04-21',value:6676.2},{time:'2023-04-28',value:6559.76},{time:'2023-05-05',value:6742.58},{time:'2023-05-12',value:6574.12},{time:'2023-05-19',value:6629.62},{time:'2023-05-26',value:6602.45},{time:'2023-06-02',value:6517.06},{time:'2023-06-09',value:6388.58},{time:'2023-06-16',value:7145.09},{time:'2023-06-21',value:6652.91},{time:'2023-06-30',value:6348.99},{time:'2023-07-07',value:6352.48},{time:'2023-07-14',value:6675.81},{time:'2023-07-21',value:6647.87},{time:'2023-07-28',value:7032.53},{time:'2023-08-04',value:6958.78},{time:'2023-08-11',value:6690.18},{time:'2023-08-18',value:6347.44},{time:'2023-08-25',value:6270.58},{time:'2023-09-01',value:6200.33},{time:'2023-09-08',value:6284.95},{time:'2023-09-15',value:6199.17},{time:'2023-09-22',value:6207.32},{time:'2023-09-28',value:6059.04},{time:'2023-10-13',value:5963.17},{time:'2023-10-20',value:5577.73},{time:'2023-10-27',value:5938.33},{time:'2023-11-03',value:6197.61},{time:'2023-11-10',value:6090.09},{time:'2023-11-17',value:6016.35},{time:'2023-11-24',value:5947.64},{time:'2023-12-01',value:5713.98},{time:'2023-12-08',value:5547.85},{time:'2023-12-15',value:5189.58},{time:'2023-12-22',value:5178.72},{time:'2023-12-29',value:5446.15},{time:'2024-01-05',value:5094.1},{time:'2024-01-12',value:4997.45},{time:'2024-01-19',value:5002.88},{time:'2024-01-26',value:5084.78},{time:'2024-02-02',value:4806.09},{time:'2024-02-08',value:5185.31},{time:'2024-02-23',value:5500.49},{time:'2024-03-01',value:5534.65},{time:'2024-03-08',value:5372.79},{time:'2024-03-15',value:5918.92},{time:'2024-03-22',value:5955.41},{time:'2024-03-29',value:5958.51},{time:'2024-04-03',value:6000.82},{time:'2024-04-12',value:5453.14},{time:'2024-04-19',value:5546.68},{time:'2024-04-26',value:5909.6},{time:'2024-04-30',value:5838.96},{time:'2024-05-10',value:5994.22},{time:'2024-05-17',value:6071.08},{time:'2024-05-24',value:5866.91},{time:'2024-05-31',value:5694.18},{time:'2024-06-07',value:5524.95},{time:'2024-06-14',value:5266.44},{time:'2024-06-21',value:5053.73},{time:'2024-06-28',value:4969.89},{time:'2024-07-05',value:5005.21},{time:'2024-07-12',value:4945.05},{time:'2024-07-19',value:5178.72},{time:'2024-07-26',value:4898.47},{time:'2024-08-02',value:4801.43},{time:'2024-08-09',value:4971.44},{time:'2024-08-16',value:4852.28},{time:'2024-08-23',value:4700.9},{time:'2024-08-30',value:4775.43},{time:'2024-09-06',value:4561.94},{time:'2024-09-13',value:4238.61},{time:'2024-09-20',value:4280.53},{time:'2024-09-27',value:5734.55},{time:'2024-09-30',value:6307.85},{time:'2024-10-11',value:5808.68},{time:'2024-10-18',value:5550.56},{time:'2024-10-25',value:5748.91},{time:'2024-11-01',value:5741.53},{time:'2024-11-08',value:6073.4},{time:'2024-11-15',value:5872.34},{time:'2024-11-22',value:5623.92},{time:'2024-11-29',value:5696.9},{time:'2024-12-06',value:5684.09},{time:'2024-12-13',value:5746.19},{time:'2024-12-20',value:5558.72},{time:'2024-12-27',value:5531.93},{time:'2025-01-03',value:5255.57},{time:'2025-01-10',value:4991.63},{time:'2025-01-17',value:5135.24},{time:'2025-01-24',value:4957.47},{time:'2025-01-27',value:4937.29},{time:'2025-02-07',value:4953.98},{time:'2025-02-14',value:5093.71},{time:'2025-02-21',value:5089.44},{time:'2025-02-28',value:5107.3},{time:'2025-03-07',value:5232.28},{time:'2025-03-14',value:5465.17},{time:'2025-03-21',value:5224.52},{time:'2025-03-28',value:5171.34},{time:'2025-04-03',value:5123.6},{time:'2025-04-11',value:5108.07},{time:'2025-04-18',value:5113.89},{time:'2025-04-25',value:5009.09},{time:'2025-04-30',value:4995.51},{time:'2025-05-09',value:5107.3},{time:'2025-05-16',value:5087.89},{time:'2025-05-23',value:4974.16},{time:'2025-05-30',value:4907.79},{time:'2025-06-06',value:4855.39},{time:'2025-06-13',value:4623.66},{time:'2025-06-20',value:4640.74},{time:'2025-06-27',value:4625.99},{time:'2025-07-04',value:4672.95},{time:'2025-07-11',value:4824.72},{time:'2025-07-18',value:4804.54},{time:'2025-07-25',value:4795.22},{time:'2025-08-01',value:4696.63},{time:'2025-08-08',value:4743.99},{time:'2025-08-15',value:4778.14},{time:'2025-08-22',value:4882.56},{time:'2025-08-29',value:5027.72},{time:'2025-09-05',value:4922.15},{time:'2025-09-12',value:4936.9},{time:'2025-09-19',value:4816.18},{time:'2025-09-26',value:4664.41},{time:'2025-09-30',value:4715.26},{time:'2025-10-10',value:4686.15},{time:'2025-10-17',value:4699.35},{time:'2025-10-24',value:4669.07},{time:'2025-10-31',value:4618.61},{time:'2025-11-07',value:4531.67},{time:'2025-11-14',value:4665.97},{time:'2025-11-21',value:4645.4},{time:'2025-11-28',value:4574.36},{time:'2025-12-05',value:4462.19},{time:'2025-12-12',value:4331.77},{time:'2025-12-19',value:4290.24},{time:'2025-12-26',value:4261.13},{time:'2025-12-31',value:4112.08},{time:'2026-01-09',value:4158.65},{time:'2026-01-16',value:4081.8},{time:'2026-01-23',value:3997.57},{time:'2026-01-30',value:4075.59},{time:'2026-02-06',value:4153.22},{time:'2026-02-13',value:4116.73},{time:'2026-02-27',value:4038.71},{time:'2026-03-06',value:3974.67},{time:'2026-03-13',value:3996.02},{time:'2026-03-20',value:3974.67},{time:'2026-03-27',value:3984.37},{time:'2026-04-03',value:4016.98},{time:'2026-04-10',value:3961.86},{time:'2026-04-17',value:3953.71},{time:'2026-04-24',value:3930.81},{time:'2026-04-30',value:3768.17},{time:'2026-05-08',value:3576.04},{time:'2026-05-15',value:3371.87},{time:'2026-05-22',value:3261.64},{time:'2026-05-29',value:3295.02},{time:'2026-06-05',value:3147.13},{time:'2026-06-12',value:3093.57}],
   monthly: [{time:'1998-04-30',value:2082.43},{time:'1998-05-29',value:2328.91},{time:'1998-06-30',value:1970.26},{time:'1998-07-31',value:1809.17},{time:'1998-08-31',value:1514.95},{time:'1998-09-30',value:1594.14},{time:'1998-10-30',value:1517.67},{time:'1998-11-30',value:1693.12},{time:'1998-12-31',value:1583.66},{time:'1999-01-29',value:1585.6},{time:'1999-02-09',value:1521.94},{time:'1999-03-31',value:1436.16},{time:'1999-04-30',value:1329.81},{time:'1999-05-31',value:1414.04},{time:'1999-06-30',value:1865.46},{time:'1999-07-30',value:1886.42},{time:'1999-08-31',value:1841.39},{time:'1999-09-30',value:1218.41},{time:'1999-10-29',value:1097.3},{time:'1999-11-30',value:1104.68},{time:'1999-12-30',value:1137.28},{time:'2000-01-28',value:1292.16},{time:'2000-02-29',value:1271.2},{time:'2000-03-31',value:1170.28},{time:'2000-04-28',value:1211.03},{time:'2000-05-31',value:1172.99},{time:'2000-06-30',value:1268.48},{time:'2000-07-31',value:1300.7},{time:'2000-08-31',value:1298.75},{time:'2000-09-29',value:1198.61},{time:'2000-10-31',value:1235.1},{time:'2000-11-30',value:1521.17},{time:'2000-12-29',value:1534.75},{time:'2001-01-19',value:1431.89},{time:'2001-02-28',value:1306.13},{time:'2001-03-30',value:1471.09},{time:'2001-04-30',value:1455.18},{time:'2001-05-31',value:1500.2},{time:'2001-06-29',value:1523.11},{time:'2001-07-31',value:1474.98},{time:'2001-08-31',value:1470.32},{time:'2001-09-28',value:705.27},{time:'2001-10-31',value:697.12},{time:'2001-11-30',value:698.67},{time:'2001-12-31',value:820.94},{time:'2002-01-31',value:786.39},{time:'2002-02-28',value:776.69},{time:'2002-03-29',value:782.51},{time:'2002-04-30',value:581.84},{time:'2002-05-31',value:543.41},{time:'2002-06-28',value:608.62},{time:'2002-07-31',value:562.82},{time:'2002-08-30',value:529.83},{time:'2002-09-27',value:499.94},{time:'2002-10-31',value:448.7},{time:'2002-11-29',value:441.33},{time:'2002-12-31',value:449.87},{time:'2003-01-29',value:475.87},{time:'2003-02-28',value:458.41},{time:'2003-03-31',value:445.6},{time:'2003-04-30',value:367.19},{time:'2003-05-30',value:402.12},{time:'2003-06-30',value:380.0},{time:'2003-07-31',value:406.39},{time:'2003-08-29',value:360.2},{time:'2003-09-30',value:364.86},{time:'2003-10-31',value:388.54},{time:'2003-11-28',value:395.53},{time:'2003-12-31',value:434.34},{time:'2004-01-30',value:455.69},{time:'2004-02-27',value:526.72},{time:'2004-03-31',value:548.07},{time:'2004-04-30',value:269.38},{time:'2004-05-28',value:250.75},{time:'2004-06-30',value:237.55},{time:'2004-07-30',value:251.91},{time:'2004-08-31',value:249.58},{time:'2004-09-30',value:293.83},{time:'2004-10-29',value:284.9},{time:'2004-11-30',value:276.75},{time:'2004-12-31',value:260.06},{time:'2005-01-31',value:277.14},{time:'2005-02-28',value:290.73},{time:'2005-03-31',value:268.99},{time:'2005-04-29',value:297.32},{time:'2005-05-31',value:275.59},{time:'2005-06-30',value:291.89},{time:'2005-07-29',value:310.52},{time:'2005-08-31',value:301.98},{time:'2005-09-30',value:290.34},{time:'2005-10-31',value:261.61},{time:'2005-11-30',value:263.55},{time:'2005-12-30',value:281.8},{time:'2006-01-24',value:314.79},{time:'2006-03-31',value:261.23},{time:'2006-04-28',value:410.66},{time:'2006-05-31',value:503.43},{time:'2006-06-30',value:564.37},{time:'2006-07-31',value:529.83},{time:'2006-08-31',value:512.75},{time:'2006-09-29',value:504.21},{time:'2006-10-31',value:481.7},{time:'2006-11-30',value:645.11},{time:'2006-12-29',value:886.93},{time:'2007-01-31',value:992.89},{time:'2007-02-28',value:976.59},{time:'2007-03-30',value:1012.69},{time:'2007-04-30',value:1384.15},{time:'2007-05-31',value:1162.51},{time:'2007-06-29',value:1221.12},{time:'2007-07-31',value:1284.0},{time:'2007-08-31',value:1383.76},{time:'2007-09-28',value:1647.7},{time:'2007-10-31',value:1746.68},{time:'2007-11-30',value:1361.25},{time:'2007-12-28',value:1765.31},{time:'2008-01-31',value:1465.27},{time:'2008-02-29',value:1405.11},{time:'2008-03-31',value:939.33},{time:'2008-04-30',value:1104.29},{time:'2008-05-30',value:877.22},{time:'2008-06-30',value:707.21},{time:'2008-07-18',value:807.35},{time:'2008-08-29',value:730.89},{time:'2008-09-26',value:648.21},{time:'2008-10-31',value:474.32},{time:'2008-11-28',value:600.86},{time:'2008-12-31',value:517.79},{time:'2009-01-23',value:548.46},{time:'2009-02-27',value:581.84},{time:'2009-03-31',value:617.94},{time:'2009-04-30',value:643.17},{time:'2009-05-27',value:645.88},{time:'2009-06-30',value:765.82},{time:'2009-07-31',value:912.93},{time:'2009-08-31',value:837.24},{time:'2009-09-30',value:811.62},{time:'2009-10-30',value:870.62},{time:'2009-11-30',value:1103.9},{time:'2009-12-31',value:1228.89},{time:'2010-01-29',value:1133.01},{time:'2010-02-26',value:1088.38},{time:'2010-03-31',value:1093.42},{time:'2010-04-30',value:1020.45},{time:'2010-05-31',value:964.94},{time:'2010-06-30',value:940.49},{time:'2010-07-30',value:1078.28},{time:'2010-08-31',value:1231.22},{time:'2010-09-30',value:1332.52},{time:'2010-10-29',value:1416.75},{time:'2010-11-30',value:1518.84},{time:'2010-12-31',value:1344.17},{time:'2011-01-31',value:1275.08},{time:'2011-02-28',value:1279.73},{time:'2011-03-31',value:1237.81},{time:'2011-04-29',value:1279.73},{time:'2011-05-31',value:1281.29},{time:'2011-06-30',value:1386.48},{time:'2011-07-29',value:1474.98},{time:'2011-08-31',value:1568.13},{time:'2011-09-30',value:1408.99},{time:'2011-10-31',value:1424.13},{time:'2011-11-30',value:1456.73},{time:'2011-12-30',value:1273.14},{time:'2012-01-31',value:1241.7},{time:'2012-02-29',value:1367.85},{time:'2012-03-30',value:1274.69},{time:'2012-04-27',value:1382.6},{time:'2012-05-31',value:1251.79},{time:'2012-06-29',value:1271.58},{time:'2012-07-31',value:1358.53},{time:'2012-08-31',value:1264.21},{time:'2012-09-28',value:1315.83},{time:'2012-10-31',value:1304.19},{time:'2012-11-30',value:1046.84},{time:'2012-12-31',value:1095.75},{time:'2013-01-31',value:989.79},{time:'2013-02-28',value:948.64},{time:'2013-03-29',value:867.13},{time:'2013-04-26',value:851.99},{time:'2013-05-31',value:921.86},{time:'2013-06-28',value:777.86},{time:'2013-07-31',value:735.55},{time:'2013-08-30',value:751.85},{time:'2013-09-30',value:698.67},{time:'2013-10-31',value:633.07},{time:'2013-11-29',value:650.15},{time:'2013-12-31',value:607.84},{time:'2014-01-30',value:568.25},{time:'2014-02-28',value:592.71},{time:'2014-03-31',value:647.05},{time:'2014-04-30',value:683.15},{time:'2014-05-30',value:651.32},{time:'2014-06-30',value:695.96},{time:'2014-07-31',value:752.63},{time:'2014-08-29',value:727.01},{time:'2014-09-30',value:716.92},{time:'2014-10-31',value:686.64},{time:'2014-11-28',value:702.55},{time:'2014-12-31',value:834.53},{time:'2015-01-30',value:861.7},{time:'2015-02-27',value:829.87},{time:'2015-03-31',value:899.73},{time:'2015-04-30',value:1013.46},{time:'2015-05-29',value:1041.41},{time:'2015-06-30',value:1230.44},{time:'2015-07-29',value:998.71},{time:'2015-11-30',value:932.73},{time:'2015-12-31',value:1058.88},{time:'2016-01-29',value:918.37},{time:'2016-02-29',value:871.79},{time:'2016-03-31',value:1091.09},{time:'2016-04-29',value:1102.35},{time:'2016-05-31',value:1165.62},{time:'2016-06-30',value:1262.66},{time:'2016-07-29',value:1403.94},{time:'2016-08-31',value:1355.04},{time:'2016-09-30',value:1294.87},{time:'2016-10-31',value:1357.75},{time:'2016-11-30',value:1394.63},{time:'2016-12-30',value:1338.35},{time:'2017-01-26',value:1436.16},{time:'2017-02-28',value:1535.53},{time:'2017-03-31',value:1669.05},{time:'2017-04-28',value:1766.09},{time:'2017-05-31',value:1858.47},{time:'2017-06-30',value:2160.45},{time:'2017-07-31',value:2164.33},{time:'2017-08-31',value:2153.85},{time:'2017-09-29',value:2223.33},{time:'2017-10-31',value:2585.86},{time:'2017-11-30',value:2546.27},{time:'2017-12-29',value:3100.55},{time:'2018-01-31',value:3275.22},{time:'2018-02-28',value:2883.19},{time:'2018-03-30',value:2575.77},{time:'2018-04-27',value:2638.65},{time:'2018-05-31',value:3065.62},{time:'2018-06-29',value:2949.95},{time:'2018-07-31',value:2800.51},{time:'2018-08-31',value:2402.66},{time:'2018-09-28',value:2637.49},{time:'2018-10-31',value:1868.95},{time:'2018-11-30',value:2033.52},{time:'2018-12-28',value:1974.91},{time:'2019-01-31',value:2340.55},{time:'2019-02-28',value:2775.28},{time:'2019-03-29',value:3687.44},{time:'2019-04-30',value:3973.12},{time:'2019-05-31',value:3930.03},{time:'2019-06-28',value:4578.25},{time:'2019-07-31',value:4685.37},{time:'2019-08-30',value:5492.34},{time:'2019-09-30',value:5038.2},{time:'2019-10-31',value:5126.7},{time:'2019-11-29',value:4950.87},{time:'2019-12-31',value:5162.8},{time:'2020-01-23',value:4896.92},{time:'2020-02-28',value:4681.11},{time:'2020-03-31',value:4471.5},{time:'2020-04-30',value:5269.93},{time:'2020-05-29',value:5752.4},{time:'2020-06-30',value:6642.05},{time:'2020-07-31',value:8442.29},{time:'2020-08-31',value:9315.63},{time:'2020-09-30',value:8578.14},{time:'2020-10-30',value:9484.48},{time:'2020-11-30',value:9859.04},{time:'2020-12-31',value:11328.2},{time:'2021-01-29',value:11300.64},{time:'2021-02-26',value:10868.24},{time:'2021-03-31',value:10401.68},{time:'2021-04-30',value:11062.31},{time:'2021-05-31',value:12231.42},{time:'2021-06-30',value:11562.64},{time:'2021-07-30',value:8568.44},{time:'2021-08-31',value:7828.62},{time:'2021-09-30',value:8515.65},{time:'2021-10-29',value:8403.86},{time:'2021-11-30',value:8461.7},{time:'2021-12-31',value:8642.58},{time:'2022-01-28',value:7700.15},{time:'2022-02-28',value:7374.88},{time:'2022-03-31',value:6018.67},{time:'2022-04-29',value:6293.1},{time:'2022-05-31',value:6652.91},{time:'2022-06-30',value:7837.94},{time:'2022-07-29',value:6924.62},{time:'2022-08-31',value:6489.5},{time:'2022-09-30',value:6568.69},{time:'2022-10-31',value:5181.82},{time:'2022-11-30',value:6088.54},{time:'2022-12-30',value:7013.51},{time:'2023-01-31',value:8112.36},{time:'2023-02-28',value:7934.59},{time:'2023-03-31',value:7646.58},{time:'2023-04-28',value:6559.76},{time:'2023-05-31',value:6256.22},{time:'2023-06-30',value:6348.99},{time:'2023-07-31',value:7025.54},{time:'2023-08-31',value:6051.67},{time:'2023-09-28',value:6059.04},{time:'2023-10-31',value:6055.16},{time:'2023-11-30',value:5789.28},{time:'2023-12-29',value:5446.15},{time:'2024-01-31',value:4902.35},{time:'2024-02-29',value:5521.45},{time:'2024-03-29',value:5958.51},{time:'2024-04-30',value:5838.96},{time:'2024-05-31',value:5694.18},{time:'2024-06-28',value:4969.89},{time:'2024-07-31',value:4924.09},{time:'2024-08-30',value:4775.43},{time:'2024-09-30',value:6307.85},{time:'2024-10-31',value:5699.23},{time:'2024-11-29',value:5696.9},{time:'2024-12-31',value:5435.67},{time:'2025-01-27',value:4937.29},{time:'2025-02-28',value:5107.3},{time:'2025-03-31',value:5098.37},{time:'2025-04-30',value:4995.51},{time:'2025-05-30',value:4907.79},{time:'2025-06-30',value:4615.12},{time:'2025-07-31',value:4702.45},{time:'2025-08-29',value:5027.72},{time:'2025-09-30',value:4715.26},{time:'2025-10-31',value:4618.61},{time:'2025-11-28',value:4574.36},{time:'2025-12-31',value:4112.08},{time:'2026-01-30',value:4075.59},{time:'2026-02-27',value:4038.71},{time:'2026-03-31',value:4008.44},{time:'2026-04-30',value:3768.17},{time:'2026-05-29',value:3295.02},{time:'2026-06-12',value:3093.57}],
   yearly: [{time:'1998-01-01',value:1583.66},{time:'1999-01-01',value:1137.28},{time:'2000-01-01',value:1534.75},{time:'2001-01-01',value:820.94},{time:'2002-01-01',value:449.87},{time:'2003-01-01',value:434.34},{time:'2004-01-01',value:260.06},{time:'2005-01-01',value:281.8},{time:'2006-01-01',value:886.93},{time:'2007-01-01',value:1765.31},{time:'2008-01-01',value:517.79},{time:'2009-01-01',value:1228.89},{time:'2010-01-01',value:1344.17},{time:'2011-01-01',value:1273.14},{time:'2012-01-01',value:1095.75},{time:'2013-01-01',value:607.84},{time:'2014-01-01',value:834.53},{time:'2015-01-01',value:1058.88},{time:'2016-01-01',value:1338.35},{time:'2017-01-01',value:3100.55},{time:'2018-01-01',value:1974.91},{time:'2019-01-01',value:5162.8},{time:'2020-01-01',value:11328.2},{time:'2021-01-01',value:8642.58},{time:'2022-01-01',value:7013.51},{time:'2023-01-01',value:5446.15},{time:'2024-01-01',value:5435.67},{time:'2025-01-01',value:4112.08},{time:'2026-01-01',value:3093.57}]
 };
-var periodNames = {daily:'日线',weekly:'周线',monthly:'月线',yearly:'年线'};
-var current = 'daily';
-var chart = null;
 
-function render(p) {
-  if (chart) { chart.dispose(); chart = null; }
-  var data = ALL_DATA[p];
-  if (!data || data.length === 0) return;
-  var el = document.getElementById('chart');
-  if (!el) return;
-  chart = echarts.init(el);
-  var dates = data.map(function(d) { return d.time; });
-  var values = data.map(function(d) { return d.value; });
-  chart.setOption({
-    xAxis: { type:'category', data:dates, axisLabel:{color:'#888',fontSize:10,formatter:function(v){return p==='yearly'?v.substring(0,4):v.substring(5);}} },
-    yAxis: { type:'value', axisLabel:{color:'#888',fontSize:10,formatter:function(v){return (v/100).toFixed(0)+'亿';}} },
-    series: [{ type:'line', data:values, smooth:true, symbol:'none', lineStyle:{color:'#f0c040',width:2} }],
-    dataZoom: [{ type:'inside' }],
-    tooltip: { trigger:'axis' }
+// ===== 图表渲染 =====
+(function() {
+  try {
+  var periodNames = { 'daily':'日线','weekly':'周线','monthly':'月线','yearly':'年线' };
+  var currentPeriod = 'daily';
+  var chart = null;
+  var resizeHandler = null;
+
+  function render(period) {
+    console.log('RENDER called:', period);
+    if (chart) { chart.dispose(); chart = null; }
+    if (resizeHandler) { window.removeEventListener('resize', resizeHandler); }
+
+    var data = klineData[period];
+    if (!data || data.length === 0) return;
+
+    var el = document.getElementById('mcap-chart');
+    if (!el) return;
+    console.log('About to init echarts, el exists:', !!el, 'echarts type:', typeof echarts);
+    if (typeof echarts === 'undefined') { showError('ECharts未加载'); return; }
+    chart = echarts.init(el);
+    console.log('ECharts inited OK');
+
+    var dates = data.map(function(d) { return d.time; });
+    var values = data.map(function(d) { return d.value; });
+
+    // Safe date formatter - no slice() used
+    function shortDate(v) {
+      if (period === 'yearly') return v.substring(0,4);
+      return v.substring(5);
+    }
+
+    console.log('Setting chart option, dates count:', dates.length, 'values count:', values.length);
+    try {
+    chart.setOption({
+      backgroundColor: 'transparent',
+      grid: { left: '3%', right: '4%', top: '8%', height: '72%' },
+      xAxis: {
+        type: 'category', data: dates,
+        axisLine: { lineStyle: { color: '#333' } },
+        axisLabel: { color: '#888', fontSize: 10, formatter: shortDate },
+        splitLine: { show: true, lineStyle: { color: '#1a1a2a', type: 'dashed' } },
+        axisTick: { show: false }
+      },
+      yAxis: {
+        type: 'value',
+        axisLine: { show: false },
+        axisLabel: { color: '#888', fontSize: 10, formatter: function(v) { return (v/100).toFixed(0) + '亿'; } },
+        splitLine: { lineStyle: { color: '#1a1a2a', type: 'dashed' } },
+        axisTick: { show: false }
+      },
+      series: [{
+        type: 'line', data: values,
+        smooth: true, symbol: 'none',
+        lineStyle: { width: 2, color: '#f0c040' }
+      }],
+      dataZoom: [{
+        type: 'inside', xAxisIndex: 0, zoomOnMouseWheel: true, moveOnMouseMove: true
+      }],
+      tooltip: {
+        trigger: 'axis',
+        backgroundColor: '#1a1a2a', borderColor: '#333',
+        textStyle: { color: '#e0e0e0', fontSize: 12 },
+        formatter: function(params) {
+          if (!params || !params[0]) return '';
+          var idx = params[0].dataIndex;
+          return '<b>' + dates[idx] + '</b><br/>市值: <b>' + values[idx].toFixed(0) + '亿</b>';
+        }
+      }
+    });
+
+    resizeHandler = function() { if (chart) chart.resize(); };
+    window.addEventListener('resize', resizeHandler);
+  }
+
+  // Tab switching
+  document.getElementById('mcap-tabs').addEventListener('click', function(e) {
+    var btn = e.target.closest('.mcap-btn');
+    if (!btn) return;
+    var period = btn.dataset.period;
+    if (period === currentPeriod) return;
+    currentPeriod = period;
+    document.querySelectorAll('.mcap-btn').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.period === period);
+    });
+    render(period);
   });
-}
 
-document.getElementById('tabs').addEventListener('click', function(e) {
-  var b = e.target.closest('.tab');
-  if (!b || b.dataset.p === current) return;
-  current = b.dataset.p;
-  document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('active', x.dataset.p === current);});
-  render(current);
-});
-
-render('daily');
+  // Initial render
+  render('daily');
+})();
 </script>
+
+
 </body>
 </html>
