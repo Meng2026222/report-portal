@@ -149,22 +149,27 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   var W = 0, H = 380;
   var M = {top:20, right:20, bottom:35, left:65};
 
+  function applyThemeClass(){
+    var isLight = false;
+    try {
+      isLight = parent && parent.document && parent.document.documentElement.getAttribute('data-theme') === 'light';
+    } catch(e) {
+      isLight = !!document.getElementById('hermes-theme-override');
+    }
+    var card = document.getElementById('s-mcap');
+    if(!card) return;
+    if(isLight){ card.classList.add('mcap-light'); } else { card.classList.remove('mcap-light'); }
+    if(chartData.length) render();
+  }
+
   function init(){
     svg = document.getElementById('mcapSvg');
     tooltip = document.getElementById('mcapTooltip');
     wrap = svg.parentElement;
     svg.style.cursor = 'crosshair';
-    if(document.getElementById('hermes-theme-override')){
-      document.getElementById('s-mcap').classList.add('mcap-light');
-    }
-    var themeWatcher = new MutationObserver(function(){
-      var isLight = !!document.getElementById('hermes-theme-override');
-      var card = document.getElementById('s-mcap');
-      if(isLight) card.classList.add('mcap-light');
-      else card.classList.remove('mcap-light');
-      if(chartData.length) render();
-    });
-    if(document.head) themeWatcher.observe(document.head, {childList:true, subtree:true});
+    applyThemeClass();
+    // Watch parent theme changes via polling (more reliable than MutationObserver on cross-origin)
+    setInterval(applyThemeClass, 1000);
     document.querySelectorAll('.mcap-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
         document.querySelectorAll('.mcap-btn').forEach(function(b){b.classList.remove('active')});
@@ -188,7 +193,9 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   }
 
   function getThemeColors(){
-    var light = !!document.getElementById('hermes-theme-override');
+    var light = false;
+    try { light = parent && parent.document && parent.document.documentElement.getAttribute('data-theme') === 'light'; }
+    catch(e){ light = !!document.getElementById('hermes-theme-override'); }
     return {
       line: light ? '#b8860b' : '#4caf50',
       grid: light ? '#e0dcd0' : '#1e3e3a',
