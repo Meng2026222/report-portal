@@ -623,10 +623,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="desc">上市以来市值变化（不复权收盘价 × 总股本）· 鼠标滚轮缩放 · 拖拽平移</div>
 
   <div class="mcap-btns">
-    <button class="mcap-btn active" data-period="year">年线</button>
-    <button class="mcap-btn" data-period="month">月线</button>
+    <button class="mcap-btn active" data-period="day">日线</button>
     <button class="mcap-btn" data-period="week">周线</button>
-    <button class="mcap-btn" data-period="day">日线</button>
+    <button class="mcap-btn" data-period="month">月线</button>
+    <button class="mcap-btn" data-period="year">年线</button>
   </div>
 
   <div class="mcap-chart-wrap">
@@ -657,6 +657,17 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 .mcap-axis path,.mcap-axis line{stroke:#333;stroke-width:1}
 .mcap-axis text{fill:#666;font-size:10px}
 .mcap-grid line{stroke:#1e1e3a;stroke-width:0.5;stroke-dasharray:3,3}
+
+/* Light theme override (portal injects data-theme="light" on html) */
+[data-theme="light"] .mcap-btn{border-color:#c8c0b0;background:#e8e4dc;color:#707070}
+[data-theme="light"] .mcap-btn:hover{border-color:#b8860b;color:#b8860b}
+[data-theme="light"] .mcap-btn.active{background:#b8860b;color:#fff;border-color:#b8860b}
+[data-theme="light"] .mcap-chart-wrap{background:#f4f1ea;border-color:#d8d4c8}
+[data-theme="light"] .mcap-tooltip{background:rgba(255,255,255,.95);border-color:#b8860b;color:#3d3d3d}
+[data-theme="light"] .mcap-tooltip .tt-date{color:#808080}
+[data-theme="light"] .mcap-tooltip .tt-val{color:#b8860b}
+[data-theme="light"] .mcap-info{background:#e8e4dc;color:#808080}
+[data-theme="light"] .mcap-v{color:#b8860b}
 </style>
 
 <script>
@@ -732,8 +743,22 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     // Resize
     window.addEventListener('resize', function(){if(chartData.length)render()});
 
-    // Load default (year)
-    loadPeriod('year');
+    // Load default (day)
+    loadPeriod('day');
+  }
+
+  function getThemeColors(){
+    var light = document.documentElement.getAttribute('data-theme') === 'light';
+    return {
+      line: light ? '#b8860b' : '#f0c040',
+      grid: light ? '#e0dcd0' : '#1e1e3a',
+      axisText: light ? '#999' : '#666',
+      axisLine: light ? '#d8d4c8' : '#333',
+      gradTop: light ? '#b8860b' : '#f0c040',
+      gradBot: light ? '#b8860b' : '#f0c040',
+      gradTopOpacity: '0.25',
+      gradBotOpacity: '0.01'
+    };
   }
 
   function loadPeriod(period){
@@ -803,6 +828,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
       points += (i===0?'':' ') + xScale(i).toFixed(1)+','+yScale(visible[i].value).toFixed(1);
     }
 
+    var tc = getThemeColors();
     var html = '';
 
     // Grid lines (horizontal)
@@ -811,8 +837,8 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     for(var gi=0;gi<=gridCount;gi++){
       var gv = minVal + (maxVal-minVal) * (gi/gridCount);
       var gy = yScale(gv);
-      html += '<line x1="'+M.left+'" y1="'+gy.toFixed(1)+'" x2="'+(M.left+cw)+'" y2="'+gy.toFixed(1)+'"/>';
-      html += '<text x="'+(M.left-8)+'" y="'+(gy+4)+'" text-anchor="end" fill="#666" font-size="10">'+fmtVal(gv)+'</text>';
+      html += '<line x1="'+M.left+'" y1="'+gy.toFixed(1)+'" x2="'+(M.left+cw)+'" y2="'+gy.toFixed(1)+'" stroke="'+tc.grid+'"/>';
+      html += '<text x="'+(M.left-8)+'" y="'+(gy+4)+'" text-anchor="end" fill="'+tc.axisText+'" font-size="10">'+fmtVal(gv)+'</text>';
     }
     html += '</g>';
 
@@ -824,11 +850,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
       var lx = xScale(li);
       var label = visible[li].time;
       // Shorten year labels
-      html += '<text x="'+lx.toFixed(1)+'" y="'+(H-5)+'" text-anchor="middle" fill="#666" font-size="9" transform="rotate(-30,'+lx.toFixed(1)+','+(H-10)+')">'+label+'</text>';
+      html += '<text x="'+lx.toFixed(1)+'" y="'+(H-5)+'" text-anchor="middle" fill="'+tc.axisText+'" font-size="9" transform="rotate(-30,'+lx.toFixed(1)+','+(H-10)+')">'+label+'</text>';
     }
     // Last point
     var lx = xScale(n-1);
-    html += '<text x="'+lx.toFixed(1)+'" y="'+(H-5)+'" text-anchor="middle" fill="#666" font-size="9" transform="rotate(-30,'+lx.toFixed(1)+','+(H-10)+')">'+visible[n-1].time+'</text>';
+    html += '<text x="'+lx.toFixed(1)+'" y="'+(H-5)+'" text-anchor="middle" fill="'+tc.axisText+'" font-size="9" transform="rotate(-30,'+lx.toFixed(1)+','+(H-10)+')">'+visible[n-1].time+'</text>';
     html += '</g>';
 
     // Area fill
@@ -837,15 +863,15 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
       fillPath += 'L'+xScale(i).toFixed(1)+','+yScale(visible[i].value).toFixed(1)+' ';
     }
     fillPath += 'L'+(M.left+cw).toFixed(1)+','+(M.top+ch)+' Z';
-    html += '<path d="'+fillPath+'" fill="url(#mcapGrad)" opacity="0.3"/>';
+    html += '<path d="'+fillPath+'" fill="url(#mcapGrad)" opacity="0.35"/>';
 
     // Line
-    html += '<polyline points="'+points+'" fill="none" stroke="#f0c040" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>';
+    html += '<polyline points="'+points+'" fill="none" stroke="'+tc.line+'" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>';
 
     // Gradient def
     var defs = '<defs><linearGradient id="mcapGrad" x1="0" y1="0" x2="0" y2="1">'+
-      '<stop offset="0%" stop-color="#f0c040" stop-opacity="0.4"/>'+
-      '<stop offset="100%" stop-color="#f0c040" stop-opacity="0.02"/>'+
+      '<stop offset="0%" stop-color="'+tc.gradTop+'" stop-opacity="'+tc.gradTopOpacity+'"/>'+
+      '<stop offset="100%" stop-color="'+tc.gradBot+'" stop-opacity="'+tc.gradBotOpacity+'"/>'+
       '</linearGradient></defs>';
 
     svg.innerHTML = defs + html;
