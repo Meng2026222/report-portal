@@ -658,16 +658,16 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 .mcap-axis text{fill:#666;font-size:10px}
 .mcap-grid line{stroke:#1e1e3a;stroke-width:0.5;stroke-dasharray:3,3}
 
-/* Light theme override (portal injects data-theme="light" on html) */
-[data-theme="light"] .mcap-btn{border-color:#c8c0b0;background:#e8e4dc;color:#707070}
-[data-theme="light"] .mcap-btn:hover{border-color:#b8860b;color:#b8860b}
-[data-theme="light"] .mcap-btn.active{background:#b8860b;color:#fff;border-color:#b8860b}
-[data-theme="light"] .mcap-chart-wrap{background:#f4f1ea;border-color:#d8d4c8}
-[data-theme="light"] .mcap-tooltip{background:rgba(255,255,255,.95);border-color:#b8860b;color:#3d3d3d}
-[data-theme="light"] .mcap-tooltip .tt-date{color:#808080}
-[data-theme="light"] .mcap-tooltip .tt-val{color:#b8860b}
-[data-theme="light"] .mcap-info{background:#e8e4dc;color:#808080}
-[data-theme="light"] .mcap-v{color:#b8860b}
+/* Light theme: applied when portal injects theme override into iframe */
+.mcap-light .mcap-btn{border-color:#c8c0b0;background:#e8e4dc;color:#707070}
+.mcap-light .mcap-btn:hover{border-color:#b8860b;color:#b8860b}
+.mcap-light .mcap-btn.active{background:#b8860b;color:#fff;border-color:#b8860b}
+.mcap-light .mcap-chart-wrap{background:#f4f1ea;border-color:#d8d4c8}
+.mcap-light .mcap-tooltip{background:rgba(255,255,255,.95);border-color:#b8860b;color:#3d3d3d}
+.mcap-light .mcap-tooltip .tt-date{color:#808080}
+.mcap-light .mcap-tooltip .tt-val{color:#b8860b}
+.mcap-light .mcap-info{background:#e8e4dc;color:#808080}
+.mcap-light .mcap-v{color:#b8860b}
 </style>
 
 <script>
@@ -686,6 +686,22 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     svg = document.getElementById('mcapSvg');
     tooltip = document.getElementById('mcapTooltip');
     wrap = svg.parentElement;
+
+    // Detect light theme (portal injects #hermes-theme-override into iframe)
+    if(document.getElementById('hermes-theme-override')){
+      document.getElementById('s-mcap').classList.add('mcap-light');
+    }
+
+    // Watch for theme changes (portal adds/removes #hermes-theme-override)
+    var themeWatcher = new MutationObserver(function(){
+      var isLight = !!document.getElementById('hermes-theme-override');
+      var card = document.getElementById('s-mcap');
+      if(isLight) card.classList.add('mcap-light');
+      else card.classList.remove('mcap-light');
+      // Re-render with new theme colors if data loaded
+      if(chartData.length) render();
+    });
+    if(document.head) themeWatcher.observe(document.head, {childList:true, subtree:true});
 
     // Buttons
     document.querySelectorAll('.mcap-btn').forEach(function(btn){
@@ -748,7 +764,8 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   }
 
   function getThemeColors(){
-    var light = document.documentElement.getAttribute('data-theme') === 'light';
+    // Detect light theme: portal injects #hermes-theme-override into iframe
+    var light = !!document.getElementById('hermes-theme-override');
     return {
       line: light ? '#b8860b' : '#f0c040',
       grid: light ? '#e0dcd0' : '#1e1e3a',
