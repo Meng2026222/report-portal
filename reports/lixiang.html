@@ -262,20 +262,28 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   }
 
   function doZoom(dir, cx){
-    if(!chartData.length)return;
-    var range=viewEnd-viewStart;if(range<5)return;
-    var rect=svg.getBoundingClientRect();
-    var ratio=(cx-rect.left-M.left)/(rect.width-M.left-M.right);
-    var center=Math.round(viewStart+ratio*range);
-    var nr=dir>0?Math.max(5,Math.round(range*0.6)):Math.min(chartData.length,Math.round(range/0.6));
-    var ns=Math.max(0,Math.min(chartData.length-nr,center-Math.round(ratio*nr)));
-    viewStart=ns;viewEnd=viewStart+nr;render();
+    var n = chartData.length;
+    var range = viewEnd - viewStart;
+    if(dir > 0) range = Math.max(10, Math.round(range * 0.75));
+    else range = Math.min(n, Math.round(range * 1.35));
+    if(range < 2) range = 2;
+    if(range > n) range = n;
+    var rect = svg.getBoundingClientRect();
+    var mx = (cx || rect.left + rect.width/2) - rect.left - M.left;
+    var cw = Mchart();
+    var ratio = mx / cw;
+    var centerIdx = viewStart + (viewEnd - viewStart) * Math.max(0, Math.min(1, ratio));
+    var halfRange = range / 2;
+    viewStart = Math.round(centerIdx - halfRange);
+    viewEnd = viewStart + range;
+    if(viewStart < 0){ viewStart = 0; viewEnd = range; }
+    if(viewEnd > n){ viewEnd = n; viewStart = n - range; }
+    render();
   }
 
   function onWheel(e){
     e.preventDefault();
-    var rect=svg.getBoundingClientRect();
-    doZoom(e.deltaY<0?1:-1,e.clientX-rect.left);
+    doZoom(e.deltaY<0?1:-1,e.clientX);
   }
 
   function onDragStart(e){
