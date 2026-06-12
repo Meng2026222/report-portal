@@ -718,6 +718,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
         axisLine: { lineStyle: { color: '#333' } },
         axisLabel: { color: '#888', fontSize: 10,
           formatter: function(v) {
+            if (typeof v !== 'string') return v;
             if (period === 'yearly') return v.slice(0,4);
             return v.length >= 10 ? v.slice(5, 10) : v.slice(5);
           }
@@ -770,6 +771,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
           handleStyle: { borderColor: '#f0c040', color: '#f0c040' },
           textStyle: { color: '#888', fontSize: 9 },
           labelFormatter: function(v) {
+            if (typeof v !== 'string') return '' + v;
             if (period === 'yearly') return v;
             return v.length >= 10 ? v.slice(5,10) : v.slice(5);
           },
