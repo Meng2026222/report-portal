@@ -283,6 +283,44 @@ h1 span{color:var(--accent)}
 .match-cell.matched .mhint{color:var(--m3)}
 .match-cell.wrong{border-color:#f44336!important;background:#f4433615!important}
 .match-result{padding:30px 16px;text-align:center;max-width:500px;margin:0 auto}
+
+/* ===== PURCHASE CHECK GAME ===== */
+.pc-page{padding:20px 16px;max-width:600px;margin:0 auto}
+.pc-into{text-align:center;padding:20px 10px}
+.pc-into-icon{font-size:52px;margin-bottom:10px}
+.pc-into-title{font-size:20px;color:var(--t1);font-weight:700;margin-bottom:4px}
+.pc-into-sub{font-size:12px;color:var(--m4);margin-bottom:16px}
+.pc-into-modules{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:18px}
+.pc-into-mod-tag{font-size:11px;padding:4px 10px;border-radius:6px;font-weight:500}
+.pc-into-rule{font-size:12px;color:var(--m5);line-height:1.6;margin-bottom:16px}
+.pc-yesno{display:flex;gap:12px;margin-top:14px}
+.pc-btn{flex:1;padding:14px;border-radius:10px;border:2px solid var(--b1);background:var(--bg2);font-size:15px;color:var(--t3);cursor:pointer;transition:all .2s;font-family:inherit;font-weight:600;text-align:center}
+.pc-btn:active{transform:scale(.97)}
+.pc-btn:hover{border-color:var(--accent2)}
+.pc-btn:disabled{opacity:.5;pointer-events:none}
+.pc-btn.selected-yes{border-color:#4caf50!important;background:#4caf5020!important;color:#4caf50!important}
+.pc-btn.selected-no{border-color:#f44336!important;background:#f4433620!important;color:#f44336!important}
+.pc-hint{font-size:11px;color:var(--m5);margin-top:10px;padding:10px 12px;background:var(--accent3);border-radius:8px;line-height:1.5;border:1px solid var(--accent4)}
+.pc-result{text-align:center;padding:10px}
+.pc-score-wrap{display:flex;flex-direction:column;align-items:center;margin:14px 0}
+.pc-score-ring{width:90px;height:90px;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative}
+.pc-score-ring-inner{width:74px;height:74px;border-radius:50%;background:var(--bg2);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;z-index:1}
+.pc-score-num{font-size:28px;font-weight:800;line-height:1;color:var(--t1)}
+.pc-score-max{font-size:11px;color:var(--m5)}
+.pc-tier{font-size:16px;font-weight:700;margin:6px 0}
+.pc-action{display:inline-block;font-size:12px;padding:4px 14px;border-radius:20px;border:1px solid;font-weight:600}
+.pc-tier-desc{font-size:12px;color:var(--m5);max-width:340px;margin:10px auto 0;line-height:1.6}
+.pc-mod-breakdown{text-align:left;max-width:400px;margin:16px auto}
+.pc-mod-row{margin-bottom:10px}
+.pc-mod-hdr{display:flex;justify-content:space-between;font-size:11px;color:var(--t4);margin-bottom:4px}
+.pc-mod-hdr span:first-child{font-weight:500}
+.pc-mod-barw{height:6px;background:var(--b1);border-radius:3px;overflow:hidden}
+.pc-mod-bar{height:100%;border-radius:3px;transition:width .6s}
+.pc-miss-title{font-size:12px;color:var(--m4);margin-bottom:10px;text-align:left;font-weight:500}
+.pc-miss-item{background:var(--card);border:1px solid var(--b1);border-radius:10px;padding:12px 14px;margin-bottom:8px;text-align:left}
+.pc-miss-mod-tag{display:inline-block;font-size:9px;padding:2px 8px;border-radius:4px;border:1px solid;margin-bottom:5px}
+.pc-miss-q{font-size:13px;color:var(--t3);line-height:1.5;margin-bottom:5px}
+.pc-miss-hint{font-size:11px;color:var(--m5);line-height:1.5;padding:6px 8px;background:var(--bg3);border-radius:6px}
 </style>
 </head>
 <body>
@@ -378,6 +416,73 @@ h1 span{color:var(--accent)}
           <span class="tag" style="background:#4fc3f720;color:#4fc3f7;border-color:#4fc3f730">初级</span>
           <span class="tag" style="background:#f0c04020;color:#f0c040;border-color:#f0c04030">中级</span>
           <span class="tag" style="background:#f4433620;color:#f44336;border-color:#f4433630">高级</span>
+        </div>
+      </div>
+      <div class="hub-card" onclick="switchToPC()">
+        <div class="hub-card-icon">🧭</div>
+        <div class="hub-card-title">买入前置自检</div>
+        <div class="hub-card-desc">每笔买入前必答 · 20题检验基本面 · 5大模块评分，判断投资把握度</div>
+        <div class="hub-card-tags">
+          <span class="tag" style="background:#4caf5020;color:#4caf50;border-color:#4caf5030">实操工具</span>
+          <span class="tag" style="background:#f0c04020;color:#f0c040;border-color:#f0c04030">价值投资</span>
+          <span class="tag" style="background:#4fc3f720;color:#4fc3f7;border-color:#4fc3f730">20题</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === Purchase Check Game Container === -->
+  <div class="game-container" id="pcContainer" style="display:none">
+    <div class="game-topbar"><button class="back-btn" onclick="backToHub()">← 游戏厅</button><span class="game-top-title">🧭 买入前置自检</span></div>
+    <div class="pc-page">
+      <!-- Intro -->
+      <div class="pc-into" id="pcIntro">
+        <div class="pc-into-icon">🧭</div>
+        <div class="pc-into-title">买入前置自检</div>
+        <div class="pc-into-sub">每笔买入前必答 · 20题检验你的投资逻辑</div>
+        <div class="pc-into-modules" id="pcIntroModules"></div>
+        <div class="pc-into-rule">每题选「是」+1分，选「否」不扣分。<br>总分20分，看看你对这只股票有多大的把握。</div>
+        <button class="quiz-start-btn" onclick="startPC()">开始自检 →</button>
+      </div>
+      <!-- Question screen -->
+      <div class="quiz-screen" id="pcScreen" style="display:none">
+        <div class="quiz-progress"><div class="quiz-progress-bar" id="pcProgressBar"></div></div>
+        <div class="quiz-progress-text" style="display:flex;justify-content:space-between;align-items:center">
+          <span id="pcModuleBadge"></span>
+          <span style="color:var(--m5)">第 <span id="pcNum">1</span>/<span id="pcTotal">20</span> 题</span>
+        </div>
+        <div class="quiz-card">
+          <div class="quiz-q" id="pcQText" style="min-height:60px;display:flex;align-items:center">题目</div>
+          <div class="pc-yesno">
+            <button class="pc-btn" id="pcYesBtn" onclick="selectPC(1)">✅ 是</button>
+            <button class="pc-btn" id="pcNoBtn" onclick="selectPC(0)">❌ 否</button>
+          </div>
+          <div class="pc-hint" id="pcHint" style="display:none"></div>
+        </div>
+      </div>
+      <!-- Result screen -->
+      <div class="pc-result" id="pcResult" style="display:none">
+        <div class="pc-score-wrap">
+          <div class="pc-score-ring" id="pcScoreRing">
+            <div class="pc-score-ring-inner">
+              <div class="pc-score-num" id="pcScoreNum">0</div>
+              <div class="pc-score-max" id="pcScoreMax">/20</div>
+            </div>
+          </div>
+        </div>
+        <div class="pc-tier"><span id="pcTierIcon"></span> <span id="pcTierLabel"></span></div>
+        <div><span class="pc-action" id="pcActionBadge"></span></div>
+        <div class="pc-tier-desc" id="pcTierDesc"></div>
+
+        <div style="height:1px;background:var(--b2);margin:16px 0"></div>
+        <div class="pc-mod-breakdown" id="pcModules"></div>
+
+        <div style="height:1px;background:var(--b2);margin:16px 0"></div>
+        <div id="pcMissed" style="max-width:420px;margin:0 auto"></div>
+
+        <div style="display:flex;gap:10px;margin-top:22px;justify-content:center">
+          <button class="quiz-start-btn" onclick="resetPC()" style="flex:1;max-width:200px">重新自检 🔄</button>
+          <button class="quiz-start-btn" onclick="backToHub()" style="flex:1;max-width:200px;background:var(--bg5);color:var(--t3)">← 游戏厅</button>
         </div>
       </div>
     </div>
@@ -525,6 +630,7 @@ h1 span{color:var(--accent)}
 <script src="books-data.js"></script>
 <script src="games/quiz-v2.js"></script>
 <script src="games/financial-match.js"></script>
+<script src="games/purchase-check.js"></script>
 <script src="waline/waline.js"></script>
 <script>
 const COMPANIES = [
@@ -855,6 +961,19 @@ function backToHub() {
 }
 function switchToQuiz() { document.getElementById('gameHub').style.display='none'; const c=document.getElementById('quizContainer'); c.style.display='block'; c.classList.add('active') }
 function switchToMatch() { document.getElementById('gameHub').style.display='none'; const c=document.getElementById('matchContainer'); c.style.display='block'; c.classList.add('active') }
+function switchToPC() {
+  document.getElementById('gameHub').style.display='none';
+  const c=document.getElementById('pcContainer');
+  c.style.display='block';
+  c.classList.add('active');
+  // Init module badges on intro
+  var html = '';
+  var mods = PC_MODULES;
+  for (var i = 0; i < mods.length; i++) {
+    html += '<span class="pc-into-mod-tag" style="background:'+mods[i].color+'20;color:'+mods[i].color+';border:1px solid '+mods[i].color+'30">'+mods[i].icon+' '+mods[i].name+'</span>';
+  }
+  document.getElementById('pcIntroModules').innerHTML = html;
+}
 function goHome() {
   // Close all overlays and return to reports tab
   closeReport()
