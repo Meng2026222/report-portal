@@ -181,160 +181,153 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
       var cd=svg.querySelector('#mcapCrossDot');if(cd)cd.setAttribute('opacity','0');
     });
 
+    var touchDist = 0;
     svg.addEventListener('touchstart', function(e){
-      if(e.touches.length===1){isDragging=true;dragStartX=e.touches[0].clientX;dragViewStart=viewStart;}
-    },{passive:true});
-    svg.addEventListener('touchmove', function(e){
-      if(e.touches.length===1&&isDragging){
-        var dx=e.touches[0].clientX-dragStartX,range=viewEnd-viewStart;
-        if(range>1){var shift=Math.round(-dx/((W-M.left-M.right)/range));var ns=Math.max(0,Math.min(chartData.length-range,dragViewStart+shift));viewStart=ns;viewEnd=viewStart+range;render();}
-        isDragging=false;
+      if(e.touches.length === 1){
+        isDragging = true; dragStartX = e.touches[0].clientX; dragViewStart = viewStart;
+      }else if(e.touches.length === 2){
+        touchDist = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
       }
-    },{passive:true});
-    svg.addEventListener('touchend',function(){isDragging=false});
-    window.addEventListener('resize',function(){if(chartData.length)render()});
+    }, {passive:true});
+    svg.addEventListener('touchmove', function(e){
+      if(e.touches.length === 1 && isDragging){
+        var dx = e.touches[0].clientX - dragStartX;
+        var range = viewEnd - viewStart;
+        if(range > 1){
+          var shift = Math.round(-dx / ((W-M.left-M.right)/range));
+          var ns = Math.max(0, Math.min(chartData.length-range, dragViewStart + shift));
+          viewStart = ns; viewEnd = viewStart + range; render();
+        }
+        isDragging = false;
+      }else if(e.touches.length === 2){
+        var nd = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
+        if(touchDist > 0){doZoom(nd > touchDist ? 1 : -1, (e.touches[0].clientX+e.touches[1].clientX)/2);}
+        touchDist = nd;
+      }
+    }, {passive:true});
+    svg.addEventListener('touchend', function(){isDragging=false});
+    window.addEventListener('resize', function(){if(chartData.length)render()});
     loadPeriod('day');
   }
 
   function getThemeColors(){
     var light = !!document.getElementById('hermes-theme-override');
-    return{
-      line:light?'#bf6a00':'#ff9800',
-      grid:light?'#e0dcd0':'#1e1e3a',
-      axisText:light?'#999':'#666',
-      gradTop:light?'#bf6a00':'#ff9800',
-      gradBot:light?'#bf6a00':'#ff9800',
-      gradTo:'0.25',gradBo:'0.01'
+    return {
+      line: light ? '#bf6a00' : '#ff9800',
+      grid: light ? '#e0dcd0' : '#1e1e3a',
+      axisText: light ? '#999' : '#666',
+      gradTop: light ? '#bf6a00' : '#ff9800',
+      gradBot: light ? '#bf6a00' : '#ff9800',
+      gradTo: '0.25', gradBo: '0.01'
     };
   }
 
   function loadPeriod(period){
-    var url='../kline/'+stockCode+'_'+period+'.json?t='+Date.now();
+    var url = '../kline/' + stockCode + '_' + period + '.json?t=' + Date.now();
     fetch(url).then(function(r){return r.json()}).then(function(data){
-      chartData=data;
-      var dw=period==='day'?Math.min(500,data.length):data.length;
-      viewStart=Math.max(0,data.length-dw);viewEnd=data.length;
-      updateStats(data);render();
+      chartData = data;
+      var dw = period === 'day' ? Math.min(500, data.length) : data.length;
+      viewStart = Math.max(0, data.length - dw); viewEnd = data.length;
+      updateStats(data); render();
     }).catch(function(e){console.error(e)});
   }
 
   function updateStats(data){
-    if(!data.length)return;
-    var last=data[data.length-1],high=data.reduce(function(a,b){return a.value>b.value?a:b}),low=data.reduce(function(a,b){return a.value<b.value?a:b});
-    document.getElementById('mcapCurrent').textContent=last.value.toFixed(1);
-    document.getElementById('mcapHigh').textContent=high.value.toFixed(1);
-    document.getElementById('mcapLow').textContent=low.value.toFixed(1);
+    if(!data.length) return;
+    var last = data[data.length-1];
+    var high = data.reduce(function(a,b){return a.value>b.value?a:b});
+    var low = data.reduce(function(a,b){return a.value<b.value?a:b});
+    document.getElementById('mcapCurrent').textContent = last.value.toFixed(1);
+    document.getElementById('mcapHigh').textContent = high.value.toFixed(1);
+    document.getElementById('mcapLow').textContent = low.value.toFixed(1);
   }
 
   function render(){
-    if(!chartData.length)return;
-    var rect=wrap.getBoundingClientRect();W=Math.max(300,rect.width||600);
-    svg.style.width=W+'px';svg.style.height=H+'px';
-    var cw=W-M.left-M.right,ch=H-M.top-M.bottom;
-    if(cw<=0||ch<=0)return;
-    var visible=chartData.slice(viewStart,viewEnd),n=visible.length;
-    if(n===0)return;
-    var minV=Infinity,maxV=-Infinity;
-    for(var i=0;i<n;i++){var v=visible[i].value;if(v<minV)minV=v;if(v>maxV)maxV=v;}
-    var pad=(maxV-minV)*0.05||maxV*0.05||100;
-    minV=Math.max(0,minV-pad);maxV=maxV+pad;
-    var xS=function(i){return M.left+(i/(n-1||1))*cw};
-    var yS=function(v){return M.top+ch-(v-minV)/(maxV-minV)*ch};
-    var pts='';for(var i=0;i<n;i++){pts+=(i===0?'':' ')+xS(i).toFixed(1)+','+yS(visible[i].value).toFixed(1);}
-    var tc=getThemeColors(),h='';
-    h+='<g class="mcap-grid">';
-    for(var gi=0;gi<=5;gi++){var gv=minV+(maxV-minV)*(gi/5),gy=yS(gv);h+='<line x1="'+M.left+'" y1="'+gy.toFixed(1)+'" x2="'+(M.left+cw)+'" y2="'+gy.toFixed(1)+'" stroke="'+tc.grid+'"/>';h+='<text x="'+(M.left-8)+'" y="'+(gy+4)+'" text-anchor="end" fill="'+tc.axisText+'" font-size="10">'+fmtVal(gv)+'</text>';}
-    h+='</g><g class="mcap-axis">';
-    var ls=Math.max(1,Math.floor(n/Math.min(10,n)));
+    if(!chartData.length) return;
+    var rect = wrap.getBoundingClientRect();
+    W = Math.max(300, rect.width || 600); H = 380;
+    svg.style.width = W + 'px'; svg.style.height = H + 'px';
+    var cw = W - M.left - M.right, ch = H - M.top - M.bottom;
+    if(cw <= 0 || ch <= 0) return;
+    var visible = chartData.slice(viewStart, viewEnd);
+    var n = visible.length; if(n === 0) return;
+    var minVal = Infinity, maxVal = -Infinity;
+    for(var i=0;i<n;i++){var v=visible[i].value;if(v<minVal)minVal=v;if(v>maxVal)maxVal=v;}
+    var pad = (maxVal - minVal) * 0.05 || maxVal * 0.05 || 100;
+    minVal = Math.max(0, minVal - pad); maxVal = maxVal + pad;
+    var xS = function(i){return M.left+(i/(n-1||1))*cw};
+    var yS = function(v){return M.top+ch-(v-minVal)/(maxVal-minVal)*ch};
+    var pts = '';
+    for(var i=0;i<n;i++){pts += (i===0?'':' ')+xS(i).toFixed(1)+','+yS(visible[i].value).toFixed(1);}
+    var tc = getThemeColors(), h = '';
+    h += '<g class="mcap-grid">';
+    for(var gi=0;gi<=5;gi++){var gv=minVal+(maxVal-minVal)*(gi/5),gy=yS(gv);h+='<line x1="'+M.left+'" y1="'+gy.toFixed(1)+'" x2="'+(M.left+cw)+'" y2="'+gy.toFixed(1)+'" stroke="'+tc.grid+'"/>';h+='<text x="'+(M.left-8)+'" y="'+(gy+4)+'" text-anchor="end" fill="'+tc.axisText+'" font-size="10">'+fmtVal(gv)+'</text>';}
+    h += '</g><g class="mcap-axis">';
+    var ls = Math.max(1, Math.floor(n / Math.min(10, n)));
     for(var li=0;li<n;li+=ls){var lx=xS(li);h+='<text x="'+lx.toFixed(1)+'" y="'+(H-5)+'" text-anchor="middle" fill="'+tc.axisText+'" font-size="9" transform="rotate(-30,'+lx.toFixed(1)+','+(H-10)+')">'+visible[li].time+'</text>';}
-    h+='</g>';
-    var fp='M'+M.left+','+(M.top+ch)+' ';for(var i=0;i<n;i++){fp+='L'+xS(i).toFixed(1)+','+yS(visible[i].value).toFixed(1)+' ';}
-    fp+='L'+(M.left+cw)+','+(M.top+ch)+' Z';
-    h+='<path d="'+fp+'" fill="url(#mgG)" opacity="0.35"/>';
-    h+='<polyline points="'+pts+'" fill="none" stroke="'+tc.line+'" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>';
-    h+='<line id="mcapCrossV" x1="0" y1="'+M.top+'" x2="0" y2="'+(M.top+ch)+'" stroke="'+tc.line+'" stroke-width="1" stroke-dasharray="4,3" opacity="0" pointer-events="none"/>';
-    h+='<line id="mcapCrossH" x1="'+M.left+'" y1="0" x2="'+(M.left+cw)+'" y2="0" stroke="'+tc.line+'" stroke-width="1" stroke-dasharray="4,3" opacity="0" pointer-events="none"/>';
-    h+='<circle id="mcapCrossDot" cx="0" cy="0" r="4" fill="'+tc.line+'" opacity="0" pointer-events="none"/>';
-    var defs='<defs><linearGradient id="mgG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="'+tc.gradTop+'" stop-opacity="'+tc.gradTo+'"/><stop offset="100%" stop-color="'+tc.gradBot+'" stop-opacity="'+tc.gradBo+'"/></linearGradient></defs>';
-    svg.innerHTML = defs + h;
+    h += '<text x="'+xS(n-1).toFixed(1)+'" y="'+(H-5)+'" text-anchor="middle" fill="'+tc.axisText+'" font-size="9" transform="rotate(-30,'+xS(n-1).toFixed(1)+','+(H-10)+')">'+visible[n-1].time+'</text></g>';
+    var fp = 'M'+M.left+','+(M.top+ch)+' '; for(var i=0;i<n;i++){fp+='L'+xS(i).toFixed(1)+','+yS(visible[i].value).toFixed(1)+' ';}
+    fp += 'L'+(M.left+cw)+','+(M.top+ch)+' Z';
+    h += '<path d="'+fp+'" fill="url(#mgG)" opacity="0.35"/>';
+    h += '<polyline points="'+pts+'" fill="none" stroke="'+tc.line+'" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>';
+    h += '<line id="mcapCrossV" x1="0" y1="'+M.top+'" x2="0" y2="'+(M.top+ch)+'" stroke="'+tc.line+'" stroke-width="1" stroke-dasharray="4,3" opacity="0" pointer-events="none"/>';
+    h += '<line id="mcapCrossH" x1="'+M.left+'" y1="0" x2="'+(M.left+cw)+'" y2="0" stroke="'+tc.line+'" stroke-width="1" stroke-dasharray="4,3" opacity="0" pointer-events="none"/>';
+    h += '<circle id="mcapCrossDot" cx="0" cy="0" r="4" fill="'+tc.line+'" stroke="#fff" stroke-width="1.5" opacity="0" pointer-events="none"/>';
+    var df = '<defs><linearGradient id="mgG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="'+tc.gradTop+'" stop-opacity="'+tc.gradTo+'"/><stop offset="100%" stop-color="'+tc.gradBot+'" stop-opacity="'+tc.gradBo+'"/></linearGradient></defs>';
+    svg.innerHTML = df + h;
   }
 
+  function fmtVal(v){return v>=10000?(v/10000).toFixed(1)+'万亿':v.toFixed(0)+'亿';}
+
   function doZoom(dir, cx){
-    var n = chartData.length;
-    var range = viewEnd - viewStart;
-    if(dir > 0) range = Math.max(10, Math.round(range * 0.75));
-    else range = Math.min(n, Math.round(range * 1.35));
-    if(range < 2) range = 2;
-    if(range > n) range = n;
+    var n = chartData.length, range = viewEnd - viewStart;
+    if(dir > 0) range = Math.max(10, Math.round(range * 0.75)); else range = Math.min(n, Math.round(range * 1.35));
+    if(range < 2) range = 2; if(range > n) range = n;
     var rect = svg.getBoundingClientRect();
-    var mx = (cx || rect.left + rect.width/2) - rect.left - M.left;
-    var cw = Mchart();
-    var ratio = mx / cw;
-    var centerIdx = viewStart + (viewEnd - viewStart) * Math.max(0, Math.min(1, ratio));
-    var halfRange = range / 2;
-    viewStart = Math.round(centerIdx - halfRange);
-    viewEnd = viewStart + range;
-    if(viewStart < 0){ viewStart = 0; viewEnd = range; }
-    if(viewEnd > n){ viewEnd = n; viewStart = n - range; }
+    var mx = (cx || rect.left+rect.width/2) - rect.left - M.left;
+    var cw = W - M.left - M.right;
+    var ci = viewStart + (viewEnd-viewStart) * Math.max(0, Math.min(1, mx/cw));
+    viewStart = Math.round(ci - range/2); viewEnd = viewStart + range;
+    if(viewStart < 0){viewStart=0;viewEnd=range;} if(viewEnd>n){viewEnd=n;viewStart=n-range;}
     render();
   }
 
-  function onWheel(e){
-    e.preventDefault();
-    doZoom(e.deltaY<0?1:-1,e.clientX);
-  }
-
-  function onDragStart(e){
-    isDragging=true;dragStartX=e.clientX;dragViewStart=viewStart;
-  }
-
+  function onWheel(e){e.preventDefault();doZoom(e.deltaY<0?1:-1,e.clientX);}
+  function onDragStart(e){isDragging=true;dragStartX=e.clientX;dragViewStart=viewStart;svg.style.cursor='grabbing';}
   function onDragMove(e){
-    if(!isDragging)return;
-    var dx=e.clientX-dragStartX,range=viewEnd-viewStart;
-    if(range>1){
-      var shift=Math.round(-dx/((W-M.left-M.right)/range));
-      var ns=Math.max(0,Math.min(chartData.length-range,dragViewStart+shift));
-      if(ns!==viewStart){viewStart=ns;viewEnd=viewStart+range;render();dragStartX=e.clientX;dragViewStart=viewStart;}
-    }
+    if(!isDragging) return;
+    var dx = e.clientX - dragStartX, range = viewEnd-viewStart;
+    if(range<=1) return;
+    var cw = W-M.left-M.right; if(cw<=0) return;
+    var shift = Math.round(-dx/(cw/range));
+    var ns = Math.max(0, Math.min(chartData.length-range, dragViewStart+shift));
+    if(ns !== viewStart){viewStart=ns;viewEnd=viewStart+range;render();}
   }
-
-  function onDragEnd(){isDragging=false;}
+  function onDragEnd(){isDragging=false;svg.style.cursor='crosshair';}
 
   function onHover(e){
-    if(!chartData.length)return;
-    var rect=svg.getBoundingClientRect();
-    var mx=e.clientX-rect.left,my=e.clientY-rect.top;
-    var cw=W-M.left-M.right,ch=H-M.top-M.bottom;
-    if(cw<=0||ch<=0)return;
-    var visible=chartData.slice(viewStart,viewEnd),n=visible.length;
-    if(n<2)return;
-    var idx=Math.round((mx-M.left)/cw*(n-1));
-    idx=Math.max(0,Math.min(n-1,idx));
-    var item=visible[idx];
-    var lx=xS(idx),ly=yS(item.value);
-    tooltip.style.display='block';
-    tooltip.innerHTML='<div class="tt-date">'+item.time+'</div><div class="tt-val">'+fmtVal(item.value)+' 亿 HKD</div>';
-    var tw=tooltip.offsetWidth||120,th=tooltip.offsetHeight||40;
-    var tx=lx-tw/2,ty=ly-th-15;
-    tx=Math.max(5,Math.min(W-tw-5,tx));
-    ty=Math.max(5,ty);
-    tooltip.style.left=tx+'px';tooltip.style.top=ty+'px';
+    if(isDragging || !chartData.length) return;
+    var rect = svg.getBoundingClientRect();
+    var mx = e.clientX-rect.left-M.left, cw=W-M.left-M.right;
+    if(cw<=0||viewEnd-viewStart<=0) return;
+    var idx = viewStart + Math.round(mx/cw*(viewEnd-viewStart-1));
+    if(idx<0||idx>=chartData.length) return;
+    var pt = chartData[idx], ri = idx-viewStart, nn=viewEnd-viewStart;
+    var px = M.left+(ri/(nn-1||1))*cw, vis=chartData.slice(viewStart,viewEnd);
+    var minV=Infinity,maxV=-Infinity; for(var i=0;i<vis.length;i++){var v=vis[i].value;if(v<minV)minV=v;if(v>maxV)maxV=v;}
+    var p=(maxV-minV)*0.05||maxV*0.05||100; minV=Math.max(0,minV-p);maxV=maxV+p;
+    var ch=H-M.top-M.bottom, py=M.top+ch-(pt.value-minV)/(maxV-minV)*ch;
     var cv=svg.querySelector('#mcapCrossV'),ch2=svg.querySelector('#mcapCrossH'),cd=svg.querySelector('#mcapCrossDot');
-    if(cv){cv.setAttribute('x1',lx.toFixed(1));cv.setAttribute('x2',lx.toFixed(1));cv.setAttribute('opacity','1');}
-    if(ch2){ch2.setAttribute('y1',ly.toFixed(1));ch2.setAttribute('y2',ly.toFixed(1));ch2.setAttribute('opacity','1');}
-    if(cd){cd.setAttribute('cx',lx.toFixed(1));cd.setAttribute('cy',ly.toFixed(1));cd.setAttribute('opacity','1');}
-    function xS(i){return M.left+(i/(n-1||1))*cw}
-    function yS(v){return M.top+ch-(v-minV)/(maxV-minV)*ch}
+    if(cv){cv.setAttribute('x1',px);cv.setAttribute('x2',px);cv.setAttribute('opacity','0.6');}
+    if(ch2){ch2.setAttribute('y1',py);ch2.setAttribute('y2',py);ch2.setAttribute('opacity','0.6');}
+    if(cd){cd.setAttribute('cx',px);cd.setAttribute('cy',py);cd.setAttribute('opacity','1');}
+    tooltip.innerHTML = '<span class="tt-date">'+pt.time+'</span> · 市值 <span class="tt-val">'+pt.value.toFixed(1)+'亿</span>';
+    tooltip.style.display='block'; tooltip.style.left=px+'px';
+    if(py<50){tooltip.style.top=(py+24)+'px';tooltip.style.transform='translate(-50%,0%)';}
+    else{tooltip.style.top=py+'px';tooltip.style.transform='translate(-50%,-110%)';}
   }
 
-  function fmtVal(v){
-    if(v>=10000) return (v/10000).toFixed(2)+'万亿';
-    if(v>=1000) return (v/1000).toFixed(2)+'千亿';
-    return v.toFixed(1)+'亿';
-  }
-
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', init);
-  else init();
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
 })();
 </script>
 
