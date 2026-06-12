@@ -634,24 +634,238 @@ h1 span{color:var(--accent)}
 <script src="waline/waline.js"></script>
 <script>
 const COMPANIES = [
-{id:'ningde',name:'宁德时代',nameEn:'CATL',score:7.5,scoreMax:10,color:'#4fc3f7',heat:9,industry:'新能源 · 动力电池',desc:'全球动力电池装机量第一，新能源产业链核心。',tags:['电池龙头','新能源','全球第一'],metrics:{营收:'4,650亿',净利:'578亿',毛利率:'24.5%',PE:'22.4x',ROE:'21%',全球市占率:'38%'},
-{id:'hengrui',name:'恒瑞医药',nameEn:'Hengrui Medicine',score:6.5,scoreMax:10,color:'#9c27b0',heat:7,industry:'医药 · 创新药',desc:'中国创新药研发龙头，从仿制药到创新药转型领导者。',tags:['创新药','研发驱动','高研发投入'],metrics:{营收:'342亿',净利:'86亿',毛利率:'83.2%',PE:'38.4x',ROE:'16%',研发投入:'85亿'},
-{id:'byd',name:'比亚迪',nameEn:'BYD',score:7.0,scoreMax:10,color:'#4fc3f7',heat:8,industry:'汽车 · 新能源车',desc:'中国新能源汽车销量第一，垂直整合能力全球领先。',tags:['新能源车','垂直整合','出海'],metrics:{营收:'8,371亿',净利:'456亿',毛利率:'20.3%',PE:'29.7x',ROE:'14.5%',年销量:'500万辆'},
-{id:'zhaoshang',name:'招商银行',nameEn:'China Merchants Bank',score:7.0,scoreMax:10,color:'#e04040',heat:6,industry:'金融 · 银行',desc:'中国最大的股份制商业银行，零售银行王者。',tags:['零售银行','高ROE','财富管理'],metrics:{营收:'3,398亿',净利:'1,484亿',ROE:'15.8%',PE:'6.5x',不良率:'0.95%',股息率:'5.1%'},
-{id:'pingan',name:'中国平安',nameEn:'Ping An Insurance',score:6.5,scoreMax:10,color:'#e04040',heat:6,industry:'金融 · 综合金融',desc:'中国最大的综合金融集团，保险+银行+科技生态。',tags:['保险巨头','综合金融','科技赋能'],metrics:{营收:'10,203亿',净利:'1,276亿',PE:'7.2x',ROE:'14.2%',内含价值:'1.5万亿',股息率:'4.8%'},
-{id:'yunlu',name:'云铝股份',nameEn:'Yunnan Aluminium',score:6.7,scoreMax:10,color:'#ff9800',heat:2,industry:'有色金属 · 铝',desc:'云南省水电铝一体化龙头，绿色能源成本优势显著。',tags:['水电铝','绿色能源','周期股'],metrics:{营收:'521亿',净利:'52亿',毛利率:'19.1%',PE:'12.4x',ROE:'21.5%',股息率:'2.3%'},
-{id:'mindray',name:'迈瑞医疗',nameEn:'Mindray Medical',score:7.5,scoreMax:10,color:'#9c27b0',heat:6,industry:'医药 · 医疗器械',desc:'中国最大医疗器械企业，全球医疗设备重要玩家。',tags:['医疗器械','全球扩张','刚需'],metrics:{营收:'438亿',净利:'138亿',毛利率:'64.5%',PE:'22.7x',ROE:'30%',净利率:'31.5%'},
-{id:'maotai',name:'贵州茅台',nameEn:'Kweichow Moutai',score:7.0,scoreMax:10,color:'#f0c040',heat:7,industry:'食品饮料 · 白酒',desc:'中国高端白酒行业绝对龙头，A股最具代表性的消费类核心资产。',tags:['核心资产','国酒','高毛利'],metrics:{营收:'1,709亿',净利:'862亿',毛利率:'91.9%',PE:'19.3x',ROE:'26%',股息率:'3.5%'},
-{id:'haikang',name:'海康威视',nameEn:'Hikvision',score:7.0,scoreMax:10,color:'#4fc3f7',heat:5,industry:'科技 · 安防AI',desc:'全球视频监控设备龙头，AIoT智能物联新引擎。',tags:['安防龙头','AIoT','全球第一'],metrics:{营收:'1,089亿',净利:'136亿',毛利率:'46.3%',PE:'18.4x',ROE:'18%',全球市占率:'30%+'},
-{id:'lixun',name:'立讯精密',nameEn:'Luxshare Precision',score:6.5,scoreMax:10,color:'#4fc3f7',heat:5,industry:'科技 · 消费电子',desc:'Apple供应链核心企业，连接器与模组制造龙头。',tags:['苹果链','精密制造','汽车电子'],metrics:{营收:'3,216亿',净利:'143亿',毛利率:'12.1%',PE:'27.4x',ROE:'19%',净利率:'4.4%'},
-{id:'fuyao',name:'福耀玻璃',nameEn:'Fuyao Glass',score:7.0,scoreMax:10,color:'#4fc3f7',heat:4,industry:'汽车 · 汽车玻璃',desc:'全球汽车玻璃行业龙头，曹德旺打造的制造业标杆。',tags:['全球龙头','制造业','高市占率'],metrics:{营收:'393亿',净利:'78亿',毛利率:'42.5%',PE:'15.2x',ROE:'19%',全球市占率:'34%'},
-{id:'haitian',name:'海天味业',nameEn:'Haitian Flavouring',score:7.0,scoreMax:10,color:'#4caf50',heat:4,industry:'食品饮料 · 调味品',desc:'中国调味品行业绝对龙头，酱油市场份额第一。',tags:['调味品龙头','高毛利','刚需消费'],metrics:{营收:'269亿',净利:'63亿',毛利率:'36.8%',PE:'28.3x',ROE:'20%',净利率:'23.5%'},
-{id:'tongrentang',name:'北京同仁堂',nameEn:'Beijing Tongrentang',score:7.0,scoreMax:10,color:'#4caf50',heat:3,industry:'医药 · 中成药',desc:'中华老字号中药龙头企业，357年品牌积淀，安宫牛黄丸核心单品。',tags:['老字号','中药龙头','品牌护城河'],metrics:{营收:'195.5亿',净利:'19.6亿',毛利率:'48.5%',PE:'29x',ROE:'14.2%',股息率:'1.8%'},
-{id:'seres',name:'赛力斯',nameEn:'Seres Group',score:7.0,scoreMax:10,color:'#ff9800',heat:9,industry:'汽车 · 新能源车',desc:'华为智选车模式核心伙伴，AITO问界高端智能电动汽车新势力。',tags:['华为合作','高端SUV','扭亏为盈'],metrics:{营收:'1,768亿',净利:'85亿',毛利率:'18.6%',PE:'19.8x',ROE:'18%',净利率:'4.8%'},
-{id:'yili',name:'伊利股份',nameEn:'Yili Group',score:6.5,scoreMax:10,color:'#4caf50',heat:4,industry:'食品饮料 · 乳制品',desc:'中国最大的乳制品企业，全球乳业五强。',tags:['消费龙头','乳业','稳定增长'],metrics:{营收:'1,265亿',净利:'104亿',毛利率:'35.1%',PE:'13.4x',ROE:'18.5%',股息率:'3.8%'},
-{id:'wuliangye',name:'五粮液',nameEn:'Wuliangye',score:7.5,scoreMax:10,color:'#f0c040',heat:5,industry:'食品饮料 · 白酒',desc:'中国浓香型白酒第一品牌，高端白酒双雄之一。',tags:['高端白酒','浓香龙头','高毛利'],metrics:{营收:'833亿',净利:'315亿',毛利率:'75.9%',PE:'24.6x',股息率:'3.6%',净利率:'37.8%'},
-{id:'zhongjixuchuang',name:'中际旭创',nameEn:'Zhongji Innolight',score:7.5,scoreMax:10,color:'#4fc3f7',heat:8,industry:'通信 · 光模块',desc:'全球光模块行业龙头，AI算力基础设施核心受益者。',tags:['AI算力','光模块','出海'],metrics:{营收:'328亿',净利:'53亿',毛利率:'38.7%',PE:'83.9x',ROE:'18%',净利率:'16.2%'},
-];
+  {id:'seres',name:'赛力斯',nameEn:'Seres Group',score:7.0,scoreMax:10,color:'#ff9800',heat:9,industry:'汽车 · 新能源车',desc:'华为智选车模式核心伙伴，AITO问界高端智能电动汽车新势力。',tags:['华为合作','高端SUV','扭亏为盈'],metrics:{营收:'1,768亿',净利:'85亿',毛利率:'18.6%',PE:'19.8x',ROE:'18%',净利率:'4.8%'},file:'seres.html'},
+  {id:'ningde',name:'宁德时代',nameEn:'CATL',score:7.5,scoreMax:10,color:'#4fc3f7',heat:9,industry:'新能源 · 动力电池',desc:'全球动力电池装机量第一，新能源产业链核心。',tags:['电池龙头','新能源','全球第一'],metrics:{营收:'4,650亿',净利:'578亿',毛利率:'24.5%',PE:'22.4x',ROE:'21%',全球市占率:'38%'},file:'ningde.html'},
+  {id:'byd',name:'比亚迪',nameEn:'BYD',score:7.0,scoreMax:10,color:'#4fc3f7',heat:8,industry:'汽车 · 新能源车',desc:'中国新能源汽车销量第一，垂直整合能力全球领先。',tags:['新能源车','垂直整合','出海'],metrics:{营收:'8,371亿',净利:'456亿',毛利率:'20.3%',PE:'29.7x',ROE:'14.5%',年销量:'500万辆'},file:'byd.html'},
+  {id:'zhongjixuchuang',name:'中际旭创',nameEn:'Zhongji Innolight',score:7.5,scoreMax:10,color:'#4fc3f7',heat:8,industry:'通信 · 光模块',desc:'全球光模块行业龙头，AI算力基础设施核心受益者。',tags:['AI算力','光模块','出海'],metrics:{营收:'328亿',净利:'53亿',毛利率:'38.7%',PE:'83.9x',ROE:'18%',净利率:'16.2%'},file:'zhongjixuchuang.html'},
+  {id:'maotai',name:'贵州茅台',nameEn:'Kweichow Moutai',score:7.0,scoreMax:10,color:'#f0c040',heat:7,industry:'食品饮料 · 白酒',desc:'中国高端白酒行业绝对龙头，A股最具代表性的消费类核心资产。',tags:['核心资产','国酒','高毛利'],metrics:{营收:'1,709亿',净利:'862亿',毛利率:'91.9%',PE:'19.3x',ROE:'26%',股息率:'3.5%'},file:'maotai.html'},
+  {id:'hengrui',name:'恒瑞医药',nameEn:'Hengrui Medicine',score:6.5,scoreMax:10,color:'#9c27b0',heat:7,industry:'医药 · 创新药',desc:'中国创新药研发龙头，从仿制药到创新药转型领导者。',tags:['创新药','研发驱动','高研发投入'],metrics:{营收:'342亿',净利:'86亿',毛利率:'83.2%',PE:'38.4x',ROE:'16%',研发投入:'85亿'},file:'hengrui.html'},
+  {id:'zhaoshang',name:'招商银行',nameEn:'China Merchants Bank',score:7.0,scoreMax:10,color:'#e04040',heat:6,industry:'金融 · 银行',desc:'中国最大的股份制商业银行，零售银行王者。',tags:['零售银行','高ROE','财富管理'],metrics:{营收:'3,398亿',净利:'1,484亿',ROE:'15.8%',PE:'6.5x',不良率:'0.95%',股息率:'5.1%'},file:'zhaoshang.html'},
+  {id:'pingan',name:'中国平安',nameEn:'Ping An Insurance',score:6.5,scoreMax:10,color:'#e04040',heat:6,industry:'金融 · 综合金融',desc:'中国最大的综合金融集团，保险+银行+科技生态。',tags:['保险巨头','综合金融','科技赋能'],metrics:{营收:'10,203亿',净利:'1,276亿',PE:'7.2x',ROE:'14.2%',内含价值:'1.5万亿',股息率:'4.8%'},file:'pingan.html'},
+  {id:'mindray',name:'迈瑞医疗',nameEn:'Mindray Medical',score:7.5,scoreMax:10,color:'#9c27b0',heat:6,industry:'医药 · 医疗器械',desc:'中国最大医疗器械企业，全球医疗设备重要玩家。',tags:['医疗器械','全球扩张','刚需'],metrics:{营收:'438亿',净利:'138亿',毛利率:'64.5%',PE:'22.7x',ROE:'30%',净利率:'31.5%'},file:'mindray.html'},
+  {id:'haikang',name:'海康威视',nameEn:'Hikvision',score:7.0,scoreMax:10,color:'#4fc3f7',heat:5,industry:'科技 · 安防AI',desc:'全球视频监控设备龙头，AIoT智能物联新引擎。',tags:['安防龙头','AIoT','全球第一'],metrics:{营收:'1,089亿',净利:'136亿',毛利率:'46.3%',PE:'18.4x',ROE:'18%',全球市占率:'30%+'},file:'haikang.html'},
+  {id:'wuliangye',name:'五粮液',nameEn:'Wuliangye',score:7.5,scoreMax:10,color:'#f0c040',heat:5,industry:'食品饮料 · 白酒',desc:'中国浓香型白酒第一品牌，高端白酒双雄之一。',tags:['高端白酒','浓香龙头','高毛利'],metrics:{营收:'833亿',净利:'315亿',毛利率:'75.9%',PE:'24.6x',股息率:'3.6%',净利率:'37.8%'},file:'wuliangye.html'},
+  {id:'lixun',name:'立讯精密',nameEn:'Luxshare Precision',score:6.5,scoreMax:10,color:'#4fc3f7',heat:5,industry:'科技 · 消费电子',desc:'Apple供应链核心企业，连接器与模组制造龙头。',tags:['苹果链','精密制造','汽车电子'],metrics:{营收:'3,216亿',净利:'143亿',毛利率:'12.1%',PE:'27.4x',ROE:'19%',净利率:'4.4%'},file:'lixun.html'},
+  {id:'yili',name:'伊利股份',nameEn:'Yili Group',score:6.5,scoreMax:10,color:'#4caf50',heat:4,industry:'食品饮料 · 乳制品',desc:'中国最大的乳制品企业，全球乳业五强。',tags:['消费龙头','乳业','稳定增长'],metrics:{营收:'1,265亿',净利:'104亿',毛利率:'35.1%',PE:'13.4x',ROE:'18.5%',股息率:'3.8%'},file:'yili.html'},
+  {id:'haitian',name:'海天味业',nameEn:'Haitian Flavouring',score:7.0,scoreMax:10,color:'#4caf50',heat:4,industry:'食品饮料 · 调味品',desc:'中国调味品行业绝对龙头，酱油市场份额第一。',tags:['调味品龙头','高毛利','刚需消费'],metrics:{营收:'269亿',净利:'63亿',毛利率:'36.8%',PE:'28.3x',ROE:'20%',净利率:'23.5%'},file:'haitian.html'},
+  {id:'fuyao',name:'福耀玻璃',nameEn:'Fuyao Glass',score:7.0,scoreMax:10,color:'#4fc3f7',heat:4,industry:'汽车 · 汽车玻璃',desc:'全球汽车玻璃行业龙头，曹德旺打造的制造业标杆。',tags:['全球龙头','制造业','高市占率'],metrics:{营收:'393亿',净利:'78亿',毛利率:'42.5%',PE:'15.2x',ROE:'19%',全球市占率:'34%'},file:'fuyao.html'},
+  {id:'tongrentang',name:'北京同仁堂',nameEn:'Beijing Tongrentang',score:7.0,scoreMax:10,color:'#4caf50',heat:3,industry:'医药 · 中成药',desc:'中华老字号中药龙头企业，357年品牌积淀，安宫牛黄丸核心单品。',tags:['老字号','中药龙头','品牌护城河'],metrics:{营收:'195.5亿',净利:'19.6亿',毛利率:'48.5%',PE:'29x',ROE:'14.2%',股息率:'1.8%'},file:'tongrentang.html'},
+  {id:'yunlu',name:'云铝股份',nameEn:'Yunnan Aluminium',score:6.7,scoreMax:10,color:'#ff9800',heat:2,industry:'有色金属 · 铝',desc:'云南省水电铝一体化龙头，绿色能源成本优势显著。',tags:['水电铝','绿色能源','周期股'],metrics:{营收:'521亿',净利:'52亿',毛利率:'19.1%',PE:'12.4x',ROE:'21.5%',股息率:'2.3%'},file:'yunlu.html'},
+]
+
+// ===== THEME =====
+function toggleTheme() {
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light'
+  if (isLight) {
+    document.documentElement.removeAttribute('data-theme')
+    localStorage.setItem('portal_theme', 'dark')
+    document.getElementById('themeToggle').textContent = '🌙'
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light')
+    localStorage.setItem('portal_theme', 'light')
+    document.getElementById('themeToggle').textContent = '☀️'
+  }
+  // Reload report iframe theme if a report is open
+  if (document.getElementById('reportView').classList.contains('active')) {
+    applyThemeToReport()
+  }
+}
+
+// Restore saved theme
+if (localStorage.getItem('portal_theme') === 'light') {
+  document.documentElement.setAttribute('data-theme', 'light')
+  document.getElementById('themeToggle').textContent = '☀️'
+}
+
+// ===== TAB SWITCHING =====
+function switchTab(name) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'))
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'))
+  document.getElementById('tab-'+name).classList.add('active')
+  document.querySelector(`.tab-btn[data-tab="${name}"]`).classList.add('active')
+  // Init Waline for games tab on first visit
+  if (name === 'games' && !window._gamesWalineLoaded) {
+    window._gamesWalineLoaded = true
+    setTimeout(() => {
+      destroyWaline(_walineGame)
+      _walineGame = new Waline({
+        el: '#waline-game',
+        serverURL: WALINE_SRV,
+        path: '/games',
+        lang: 'zh-CN',
+        dark: 'html[data-theme="dark"]',
+        login: 'force',
+      })
+    }, 200)
+  }
+}
+
+// ===== SEARCH & CATALOG =====
+let searchQuery = ''
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if (document.getElementById('reportView').classList.contains('active')) closeReport()
+    else if (document.getElementById('bookDetailView').classList.contains('active')) closeBookDetail()
+    else if (searchQuery) clearSearch()
+  }
+  if ((e.ctrlKey||e.metaKey) && e.key === 'k') { e.preventDefault(); document.getElementById('searchInput').focus() }
+})
+
+function renderCatalog(query) {
+  query = (query||'').toLowerCase().trim()
+  const grid = document.getElementById('cardGrid')
+  const noRes = document.getElementById('noResults')
+  const hdr = document.getElementById('catalogHeader')
+  const filtered = query ? COMPANIES.filter(c => [c.name,c.nameEn,c.industry,c.desc,...c.tags,...Object.entries(c.metrics).map(([k,v])=>k+' '+v)].join(' ').toLowerCase().includes(query)) : COMPANIES
+  document.getElementById('totalReports').textContent = COMPANIES.length
+  grid.innerHTML = filtered.map(c => {
+    const deg = ((c.score/c.scoreMax*100)/100*360).toFixed(0)
+    const heatIcon = c.heat >= 8 ? '🔥' : c.heat >= 6 ? '🔥' : ''
+    const heatLabel = c.heat >= 8 ? `<span class="tag" style="background:#f4433615;color:#f44336;border-color:#f4433620">🔥 热 ${c.heat}</span>` : c.heat >= 5 ? `<span class="tag" style="background:#ff980015;color:#ff9800;border-color:#ff980020">热 ${c.heat}</span>` : ''
+    const metHTML = Object.keys(c.metrics).map(k => `<span>${k}: ${c.metrics[k]}</span>`).join('')
+    const tagsHTML = c.tags.map(t => `<span class="tag" style="background:${c.color}15;color:${c.color};border-color:${c.color}20">${t}</span>`).join('')
+    return `<div class="card" onclick="openReport('${c.id}')"><div class="card-row"><div class="card-score"><svg class="card-score-ring" viewBox="0 0 36 36"><path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--b1)" stroke-width="3"/><path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="${c.color}" stroke-width="3" stroke-dasharray="${deg}, 360" stroke-linecap="round"/></svg><div class="card-score-inner"><div class="card-score-num" style="color:${c.color}">${c.score}</div><div class="card-score-label">/${c.scoreMax}</div></div></div><div class="card-info"><div class="card-name">${c.name}</div><div class="card-name-en">${c.nameEn}</div><div class="card-desc">${c.industry}</div><div class="card-tags">${heatIcon ? heatLabel + tagsHTML : tagsHTML}</div><div class="card-metrics">${metHTML}</div></div></div></div>`
+  }).join('')
+  noRes.style.display = filtered.length===0?'block':'none'
+  hdr.innerHTML = query ? `<h2>📂 搜索结果 · 共 <span style="color:var(--accent)">${filtered.length}</span> 篇匹配</h2>` : `<h2>📂 企业研究报告 · 共 <span style="color:var(--m2)">${COMPANIES.length}</span> 篇</h2>`
+}
+
+function onSearch(val) { searchQuery=val; document.getElementById('searchClear').classList.toggle('visible',val.length>0); renderCatalog(val) }
+function clearSearch() { document.getElementById('searchInput').value=''; document.getElementById('searchClear').classList.remove('visible'); onSearch('') }
+
+let _walineReport = null, _walineBook = null, _walineGame = null
+
+function destroyWaline(inst) {
+  if (inst) try { inst.destroy() } catch(e) {}
+}
+
+function initWaline(el, path) {
+  destroyWaline(window._walineReport)
+  return new Waline({
+    el: el,
+    serverURL: WALINE_SRV,
+    path: path,
+    lang: 'zh-CN',
+    dark: 'html[data-theme="dark"]',
+    login: 'force',
+  })
+}
+
+function openReport(id) {
+  const c = COMPANIES.find(x=>x.id===id); if(!c) return
+  window._currentCid = id
+  document.getElementById('reportTitle').innerHTML = `<span>${c.name}</span> · ${c.industry}`
+  document.getElementById('reportView').classList.add('active')
+  document.getElementById('reportLoading').style.display='flex'
+  document.getElementById('reportFrame').style.display='none'
+  document.getElementById('reportFrame').src='reports/'+c.file+'?t='+Date.now()
+  // Init Waline for report
+  setTimeout(() => {
+    _walineReport = initWaline('#waline-report', '/' + id)
+  }, 200)
+}
+function closeReport() {
+  destroyWaline(_walineReport); _walineReport = null
+  document.getElementById('reportView').classList.remove('active')
+  document.getElementById('reportFrame').src=''
+  document.getElementById('reportFrame').style.display='none'
+  document.getElementById('reportLoading').style.display='flex'
+}
+function onFrameLoaded() {
+  document.getElementById('reportLoading').style.display='none'
+  document.getElementById('reportFrame').style.display='block'
+  applyThemeToReport()
+}
+
+function applyThemeToReport() {
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  try {
+    const iframe = document.getElementById('reportFrame');
+    const idoc = iframe.contentDocument || iframe.contentWindow.document;
+    const old = idoc.getElementById('hermes-theme-override');
+    if (old) old.remove();
+    if (isLight) {
+      const style = idoc.createElement('style');
+      style.id = 'hermes-theme-override';
+      style.textContent = '\
+body{background:#f4f1ea!important;color:#2d2d2d!important}\
+h1{color:#1a1a1a!important}\
+h2{color:#b8860b!important;border-left-color:#b8860b!important}\
+h3{color:#3d3d3d!important}\
+h4{color:#505050!important}\
+.desc{color:#808080!important}\
+.card{background:#ffffff!important;border-color:#d8d4c8!important}\
+.sc-inner,.score-inner{background:#ffffff!important}\
+.sc-label,.score-label{color:#a0a0a0!important}\
+.stats span,.stat-label{color:#707070!important}\
+.dim-label,.dim-label span{color:#606060!important}\
+.dim-bg{background:#e8e5dc!important}\
+.dim-sc{color:#b8860b!important}\
+.tag{background:rgba(0,0,0,0.04)!important;color:#707070!important;border-color:rgba(0,0,0,0.08)!important}\
+table{background:#ffffff!important}\
+td,th{border-color:#d8d4c8!important;color:#3d3d3d!important}\
+th{background:#f4f1ea!important}\
+.tbl td{border-bottom-color:#d8d4c8!important}\
+.tbl th{background:#f0ede6!important;color:#b8860b!important}\
+.data-table td{color:#505050!important}\
+.metric-value,.value{color:#1a1a1a!important}\
+.metric-label,.metric-label span{color:#808080!important}\
+hr{border-color:#e0ddd4!important}\
+.quote,.quote-text{color:#505050!important;border-left-color:#b8860b33!important}\
+.footer,.footer-text{color:#a0a0a0!important}\
+.section,.section-title{color:#3d3d3d!important}\
+.sub-section,.sub-section-title{color:#505050!important}\
+.risk-item,.risk-item div{color:#606060!important}\
+.market-data,.data-row{color:#505050!important}\
+.data-label{color:#808080!important}\
+.data-value{color:#1a1a1a!important}\
+a{color:#b8860b!important}\
+.glow,.glow-text{color:#b8860b!important}\
+.txt{color:#505050!important}\
+.txt .dot{color:#b8860b!important}\
+.bq{background:#fcfcfa!important;color:#3d3d3d!important;border-left-color:#b8860b!important}\
+.mi{background:#fcfcfa!important}\
+.ml{color:#909090!important}\
+.hl{color:#606060!important}\
+.ht{background:#e8e5dc!important}\
+.hf{color:#333!important;text-shadow:none!important}\
+.hv{color:#707070!important}\
+.cp .nm{color:#606060!important}\
+.cp .bt{background:#e8e5dc!important}\
+.toc a{color:#808080!important;border-color:#d8d4c8!important}\
+.toc a:active{background:#f0ede6!important;color:#b8860b!important}\
+.scn .scc{background:#fcfcfa!important}\
+.scc.sc1{background:#e8f5e9!important;border-color:#a5d6a7!important}\
+.scc.sc1 h4{color:#2e7d32!important}\
+.scc.sc1 .pct{color:#2e7d32!important}\
+.scc.sc1 .dt{color:#66bb6a!important}\
+.scc.sc2{background:#e3f2fd!important;border-color:#90caf9!important}\
+.scc.sc2 h4{color:#1565c0!important}\
+.scc.sc2 .pct{color:#1565c0!important}\
+.scc.sc2 .dt{color:#42a5f5!important}\
+.scc.sc3{background:#fce4ec!important;border-color:#ef9a9a!important}\
+.scc.sc3 h4{color:#c62828!important}\
+.scc.sc3 .pct{color:#c62828!important}\
+.scc.sc3 .dt{color:#ef5350!important}\
+.sticky-top{background:#f4f1ea!important}\
+.gold{color:#b8860b!important}\
+.green{color:#2e7d32!important}\
+.red{color:#c62828!important}\
+.orange{color:#e65100!important}\
+.mv.gold{color:#b8860b!important}\
+.mv.green{color:#2e7d32!important}\
+.vl.gold{color:#b8860b!important}\
+.vl.green{color:#2e7d32!important}\
+.vl.orange{color:#e65100!important}';
+      idoc.head.appendChild(style);
+      // Fix inline-style elements that CSS can't override
+      const fixes = [
+        ['[style*="background:#0d0d20"]', 'background:#fcfcfa'],
+        ['[style*="background:#1a1a2a"]', 'background:#fcfcfa;border-color:#d8d4c8'],
+        ['[style*="background:#1a3a1a"]', 'background:#e8f5e9;border-color:#a5d6a7'],
+        ['[style*="color:#888"]', 'color:#808080'],
+        ['[style*="color:#555"]', 'color:#a0a0a0'],
+      ];
       fixes.forEach(([sel, replace]) => {
         idoc.querySelectorAll(sel).forEach(el => {
           const s = el.getAttribute('style');
