@@ -680,104 +680,124 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 
 
 <script>
-// lightweight-charts 市值K线渲染
 (function() {
-  var periods = ['daily', 'weekly', 'monthly', 'yearly'];
-  var currentPeriod = 'daily';
-  var chart = LightweightCharts.createChart(document.getElementById('mcap-chart'), {
-    layout: {
-      background: { type: 'solid', color: 'transparent' },
-      textColor: '#888',
-      fontSize: 11,
-      fontFamily: "-apple-system,'PingFang SC','Helvetica Neue',sans-serif"
-    },
-    grid: {
-      vertLines: { color: '#1a1a2a', style: 1 },
-      horzLines: { color: '#1a1a2a', style: 1 }
-    },
-    crosshair: {
-      mode: LightweightCharts.CrosshairMode.Normal,
-      vertLine: { color: '#f0c040', width: 1, style: 2, labelBackgroundColor: '#1a1a2a' },
-      horzLine: { color: '#f0c040', width: 1, style: 2, labelBackgroundColor: '#1a1a2a' }
-    },
-    rightPriceScale: {
-      borderColor: '#333',
-      scaleMargins: { top: 0.1, bottom: 0.15 }
-    },
-    timeScale: {
-      borderColor: '#333',
-      timeVisible: false,
-      ticksVisible: false
-    },
-    handleScroll: { mouseWheel: true, pressedMouseMove: true, horzTouchDrag: true },
-    handleScale: { mouseWheel: true, pinch: true },
-    localization: {
-      priceFormatter: function(price) {
-        return price.toFixed(0) + '亿';
-      }
-    }
-  });
-
+  var stockCode = '000858';
+  var periodNames = { 'daily': '日线', 'weekly': '周线', 'monthly': '月线', 'yearly': '年线' };
+  var currentPeriod = 'day';
+  var chart = null;
   var series = null;
   var isLoading = false;
+  var errorDiv = null;
 
-  // Custom tick mark formatter for yearly
+  function initChart() {
+    chart = LightweightCharts.createChart(document.getElementById('mcap-chart'), {
+      layout: {
+        background: { type: 'solid', color: 'transparent' },
+        textColor: '#888',
+        fontSize: 11,
+        fontFamily: "-apple-system,'PingFang SC','Helvetica Neue',sans-serif"
+      },
+      grid: {
+        vertLines: { color: '#1a1a2a', style: 1 },
+        horzLines: { color: '#1a1a2a', style: 1 }
+      },
+      crosshair: {
+        mode: LightweightCharts.CrosshairMode.Normal,
+        vertLine: { color: '#f0c040', width: 1, style: 2, labelBackgroundColor: '#1a1a2a' },
+        horzLine: { color: '#f0c040', width: 1, style: 2, labelBackgroundColor: '#1a1a2a' }
+      },
+      rightPriceScale: {
+        borderColor: '#333',
+        scaleMargins: { top: 0.08, bottom: 0.12 }
+      },
+      timeScale: {
+        borderColor: '#333',
+        timeVisible: false,
+        ticksVisible: false
+      },
+      handleScroll: { mouseWheel: true, pressedMouseMove: true, horzTouchDrag: true },
+      handleScale: { mouseWheel: true, pinch: true },
+      localization: {
+        priceFormatter: function(v) { return v.toFixed(0) + '亿'; }
+      }
+    });
+
+    series = chart.addLineSeries({
+      color: '#f0c040',
+      lineWidth: 2,
+      priceFormat: { type: 'price', precision: 0, minMove: 1 },
+      crosshairMarkerVisible: true,
+      crosshairMarkerRadius: 4,
+      crosshairMarkerBackgroundColor: '#f0c040',
+      crosshairMarkerBorderColor: '#0a0a1a'
+    });
+
+    // Resize handler
+    var ro = new ResizeObserver(function() {
+      if (chart) chart.resize();
+    });
+    ro.observe(document.getElementById('mcap-chart'));
+  }
+
+  function showError(msg) {
+    var container = document.getElementById('mcap-chart');
+    if (!errorDiv) {
+      errorDiv = document.createElement('div');
+      errorDiv.style.cssText = 'text-align:center;padding:60px 20px;color:#f44336;font-size:13px;';
+      container.appendChild(errorDiv);
+    }
+    errorDiv.textContent = '⚠ ' + msg;
+  }
+
+  function clearError() {
+    if (errorDiv) {
+      errorDiv.remove();
+      errorDiv = null;
+    }
+  }
+
   function loadData(period) {
     if (isLoading) return;
     isLoading = true;
+    clearError();
 
-    var btn = document.querySelector('.mcap-btn.active');
+    var btn = document.querySelector('.mcap-btn[data-period="' + period + '"]');
     if (btn) btn.textContent = '加载中...';
 
-    var filename = 'wuliangye_' + period + '.json';
+    var periodMap = { 'daily': 'day', 'weekly': 'week', 'monthly': 'month', 'yearly': 'year' };
+    var fileKey = periodMap[period] || period;
+    var filename = '../kline/' + stockCode + '_' + fileKey + '.json';
+    
     fetch(filename)
-      .then(function(r) { return r.json(); })
+      .then(function(r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status + ' - 文件 ' + filename + ' 未找到');
+        return r.json();
+      })
       .then(function(data) {
+        isLoading = false;
+        if (btn) btn.textContent = periodNames[period] || period;
+
         if (!data || data.length === 0) {
-          console.error('No data for ' + period);
+          showError(periodNames[period] + '数据为空');
           return;
         }
 
-        // Remove old series
-        if (series) {
-          chart.removeSeries(series);
-        }
-
-        // Create candlestick series
-        series = chart.addCandlestickSeries({
-          upColor: '#f44336',
-          downColor: '#4caf50',
-          borderUpColor: '#f44336',
-          borderDownColor: '#4caf50',
-          wickUpColor: '#f44336',
-          wickDownColor: '#4caf50',
-          priceFormat: {
-            type: 'price',
-            precision: 0,
-            minMove: 1
-          }
-        });
-
         series.setData(data);
-
-        // Fit content to show all data
         chart.timeScale().fitContent();
-
-        // Update Y axis label for market cap
-        isLoading = false;
-        if (btn) btn.textContent = {daily:'日线',weekly:'周线',monthly:'月线',yearly:'年线'}[period];
       })
       .catch(function(err) {
-        console.error('Failed to load data:', err);
         isLoading = false;
-        if (btn) btn.textContent = {daily:'日线',weekly:'周线',monthly:'月线',yearly:'年线'}[period];
+        if (btn) btn.textContent = periodNames[period] || period;
+        showError('数据加载失败：' + err.message);
+        console.error('Kline load error:', err);
       });
   }
 
   // Tab switching
   document.getElementById('mcap-tabs').addEventListener('click', function(e) {
-    if (!e.target.classList.contains('mcap-btn')) return;
-    var period = e.target.dataset.period;
+    var btn = e.target.closest('.mcap-btn');
+    if (!btn) return;
+    var period = btn.dataset.period;
     if (period === currentPeriod) return;
     currentPeriod = period;
 
@@ -788,13 +808,8 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     loadData(period);
   });
 
-  // Handle resize
-  var resizeObserver = new ResizeObserver(function() {
-    chart.resize();
-  });
-  resizeObserver.observe(document.getElementById('mcap-chart'));
-
-  // Initial load: daily
+  // Initialize chart on DOM ready
+  initChart();
   loadData('daily');
 })();
 </script>
