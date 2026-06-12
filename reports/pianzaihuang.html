@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>片仔癀 · 完整投资研究报告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;background:#0a0a1a;color:#e0e0e0;padding:14px;font-size:14px;line-height:1.6}
+h1{font-size:22px;color:#fff;margin:16px 0 4px;text-align:center}
+h2{font-size:16px;color:#4caf50;margin:20px 0 10px;border-left:3px solid #4caf50;padding-left:10px}
+h3{font-size:14px;color:#ccc;margin:14px 0 6px}
+h4{font-size:13px;color:#aaa;margin:10px 0 4px}
+.desc{font-size:12px;color:#888;margin-bottom:10px}
+.card{background:#0d1a1a;border-radius:12px;padding:14px;margin-bottom:12px;border:1px solid #1a3a3a}
+.sc-wrap{text-align:center;margin-bottom:16px}
+.score-ring{width:80px;height:80px;border-radius:50%;background:conic-gradient(#4caf50 0deg 252deg,#333 252deg 360deg);display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+.score-inner{width:62px;height:62px;border-radius:50%;background:#0d1a1a;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-num{font-size:24px;font-weight:bold;color:#4caf50;line-height:1}
+.score-label{font-size:10px;color:#888}
+.dim-row{display:flex;align-items:center;margin:6px 0}
+.dim-label{width:60px;font-size:12px;color:#aaa;flex-shrink:0}
+.dim-bg{flex:1;height:10px;background:#1e3e3a;border-radius:5px;margin:0 8px;overflow:hidden}
+.dim-fill{height:100%;border-radius:5px}
+.dim-sc{width:28px;text-align:right;font-size:12px;font-weight:bold;flex-shrink:0}
+.c9{background:#4caf50}.c7{background:#8bc34a}.c6{background:#ffc107}.c5{background:#ff9800}
+.tbl{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}
+.tbl th{background:#1e3e3a;color:#4caf50;padding:7px 5px;text-align:center;font-weight:500}
+.tbl td{padding:6px 5px;text-align:center;border-bottom:1px solid #1e3e3a;font-size:11px}
+.tbl td:first-child{white-space:nowrap;font-size:12px}
+.tbl tr:last-child td{border-bottom:none}
+.gold{color:#4caf50;font-weight:bold}.green{color:#4caf50}.red{color:#f44336}.orange{color:#ff9800}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mi{background:#0a0a1a;border-radius:8px;padding:10px;text-align:center}
+.mv{font-size:18px;font-weight:bold;color:#fff}
+.ml{font-size:10px;color:#888;margin-top:2px}
+.hb{display:flex;align-items:flex-start;margin:4px 0;min-height:20px}
+.hl{width:72px;font-size:11px;color:#aaa;flex-shrink:0;padding-top:2px}
+.ht{flex:1;height:16px;background:#1e3e3a;border-radius:8px;overflow:visible;margin:0 6px;position:relative}
+.hf{height:16px;border-radius:8px;display:flex;align-items:center;padding-left:6px;font-size:10px;color:#fff;overflow:visible;white-space:nowrap;text-shadow:0 0 3px rgba(0,0,0,.8);min-width:0}
+.hv{font-size:10px;color:#999;white-space:nowrap;flex-shrink:0;padding-top:2px;margin-left:2px}
+.scn{display:flex;gap:6px;margin:8px 0}
+.scc{flex:1;border-radius:8px;padding:10px;text-align:center}
+.scc h4{font-size:12px;margin-bottom:4px;color:#fff}
+.scc .pct{font-size:18px;font-weight:bold}
+.scc .dt{font-size:10px;color:#ccc;margin-top:3px}
+.sc1{background:#1a3a1a;border:1px solid #2a5a2a}.sc1 .pct{color:#4caf50}
+.sc2{background:#1a2a3a;border:1px solid #2a3a5a}.sc2 .pct{color:#f0c040}
+.sc3{background:#3a1a1a;border:1px solid #5a2a2a}.sc3 .pct{color:#f44336}
+.tg{display:inline-block;font-size:10px;padding:1px 7px;border-radius:10px;margin:1px}
+.tgg{background:#1a3a1a;color:#4caf50;border:1px solid #2a5a2a}
+.tgr{background:#3a1a1a;color:#f44336;border:1px solid #5a2a2a}
+.tgo{background:#3a2a1a;color:#ff9800;border:1px solid #5a4a2a}
+.tgy{background:#222;color:#aaa;border:1px solid #333}
+.txt{padding:6px 0;font-size:13px;color:#ccc;line-height:1.7}
+.txt .dot{color:#4caf50;margin-right:4px}
+.bq{padding:10px;background:#0a0a1a;border-radius:8px;border-left:3px solid #4caf50;margin:8px 0;font-size:13px;color:#ddd;line-height:1.7}
+.cp{display:flex;align-items:center;margin:4px 0;font-size:12px}
+.cp .nm{width:88px;color:#aaa;flex-shrink:0}
+.cp .bt{flex:1;height:14px;background:#1e3e3a;border-radius:7px;overflow:hidden;margin:0 6px}
+.cp .bf{height:100%;border-radius:7px}
+.cp .vl{width:48px;text-align:right;font-weight:bold;flex-shrink:0}
+.footer{text-align:center;font-size:10px;color:#555;margin:24px 0 10px;padding-top:14px;border-top:1px solid #1e3e3a;line-height:1.8}
+.sticky-top{position:sticky;top:0;z-index:10;background:#0a0a1a;padding:8px 0;border-bottom:1px solid #1e3e3a;margin-bottom:12px}
+.toc{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
+.toc a{font-size:11px;color:#888;text-decoration:none;padding:3px 8px;border-radius:12px;border:1px solid #333}
+.toc a:active{background:#1e3e3a;color:#4caf50}
+</style>
+</head>
+<body>
+
+<div class="sticky-top">
+  <div style="text-align:center;font-size:11px;color:#555;margin-bottom:4px;">📌 点击跳转</div>
+  <div class="toc">
+    <a href="#s0">评分</a><a href="#s1">综合评价</a><a href="#s2">M1商业模式</a>
+    <a href="#s3">M2壁垒</a><a href="#s4">M3管理层</a><a href="#s5">M4财务</a>
+    <a href="#s6">M5产业链</a><a href="#s7">M6估值</a><a href="#s8">M7市占率</a>
+    <a href="#s9">M8催化剂</a><a href="#s10">M9预期差</a><a href="#s11">M10风险</a>
+    <a href="#s12">综合评级</a><a href="#s13">附录</a>
+  </div>
+</div>
+
+<div id="s0" class="sc-wrap">
+  <div class="score-ring"><div class="score-inner"><div class="score-num">7.5</div><div class="score-label">/10</div></div></div>
+  <h1 style="margin-top:4px;">片仔癀 <span style="font-size:14px;color:#888;font-weight:400;">600436</span></h1>
+  <div class="desc">评级：优秀 → 国家绝密级中药龙头 · 品牌+配方双重顶级护城河 · 成长弹性优于中药同业</div>
+  <div><span class="tg tgg">综合评级 7.5/10</span><span class="tg tgy">数据截至 2026-06-12</span></div>
+</div>
+
+<div id="s-mcap" class="card">
+  <h2>市值走势</h2>
+  <div class="desc">上市以来市值变化（不复权收盘价 × 总股本）· 鼠标滚轮缩放 · 拖拽平移</div>
+  <div class="mcap-btns">
+    <button class="mcap-btn active" data-period="day">日线</button>
+    <button class="mcap-btn" data-period="week">周线</button>
+    <button class="mcap-btn" data-period="month">月线</button>
+    <button class="mcap-btn" data-period="year">年线</button>
+  </div>
+  <div class="mcap-chart-wrap">
+    <div class="mcap-tooltip" id="mcapTooltip"></div>
+    <svg id="mcapSvg" width="100%" height="380"></svg>
+  </div>
+  <div class="mcap-info">
+    当前市值：<span class="mcap-v" id="mcapCurrent">--</span> 亿 ·
+    历史最高：<span class="mcap-v" id="mcapHigh">--</span> 亿 ·
+    历史最低：<span class="mcap-v" id="mcapLow">--</span> 亿 ·
+    总股本：<span class="mcap-v" id="mcapShares">6.03</span> 亿股
+  </div>
+</div>
+
+<style>
+.mcap-btns{display:flex;gap:6px;margin:8px 0}
+.mcap-btn{flex:1;padding:6px 0;border:1px solid #333;background:#1e3e3a;color:#888;border-radius:6px;cursor:pointer;font-size:12px;text-align:center;transition:all .2s}
+.mcap-btn:hover{border-color:#4caf50;color:#4caf50}
+.mcap-btn.active{background:#4caf50;color:#0a0a1a;border-color:#4caf50;font-weight:bold}
+.mcap-chart-wrap{position:relative;width:100%;border-radius:8px;background:#0d0d20;border:1px solid #1e3e3a}
+.mcap-chart-wrap svg{display:block}
+.mcap-tooltip{position:absolute;display:none;background:rgba(10,10,26,.92);border:1px solid #4caf50;border-radius:6px;padding:6px 10px;font-size:12px;color:#fff;pointer-events:none;z-index:10;white-space:nowrap;transform:translate(-50%,-110%)}
+.mcap-tooltip .tt-date{color:#888;font-size:10px}
+.mcap-tooltip .tt-val{color:#4caf50;font-weight:bold}
+.mcap-info{text-align:center;font-size:12px;color:#888;margin-top:8px;padding:6px;background:#0d0d20;border-radius:6px}
+.mcap-v{color:#4caf50;font-weight:bold}
+.mcap-axis path,.mcap-axis line{stroke:#333;stroke-width:1}
+.mcap-axis text{fill:#666;font-size:10px}
+.mcap-grid line{stroke:#1e3e3a;stroke-width:0.5;stroke-dasharray:3,3}
+.mcap-light .mcap-btn{border-color:#c8c0b0;background:#e8e4dc;color:#707070}
+.mcap-light .mcap-btn:hover{border-color:#b8860b;color:#b8860b}
+.mcap-light .mcap-btn.active{background:#b8860b;color:#fff;border-color:#b8860b}
+.mcap-light .mcap-chart-wrap{background:#f4f1ea;border-color:#d8d4c8}
+.mcap-light .mcap-tooltip{background:rgba(255,255,255,.95);border-color:#b8860b;color:#3d3d3d}
+.mcap-light .mcap-tooltip .tt-date{color:#808080}
+.mcap-light .mcap-tooltip .tt-val{color:#b8860b}
+.mcap-light .mcap-info{background:#e8e4dc;color:#808080}
+.mcap-light .mcap-v{color:#b8860b}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  var PERIODS = ['day','week','month','year'];
+  var stockCode = '600436';
+  var chartData = [];
+  var viewStart = 0, viewEnd = 0;
+  var isDragging = false, dragStartX = 0, dragViewStart = 0;
+  var svg, tooltip, wrap;
+  var W = 0, H = 380;
+  var M = {top:20, right:20, bottom:35, left:65};
+
+  function applyThemeClass(){
+    var isLight = false;
+    try { isLight = parent && parent.document && parent.document.documentElement.getAttribute('data-theme') === 'light'; }
+    catch(e){ isLight = !!document.getElementById('hermes-theme-override'); }
+    var card = document.getElementById('s-mcap');
+    if(!card) return;
+    if(isLight){ card.classList.add('mcap-light'); } else { card.classList.remove('mcap-light'); }
+    if(chartData.length) render();
+  }
+
+  function init(){
+    svg = document.getElementById('mcapSvg');
+    tooltip = document.getElementById('mcapTooltip');
+    wrap = svg.parentElement;
+    svg.style.cursor = 'crosshair';
+    applyThemeClass();
+    setInterval(applyThemeClass, 1000);
+    document.querySelectorAll('.mcap-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        document.querySelectorAll('.mcap-btn').forEach(function(b){b.classList.remove('active')});
+        btn.classList.add('active');
+        loadPeriod(btn.getAttribute('data-period'));
+      });
+    });
+    svg.addEventListener('wheel', onWheel, {passive:false});
+    svg.addEventListener('mousedown', onDragStart);
+    window.addEventListener('mousemove', onDragMove);
+    window.addEventListener('mouseup', onDragEnd);
+    svg.addEventListener('mousemove', onHover);
+    svg.addEventListener('mouseleave', function(){
+      tooltip.style.display='none';
+      var cv=svg.querySelector('#mcapCrossV');if(cv)cv.setAttribute('opacity','0');
+      var ch2=svg.querySelector('#mcapCrossH');if(ch2)ch2.setAttribute('opacity','0');
+      var cd2=svg.querySelector('#mcapCrossDot');if(cd2)cd2.setAttribute('opacity','0');
+    });
+    window.addEventListener('resize', function(){if(chartData.length)render()});
+    loadPeriod('day');
+  }
+
+  function getThemeColors(){
+    var light = false;
+    try { light = parent && parent.document && parent.document.documentElement.getAttribute('data-theme') === 'light'; }
+    catch(e){ light = !!document.getElementById('hermes-theme-override'); }
+    return {
+      line: light ? '#b8860b' : '#4caf50',
+      grid: light ? '#e0dcd0' : '#1e3e3a',
+      axisText: light ? '#999' : '#666',
+      axisLine: light ? '#d8d4c8' : '#333',
+      gradTop: light ? '#b8860b' : '#4caf50',
+      gradBot: light ? '#b8860b' : '#4caf50',
+      gradTopOpacity: '0.25',
+      gradBotOpacity: '0.01'
+    };
+  }
+
+  function loadPeriod(period){
+    var url = '../kline/' + stockCode + '_' + period + '.json?t=' + Date.now();
+    fetch(url).then(function(r){return r.json()}).then(function(data){
+      chartData = data;
+      var defaultWindow = period === 'day' ? Math.min(500, data.length) : data.length;
+      viewStart = Math.max(0, data.length - defaultWindow);
+      viewEnd = data.length;
+      updateStats(data, period);
+      render();
+    }).catch(function(err){
+      console.error('Failed to load chart data:', err);
+    });
+  }
+
+  function updateStats(data, period){
+    if(!data.length) return;
+    var last = data[data.length-1];
+    var high = data.reduce(function(a,b){return a.value>b.value?a:b});
+    var low = data.reduce(function(a,b){return a.value<b.value?a:b});
+    document.getElementById('mcapCurrent').textContent = last.value.toFixed(1);
+    document.getElementById('mcapHigh').textContent = high.value.toFixed(1);
+    document.getElementById('mcapLow').textContent = low.value.toFixed(1);
+  }
+
+  function Mchart(){return W - M.left - M.right}
+
+  function render(){
+    if(!chartData.length) return;
+    var rect = wrap.getBoundingClientRect();
+    W = Math.max(300, rect.width || 600);
+    H = 380;
+    svg.style.width = W + 'px';
+    svg.style.height = H + 'px';
+    var cw = Mchart();
+    var ch = H - M.top - M.bottom;
+    if(cw <= 0 || ch <= 0) return;
+    var visible = chartData.slice(viewStart, viewEnd);
+    var n = visible.length;
+    if(n === 0) return;
+    var minVal = Infinity, maxVal = -Infinity;
+    for(var i=0;i<n;i++){var v=visible[i].value;if(v<minVal)minVal=v;if(v>maxVal)maxVal=v;}
+    var pad = (maxVal - minVal) * 0.05 || maxVal * 0.05 || 100;
+    minVal = Math.max(0, minVal - pad);
+    maxVal = maxVal + pad;
+    var xScale = function(i){return M.left + (i/(n-1||1))*cw};
+    var yScale = function(v){return M.top + ch - (v-minVal)/(maxVal-minVal)*ch};
+    var points = '';
+    for(var i=0;i<n;i++){points += (i===0?'':' ') + xScale(i).toFixed(1)+','+yScale(visible[i].value).toFixed(1);}
+    var tc = getThemeColors();
+    var html = '';
+    var gridCount = 5;
+    html += '<g class="mcap-grid">';
+    for(var gi=0;gi<=gridCount;gi++){
+      var gv = minVal + (maxVal-minVal)*(gi/gridCount);
+      var gy = yScale(gv);
+      html += '<line x1="'+M.left+'" y1="'+gy.toFixed(1)+'" x2="'+(M.left+cw)+'" y2="'+gy.toFixed(1)+'" stroke="'+tc.grid+'"/>';
+      html += '<text x="'+(M.left-8)+'" y="'+(gy+4)+'" text-anchor="end" fill="'+tc.axisText+'" font-size="10">'+fmtVal(gv)+'</text>';
+    }
+    html += '</g>';
+    var labelCount = Math.min(10, n);
+    var step = Math.max(1, Math.floor(n / labelCount));
+    html += '<g class="mcap-axis">';
+    for(var li=0;li<n;li+=step){
+      var lx = xScale(li);
+      html += '<text x="'+lx.toFixed(1)+'" y="'+(H-5)+'" text-anchor="middle" fill="'+tc.axisText+'" font-size="9" transform="rotate(-30,'+lx.toFixed(1)+','+(H-10)+')">'+visible[li].time+'</text>';
+    }
+    var lx2 = xScale(n-1);
+    html += '<text x="'+lx2.toFixed(1)+'" y="'+(H-5)+'" text-anchor="middle" fill="'+tc.axisText+'" font-size="9" transform="rotate(-30,'+lx2.toFixed(1)+','+(H-10)+')">'+visible[n-1].time+'</text>';
+    html += '</g>';
+    var fillPath = 'M'+M.left+','+(M.top+ch)+' ';
+    for(var i=0;i<n;i++){fillPath += 'L'+xScale(i).toFixed(1)+','+yScale(visible[i].value).toFixed(1)+' ';}
+    fillPath += 'L'+(M.left+cw).toFixed(1)+','+(M.top+ch)+' Z';
+    html += '<path d="'+fillPath+'" fill="url(#mcapGrad)" opacity="0.35"/>';
+    html += '<polyline points="'+points+'" fill="none" stroke="'+tc.line+'" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>';
+    html += '<line id="mcapCrossV" x1="0" y1="'+M.top+'" x2="0" y2="'+(M.top+ch)+'" stroke="'+tc.line+'" stroke-width="1" stroke-dasharray="4,3" opacity="0" pointer-events="none"/>';
+    html += '<line id="mcapCrossH" x1="'+M.left+'" y1="0" x2="'+(M.left+cw)+'" y2="0" stroke="'+tc.line+'" stroke-width="1" stroke-dasharray="4,3" opacity="0" pointer-events="none"/>';
+    html += '<circle id="mcapCrossDot" cx="0" cy="0" r="4" fill="'+tc.line+'" stroke="#fff" stroke-width="1.5" opacity="0" pointer-events="none"/>';
+    var defs = '<defs><linearGradient id="mcapGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="'+tc.gradTop+'" stop-opacity="'+tc.gradTopOpacity+'"/><stop offset="100%" stop-color="'+tc.gradBot+'" stop-opacity="'+tc.gradBotOpacity+'"/></linearGradient></defs>';
+    svg.innerHTML = defs + html;
+  }
+
+  function fmtVal(v){
+    if(v >= 10000) return (v/10000).toFixed(1)+'万亿';
+    return v.toFixed(0)+'亿';
+  }
+
+  function doZoom(dir, cx){
+    var n = chartData.length;
+    var range = viewEnd - viewStart;
+    var center = cx !== undefined ? viewStart + (cx-M.left)/(Mchart())*range : (viewStart+viewEnd)/2;
+    var newRange = dir > 0 ? Math.max(20, range * 0.7) : Math.min(n, range * 1.4);
+    var cIdx = Math.max(0, Math.min(n, center));
+    viewStart = Math.max(0, Math.round(cIdx - newRange/2));
+    viewEnd = Math.min(n, viewStart + Math.round(newRange));
+    if(viewEnd-viewStart < newRange) viewStart = Math.max(0, viewEnd - Math.round(newRange));
+    render();
+  }
+
+  function onWheel(e){
+    e.preventDefault();
+    var rect = svg.getBoundingClientRect();
+    var cx = e.clientX - rect.left;
+    doZoom(e.deltaY < 0 ? 1 : -1, cx);
+  }
+
+  function onDragStart(e){
+    isDragging = true;
+    dragStartX = e.clientX;
+    dragViewStart = viewStart;
+    svg.style.cursor = 'grabbing';
+  }
+
+  function onDragMove(e){
+    if(!isDragging) return;
+    var n = chartData.length;
+    var range = viewEnd - viewStart;
+    var dx = e.clientX - dragStartX;
+    var dataPerPx = range / Mchart();
+    viewStart = Math.max(0, Math.min(n - range, Math.round(dragViewStart - dx * dataPerPx)));
+    viewEnd = viewStart + range;
+    render();
+  }
+
+  function onDragEnd(){isDragging=false;svg.style.cursor='crosshair';}
+
+  function onHover(e){
+    if(isDragging || !chartData.length) return;
+    var rect = svg.getBoundingClientRect();
+    var mx = e.clientX - rect.left;
+    var visible = chartData.slice(viewStart, viewEnd);
+    var n = visible.length;
+    if(n < 2) return;
+    var idx = Math.round((mx - M.left) / Mchart() * (n-1));
+    idx = Math.max(0, Math.min(n-1, idx));
+    var pt = visible[idx];
+    var cw2 = Mchart();
+    var px = M.left + (idx/(n-1))*cw2;
+    var min2 = Infinity, max2 = -Infinity;
+    for(var i=0;i<n;i++){var v=visible[i].value;if(v<min2)min2=v;if(v>max2)max2=v;}
+    var pad2 = (max2-min2)*0.05||max2*0.05||100;
+    min2 = Math.max(0,min2-pad2);
+    max2 = max2+pad2;
+    var py = M.top + (H-M.top-M.bottom) - (pt.value-min2)/(max2-min2)*(H-M.top-M.bottom);
+    tooltip.innerHTML = '<div class="tt-date">'+pt.time+'</div><div class="tt-val">'+fmtVal(pt.value)+'</div>';
+    tooltip.style.left = px + 'px';
+    tooltip.style.top = (py - 10) + 'px';
+    tooltip.style.display = 'block';
+    var cv=svg.querySelector('#mcapCrossV');if(cv){cv.setAttribute('x1',px);cv.setAttribute('x2',px);cv.setAttribute('opacity','0.7');}
+    var ch3=svg.querySelector('#mcapCrossH');if(ch3){ch3.setAttribute('y1',py);ch3.setAttribute('y2',py);ch3.setAttribute('opacity','0.7');}
+    var cd3=svg.querySelector('#mcapCrossDot');if(cd3){cd3.setAttribute('cx',px);cd3.setAttribute('cy',py);cd3.setAttribute('opacity','1');}
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+
+<div id="s1" class="card">
+  <h2>一、综合评价</h2>
+
+  <div class="mg" style="margin-bottom:10px">
+    <div class="mi"><div class="mv" style="color:#4caf50">7.5</div><div class="ml">综合评级</div></div>
+    <div class="mi"><div class="mv" style="color:#4caf50">稳健</div><div class="ml">风险等级</div></div>
+    <div class="mi"><div class="mv" style="color:#4caf50">🔒</div><div class="ml">国家绝密配方</div></div>
+    <div class="mi"><div class="mv" style="color:#ffc107">中等</div><div class="ml">成长弹性</div></div>
+  </div>
+
+  <div class="bq">核心逻辑：片仔癀拥有中国中药行业最顶级的护城河（国家绝密级配方+500年品牌积淀+天然麝香资源壁垒），盈利能力极强（净利率27%+、ROE 20%+），财务极其健康（负债率<20%）。近5年营收CAGR约13%，利润CAGR约16%，成长性在中药龙头中名列前茅。但业绩增速已从2021年的45%回落至2024年的6%+，天然麝香原材料供给受限和单品依赖是最大隐忧。当前PE 24x处于历史低位区域，具备安全边际。</div>
+
+  <div class="mg" style="grid-template-columns:1fr 1fr 1fr;margin-top:10px">
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">经营：优秀</div><div class="ml">绝密配方+品牌，定价权极强</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">财务：优秀</div><div class="ml">零有息负债，经营现金流充裕</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">估值：低估</div><div class="ml">PE 24x为近5年低位区间</div></div>
+  </div>
+
+  <table class="tbl" style="margin-top:10px">
+    <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+    <tr><td>三年预估空间</td><td class="gold">+30%~+50%</td><td>年化10-15%，基于PE修复至30-35x+利润CAGR 10%</td></tr>
+    <tr><td>季度监控</td><td>片仔癀锭剂收入增速</td><td>核心产品增速若持续<5%需关注</td></tr>
+    <tr><td>逻辑证伪点</td><td class="red">天然麝香供给中断/管理层失职</td><td>若麝香配额大幅削减或锭剂停产需立即止损</td></tr>
+    <tr><td>止损触发</td><td class="red">PE>40x或营收连续2季下滑</td><td>当前估值已修复空间有限，高估值买入无安全边际</td></tr>
+  </table>
+</div>
+
+<div id="s2" class="card">
+  <h2>M1 商业模式 & 收入结构</h2>
+
+  <div class="txt"><span class="dot">●</span><b>核心定位：</b>片仔癀是漳州市国资委控股的中华老字号中药企业（创立于明朝嘉靖年间，约500年历史），以国家绝密级配方「片仔癀」为核心产品。公司采用"医药工业+医药商业+日化化妆品"三大业务板块，工业端以片仔癀锭剂、胶囊剂等肝病用药为主（毛利率>80%），商业端运营药品流通配送，日化端推出片仔癀化妆品和牙膏等消费品。</div>
+
+  <div class="txt"><span class="dot">●</span><b>盈利模式：</b>医药工业（收入占比约45%）贡献绝大部份利润——片仔癀锭剂单品毛利率超过80%，是公司最核心的利润来源。医药商业（收入占比约42%）毛利率仅7-10%，主要起渠道和规模作用。日化化妆品（收入占比约10%）毛利率约60-65%，是公司重点培育的第二增长曲线。</div>
+
+  <h3>分品类收入结构（2024年估算）</h3>
+  <div class="hb"><div class="hl">片仔癀锭剂</div><div class="ht"><div class="hf" style="width:28%;background:#4caf50">28%</div></div><div class="hv">30亿 · 毛利率82%</div></div>
+  <div class="hb"><div class="hl">片仔癀胶囊</div><div class="ht"><div class="hf" style="width:7%;background:#8bc34a">7%</div></div><div class="hv">7-8亿</div></div>
+  <div class="hb"><div class="hl">其他药品</div><div class="ht"><div class="hf" style="width:10%;background:#ffc107">10%</div></div><div class="hv">10-12亿</div></div>
+  <div class="hb"><div class="hl">日化化妆</div><div class="ht"><div class="hf" style="width:10%;background:#ff9800">10%</div></div><div class="hv">10-11亿 · 增长41%</div></div>
+  <div class="hb"><div class="hl">医药商业</div><div class="ht"><div class="hf" style="width:42%;background:#666">42%</div></div><div class="hv">~45亿 · 毛利~8%</div></div>
+  <div class="hb"><div class="hl">食品</div><div class="ht"><div class="hf" style="width:3%;background:#aaa">3%</div></div><div class="hv">3-4亿</div></div>
+
+  <h3 style="margin-top:12px">近6年财务表现</h3>
+  <table class="tbl">
+    <tr><th>年份</th><th>营收(亿)</th><th>净利(亿)</th><th>毛利率</th><th>净利率</th><th>ROE</th><th>负债率</th><th>经营CF(亿)</th></tr>
+    <tr><td>2020</td><td>65.11</td><td>16.72</td><td>45.2%</td><td>25.7%</td><td>23.6%</td><td>19.2%</td><td>18.5</td></tr>
+    <tr><td>2021</td><td>80.26</td><td>24.33</td><td>50.7%</td><td>30.3%</td><td>28.4%</td><td>18.6%</td><td>22.8</td></tr>
+    <tr><td>2022</td><td>86.94</td><td>24.72</td><td>46.9%</td><td>28.4%</td><td>22.4%</td><td>19.5%</td><td>25.1</td></tr>
+    <tr><td>2023</td><td>100.58</td><td>27.97</td><td>46.2%</td><td>27.8%</td><td>21.5%</td><td>18.3%</td><td>28.6</td></tr>
+    <tr><td>2024</td><td>107.88</td><td>29.77</td><td>45.8%</td><td>27.6%</td><td>20.4%</td><td>17.5%</td><td>30.2</td></tr>
+    <tr><td>5年CAGR</td><td>+13.5%</td><td>+15.5%</td><td>—</td><td>—</td><td>—</td><td>↓1.7pct</td><td>+13.0%</td></tr>
+  </table>
+
+  <div class="txt" style="margin-top:6px"><span class="dot">●</span><b>趋势判断：</b>公司营收从2020年的65亿增长至2024年的108亿，5年CAGR约13.5%；净利从16.7亿增至29.8亿，CAGR约15.5%。毛利率略有下降（2021年峰值51%降至2024年46%），主要受原材料价格上涨和低毛利商业占比提升影响。净利率保持在27-28%的极高水平，在中药行业中仅次于东阿阿胶。经营现金流持续高于净利润，盈利质量极佳。</div>
+
+  <h3>商业模式评估</h3>
+  <div class="dim-row"><div class="dim-label">可复制性</div><div class="dim-bg"><div class="dim-fill c9" style="width:40%"></div></div><div class="dim-sc gold">4/10</div></div>
+  <div class="dim-row"><div class="dim-label">护城河</div><div class="dim-bg"><div class="dim-fill c9" style="width:95%"></div></div><div class="dim-sc gold">9.5/10</div></div>
+  <div class="dim-row"><div class="dim-label">成长性</div><div class="dim-bg"><div class="dim-fill c6" style="width:60%"></div></div><div class="dim-sc gold">6/10</div></div>
+  <div class="dim-row"><div class="dim-label">现金流</div><div class="dim-bg"><div class="dim-fill c9" style="width:90%"></div></div><div class="dim-sc gold">9/10</div></div>
+  <div class="dim-row"><div class="dim-label">ROE趋势</div><div class="dim-bg"><div class="dim-fill c7" style="width:70%"></div></div><div class="dim-sc gold">7/10</div></div>
+</div>
+
+<div id="s3" class="card">
+  <h2>M2 壁垒斜率分析</h2>
+
+  <div class="txt"><span class="dot">●</span><b>片仔癀的核心护城河是「国家绝密配方+国宝级品牌+战略性原材料垄断」三重叠加。</b>片仔癀的配方和工艺被列为国家绝密级（仅云南白药和片仔癀两家获此殊荣），法律上禁止公开配方成分和工艺。这意味着竞争对手永无可能复制其核心产品。同时，天然麝香作为片仔癀的核心原材料受到国家严格配额管理，公司通过自建养麝基地和收储机制形成了原料端的战略优势。</div>
+
+  <table class="tbl" style="margin-top:10px">
+    <tr><th>壁垒维度</th><th>评分</th><th>说明</th></tr>
+    <tr><td>国家绝密配方</td><td class="gold">10/10</td><td>仅两家之一，法律保护不可复制</td></tr>
+    <tr><td>品牌壁垒</td><td class="gold">9/10</td><td>500年历史品牌，闽南及东南亚深入人心</td></tr>
+    <tr><td>原材料壁垒</td><td class="gold">9/10</td><td>天然麝香国家配额+自建养麝基地</td></tr>
+    <tr><td>提价权</td><td class="gold">8/10</td><td>历史提价通畅（从2001年130元/粒到2024年760元/粒）</td></tr>
+    <tr><td>转换成本</td><td class="gold">7/10</td><td>消费者对品牌和疗效高度信任，替代意愿低</td></tr>
+    <tr><td>政策保护</td><td class="gold">8/10</td><td>国家绝密+中药保护品种+非遗</td></tr>
+  </table>
+
+  <div class="bq" style="margin-top:10px">陷阱识别：最大风险是「天然麝香供给瓶颈」——国家天然麝香配额每年增长有限，限制了片仔癀锭剂的产量扩张。如果公司无法找到解决方案（人工养麝技术突破或寻找等效替代原料），增长天花板将长期存在。另一个潜在风险是「配方失密」或被国家强制公开。</div>
+
+  <h3>壁垒趋势</h3>
+  <div class="cp"><div class="nm">配方壁垒</div><div class="bt"><div class="bf" style="width:100%;background:#4caf50"></div></div><div class="vl" style="color:#4caf50">不可复制↑</div></div>
+  <div class="cp"><div class="nm">品牌壁垒</div><div class="bt"><div class="bf" style="width:90%;background:#4caf50"></div></div><div class="vl" style="color:#4caf50">稳定→</div></div>
+  <div class="cp"><div class="nm">原材料壁垒</div><div class="bt"><div class="bf" style="width:80%;background:#8bc34a"></div></div><div class="vl" style="color:#ffc107">小幅加深↑</div></div>
+  <div class="cp"><div class="nm">提价权</div><div class="bt"><div class="bf" style="width:80%;background:#8bc34a"></div></div><div class="vl" style="color:#4caf50">持续增强↑</div></div>
+</div>
+
+<div id="s4" class="card">
+  <h2>M3 管理层分析</h2>
+
+  <div class="txt"><span class="dot">●</span><b>实际控制人：</b>漳州市人民政府国有资产监督管理委员会（通过漳州市九龙江集团持股51.30%）。作为地方国企，管理层以稳定经营为第一目标，决策流程较为保守，但相比其他地方国企，片仔癀管理层在品牌运营和渠道拓展上展现了更强的市场意识。</div>
+
+  <div class="txt"><span class="dot">●</span><b>大股东背景：</b>第二大股东王富济持股约4.49%，为知名个人投资者，长期持有片仔癀超10年，素有"最牛散户"之称。其长期持股意愿为小股东传递了积极信号。</div>
+
+  <table class="tbl" style="margin-top:8px">
+    <tr><th>维度</th><th>评分</th><th>评价</th></tr>
+    <tr><td>诚信度</td><td class="gold">8/10</td><td>国企背景，财务规范，信息披露透明</td></tr>
+    <tr><td>战略能力</td><td class="gold">7/10</td><td>成功培育化妆品第二曲线，战略视野尚可</td></tr>
+    <tr><td>执行力</td><td class="gold">7/10</td><td>提价节奏把控合理，渠道管理到位</td></tr>
+    <tr><td>激励合理</td><td class="gold">5/10</td><td>国企薪酬体系，激励力度有限</td></tr>
+    <tr><td>股东回报</td><td class="gold">7/10</td><td>持续分红，2024年股息率约1.2%</td></tr>
+  </table>
+</div>
+
+<div id="s5" class="card">
+  <h2>M4 财务复盘 & 资本配置</h2>
+
+  <h3>5年财务摘要</h3>
+  <table class="tbl">
+    <tr><th>指标</th><th>2020</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th></tr>
+    <tr><td>营收(亿)</td><td>65.11</td><td>80.26</td><td>86.94</td><td>100.58</td><td>107.88</td></tr>
+    <tr><td>营收增速</td><td>+13.8%</td><td>+23.3%</td><td>+8.4%</td><td>+15.7%</td><td>+7.3%</td></tr>
+    <tr><td>净利润(亿)</td><td>16.72</td><td>24.33</td><td>24.72</td><td>27.97</td><td>29.77</td></tr>
+    <tr><td>净利增速</td><td>+21.6%</td><td>+45.5%</td><td>+1.7%</td><td>+13.2%</td><td>+6.4%</td></tr>
+    <tr><td>毛利率</td><td>45.2%</td><td>50.7%</td><td>46.9%</td><td>46.2%</td><td>45.8%</td></tr>
+    <tr><td>净利率</td><td>25.7%</td><td>30.3%</td><td>28.4%</td><td>27.8%</td><td>27.6%</td></tr>
+    <tr><td>ROE</td><td>23.6%</td><td>28.4%</td><td>22.4%</td><td>21.5%</td><td>20.4%</td></tr>
+    <tr><td>负债率</td><td>19.2%</td><td>18.6%</td><td>19.5%</td><td>18.3%</td><td>17.5%</td></tr>
+    <tr><td>经营CF(亿)</td><td>18.5</td><td>22.8</td><td>25.1</td><td>28.6</td><td>30.2</td></tr>
+    <tr><td>自由CF(亿)</td><td>15.2</td><td>19.5</td><td>21.3</td><td>24.1</td><td>25.8</td></tr>
+  </table>
+
+  <h3 style="margin-top:10px">现金流分析</h3>
+  <div class="txt"><span class="dot">●</span><b>盈利质量极佳：</b>经营现金流/净利润比率持续>100%（2024年约101%），利润完全转化为现金。几乎没有应收账款问题——公司在产业链中地位强势，以预收款/现款现货为主。</div>
+  <div class="txt"><span class="dot">●</span><b>资本开支极低：</b>年均资本开支约4-5亿（主要用于产能维护和化妆品产线），自由现金流转化率约85%，是典型的轻资产高现金牛企业。</div>
+  <div class="txt"><span class="dot">●</span><b>零有息负债：</b>资产负债率仅17.5%，且全部为经营性负债（应付账款、预收等），没有任何银行借款或有息债券，财务安全垫极厚。</div>
+
+  <h3 style="margin-top:10px">杜邦分析</h3>
+  <div class="dim-row"><div class="dim-label">净利率</div><div class="dim-bg"><div class="dim-fill c9" style="width:85%"></div></div><div class="dim-sc gold">8.5/10</div></div>
+  <div class="dim-row"><div class="dim-label">资产周转</div><div class="dim-bg"><div class="dim-fill c6" style="width:50%"></div></div><div class="dim-sc gold">5/10</div></div>
+  <div class="dim-row"><div class="dim-label">权益乘数</div><div class="dim-bg"><div class="dim-fill c9" style="width:90%"></div></div><div class="dim-sc gold">9/10</div></div>
+  <div class="txt" style="margin-top:4px;font-size:12px;color:#888">ROE 20.4% = 净利率27.6% × 资产周转率0.69 × 权益乘数1.21。高净利率驱动ROE，权益乘数低（几乎无杠杆）说明ROE真实可靠。资产周转率偏低主要受低毛利商业板块拖累。</div>
+</div>
+
+<div id="s6" class="card">
+  <h2>M5 成本结构 & 产业链议价权</h2>
+
+  <div class="txt"><span class="dot">●</span><b>成本结构：</b>营业成本占营收约54%（2024年毛利率45.8%），其中核心原材料（天然麝香、天然牛黄、蛇胆、田七）占比约55%、制造费用约20%、人工约15%、其他10%。天然麝香价格受国家管控，但天然牛黄价格从2020年约50万元/公斤飙升至2025年150万元/公斤以上。</div>
+
+  <h3>产业链议价权</h3>
+  <div class="cp"><div class="nm">上游（原材料）</div><div class="bt"><div class="bf" style="width:40%;background:#ff9800"></div></div><div class="vl" style="color:#ff9800">中等</div></div>
+  <div class="txt" style="font-size:11px;color:#888;margin:-2px 0 6px 92px">麝香国家配额议价空间小；牛黄市场化涨价压力大</div>
+  <div class="cp"><div class="nm">下游（经销商）</div><div class="bt"><div class="bf" style="width:85%;background:#4caf50"></div></div><div class="vl" style="color:#4caf50">极强</div></div>
+  <div class="txt" style="font-size:11px;color:#888;margin:-2px 0 6px 92px">缺货时代经销商需预付排队等货，议价权完全在片仔癀</div>
+  <div class="cp"><div class="nm">终端（消费者）</div><div class="bt"><div class="bf" style="width:90%;background:#4caf50"></div></div><div class="vl" style="color:#4caf50">极强</div></div>
+  <div class="txt" style="font-size:11px;color:#888;margin:-2px 0 6px 92px">品牌忠诚度高，提价接受度强（20年提价5倍仍供不应求）</div>
+
+  <div class="bq" style="margin-top:8px">定价权评分：9/10。片仔癀拥有A股最顶级的定价权之一——核心产品片仔癀锭剂从2001年的130元/粒提价至2024年的760元/粒（涨幅近5倍），且提价后仍然供不应求。但需注意原材料成本上涨速度快于提价速度时，毛利率仍有下行风险。</div>
+</div>
+
+<div id="s7" class="card">
+  <h2>M6 FCF效率 & 估值</h2>
+
+  <h3>自由现金流估值（DCF简化）</h3>
+  <table class="tbl">
+    <tr><th>参数</th><th>保守</th><th>中性</th><th>乐观</th></tr>
+    <tr><td>基准FCF(亿)</td><td>23.0</td><td>25.0</td><td>27.0</td></tr>
+    <tr><td>前5年增速</td><td>6%</td><td>8%</td><td>10%</td></tr>
+    <tr><td>永续增速</td><td>2%</td><td>3%</td><td>4%</td></tr>
+    <tr><td>折现率</td><td>10%</td><td>9%</td><td>8%</td></tr>
+    <tr><td>每股价值</td><td>~85元</td><td>~130元</td><td>~200元</td></tr>
+  </table>
+
+  <h3 style="margin-top:10px">当前估值与同业对比</h3>
+  <table class="tbl">
+    <tr><th>公司</th><th>市值</th><th>PE(TTM)</th><th>PB</th><th>ROE</th><th>营收增速</th><th>净利率</th></tr>
+    <tr><td style="color:#4caf50;font-weight:bold">片仔癀</td><td style="color:#4caf50">~721亿</td><td style="color:#4caf50">~24x</td><td style="color:#4caf50">~5.8x</td><td style="color:#4caf50">20.4%</td><td style="color:#4caf50">+7.3%</td><td style="color:#4caf50">27.6%</td></tr>
+    <tr><td>云南白药</td><td>~1050亿</td><td>~22x</td><td>~2.8x</td><td>~11%</td><td>~5%</td><td>~10%</td></tr>
+    <tr><td>同仁堂</td><td>~580亿</td><td>~29x</td><td>~4.5x</td><td>~14%</td><td>~6%</td><td>~10%</td></tr>
+    <tr><td>东阿阿胶</td><td>~380亿</td><td>~25x</td><td>~3.5x</td><td>~12%</td><td>~8%</td><td>~25%</td></tr>
+    <tr><td>华润三九</td><td>~650亿</td><td>~18x</td><td>~2.8x</td><td>~15%</td><td>~10%</td><td>~12%</td></tr>
+  </table>
+
+  <div class="txt" style="margin-top:8px"><span class="dot">●</span><b>估值判断：</b>当前PE 24x处于片仔癀近5年历史估值低位（历史PE区间20x-110x），显著低于中药行业龙头均值（同仁堂29x/云南白药22x）。以27.6%的净利率和20.4%的ROE衡量，PEG仅约1.6倍（以10%利润增速计），在中药龙头中具备性价比。但高估值中枢的合理性建立在「国家绝密配方」的稀缺溢价之上，一旦增长逻辑被证伪，PE可能回落至20x以下。</div>
+
+  <h3>历史估值区间</h3>
+  <div class="cp"><div class="nm">PE区间(5年)</div><div class="bt"><div class="bf" style="width:50%;background:#4caf50;margin-left:10%"></div></div><div class="vl">20-60x</div></div>
+  <div class="cp"><div class="nm">当前PE</div><div class="bt"><div class="bf" style="width:18%;background:#f0c040;margin-left:12%"></div></div><div class="vl" style="color:#4caf50">24x</div></div>
+  <div class="cp"><div class="nm">历史分位</div><div class="bt"><div class="bf" style="width:20%;background:#4caf50;margin-left:5%"></div></div><div class="vl" style="color:#4caf50">~10%（极低）</div></div>
+</div>
+
+<div id="s8" class="card">
+  <h2>M7 增量市占率 & 行业终局</h2>
+
+  <div class="txt"><span class="dot">●</span><b>行业空间：</b>中国中药市场规模约8000亿元（2024年），其中肝病用药细分市场约1000亿。片仔癀在高端肝病中药领域占有率约15-20%，在高端中药礼品市场占有独特地位。但核心产品片仔癀锭剂受天然麝香配额限制，产量天花板约为年产500-600万粒，限制了市占率进一步扩张空间。</div>
+
+  <h3>行业空间测算</h3>
+  <table class="tbl">
+    <tr><th>细分市场</th><th>市场规模</th><th>片仔癀收入</th><th>市占率</th><th>增长潜力</th></tr>
+    <tr><td>高端肝病中药</td><td>~200亿</td><td>~30亿(锭剂)</td><td>~15%</td><td>受麝香配额限制</td></tr>
+    <tr><td>中药日化/化妆品</td><td>~500亿</td><td>~11亿</td><td>~2%</td><td>高增长，空间广阔</td></tr>
+    <tr><td>医药流通</td><td>~2万亿</td><td>~45亿</td><td><0.3%</td><td>非核心业务</td></tr>
+  </table>
+
+  <div class="mg" style="margin:10px 0">
+    <div class="mi"><div class="mv" style="font-size:13px;color:#4caf50">15-20%</div><div class="ml">核心产品市占率</div></div>
+    <div class="mi"><div class="mv" style="font-size:13px;color:#4caf50">500-600万粒</div><div class="ml">锭剂年产上限</div></div>
+    <div class="mi"><div class="mv" style="font-size:13px;color:#ffc107">~2%</div><div class="ml">化妆品市占率</div></div>
+    <div class="mi"><div class="mv" style="font-size:13px;color:#4caf50">5-8%</div><div class="ml">海外（东南亚）收入占比</div></div>
+  </div>
+
+  <div class="txt"><span class="dot">●</span><b>行业终局判断：</b>片仔癀的终极形态不是「做大市占率」而是「做深护城河」——在天然麝香供给约束下，核心产品维持高端稀缺定位，通过持续提价驱动增长。中长期第二增长曲线来自化妆品板块（已启动IPO准备）和片仔癀胶囊等衍生产品放量。终局场景：一家拥有绝密配方、年利润超50亿的高端中药品牌集团。</div>
+</div>
+
+<div id="s9" class="card">
+  <h2>M8 催化剂 & 三年预测</h2>
+
+  <h3>未来催化剂时间表</h3>
+  <table class="tbl">
+    <tr><th>时间</th><th>催化剂</th><th>影响</th></tr>
+    <tr><td>2025H2</td><td>片仔癀锭剂新一轮提价</td><td>直接增厚利润约3-5亿</td></tr>
+    <tr><td>2026</td><td>化妆品子公司分拆上市</td><td>释放化妆品板块估值，母公司将获得投资收益</td></tr>
+    <tr><td>2026-27</td><td>人工养麝技术突破/林麝养殖扩大</td><td>突破麝香供应瓶颈，打开产量天花板</td></tr>
+    <tr><td>2026-27</td><td>片仔癀胶囊等衍生品放量</td><td>丰富产品矩阵，降低单品依赖</td></tr>
+    <tr><td>2025-27</td><td>国企改革深化/股权激励</td><td>释放管理层活力，提升经营效率</td></tr>
+  </table>
+
+  <h3 style="margin-top:12px">三情景预测</h3>
+  <div class="scn">
+    <div class="scc sc1">
+      <h4>🌱 保守</h4>
+      <div class="pct">~120亿</div>
+      <div class="dt">2027E营收</div>
+      <div class="pct" style="font-size:14px;margin-top:4px">~33亿</div>
+      <div class="dt">归母净利润</div>
+      <div class="dt" style="margin-top:6px;color:#888">CAGR ~5% · 无提价，化妆品增长放缓</div>
+    </div>
+    <div class="scc sc2">
+      <h4>📈 中性</h4>
+      <div class="pct">~135亿</div>
+      <div class="dt">2027E营收</div>
+      <div class="pct" style="font-size:14px;margin-top:4px">~38亿</div>
+      <div class="dt">归母净利润</div>
+      <div class="dt" style="margin-top:6px;color:#888">CAGR ~8% · 正常提价+化妆品增长</div>
+    </div>
+    <div class="scc sc3">
+      <h4>🚀 乐观</h4>
+      <div class="pct">~150亿</div>
+      <div class="dt">2027E营收</div>
+      <div class="pct" style="font-size:14px;margin-top:4px">~45亿</div>
+      <div class="dt">归母净利润</div>
+      <div class="dt" style="margin-top:6px;color:#888">CAGR ~12% · 提价+化妆品拆分超预期</div>
+    </div>
+  </div>
+</div>
+
+<div id="s10" class="card">
+  <h2>M9 预期差 & 市场共识</h2>
+
+  <table class="tbl">
+    <tr><th>议题</th><th>市场共识</th><th>独立判断</th><th>预期差</th></tr>
+    <tr><td>增长前景</td><td>增速将长期维持10%+</td><td>增速中枢将下滑至5-8%</td><td class="gold">偏悲观</td></tr>
+    <tr><td>提价能力</td><td>提价顺畅无天花板</td><td>边际递减——提价频率需控制</td><td class="orange">中性</td></tr>
+    <tr><td>化妆品业务</td><td>第二增长曲线，高增长可期</td><td>体量小、竞争激烈，需时日</td><td class="orange">中性</td></tr>
+    <tr><td>估值水平</td><td>高估值有合理性(绝密配方溢价)</td><td>当前24x已回归合理偏低区间</td><td class="gold">偏乐观</td></tr>
+    <tr><td>原材料风险</td><td>可通过提价转嫁</td><td>牛黄涨幅过大可能压缩利润</td><td class="red">需警惕</td></tr>
+  </table>
+
+  <div class="bq" style="margin-top:10px">核心预期差：市场普遍认为片仔癀的高增长（10%+）不可持续应给予低估值，但我们认为即便增速下滑至5-8%，以片仔癀的护城河深度和净利率水平，24x PE仍属于偏低。最大预期差在于「天然麝香瓶颈能否突破」——如果养麝技术取得突破，片仔癀的增长空间将被重新定义。</div>
+</div>
+
+<div id="s11" class="card">
+  <h2>M10 Pre-mortem & 核心风险</h2>
+
+  <h3>风险清单</h3>
+  <table class="tbl">
+    <tr><th>风险类型</th><th>描述</th><th>概率</th><th>影响</th><th>预警信号</th></tr>
+    <tr><td>原材料风险</td><td>天然牛黄/麝香价格持续飙升，毛利率被压缩</td><td class="gold">高</td><td class="red">中</td><td>毛利率连续2季跌破43%</td></tr>
+    <tr><td>供给风险</td><td>国家天然麝香配额削减</td><td class="orange">中</td><td class="red">极高</td><td>锭剂产量同比下滑>10%</td></tr>
+    <tr><td>单品依赖</td><td>片仔癀锭剂占工业收入60%+，单品风险集中</td><td class="gold">高</td><td class="orange">中</td><td>锭剂增速<3%持续1年</td></tr>
+    <tr><td>政策风险</td><td>中药集采扩围至品牌中药</td><td class="orange">中</td><td class="red">高</td><td>锭剂/胶囊纳入集采目录</td></tr>
+    <tr><td>竞争风险</td><td>仿制替代品或新药挑战片仔癀肝病领域地位</td><td class="tgy">低</td><td class="orange">中</td><td>替代品市占率>5%</td></tr>
+    <tr><td>管理层风险</td><td>国企体制导致创新动力不足</td><td class="gold">高</td><td class="tgy">低</td><td>研发投入持续<3%营收</td></tr>
+  </table>
+
+  <h3 style="margin-top:10px">敏感性分析</h3>
+  <table class="tbl">
+    <tr><th>变量</th><th>变动幅度</th><th>净利润变动</th></tr>
+    <tr><td>锭剂提价10%</td><td>+10%单价</td><td class="gold">+约2.5亿 (+8.4%)</td></tr>
+    <tr><td>天然牛黄涨价30%</td><td>+30%成本</td><td class="red">-约2亿 (-6.7%)</td></tr>
+    <tr><td>化妆品增速从20%降至5%</td><td>-15pct</td><td class="orange">-约0.5亿 (-1.7%)</td></tr>
+    <tr><td>锭剂产量因配额削减10%</td><td>-10%产量</td><td class="red">-约3亿 (-10.1%)</td></tr>
+  </table>
+
+  <h3 style="margin-top:12px">三情景估值</h3>
+  <table class="tbl">
+    <tr><th>情景</th><th>2027E净利</th><th>合理PE</th><th>2027E目标市值</th><th>每股价值</th><th>空间</th></tr>
+    <tr><td>保守</td><td>33亿</td><td>22x</td><td>726亿</td><td>~120元</td><td class="orange">0%</td></tr>
+    <tr><td>中性</td><td>38亿</td><td>28x</td><td>1,064亿</td><td>~176元</td><td class="gold">+47%</td></tr>
+    <tr><td>乐观</td><td>45亿</td><td>32x</td><td>1,440亿</td><td>~239元</td><td class="gold">+100%</td></tr>
+  </table>
+
+  <h3 style="margin-top:10px">避雷清单</h3>
+  <table class="tbl">
+    <tr><th>✅</th><th>检查项</th><th>状态</th></tr>
+    <tr><td>✓</td><td>毛利率是否稳定（连续3年毛利率>45%）</td><td><span class="green">✅ 45.8%</span></td></tr>
+    <tr><td>✓</td><td>经营现金流是否为正且>净利润</td><td><span class="green">✅ >100%</span></td></tr>
+    <tr><td>✓</td><td>负债率是否<50%</td><td><span class="green">✅ 17.5%</span></td></tr>
+    <tr><td>✓</td><td>ROE是否连续5年>15%</td><td><span class="green">✅ 20.4%</span></td></tr>
+    <tr><td>⚠️</td><td>是否存在单一客户/产品依赖</td><td><span class="orange">⚠️ 锭剂依赖度高</span></td></tr>
+    <tr><td>✓</td><td>大股东是否持续增持/不减持</td><td><span class="green">✅ 九龙江持股稳定</span></td></tr>
+    <tr><td>✓</td><td>审计意见是否无保留</td><td><span class="green">✅ 标准无保留</span></td></tr>
+    <tr><td>⚠️</td><td>是否有关联交易利益输送嫌疑</td><td><span class="green">✅ 透明</span></td></tr>
+  </table>
+
+  <h3 style="margin-top:10px">清算价值估算</h3>
+  <table class="tbl">
+    <tr><th>资产类型</th><th>账面价值</th><th>清算折价</th><th>清算价值</th></tr>
+    <tr><td>货币资金</td><td>~70亿</td><td>100%</td><td>70亿</td></tr>
+    <tr><td>应收账款</td><td>~12亿</td><td>70%</td><td>8.4亿</td></tr>
+    <tr><td>存货</td><td>~25亿</td><td>60%</td><td>15亿</td></tr>
+    <tr><td>固定资产</td><td>~15亿</td><td>40%</td><td>6亿</td></tr>
+    <tr><td><b>品牌无形资产</b></td><td><b>未入账</b></td><td><b>—</b></td><td><b>100-200亿</b></td></tr>
+    <tr><td>总负债</td><td>~22亿</td><td>100%</td><td>-22亿</td></tr>
+    <tr><td style="font-weight:bold;color:#4caf50">清算价值（不含品牌）</td><td></td><td></td><td><span class="gold">~77亿 (~12.8元/股)</span></td></tr>
+    <tr><td style="font-weight:bold;color:#4caf50">清算价值（含品牌估算）</td><td></td><td></td><td><span class="gold">~177-277亿 (~29-46元/股)</span></td></tr>
+  </table>
+  <div class="txt" style="font-size:11px;color:#888">注：品牌作为无形资产未列入资产负债表。以国家绝密配方的稀缺性估算，品牌价值下限约100亿（仅配方价值），上限可达200亿+。</div>
+</div>
+
+<div id="s12" class="card">
+  <h2>综合评级 & 最终结论</h2>
+
+  <h3>六维评分</h3>
+  <div class="dim-row"><div class="dim-label">护城河</div><div class="dim-bg"><div class="dim-fill c9" style="width:95%"></div></div><div class="dim-sc" style="color:#4caf50">9.5</div></div>
+  <div class="dim-row"><div class="dim-label">成长性</div><div class="dim-bg"><div class="dim-fill c7" style="width:60%"></div></div><div class="dim-sc" style="color:#4caf50">6.0</div></div>
+  <div class="dim-row"><div class="dim-label">财务健康</div><div class="dim-bg"><div class="dim-fill c9" style="width:90%"></div></div><div class="dim-sc" style="color:#4caf50">9.0</div></div>
+  <div class="dim-row"><div class="dim-label">估值安全</div><div class="dim-bg"><div class="dim-fill c7" style="width:70%"></div></div><div class="dim-sc" style="color:#4caf50">7.0</div></div>
+  <div class="dim-row"><div class="dim-label">管理层</div><div class="dim-bg"><div class="dim-fill c7" style="width:68%"></div></div><div class="dim-sc" style="color:#4caf50">6.8</div></div>
+  <div class="dim-row"><div class="dim-label">风险收益比</div><div class="dim-bg"><div class="dim-fill c7" style="width:65%"></div></div><div class="dim-sc" style="color:#4caf50">6.5</div></div>
+
+  <h3 style="margin-top:14px">核心亮点</h3>
+  <div class="txt"><span class="dot">●</span>国家绝密级配方（仅2家），不可复制的终极护城河</div>
+  <div class="txt"><span class="dot">●</span>极强定价权——20年提价5倍，消费者接受度高</div>
+  <div class="txt"><span class="dot">●</span>超高净利率27%+，碾压绝大多数A股上市公司</div>
+  <div class="txt"><span class="dot">●</span>零有息负债，经营现金流充裕，财务极其健康</div>
+  <div class="txt"><span class="dot">●</span>PE 24x为近5年历史低位区间，具备安全边际</div>
+  <div class="txt"><span class="dot">●</span>化妆品子公司IPO在即，第二增长曲线可期</div>
+
+  <h3 style="margin-top:14px">核心风险</h3>
+  <div class="txt"><span class="dot">●</span>天然麝香配额限制产量天花板，增长空间有限</div>
+  <div class="txt"><span class="dot">●</span>天然牛黄等原材料价格飙升持续侵蚀毛利率</div>
+  <div class="txt"><span class="dot">●</span>单品依赖度过高（锭剂占工业利润60%+）</div>
+  <div class="txt"><span class="dot">●</span>增速已从45%回落至6%，高增长阶段结束</div>
+  <div class="txt"><span class="dot">●</span>国企体制下管理层激励不足，创新动力偏弱</div>
+
+  <h3 style="margin-top:14px">价值投资理论应用</h3>
+  <table class="tbl" style="table-layout:fixed">
+    <tr><th style="width:44px">模块</th><th style="white-space:nowrap">大师理念</th><th style="text-align:left;font-size:11px;max-width:320px;white-space:normal">应用分析</th></tr>
+    <tr><td>M1</td><td>巴菲特<br>「护城河」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">片仔癀拥有A股最宽的护城河之一——国家绝密配方+500年品牌+麝香资源垄断，完全符合巴菲特「又宽又深的护城河」标准</td></tr>
+    <tr><td>M2</td><td>段永平<br>「本分」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">片仔癀聚焦主业、不盲目扩张的\"本分\"经营理念值得认可。化妆品虽是多元化但围绕品牌内核展开，风险可控</td></tr>
+    <tr><td>M3</td><td>张磊<br>「长期主义」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">第二大股东王富济持有超10年、九龙江集团51%持股稳定不减持，真正的长期主义资本结构</td></tr>
+    <tr><td>M4</td><td>彼得·林奇<br>「现金牛」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">零有息负债、经营现金流持续>净利润、FCF转化率85%+，典型的slow-grower现金牛，适合在林奇的资产配置中占防御仓位</td></tr>
+    <tr><td>M5</td><td>巴菲特<br>「定价权」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">20年提价5倍仍供不应求，是A股定价权最强的企业之一。但原材料成本上涨速度超过提价速度时定价权也有边界</td></tr>
+    <tr><td>M6</td><td>格林布拉特<br>「神奇公式」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">ROIC约25%+、PE 24x，神奇公式排名约前15%。在中药行业中属于高回报合理价格标的</td></tr>
+    <tr><td>M7</td><td>邱国鹭<br>「数月亮」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">中药行业格局分散，片仔癀在绝密配方领域是唯一的\"月亮\"，但整个中药赛道参与者众多</td></tr>
+    <tr><td>M8</td><td>卡拉曼<br>「安全边际」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">24x PE、历史10%分位，叠加零负债+强现金流，当前价格提供了较好的安全边际。中情景目标价176元空间约47%</td></tr>
+    <tr><td>M9</td><td>邓普顿<br>「逆向投资」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">市场对片仔癀增速放缓过度悲观——PE从2021年110x跌至24x已充分反映。逆向机会在于市场忽视了化妆品IPO和养麝技术突破的期权价值</td></tr>
+    <tr><td>M10</td><td>霍华德·马克斯<br>「第二层思维」</td><td style="text-align:left;font-size:11px;max-width:320px;white-space:normal">第一层：增速下滑→不值得持有。第二层：增速从45%回落至6%已被估值消化（PE从110→24x），而绝密配方和零负债的基本盘从未改变。市场可能过度悲观了</td></tr>
+  </table>
+</div>
+
+<div id="s13" class="card">
+  <h2>附录</h2>
+
+  <h3>数据来源</h3>
+  <table class="tbl">
+    <tr><th>数据类型</th><th>来源</th><th>更新时间</th></tr>
+    <tr><td>财务报表</td><td>片仔癀年报（2020-2024）、一季报（2025Q1）</td><td>2025-04-30</td></tr>
+    <tr><td>实时行情</td><td>东方财富、同花顺</td><td>2026-06-12</td></tr>
+    <tr><td>行业对比</td><td>东方财富、雪球</td><td>2026-06</td></tr>
+    <tr><td>券商评级</td><td>同花顺iFinD</td><td>2025-05</td></tr>
+    <tr><td>产品数据</td><td>片仔癀年报、公司公告</td><td>2024年报</td></tr>
+    <tr><td>市值走势</td><td>新浪财经、腾讯财经</td><td>2026-06-12</td></tr>
+  </table>
+
+  <div class="txt" style="font-size:13px;margin-top:10px"><span class="dot">●</span><b>数据口径说明：</b>所有财务数据均来自公开披露的合并财务报表。历史数据以年报为准，2025年数据以季报和机构预测为参考。部分分品类收入数据为估算值，已在文中标注。</div>
+  <div class="txt" style="font-size:13px"><span class="dot">●</span><b>估值方法：</b>采用DCF简化模型、相对估值（PE/PB同业对比）和三情景分析综合判断。目标价基于中性情景。</div>
+
+  <div class="footer">
+    ⚠️ 声明：本内容仅供理论学习和理论练习使用，不构成投资建议，不能作为投资依据。股市有风险，投资需谨慎。<br>
+    数据来源：片仔癀年报、东方财富、同花顺 · 报告生成时间：2026-06-12<br>
+    © 价值投资研究 · 仅供个人学习参考
+  </div>
+</div>
+
+</body>
+</html>
