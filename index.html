@@ -792,6 +792,21 @@ function switchTab(name) {
   document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'))
   document.getElementById('tab-'+name).classList.add('active')
   document.querySelector(`.tab-btn[data-tab="${name}"]`).classList.add('active')
+  // Init Waline for games tab on first visit
+  if (name === 'games' && !window._gamesWalineLoaded) {
+    window._gamesWalineLoaded = true
+    setTimeout(() => {
+      destroyWaline(_walineGame)
+      _walineGame = new Waline({
+        el: '#waline-game',
+        serverURL: WALINE_SRV,
+        path: '/games',
+        lang: 'zh-CN',
+        dark: 'html[data-theme="dark"]',
+        login: 'force',
+      })
+    }, 200)
+  }
 }
 
 // ===== SEARCH & CATALOG =====
@@ -824,6 +839,22 @@ function renderCatalog(query) {
 
 function onSearch(val) { searchQuery=val; document.getElementById('searchClear').classList.toggle('visible',val.length>0); renderCatalog(val) }
 function clearSearch() { document.getElementById('searchInput').value=''; document.getElementById('searchClear').classList.remove('visible'); onSearch('') }
+
+function destroyWaline(inst) {
+  if (inst) try { inst.destroy() } catch(e) {}
+}
+
+function initWaline(el, path) {
+  destroyWaline(window._walineReport)
+  return new Waline({
+    el: el,
+    serverURL: WALINE_SRV,
+    path: path,
+    lang: 'zh-CN',
+    dark: 'html[data-theme="dark"]',
+    login: 'force',
+  })
+}
 
 function openReport(id) {
   const c = COMPANIES.find(x=>x.id===id); if(!c) return
@@ -984,8 +1015,20 @@ function openBook(id) {
   window._currentBid = id
   document.getElementById('bookDetailTitle').innerHTML = `<span>${b.title}</span> · ${b.author}`
   document.getElementById('bookDetailView').classList.add('active')
-  document.getElementById('bookDetailContent').innerHTML = bookDetailHTML(b)
-}
+  // Init Waline for book
+  setTimeout(() => {
+    destroyWaline(_walineBook)
+    _walineBook = new Waline({
+      el: '#waline-book',
+      serverURL: WALINE_SRV,
+      path: '/book/' + id,
+      lang: 'zh-CN',
+      dark: 'html[data-theme="dark"]',
+      login: 'force',
+    })
+  }, 200)
+  const stars = '★'.repeat(b.rating)+'☆'.repeat(5-b.rating)
+  const tagsHTML = b.tags.map(t => `<span class="tag" style="background:${b.color}15;color:${b.color};border-color:${b.color}20">${t}</span>`).join('')
   const archHTML = b.architecture.map((a,i) => `
     <div class="arch-item">
       <div class="arch-header" onclick="toggleArch(${i})">
@@ -1033,8 +1076,8 @@ function backToHub() {
   document.querySelectorAll('.game-container').forEach(el => { el.style.display='none'; el.classList.remove('active') })
   document.getElementById('gameHub').style.display='block'
 }
-function switchToQuiz() { window._currentGid='quiz'; document.getElementById('gameHub').style.display='none'; const c=document.getElementById('quizContainer'); c.style.display='block'; c.classList.add('active') }
-function switchToMatch() { window._currentGid='match'; document.getElementById('gameHub').style.display='none'; const c=document.getElementById('matchContainer'); c.style.display='block'; c.classList.add('active') }
+function switchToQuiz() { document.getElementById('gameHub').style.display='none'; const c=document.getElementById('quizContainer'); c.style.display='block'; c.classList.add('active') }
+function switchToMatch() { document.getElementById('gameHub').style.display='none'; const c=document.getElementById('matchContainer'); c.style.display='block'; c.classList.add('active') }
 function switchToPC() {
   document.getElementById('gameHub').style.display='none';
   const c=document.getElementById('pcContainer');
@@ -1473,11 +1516,7 @@ function loadCommentsIfNeeded(type) {
   if (!cid) return;
   var el = document.getElementById(cid);
   if (el && !el.querySelector('.comment-card, .comment-loading, .comment-error')) {
-    var path = '/';
-    if (type === 'report') path += window._currentCid || '';
-    else if (type === 'book') path += 'book/' + (window._currentBid || '');
-    else path += 'game/' + (type === 'game' ? (window._currentGid || '') : '');
-    loadComments(path, cid);
+    loadComments('/' + (type === 'report' ? (window._currentCid || '') : type), cid);
   }
 }
 
