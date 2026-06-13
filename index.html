@@ -1286,7 +1286,6 @@ function submitComment(path) {
   getSupabase().from('comments').insert({
     user_id: user.id,
     author_name: user.user_metadata && user.user_metadata.name ? user.user_metadata.name : user.email.split('@')[0],
-    author_email: user.email,
     content: input.value.trim(),
     path: path
   }).then(function(res) {
@@ -1314,7 +1313,6 @@ function submitReply(parentId, path) {
   getSupabase().from('comments').insert({
     user_id: user.id,
     author_name: user.user_metadata && user.user_metadata.name ? user.user_metadata.name : user.email.split('@')[0],
-    author_email: user.email,
     content: input.value.trim(),
     path: path,
     parent_id: parentId
