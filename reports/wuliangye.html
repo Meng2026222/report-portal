@@ -103,8 +103,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="desc">上市以来市值变化（不复权收盘价 × 总股本）· 鼠标滚轮缩放 · 拖拽平移 · <span style="color:#888;font-size:11px;">每周五17:00更新</span></div>
 
   <div class="mcap-btns">
-    <button class="mcap-btn active" data-period="day">日线</button>
-    <button class="mcap-btn" data-period="week">周线</button>
+    <button class="mcap-btn active" data-period="week">周线</button>
     <button class="mcap-btn" data-period="month">月线</button>
     <button class="mcap-btn" data-period="year">年线</button>
   </div>
@@ -270,7 +269,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     svg.addEventListener('touchend', function(){isDragging=false});
 
     window.addEventListener('resize', function(){if(chartData.length)render()});
-    loadPeriod('day');
+    loadPeriod('week');
   }
 
   function getThemeColors(){
