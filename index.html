@@ -176,6 +176,21 @@ html{scroll-behavior:smooth}
 .login-close{float:right;border:none;background:none;color:var(--m3);font-size:18px;cursor:pointer;padding:0;line-height:1}
 .setpwd-note{font-size:11px;color:var(--m3);margin-top:8px;text-align:center}
 
+/* ===== NICKNAME ===== */
+.nickname-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);align-items:center;justify-content:center}
+.nickname-overlay.active{display:flex}
+.nickname-card{background:var(--bg3);border:1px solid var(--b2);border-radius:12px;padding:24px;width:320px;max-width:90vw}
+.nickname-card h3{font-size:15px;color:var(--t1);margin:0 0 4px;text-align:center}
+.nickname-card p.sub{font-size:12px;color:var(--m5);margin:0 0 14px;text-align:center}
+.nickname-row{display:flex;gap:6px;margin-bottom:6px}
+.nickname-row input{flex:1;padding:8px 10px;border:1px solid var(--b3);border-radius:6px;background:var(--bg4);color:var(--t1);font-size:13px;font-family:inherit;box-sizing:border-box}
+.nickname-row input:focus{outline:none;border-color:var(--accent)}
+.nickname-random-btn{flex-shrink:0;width:36px;border:1px solid var(--b3);border-radius:6px;background:var(--bg4);color:var(--t2);font-size:16px;cursor:pointer;font-family:inherit}
+.nickname-msg{font-size:11px;color:#e74c3c;margin-bottom:6px;min-height:16px}
+.nickname-msg.ok{color:#4caf50}
+.nickname-confirm-btn{width:100%;padding:8px;border:none;border-radius:6px;background:var(--accent);color:#1a1a1a;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.nickname-confirm-btn:disabled{opacity:.5;cursor:default}
+
 /* ===== BACK TO TOP ===== */
 .back-top{position:fixed;right:16px;bottom:16px;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#1a1a1a;border:none;font-size:18px;cursor:pointer;opacity:.7;transition:.3s;z-index:101;line-height:40px;text-align:center;padding:0}
 .back-top:hover{opacity:1}
@@ -1249,15 +1264,176 @@ function updateHeaderBtn() {
   var btn = document.getElementById('headerUserBtn')
   var user = getStoredUser()
   if (user && user.email) {
-    var name = user.user_metadata && user.user_metadata.name ? user.user_metadata.name : user.email.split('@')[0]
+    var nick = localStorage.getItem('SUPABASE_NICKNAME') || (user.user_metadata && user.user_metadata.name ? user.user_metadata.name : user.email.split('@')[0])
     btn.className = 'header-user logged-in'
-    btn.innerHTML = '👤 ' + name
+    btn.innerHTML = '👤 ' + nick.slice(0,8)
     btn.onclick = function() { showUserMenu() }
   } else {
     btn.className = 'header-user guest'
     btn.textContent = '登录 / 注册'
     btn.onclick = function() { openLogin() }
   }
+}
+
+// ===== NICKNAME =====
+function showNicknameDialog(user) {
+  window._nicknameUser = user
+  document.getElementById('nicknameOverlay').style.display = 'flex'
+  var prefix = user.email ? user.email.split('@')[0] : '用户'
+  var existing = localStorage.getItem('SUPABASE_NICKNAME')
+  document.getElementById('nicknameInput').value = existing || prefix
+  document.getElementById('nicknameMsg').textContent = ''
+  document.getElementById('nicknameMsg').className = 'nickname-msg'
+  document.getElementById('nicknameConfirmBtn').disabled = false
+  document.getElementById('nicknameConfirmBtn').textContent = '确定'
+}
+function closeNicknameDialog() {
+  document.getElementById('nicknameOverlay').style.display = 'none'
+}
+function fillRandomNickname() {
+  var adj = ['聪明的','理性的','耐心的','冷静的','睿智的','稳健的','专注的','远见的','坚定的','勤劳的']
+  var nouns = ['投资者','分析家','价值派','现金流','复利者','长期派','雪球家','研究员','巴韭特']
+  document.getElementById('nicknameInput').value = adj[Math.floor(Math.random()*adj.length)] + nouns[Math.floor(Math.random()*nouns.length)]
+  document.getElementById('nicknameMsg').textContent = ''
+}
+function saveNickname() {
+  var input = document.getElementById('nicknameInput')
+  var msg = document.getElementById('nicknameMsg')
+  var nick = input.value.trim()
+  if (nick.length < 2 || nick.length > 12) { msg.textContent = '昵称需2-12个字符'; return }
+  var bad = ['admin','root','系统','管理','客服','fuck','shit','管理员','客服']
+  for (var i = 0; i < bad.length; i++) { if (nick.toLowerCase().indexOf(bad[i]) >= 0) { msg.textContent = '包含敏感词'; return } }
+  var user = window._nicknameUser
+  if (!user) return
+  var btn = document.getElementById('nicknameConfirmBtn')
+  btn.disabled = true; btn.textContent = '保存中...'
+  getSupabase().from('profiles').select('id').eq('nickname', nick).maybeSingle().then(function(res) {
+    if (res.data && res.data.id !== user.id) {
+      msg.textContent = '该昵称已被使用'; btn.disabled = false; btn.textContent = '确定'; return
+    }
+    var token = localStorage.getItem('SUPABASE_TOKEN');
+    if (!token) { msg.textContent = '请重新登录'; btn.disabled = false; btn.textContent = '确定'; return }
+    var doUpdate = function() {
+      fetch(SUPABASE_URL + '/rest/v1/profiles?id=eq.' + user.id, {
+        method: 'PATCH',
+        headers: {'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json', 'Prefer': 'return=minimal'},
+        body: JSON.stringify({nickname: nick, updated_at: new Date().toISOString()})
+      }).then(function(r) {
+        if (r.status === 404 || r.status === 406) {
+          // Row doesn't exist, insert
+          fetch(SUPABASE_URL + '/rest/v1/profiles', {
+            method: 'POST',
+            headers: {'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json'},
+            body: JSON.stringify({id: user.id, nickname: nick})
+          }).then(function(r2) {
+            if (!r2.ok) { msg.textContent = '保存失败'; btn.disabled = false; btn.textContent = '确定'; return }
+            saved()
+          })
+        } else if (!r.ok) {
+          msg.textContent = '保存失败'; btn.disabled = false; btn.textContent = '确定'
+        } else {
+          saved()
+        }
+      })
+    }
+    var saved = function() {
+      localStorage.setItem('SUPABASE_NICKNAME', nick)
+      closeNicknameDialog()
+      getSupabase().from('comments').update({author_name: nick}).eq('user_id', user.id).then(function(){})
+      updateHeaderBtn()
+    }
+    doUpdate()
+  })
+}
+function checkNickname() {
+  var user = getStoredUser()
+  if (!user) return
+  var cached = localStorage.getItem('SUPABASE_NICKNAME')
+  if (cached) return
+  getSupabase().from('profiles').select('nickname').eq('id', user.id).maybeSingle().then(function(res) {
+    if (res.data && res.data.nickname) {
+      localStorage.setItem('SUPABASE_NICKNAME', res.data.nickname)
+      updateHeaderBtn()
+    } else {
+      showNicknameDialog(user)
+    }
+  })
+}
+
+// ===== NICKNAME =====
+function showNicknameDialog(user) {
+  window._nicknameUser = user
+  document.getElementById('nicknameOverlay').style.display = 'flex'
+  var prefix = user.email ? user.email.split('@')[0] : '用户'
+  var existing = localStorage.getItem('SUPABASE_NICKNAME')
+  document.getElementById('nicknameInput').value = existing || prefix
+  document.getElementById('nicknameMsg').textContent = ''
+  document.getElementById('nicknameMsg').className = 'nickname-msg'
+  document.getElementById('nicknameConfirmBtn').disabled = false
+  document.getElementById('nicknameConfirmBtn').textContent = '确定'
+}
+function closeNicknameDialog() {
+  document.getElementById('nicknameOverlay').style.display = 'none'
+}
+function fillRandomNickname() {
+  var adj = ['聪明的','理性的','耐心的','冷静的','睿智的','稳健的','专注的','远见的','坚定的','细致的']
+  var nouns = ['投资者','分析家','价值派','现金流','复利者','长期派','雪球家','研究员']
+  document.getElementById('nicknameInput').value = adj[Math.floor(Math.random()*adj.length)] + nouns[Math.floor(Math.random()*nouns.length)]
+  document.getElementById('nicknameMsg').textContent = ''
+}
+function saveNickname() {
+  var input = document.getElementById('nicknameInput')
+  var msg = document.getElementById('nicknameMsg')
+  var nick = input.value.trim()
+  if (nick.length < 2 || nick.length > 12) { msg.textContent = '昵称需2-12个字符'; return }
+  var bad = ['admin','root','系统','管理','客服','fuck','shit','管理员','版主']
+  for (var i = 0; i < bad.length; i++) { if (nick.toLowerCase().indexOf(bad[i]) >= 0) { msg.textContent = '包含敏感词'; return } }
+  var user = window._nicknameUser
+  if (!user) return
+  // Check 7-day cooldown
+  var lastChange = localStorage.getItem('NICKNAME_CHANGED_AT')
+  if (lastChange) {
+    var daysPassed = (Date.now() - parseInt(lastChange)) / 86400000
+    if (daysPassed < 7 && localStorage.getItem('SUPABASE_NICKNAME')) {
+      var remaining = Math.ceil(7 - daysPassed)
+      msg.textContent = '每7天可修改一次，还需等待' + remaining + '天'
+      document.getElementById('nicknameConfirmBtn').disabled = false
+      document.getElementById('nicknameConfirmBtn').textContent = '确定'
+      return
+    }
+  }
+  var btn = document.getElementById('nicknameConfirmBtn')
+  btn.disabled = true; btn.textContent = '检查中...'
+  // Check uniqueness
+  getSupabase().from('profiles').select('id').eq('nickname', nick).maybeSingle().then(function(res) {
+    if (res.error) { msg.textContent = '检查失败'; btn.disabled = false; btn.textContent = '确定'; return }
+    if (res.data && res.data.id !== user.id) { msg.textContent = '该昵称已被使用'; btn.disabled = false; btn.textContent = '确定'; return }
+    btn.textContent = '保存中...'
+    // Save to profiles (upsert: insert if new, update if exists)
+    getSupabase().from('profiles').upsert({id: user.id, nickname: nick}, {onConflict: 'id'}).then(function(r) {
+      btn.disabled = false; btn.textContent = '确定'
+      if (r.error) { msg.textContent = '保存失败'; return }
+      localStorage.setItem('SUPABASE_NICKNAME', nick)
+      localStorage.setItem('NICKNAME_CHANGED_AT', String(Date.now()))
+      // Sync all historical comments
+      getSupabase().from('comments').update({author_name: nick}).eq('user_id', user.id).then(function(){})
+      closeNicknameDialog()
+      updateHeaderBtn()
+    })
+  })
+}
+function checkNickname() {
+  var user = getStoredUser()
+  if (!user) return
+  if (localStorage.getItem('SUPABASE_NICKNAME')) return
+  getSupabase().from('profiles').select('nickname').eq('id', user.id).maybeSingle().then(function(res) {
+    if (res.data && res.data.nickname) {
+      localStorage.setItem('SUPABASE_NICKNAME', res.data.nickname)
+      updateHeaderBtn()
+    } else {
+      showNicknameDialog(user)
+    }
+  })
 }
 
 // ===== LOGIN MODAL =====
@@ -1367,11 +1543,11 @@ function setOtpMsg(msg, isError) {
 function showUserMenu() {
   var user = getStoredUser()
   if (!user) return
-  if (confirm('设置密码后可直接用邮箱+密码登录，不再需要邮件验证。\n\n确定 → 设置密码\n取消 → 退出登录')) {
-    showSetPwd()
-  } else {
-    logout()
-  }
+  var nick = localStorage.getItem('SUPABASE_NICKNAME') || user.email.split('@')[0]
+  var choice = prompt('已登录: ' + user.email + '\n昵称: ' + nick + '\n\n1 - 修改昵称\n2 - 设置密码\n3 - 退出登录\n\n输入数字：')
+  if (choice === '1') showNicknameDialog(user)
+  else if (choice === '2') showSetPwd()
+  else if (choice === '3') logout()
 }
 
 function showSetPwd() {
@@ -1551,11 +1727,12 @@ function submitComment(path) {
   var user = getStoredUser();
   if (!user || !user.email) { alert('请先登录'); return; }
   var btn = input.parentElement.querySelector('.comment-submit');
+  var nick = localStorage.getItem('SUPABASE_NICKNAME') || (user.user_metadata && user.user_metadata.name ? user.user_metadata.name : user.email.split('@')[0]);
   btn.textContent = '发表中...';
   btn.disabled = true;
   getSupabase().from('comments').insert({
     user_id: user.id,
-    author_name: user.user_metadata && user.user_metadata.name ? user.user_metadata.name : user.email.split('@')[0],
+    author_name: nick,
     content: input.value.trim(),
     path: path
   }).then(function(res) {
@@ -1578,11 +1755,12 @@ function submitReply(parentId, path) {
   var user = getStoredUser();
   if (!user || !user.email) { alert('请先登录'); return; }
   var btn = input.parentElement.querySelector('.comment-submit');
+  var nick = localStorage.getItem('SUPABASE_NICKNAME') || (user.user_metadata && user.user_metadata.name ? user.user_metadata.name : user.email.split('@')[0]);
   btn.textContent = '回复中...';
   btn.disabled = true;
   getSupabase().from('comments').insert({
     user_id: user.id,
-    author_name: user.user_metadata && user.user_metadata.name ? user.user_metadata.name : user.email.split('@')[0],
+    author_name: nick,
     content: input.value.trim(),
     path: path,
     parent_id: parentId
@@ -1602,6 +1780,7 @@ try {
     if (event === 'SIGNED_IN' && session) {
       localStorage.setItem('SUPABASE_USER', JSON.stringify(session.user));
       updateHeaderBtn();
+      setTimeout(function() { checkNickname(); }, 500);
     } else if (event === 'SIGNED_OUT') {
       localStorage.removeItem('SUPABASE_USER');
       updateHeaderBtn();
@@ -1610,6 +1789,7 @@ try {
   getSupabase().auth.getSession().then(function(res) {
     if (res.data && res.data.session) {
       localStorage.setItem('SUPABASE_USER', JSON.stringify(res.data.session.user));
+      localStorage.setItem('SUPABASE_TOKEN', res.data.session.access_token);
     }
     updateHeaderBtn();
   });
@@ -1623,10 +1803,14 @@ function submitFeedback() {
   var msg = document.getElementById('feedbackMsg');
   btn.disabled = true;
   btn.textContent = '提交中...';
+  var body = {content: input.value.trim()};
+  var user = getStoredUser();
+  var nick = user && localStorage.getItem('SUPABASE_NICKNAME');
+  if (nick) body.nickname = nick;
   fetch(SUPABASE_URL + '/rest/v1/feedback', {
     method: 'POST',
     headers: {'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + SUPABASE_ANON_KEY, 'Content-Type': 'application/json'},
-    body: JSON.stringify({content: input.value.trim()})
+    body: JSON.stringify(body)
   }).then(function(r) {
     if (!r.ok) throw new Error();
     input.value = '';
@@ -1644,8 +1828,22 @@ document.addEventListener('DOMContentLoaded', () => {
   updateHeaderBtn()
   renderCatalog()
   renderBooks()
+  setTimeout(function() { checkNickname(); }, 500)
 })
 </script>
+<!-- ===== NICKNAME DIALOG ===== -->
+<div class="nickname-overlay" id="nicknameOverlay" onclick="if(event.target===this)closeNicknameDialog()">
+  <div class="nickname-card">
+    <h3>🎭 设置昵称</h3>
+    <p class="sub">设置后将在评论中显示此昵称，可随时修改</p>
+    <div class="nickname-row">
+      <input type="text" id="nicknameInput" maxlength="12" placeholder="2-12个字符" autocomplete="off">
+      <button class="nickname-random-btn" onclick="fillRandomNickname()" title="随机生成">🎲</button>
+    </div>
+    <div class="nickname-msg" id="nicknameMsg"></div>
+    <button class="nickname-confirm-btn" id="nicknameConfirmBtn" onclick="saveNickname()">确定</button>
+  </div>
+</div>
 <!-- ===== LOGIN MODAL ===== -->
 <div class="login-overlay" id="loginOverlay" onclick="if(event.target===this)closeLoginModal()">
   <div class="login-modal">
