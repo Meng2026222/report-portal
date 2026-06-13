@@ -67,9 +67,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 .cp .vl{width:48px;text-align:right;font-weight:bold;flex-shrink:0}
 .footer{text-align:center;font-size:10px;color:#555;margin:24px 0 10px;padding-top:14px;border-top:1px solid #1e1e3a;line-height:1.8}
 .sticky-top{position:sticky;top:0;z-index:10;background:#0a0a1a;padding:8px 0;border-bottom:1px solid #1e1e3a;margin-bottom:12px}
-.toc{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
-.toc a{font-size:11px;color:#888;text-decoration:none;padding:3px 8px;border-radius:12px;border:1px solid #333}
-.toc a:active{background:#1e1e3a;color:#f0c040}
+.toc{display:flex;flex-wrap:nowrap;gap:4px;justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:4px 2px;scrollbar-width:none}
+.toc::-webkit-scrollbar{display:none}
+.toc a{font-size:10px;color:#888;text-decoration:none;padding:3px 7px;border-radius:10px;border:1px solid #333;white-space:nowrap;flex-shrink:0}
+.toc a:active{background:#1e1e3a;color:#4caf50}
 </style>
 </head>
 <body>
@@ -100,7 +101,6 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="desc">上市以来市值变化（不复权收盘价 × 总股本）· 鼠标滚轮缩放 · 拖拽平移 · <span style="color:#888;font-size:11px;">每周五17:00更新</span></div>
 
   <div class="mcap-btns">
-    <button class="mcap-btn active" data-period="day">日线</button>
     <button class="mcap-btn" data-period="week">周线</button>
     <button class="mcap-btn" data-period="month">月线</button>
     <button class="mcap-btn" data-period="year">年线</button>
