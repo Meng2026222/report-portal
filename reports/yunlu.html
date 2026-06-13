@@ -68,7 +68,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 .toc::-webkit-scrollbar{display:none}
 .toc a{font-size:10px;color:#888;text-decoration:none;padding:3px 7px;border-radius:10px;border:1px solid #333;white-space:nowrap;flex-shrink:0}
 .toc a:active{background:#1e1e3a;color:#4caf50}
-</style>
+
+/* ===== TABLE CONSTRAINT ===== */
+.card table{width:100%}
+table{overflow-x:hidden;word-break:break-word}</style>
 </head>
 <body>
 
@@ -480,10 +483,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 </script>
 <!-- ========== s1: 综合评价 ========== -->
 
-<div id="s-financial" class="card" style="overflow-x:auto;margin-top:16px">
+<div id="s-financial" class="card" style="margin-top:16px">
   <h2>历年财务数据</h2>
   <div class="desc">最近10年财务指标 · <span style="color:#4caf50">绿色=增长&gt;30%</span> · <span style="color:#f0a030">橙色=连续下滑</span> · <span style="color:#e74c3c">红色=负值/下滑&gt;20%</span></div>
-  <style>  .fin-table{width:100%;border-collapse:collapse;font-size:11px;min-width:900px}
+  <style>  .fin-table{width:100%;border-collapse:collapse;font-size:11px}
   .fin-table th{background:#1e1e3a;color:#f0c040;padding:7px 5px;text-align:center;font-weight:500;white-space:nowrap}
   .fin-table td{padding:6px 5px;text-align:center;border-bottom:1px solid #1e1e3a;white-space:nowrap}
   .fin-table tr:hover td{background:#1a1a3a}
