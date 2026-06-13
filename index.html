@@ -454,7 +454,7 @@ html{scroll-behavior:smooth}
     <div class="search-hint"><kbd>Ctrl+K</kbd> 快速搜索</div>
   </div>
   <div class="catalog" id="catalog">
-    <div id="catalogHeader"><h2>📂 企业研究报告</h2></div>
+    <div id="catalogHeader"><h2>📂 企业投资研究报告</h2></div>
     <div class="card-grid" id="cardGrid"></div>
     <div id="noResults" style="display:none;text-align:center;padding:40px 16px">
       <div style="font-size:36px;margin-bottom:10px">🔍</div>
@@ -886,7 +886,7 @@ function renderCatalog(query) {
     return `<div class="card" onclick="openReport('${c.id}')"><div class="card-row"><div class="card-score"><svg class="card-score-ring" viewBox="0 0 36 36"><path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--b1)" stroke-width="3"/><path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="${c.color}" stroke-width="3" stroke-dasharray="${deg}, 360" stroke-linecap="round"/></svg><div class="card-score-inner"><div class="card-score-num" style="color:${c.color}">${c.score}</div><div class="card-score-label">/${c.scoreMax}</div></div></div><div class="card-info"><div class="card-name">${c.name}</div><div class="card-name-en">${c.nameEn}</div><div class="card-desc">${c.industry}</div><div class="card-tags">${tagsHTML}</div><div class="card-metrics">${metHTML}</div></div></div></div>`
   }).join('')
   noRes.style.display = filtered.length===0?'block':'none'
-  hdr.innerHTML = query ? `<h2>📂 搜索结果 · 共 <span style="color:var(--accent)">${filtered.length}</span> 篇匹配</h2>` : `<h2>📂 企业研究报告 · 共 <span style="color:var(--m2)">${COMPANIES.length}</span> 篇</h2>`
+  hdr.innerHTML = query ? `<h2>📂 搜索结果 · 共 <span style="color:var(--accent)">${filtered.length}</span> 篇匹配</h2>` : `<h2>📂 企业投资研究报告 · 共 <span style="color:var(--m2)">${COMPANIES.length}</span> 篇</h2>`
 }
 
 function onSearch(val) { searchQuery=val; document.getElementById('searchClear').classList.toggle('visible',val.length>0); renderCatalog(val) }
