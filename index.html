@@ -1311,10 +1311,9 @@ function saveNickname() {
     if (res.data && res.data.id !== user.id) {
       msg.textContent = '该昵称已被使用'; btn.disabled = false; btn.textContent = '确定'; return
     }
-    getSupabase().auth.getSession().then(function(sess) {
-      var token = sess.data && sess.data.session ? sess.data.session.access_token : null;
-      if (!token) { msg.textContent = '请重新登录'; btn.disabled = false; btn.textContent = '确定'; return }
-      fetch(SUPABASE_URL + '/rest/v1/profiles', {
+    var token = localStorage.getItem('SUPABASE_TOKEN');
+    if (!token) { msg.textContent = '请重新登录'; btn.disabled = false; btn.textContent = '确定'; return }
+    fetch(SUPABASE_URL + '/rest/v1/profiles', {
         method: 'POST',
         headers: {'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json', 'Prefer': 'resolution=merge-duplicates'},
         body: JSON.stringify({id: user.id, nickname: nick, updated_at: new Date().toISOString()})
@@ -1689,6 +1688,7 @@ try {
   getSupabase().auth.onAuthStateChange(function(event, session) {
     if (event === 'SIGNED_IN' && session) {
       localStorage.setItem('SUPABASE_USER', JSON.stringify(session.user));
+      localStorage.setItem('SUPABASE_TOKEN', session.access_token);
       updateHeaderBtn();
       setTimeout(function() { checkNickname(); }, 300);
     } else if (event === 'SIGNED_OUT') {
