@@ -24,6 +24,13 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 .dim-fill{height:100%;border-radius:5px}
 .dim-sc{width:28px;text-align:right;font-size:12px;font-weight:bold;flex-shrink:0}
 .c9{background:#4caf50}.c7{background:#8bc34a}.c6{background:#ffc107}
+
+html{scroll-behavior:smooth}
+[id^="s"]{scroll-margin-top:70px}
+.back-top{position:fixed;right:16px;bottom:16px;width:40px;height:40px;border-radius:50%;background:#f0c040;color:#000;border:none;font-size:18px;cursor:pointer;opacity:.7;transition:.3s;z-index:99;line-height:40px;text-align:center;padding:0}
+.back-top:hover{opacity:1}
+.tbl-wrap{overflow-x:auto;margin:8px 0}
+.tbl{min-width:600px}
 .tbl{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}
 .tbl th{background:#1e1e3a;color:#f0c040;padding:7px 5px;text-align:center;font-weight:500}
 .tbl td{padding:6px 5px;text-align:center;border-bottom:1px solid #1e1e3a}
@@ -351,12 +358,12 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="txt">评级理由：招商银行是中国零售银行绝对龙头，被誉为"零售之王"，以卓越的零售客户基础、领先的财富管理能力、低成本的活期存款（活期占比超60%）和低于行业平均的不良率著称。2025年营收约3,398亿元，同比下降约4.1%，归母净利润约1,484亿元，同比微降约1.7%，整体处于L型筑底阶段。2026年Q1营收约940亿元同比微降1.2%，净利约460亿元同比持平。核心看点在于：中国最大零售银行网络带来的低成本负债护城河、招行App月活过亿的数字化领先优势、大财富管理战略下的中间业务收入潜力、以及极低的信用成本。需警惕存量房贷利率重定价对净息差的持续压力、地方政府化债对资产质量的影响、以及宏观经济下行对财富管理增速的制约。</div>
 
   <h3>2. 风险等级：中</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>风险类别</th><th>等级</th><th>说明</th></tr>
     <tr><td>净息差风险</td><td><span class="orange">中高</span></td><td style="text-align:left;font-size:11px;">净息差从2021年2.48%降至2025年约2.04%，LPR持续下行+存量房贷重定价，仍有压力</td></tr>
     <tr><td>资产质量风险</td><td><span class="green">中低</span></td><td style="text-align:left;font-size:11px;">不良率0.95%，拨备覆盖率约420%，远高于行业平均水平（约180%）</td></tr>
     <tr><td>盈利增长风险</td><td><span class="green">中低</span></td><td style="text-align:left;font-size:11px;">ROE回升至15.8%，利润增速有所恢复，财富管理中收逐步修复</td></tr>
-  </table>
+  </table></div>
 
   <h3>3. 核心结论（一句话逻辑）</h3>
   <div class="bq">"招商银行凭借中国最大的零售客户基础（超2亿零售客户）、超60%活期存款占比带来的极低负债成本、以及420%拨备覆盖率构筑的极致资产质量安全垫，是中国商业银行中最具护城河的标的。2025年营收3,398亿、净利1,484亿在息差持续压缩背景下保持韧性。零售AUM突破14万亿、招行App月活超1.2亿体现数字化壁垒。但净息差处于2.04%且仍有下行压力、ROE回升至15.8%、以及中间业务收入受资本市场疲弱拖累，反映了银行业整体承压的大环境。公司处于'高护城河+低增长'的价值股定位，需密切关注净息差拐点和财富管理修复节奏。"</div>
@@ -391,7 +398,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="txt">中国零售银行绝对龙头——招商银行是中国最大的股份制商业银行，核心定位为"零售之王"，以庞大的零售客户基础（超2亿户）和精细化财富管理能力构筑差异化竞争壁垒。公司通过"一体两翼"战略（零售金融为主体，公司金融和同业金融为两翼），以低成本的活期存款为根基，以财富管理、信用卡、私人银行为核心利润引擎，是中国商业银行中转型最成功的标杆。</div>
 
   <h3>年度财务摘要（亿元）</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>年份</th><th>营收</th><th>YoY</th><th>归母净利</th><th>净利率</th><th>ROE</th></tr>
     <tr><td>2020</td><td>2,904</td><td class="green">+7.7%</td><td>973.4</td><td>33.5%</td><td>15.7%</td></tr>
     <tr><td>2021</td><td>3,312</td><td class="green">+14.0%</td><td>1,199</td><td class="green">36.2%</td><td class="green">18.7%</td></tr>
@@ -399,7 +406,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     <tr><td>2023</td><td>3,391</td><td>-1.6%</td><td>1,467</td><td>43.3%</td><td>14.6%</td></tr>
     <tr><td>2024</td><td>3,545</td><td>+4.5%</td><td>1,510</td><td>42.6%</td><td>13.1%</td></tr>
     <tr><td class="gold">2025</td><td class="gold">3,398</td><td>-4.1%</td><td class="gold">1,484</td><td>43.7%</td><td>15.8%</td></tr>
-  </table>
+  </table></div>
   <div class="desc" style="margin-top:6px;">备注：2021年是净息差高位+财富管理爆发年，营收增速达14%为近年来峰值。此后净息差从2.48%一路下滑至约2.04%，利息净收入承压明显。2024年营收增速反弹至4.5%主要来自债券投资收益贡献（债牛行情）。2026年Q1营收940亿（-1.2%），净利约460亿（+0.5%），息差企稳。</div>
 
   <h3>分业务收入结构（2025年）</h3>
@@ -409,7 +416,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="hb"><span class="hl">投资收益</span><div class="ht"><div class="hf" style="width:8%;background:linear-gradient(90deg,#ff9800,#e65100);"></div></div><span class="hv">≈8% · 约285亿</span></div>
   <div class="hb"><span class="hl">其他非息</span><div class="ht"><div class="hf" style="width:6%;background:#555;"></div></div><span class="hv">≈6% · 约215亿</span></div>
 
-  <table class="tbl" style="margin-top:10px;">
+  <div class="tbl-wrap"><table class="tbl" style="margin-top:10px;">
     <tr><th>业务线</th><th>收入</th><th>占比</th><th>趋势</th><th>利润率</th></tr>
     <tr><td>零售银行业务</td><td>约1,850亿</td><td>约52%</td><td>→ 稳健</td><td class="green">极高（低成本负债）</td></tr>
     <tr><td>公司银行业务</td><td>约1,100亿</td><td>约31%</td><td>→ 平稳</td><td>中等</td></tr>
@@ -417,16 +424,16 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     <tr><td>财富管理</td><td>约570亿</td><td>约16%</td><td class="red">↓ 承压</td><td class="green">极高（纯中收）</td></tr>
     <tr><td>信用卡</td><td>约200亿</td><td>约6%</td><td>→ 恢复</td><td>中等</td></tr>
     <tr><td>私人银行</td><td>约180亿</td><td>约5%</td><td class="green">↑ 增长</td><td class="green">极高</td></tr>
-  </table>
+  </table></div>
 
   <h3>商业模式评估</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>维度</th><th>评估</th><th>证据</th></tr>
     <tr><td>核心定位</td><td class="gold">零售银行龙头</td><td style="text-align:left;font-size:11px;">零售客户超2亿，零售AUM超14万亿，月活跃用户超1.2亿</td></tr>
     <tr><td>盈利模式</td><td class="gold">低成本负债+财富管理</td><td style="text-align:left;font-size:11px;">活期存款占比超60%，计息负债成本率约1.6%，行业最低之一</td></tr>
     <tr><td>增长引擎</td><td class="green">中收+零售AUM扩张</td><td style="text-align:left;font-size:11px;">大财富管理战略推动中收占比提升，目标30%+</td></tr>
     <tr><td>现金流模式</td><td class="green">稳定息差+中收双轮</td><td style="text-align:left;font-size:11px;">经营现金流充足，核心一级资本充足率约14%</td></tr>
-  </table>
+  </table></div>
 
   <div class="bq">
     <b>核心结论：</b><br>
@@ -498,13 +505,13 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h2>M3 管理层分析</h2>
 
   <h3>管理层基本信息</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>姓名</th><th>职务</th><th>任职年限</th><th>专业背景</th></tr>
     <tr><td>缪建民</td><td>董事长</td><td>4年（2022.5上任）</td><td>原中国人寿董事长，大型金融集团管理经验丰富</td></tr>
     <tr><td>王良</td><td>行长</td><td>4年（2022.6上任）</td><td>招行内部培养，曾任副行长兼财务负责人</td></tr>
     <tr><td>彭家文</td><td>副行长兼CFO</td><td>—</td><td>—</td></tr>
     <tr><td>李德林</td><td>副行长</td><td>—</td><td>—</td></tr>
-  </table>
+  </table></div>
   <div class="txt" style="font-size:12px;">缪建民+王良组合是2022年田惠宇事件后的稳定过渡模式。王良为招行内部培养30年的老将，深谙招行零售文化和运营体系。管理层整体风格从田惠宇时代的激进创新转向稳健务实，强调"价值创造"和"质量优先"。招商局集团作为大股东（持股约30%）给予管理层相对充分的自主权。</div>
 
   <h3>管理层能力评估</h3>
@@ -535,17 +542,17 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h2>M4 财务复盘 & 资本配置</h2>
 
   <h3>核心财务指标</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
     <tr><td>营收（亿）</td><td>3,312</td><td>3,447</td><td>3,391</td><td>3,545</td><td class="gold">3,398</td><td>→ 微降</td></tr>
     <tr><td>净利（亿）</td><td>1,199</td><td>1,380</td><td>1,467</td><td>1,510</td><td class="gold">1,484</td><td class="green">↑ 缓增</td></tr>
     <tr><td>净息差</td><td>2.48%</td><td>2.28%</td><td>2.10%</td><td>1.88%</td><td>2.04%</td><td class="green">→ 企稳</td></tr>
     <tr><td>非息收入占比</td><td>41.5%</td><td>37.8%</td><td>36.2%</td><td>38.5%</td><td>37.3%</td><td>→ 波动</td></tr>
     <tr><td>ROE</td><td class="green">18.7%</td><td>17.1%</td><td>14.6%</td><td>13.1%</td><td class="green">15.8%</td><td class="green">↑ 回升</td></tr>
-  </table>
+  </table></div>
 
   <h3>资产负债质量</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>指标</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
     <tr><td>总资产</td><td>11.1万亿</td><td>11.7万亿</td><td class="gold">12.2万亿</td><td class="green">↑ 稳步扩张</td></tr>
     <tr><td>贷款总额</td><td>6.5万亿</td><td>6.9万亿</td><td class="gold">7.2万亿</td><td class="green">↑</td></tr>
@@ -553,24 +560,24 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     <tr><td class="gold">拨备覆盖率</td><td class="gold">438%</td><td class="gold">425%</td><td class="gold">420%</td><td>→ 高位</td></tr>
     <tr><td>核心一级资本充足率</td><td>13.7%</td><td>14.1%</td><td>14.3%</td><td class="green">↑</td></tr>
     <tr><td>活期存款占比</td><td>62%</td><td>61%</td><td>60.5%</td><td>→ 略有下降</td></tr>
-  </table>
+  </table></div>
 
   <h3>费用结构</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>费用项</th><th>2025年规模</th><th>趋势</th></tr>
     <tr><td>业务及管理费</td><td>约1,100亿</td><td class="green">↑ 成本收入比约30.8%，行业领先</td></tr>
     <tr><td>信用减值损失</td><td>约520亿</td><td>→ 信用成本约0.72%，远低于行业平均</td></tr>
     <tr><td>科技投入</td><td>约140亿</td><td class="green">↑ 约占营收4%，持续加大数字化投入</td></tr>
     <tr><td>员工费用</td><td>约650亿</td><td>→ 员工约12万人，人均创收约300万</td></tr>
-  </table>
+  </table></div>
 
   <h3>杜邦分析（ROE拆解）</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>年份</th><th>ROE</th><th>净利率</th><th>资产周转率</th><th>权益乘数</th><th>驱动因子</th></tr>
     <tr><td>2021</td><td class="green">18.7%</td><td>36.2%</td><td>3.2%</td><td>16.0x</td><td>⭐ 高息差+高周转</td></tr>
     <tr><td>2023</td><td>14.6%</td><td>43.3%</td><td>3.1%</td><td>14.7x</td><td>净利率升但周转率降</td></tr>
     <tr><td>2025</td><td class="green">15.8%</td><td>43.7%</td><td>3.0%</td><td>14.0x</td><td>ROE回升</td></tr>
-  </table>
+  </table></div>
 
   <h3>关键指标卡</h3>
   <div class="mg">
@@ -602,12 +609,12 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="desc" style="margin-top:6px;">📌 招行负债成本优势约20-80bp，且活期存款占比60%+的结构全行业最优</div>
 
   <h3>息差敏感性</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>情景</th><th>净息差</th><th>利息净收入影响</th><th>净利润影响</th></tr>
     <tr><td class="green">乐观（利率企稳）</td><td>1.85%</td><td>+60亿</td><td>+45亿</td></tr>
     <tr><td class="gold">基准</td><td>2.04%</td><td>—</td><td>—</td></tr>
     <tr><td class="red">悲观（继续降息）</td><td>1.55%</td><td>-250亿</td><td>-190亿</td></tr>
-  </table>
+  </table></div>
 
   <div class="bq">
     <b>核心结论：</b><br>
@@ -622,13 +629,13 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h2>M6 FCF效率 & 估值</h2>
 
   <h3>估值指标</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>指标</th><th>当前值</th><th>历史区间</th><th>评估</th></tr>
     <tr><td>PB(MRQ)</td><td class="gold">约0.75倍</td><td>0.6-2.2倍</td><td class="green">偏低（近10年低位）</td></tr>
     <tr><td>PE(TTM)</td><td>约6.5倍</td><td>5-15倍</td><td class="green">偏低</td></tr>
     <tr><td>PE(2026E)</td><td>约6.2倍</td><td>—</td><td class="green">偏低</td></tr>
     <tr><td>股息率</td><td class="gold">约5.8%</td><td>2.5-6.5%</td><td class="green">历史高位</td></tr>
-  </table>
+  </table></div>
   <div class="txt">当前市值约9,500亿元，PB约0.75倍、PE约6.5倍。机构预测2026年归母净利润约1,550-1,580亿元，对应PE约6.0-6.2倍。</div>
 
   <h3>A股银行PB对比</h3>
@@ -659,13 +666,13 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h2>M7 增量市占率 & 行业终局</h2>
 
   <h3>行业空间</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>市场</th><th>规模（2025E）</th><th>增速</th><th>招行占比</th><th>趋势</th></tr>
     <tr><td>零售银行市场</td><td>约40万亿（存款）</td><td>+8-10%</td><td class="gold">≈5.5%</td><td>→ 稳定</td></tr>
     <tr><td>财富管理市场</td><td>约200万亿（AUM）</td><td>+10-12%</td><td>≈7.0%</td><td class="green">↑ 提升</td></tr>
     <tr><td>私人银行市场</td><td>约80万亿</td><td>+12%</td><td>≈5.0%</td><td class="green">↑ 提升</td></tr>
     <tr><td>信用卡市场</td><td>约7万亿（余额）</td><td>+5-8%</td><td>≈6.0%</td><td>→ 稳定</td></tr>
-  </table>
+  </table></div>
 
   <div class="mg" style="margin-top:10px;">
     <div class="mi"><div class="mv gold">5.5%</div><div class="ml">零售存款市占率</div></div>
@@ -675,13 +682,13 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   </div>
 
   <h3>竞争态势</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>竞争对手</th><th>竞争维度</th><th>招行相对优劣</th></tr>
     <tr><td>工商银行</td><td>规模/网点</td><td class="green">零售品牌更强、活期占比更高、AUM质量更优</td></tr>
     <tr><td>平安银行</td><td>零售转型</td><td class="green">招行零售底蕴更深、综合金融生态不如平安但在银行端更专业</td></tr>
     <tr><td>微众银行</td><td>互联网零售</td><td>招行线下+线上融合更完善，但微众在便捷性上有差异化优势</td></tr>
     <tr><td>蚂蚁集团</td><td>支付/理财</td><td class="green">招行在高端客户和中收方面有显著优势</td></tr>
-  </table>
+  </table></div>
 
   <h3>行业终局思考</h3>
   <div class="txt">中国银行业正处于利率市场化深水区，净息差持续压缩是行业性趋势。在此环境下，"低成本负债+中间业务"的零售银行模式具备穿越周期的能力。行业终局大概率呈现"两极分化"格局：拥有强大零售客户基础和低成本负债的银行（招商、四大行）在息差压缩中依然能维持合理盈利，而批发型、高负债成本的银行将面临更大的生存压力。招行的零售AUM市占率有望从7%提升至10%+。</div>
@@ -698,14 +705,14 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h2>M8 三年资本计划 & 催化剂</h2>
 
   <h3>催化剂时间表</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>时间</th><th>事件</th><th>预期影响</th></tr>
     <tr><td>2026H2</td><td>LPR企稳+存量房贷重定价结束</td><td class="green">净息差降幅收窄或企稳</td></tr>
     <tr><td>2026-2027</td><td>资本市场回暖带动的财富管理中收恢复</td><td class="green">每恢复10%≈增厚中收50亿</td></tr>
     <tr><td>2027</td><td>零售AUM突破16万亿</td><td class="green">AUM增长8%+，中收规模效应显现</td></tr>
     <tr><td>2027H1</td><td>分红比例提升至35%+</td><td>股息率提升至6.5%+</td></tr>
     <tr><td>2028</td><td>数字化转型降本增效落地</td><td>成本收入比降至28%以下</td></tr>
-  </table>
+  </table></div>
 
   <h3>三年业绩预测</h3>
   <div class="scn">
@@ -714,12 +721,12 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     <div class="scc sc3"><h4>😟 悲观</h4><div class="pct">+0% CAGR</div><div class="dt">2028净利1,530亿</div></div>
   </div>
 
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>情景</th><th>2026E</th><th>2027E</th><th>2028E</th><th>净息差</th></tr>
     <tr><td class="green">乐观</td><td>净利1,600亿</td><td>1,720亿</td><td>1,850亿</td><td>1.85→1.90%</td></tr>
     <tr><td class="gold">基准</td><td>净利1,560亿</td><td>1,620亿</td><td>1,680亿</td><td>2.00→2.04%</td></tr>
     <tr><td class="red">悲观</td><td>净利1,530亿</td><td>1,530亿</td><td>1,530亿</td><td>1.55→1.50%</td></tr>
-  </table>
+  </table></div>
 
   <div class="bq">
     <b>核心结论：</b><br>
@@ -732,7 +739,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 <div id="s10" class="card">
   <h2>M9 预期差 & 市场共识</h2>
 
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>议题</th><th>市场共识</th><th>独立判断</th><th>方向</th></tr>
     <tr>
       <td>净息差</td>
@@ -764,7 +771,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
       <td style="color:#4caf50;">中收恢复后有望企稳在12-13%</td>
       <td><span class="tg tgo">中性</span></td>
     </tr>
-  </table>
+  </table></div>
 
   <div class="bq">
     <b>关键解读：</b><br>
@@ -780,23 +787,23 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="desc">假设3年后亏损30%，最可能的原因：</div>
 
   <h3>风险类型</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>风险类型</th><th>描述</th><th>概率</th><th>预警信号</th></tr>
     <tr><td>净息差持续收缩</td><td>净息差跌破1.50%，利息收入大幅减少</td><td><span class="orange">中高</span></td><td>季度息差环比下降超5bp</td></tr>
     <tr><td>资产质量恶化</td><td>城投/房地产不良暴露</td><td><span style="color:#ffc107;">中低</span></td><td>不良率突破1.2%</td></tr>
     <tr><td>财富管理萎缩</td><td>基金代销和理财规模持续下降</td><td><span style="color:#ffc107;">中低</span></td><td>AUM连续两季负增长</td></tr>
     <tr><td>互联网金融冲击</td><td>数字银行大量分流零售客户</td><td><span style="color:#ffc107;">中低</span></td><td>招行App月活持续下降</td></tr>
     <tr><td>宏观经济衰退</td><td>企业倒闭和失业率上升导致信用风险</td><td><span style="color:#ffc107;">中低</span></td><td>GDP增速低于3%</td></tr>
-  </table>
+  </table></div>
 
   <h3>敏感性分析</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>压力情景</th><th>净利影响</th><th>股价压力</th></tr>
     <tr><td>净息差降至1.50%</td><td>-12%</td><td class="orange">-15%</td></tr>
     <tr><td>不良率升至1.5%</td><td>-18%</td><td class="orange">-20%</td></tr>
     <tr><td>财富管理中收降30%</td><td>-8%</td><td class="orange">-10%</td></tr>
     <tr><td class="red">极端叠加</td><td class="red">-35%</td><td class="red" style="font-weight:bold;">-40%</td></tr>
-  </table>
+  </table></div>
 
   <h3>三情景估值</h3>
   <div class="scn">
@@ -806,7 +813,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   </div>
 
   <h3>避雷清单</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>检查项</th><th>结果</th></tr>
     <tr><td>不良率持续上升？</td><td><span class="tg tgg">否 ✓ 维持在0.95%以下</span></td></tr>
     <tr><td>拨备覆盖率不足？</td><td><span class="tg tgg">否 ✓ 420%远高于150%监管要求</span></td></tr>
@@ -814,20 +821,20 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     <tr><td>关联交易异常？</td><td><span class="tg tgg">否 ✓ 国企治理规范</span></td></tr>
     <tr><td>大股东高比例质押？</td><td><span class="tg tgg">否 ✓ 招商局集团持股稳定</span></td></tr>
     <tr><td>审计意见非标准？</td><td><span class="tg tgg">否 ✓ 标准无保留意见</span></td></tr>
-  </table>
+  </table></div>
   <div style="padding:10px;background:#1a3a1a;border-radius:8px;text-align:center;margin-top:8px;border:1px solid #2a5a2a;">
     <span style="color:#4caf50;">✅ 财务极度健康，资产质量安全垫极厚。主要风险在于息差压缩和宏观经济下行</span>
   </div>
 
   <h3>清算价值</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>资产项</th><th>账面价值</th><th>清算价值</th></tr>
     <tr><td>贷款（扣除拨备）</td><td>7万亿</td><td class="gold">6.3万亿</td></tr>
     <tr><td>债券投资</td><td>2.5万亿</td><td>2.3万亿</td></tr>
     <tr><td>现金及存放央行</td><td>0.8万亿</td><td>0.8万亿</td></tr>
     <tr><td>固定资产</td><td>0.2万亿</td><td>0.1万亿</td></tr>
     <tr><td class="gold">合计</td><td>约10.5万亿</td><td>约9.5万亿</td></tr>
-  </table>
+  </table></div>
   <div class="txt">清算价值约9.5万亿元，当前市值约9,500亿元。银行股的清算价值远高于市值主要来自存款负债的规模效应。</div>
 </div>
 
@@ -862,7 +869,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   </div>
 
   <h3>价值投资理论应用</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>模块</th><th>大师理念</th><th>应用分析</th></tr>
     <tr><td>M1</td><td>段永平<br>「本分」</td><td style="text-align:left;font-size:11px;">聚焦零售主业二十余年不偏离，"一体两翼"战略专注零售银行核心竞争力</td></tr>
     <tr><td>M2</td><td>巴菲特<br>「护城河」</td><td style="text-align:left;font-size:11px;">零售客户基础+低成本负债构成银行业最深护城河，4.3/5.0</td></tr>
@@ -875,21 +882,21 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     <tr><td>M9</td><td>芒格<br>「逆向思维」</td><td style="text-align:left;font-size:11px;">市场对银行股极度悲观，低估了招行差异化零售护城河的价值</td></tr>
     <tr><td>M10</td><td>芒格<br>「Pre-mortem」</td><td style="text-align:left;font-size:11px;">息差持续压缩和信用环境恶化是核心风险，但420%拨备提供安全垫</td></tr>
     <tr><td>M11</td><td>巴菲特<br>「安全边际」</td><td style="text-align:left;font-size:11px;">PB 0.75倍处于历史低位，5.8%股息率为投资提供了充足的缓冲</td></tr>
-  </table>
+  </table></div>
 </div>
 
 <div id="s13" class="card">
   <h2>附录</h2>
   
   <h3>附录A：数据来源</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>数据类型</th><th>来源平台</th><th>截止日期</th></tr>
     <tr><td>财务报表</td><td>东方财富数据中心/恒生聚源数据库</td><td>2025年报</td></tr>
     <tr><td>监管指标</td><td>招商银行年报/银保监会数据</td><td>2025年报</td></tr>
     <tr><td>估值数据</td><td>东方财富/同花顺</td><td>2026-06-11</td></tr>
     <tr><td>行业数据</td><td>央行/银保监会/银行业协会</td><td>2025</td></tr>
     <tr><td>机构预测</td><td>中信/华泰/中金等券商研报</td><td>2026-05</td></tr>
-  </table>
+  </table></div>
 
   <div class="txt" style="font-size:11px;">
     <b>数据声明：</b><br>
@@ -915,5 +922,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   分析工具：恒生聚源数据库 + 价值投资分析框架
 </div>
 
+
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 </body>
 </html>
