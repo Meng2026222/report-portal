@@ -67,11 +67,6 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 .toc{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
 .toc a{font-size:11px;color:#888;text-decoration:none;padding:3px 8px;border-radius:12px;border:1px solid #333}
 .toc a:active{background:#1e1e3a;color:#4fc3f7}
-@media(max-width:768px){
-.toc{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:3px;justify-content:flex-start;padding:2px 2px;scrollbar-width:none}
-.toc::-webkit-scrollbar{display:none}
-.toc a{font-size:10px;padding:2px 6px;white-space:nowrap;flex-shrink:0}
-}
 </style>
 </head>
 <body>
@@ -101,7 +96,8 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="desc">上市以来市值变化（不复权收盘价 × 总股本）· 鼠标滚轮缩放 · 拖拽平移 · <span style="color:#888;font-size:11px;">每周五17:00更新</span></div>
 
   <div class="mcap-btns">
-    <button class="mcap-btn active" data-period="week">周线</button>
+    <button class="mcap-btn active" data-period="day">日线</button>
+    <button class="mcap-btn" data-period="week">周线</button>
     <button class="mcap-btn" data-period="month">月线</button>
     <button class="mcap-btn" data-period="year">年线</button>
   </div>
@@ -116,33 +112,9 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     历史最高：<span class="mcap-v" id="mcapHigh">--</span> 亿 ·
     历史最低：<span class="mcap-v" id="mcapLow">--</span> 亿
   </div>
-<div id="s-financial" class="card" style="overflow-x:auto;margin-top:16px">
-  <h2>历年财务数据</h2>
-  <div class="desc">最近10年财务指标 · <span style="color:#4caf50">绿色=增长&gt;30%</span> · <span style="color:#f0a030">橙色=连续下滑</span> · <span style="color:#e74c3c">红色=负值/下滑&gt;20%</span></div>
-  <style>
-  .fin-table{width:100%;border-collapse:collapse;font-size:11px;min-width:900px}
-  .fin-table th{background:#1e1e3a;color:#f0c040;padding:7px 5px;text-align:center;font-weight:500;white-space:nowrap}
-  .fin-table td{padding:6px 5px;text-align:center;border-bottom:1px solid #1e1e3a;white-space:nowrap}
-  .fin-table tr:hover td{background:#1a1a3a}
-  .fin-table td:first-child{text-align:left;font-weight:500;position:sticky;left:0;background:#0a0a1a;z-index:1;}
-  .fin-table tr:hover td:first-child{background:#1a1a2a}
-  .fin-table td.na{color:#555}
-  .fin-table td.pos{color:#4caf50;font-weight:600}
-  .fin-table td.neg{color:#e74c3c;font-weight:600}
-  .fin-table td.warn{color:#f0a030;font-weight:600}
-  .fin-light .fin-table th{background:#d8d4c8;color:#8b6914}
-  .fin-light .fin-table td{border-bottom-color:#d8d4c8}
-  .fin-light .fin-table tr:hover td{background:#e8e4dc}
-  .fin-light .fin-table td:first-child{background:#f4f1ea}
-  .fin-light .fin-table tr:hover td:first-child{background:#e8e4dc}
-  .fin-light .fin-table td.pos{color:#2e7d32!important}
-  .fin-light .fin-table td.neg{color:#c0392b!important}
-  .fin-light .fin-table td.warn{color:#b8860b!important}
-</style>
-  <table class="fin-table">
-    <thead><tr><th>指标</th><th>2025</th><th>2024</th><th>2023</th><th>2022</th><th>2021</th><th>2020</th><th>2019</th><th>2018</th><th>2017</th><th>2016</th></tr></thead><tbody><tr><td>每股营业收入(元)</td><td class="pos">34.30</td><td class="pos">21.40</td><td class="">9.61</td><td class="">8.65</td><td class="">6.90</td><td class="pos">6.32</td><td class="">4.27</td><td class="pos">4.62</td><td class="pos">2.11</td><td class="">0.12</td></tr><tr><td>每股经营现金流(元)</td><td class="pos">9.81</td><td class="">2.82</td><td class="neg">2.36</td><td class="pos">3.06</td><td class="pos">1.02</td><td class="neg">0.03</td><td class="neg">0.80</td><td class="pos">1.39</td><td class="neg">0.09</td><td class="">0.16</td></tr><tr><td>每股净利润(元)</td><td class="pos">9.80</td><td class="pos">4.72</td><td class="">2.00</td><td class="">1.54</td><td class="">1.21</td><td class="pos">1.23</td><td class="neg">0.73</td><td class="pos">1.36</td><td class="pos">0.50</td><td class="">0.05</td></tr><tr><td>每股净资产(元)</td><td class="pos">26.79</td><td class="">17.07</td><td class="">17.76</td><td class="">14.91</td><td class="">14.36</td><td class="">11.06</td><td class="">9.71</td><td class="">10.05</td><td class="pos">8.45</td><td class="">2.57</td></tr><tr><td>总股本(亿股)</td><td class="">11.15</td><td class="">11.15</td><td class="">11.15</td><td class="">11.15</td><td class="">11.15</td><td class="">11.15</td><td class="">11.15</td><td class="">11.15</td><td class="">11.15</td><td class="">11.15</td></tr><tr><td>市盈率PE</td><td class="warn">62.7</td><td class="pos">26.5</td><td class="warn">57.7</td><td class="pos">24.5</td><td class="">53.8</td><td class="pos">65.2</td><td class="warn">112.7</td><td class="pos">72.5</td><td class="pos">402.0</td><td class="">2627.5</td></tr><tr><td>营业收入(亿元)</td><td class="pos">382.40</td><td class="pos">238.62</td><td class="">107.18</td><td class="">96.42</td><td class="">76.95</td><td class="pos">70.50</td><td class="">47.58</td><td class="pos">51.56</td><td class="pos">23.57</td><td class="">1.32</td></tr><tr><td>毛利率(%)</td><td class="">42.04</td><td class="">33.80</td><td class="">32.99</td><td class="">29.31</td><td class="">25.57</td><td class="warn">25.43</td><td class="">27.11</td><td class="">27.27</td><td class="">26.79</td><td class="">30.56</td></tr><tr><td>净利润(亿元)</td><td class="pos">107.97</td><td class="pos">51.71</td><td class="pos">21.74</td><td class="pos">12.24</td><td class="">8.77</td><td class="pos">8.65</td><td class="">5.13</td><td class="pos">6.23</td><td class="pos">1.62</td><td class="">0.10</td></tr><tr><td>所得税率(%)</td><td class="warn">14.85</td><td class="">11.25</td><td class="warn">11.43</td><td class="">8.72</td><td class="pos">7.65</td><td class="">11.20</td><td class="">10.96</td><td class="pos">10.34</td><td class="warn">21.56</td><td class="">7.85</td></tr><tr><td>净利润率(%)</td><td class="pos">30.28</td><td class="">22.51</td><td class="pos">20.60</td><td class="">12.80</td><td class="">11.52</td><td class="">12.43</td><td class="">10.79</td><td class="pos">12.08</td><td class="">6.85</td><td class="">7.64</td></tr><tr><td>营运资本(亿元)</td><td class="pos">195.26</td><td class="pos">116.98</td><td class="">69.59</td><td class="">63.23</td><td class="pos">68.56</td><td class="pos">42.10</td><td class="pos">31.65</td><td class="">12.91</td><td class="pos">13.61</td><td class="">2.37</td></tr><tr><td>长期负债(亿元)</td><td class="">21.09</td><td class="warn">20.76</td><td class="pos">8.72</td><td class="pos">12.24</td><td class="">17.96</td><td class="warn">18.50</td><td class="warn">7.39</td><td class="pos">4.36</td><td class="warn">8.57</td><td class="">0.09</td></tr><tr><td>ROA(%)</td><td class="pos">31.23</td><td class="pos">21.98</td><td class="pos">12.08</td><td class="">7.45</td><td class="">5.87</td><td class="pos">7.27</td><td class="neg">5.53</td><td class="pos">7.84</td><td class="pos">3.83</td><td class="">1.58</td></tr><tr><td>ROE(%)</td><td class="pos">43.84</td><td class="pos">31.23</td><td class="pos">16.58</td><td class="">10.28</td><td class="">9.98</td><td class="pos">11.73</td><td class="neg">8.29</td><td class="pos">14.32</td><td class="pos">7.96</td><td class="">1.82</td></tr></tbody></table></div>
+</div>
 
-<style>{display:flex;gap:6px;margin:8px 0}
+<style>
 .mcap-btns{display:flex;gap:6px;margin:8px 0}
 .mcap-btn{flex:1;padding:6px 0;border:1px solid #333;background:#1e1e3a;color:#888;border-radius:6px;cursor:pointer;font-size:12px;text-align:center;transition:all .2s}
 .mcap-btn:hover{border-color:#f0c040;color:#f0c040}
@@ -188,8 +160,6 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 
     if(document.getElementById('hermes-theme-override')){
       document.getElementById('s-mcap').classList.add('mcap-light');
-      var sf=document.getElementById('s-financial');
-      if(sf) sf.classList.add('fin-light');
     }
 
     var themeWatcher = new MutationObserver(function(){
@@ -197,8 +167,6 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
       var card = document.getElementById('s-mcap');
       if(light) card.classList.add('mcap-light');
       else card.classList.remove('mcap-light');
-      var sf=document.getElementById('s-financial');
-      if(sf){ if(light) sf.classList.add('fin-light'); else sf.classList.remove('fin-light'); }
       if(chartData.length) render();
     });
     if(document.head) themeWatcher.observe(document.head, {childList:true, subtree:true});
@@ -249,7 +217,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     }, {passive:true});
     svg.addEventListener('touchend', function(){isDragging=false});
     window.addEventListener('resize', function(){if(chartData.length)render()});
-    loadPeriod('week');
+    loadPeriod('day');
   }
 
   function getThemeColors(){
@@ -268,7 +236,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     var url = '../kline/' + stockCode + '_' + period + '.json?t=' + Date.now();
     fetch(url).then(function(r){return r.json()}).then(function(data){
       chartData = data;
-      var dw = data.length;
+      var dw = period === 'day' ? Math.min(500, data.length) : data.length;
       viewStart = Math.max(0, data.length - dw); viewEnd = data.length;
       updateStats(data); render();
     }).catch(function(e){console.error(e)});
@@ -376,47 +344,31 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 
 <!-- ========== 一、综合评价 ========== -->
 <div id="s1" class="card">
-  <h2>一、综合评价</h2>
-  
-  <h3>1. 总评分：7.5分</h3>
-  <div class="txt">评级理由：中际旭创作为全球光模块行业龙头企业，是AI算力基础设施建设的核心供应商。2025年公司营收328亿元，同比增长36.9%，归母净利润53亿元，同比增长2.7%，扣非净利润60.42亿元，同比增长19.30%，盈利能力持续增强。2026年Q1延续强劲增长态势，营收102.69亿元同比+51.34%，归母净利润22.78亿元同比+61.90%，800G/1.6T高速光模块需求爆发是核心驱动力。公司核心看点在于：作为全球少数能量产1.6T光模块的厂商，深度绑定英伟达、谷歌等AI算力巨头，同时3D封装及硅光技术布局领先。但需关注光模块行业技术迭代极快、竞争格局变化、以及AI算力资本开支的周期性波动风险。</div>
+<h2>一、综合评价</h2>
 
-  <h3>2. 风险等级：中高</h3>
-  <table class="tbl">
-    <tr><th>风险类别</th><th>等级</th><th>说明</th></tr>
-    <tr><td style="white-space:nowrap">经营风险</td><td style="white-space:nowrap"><span class="orange">中高</span></td><td style="text-align:left;font-size:11px;">光模块技术迭代周期短（约2-3年一代），需持续高研发投入保持领先；客户集中度较高，大客户订单波动影响显著</td></tr>
-    <tr><td style="white-space:nowrap">财务风险</td><td style="white-space:nowrap"><span class="green">低</span></td><td style="text-align:left;font-size:11px;">资产负债率约29%，货币资金充裕（约50亿），经营现金流健康，有息负债可控</td></tr>
-    <tr><td style="white-space:nowrap">市场风险</td><td style="white-space:nowrap"><span class="orange">中高</span></td><td style="text-align:left;font-size:11px;">全球AI算力资本开支存在周期性，若下游云厂商削减资本开支将直接影响需求；中美科技博弈可能影响供应链</td></tr>
-  </table>
+  <div class="mg" style="margin-bottom:10px">
+    <div class="mi"><div class="mv" style="color:#4caf50">7.5</div><div class="ml">综合评级</div></div>
+    <div class="mi"><div class="mv" style="color:#ff9800">中高</h3></div><div class="ml">风险等级</div></div>
+    <div class="mi"><div class="mv" style="color:#4caf50">🔧</div><div class="ml">核心壁垒</div></div>
+    <div class="mi"><div class="mv" style="color:#ffc107">较高</div><div class="ml">成长弹性</div></div>
+  </div>
 
-  <h3>3. 核心结论（一句话逻辑）</h3>
   <div class="bq">"中际旭创凭借在800G/1.6T高速光模块领域全球领先的研发与量产能力、与英伟达/谷歌等AI巨头的深度绑定、以及硅光技术和3D封装的先发布局，是全球AI算力基础设施建设最核心的受益标的之一。2025年实现营收328亿元、归母净利53亿元，2026年Q1营收增速51%验证需求爆发趋势。但光模块行业技术迭代快速、客户集中度高、AI资本开支存在周期性波动，公司处于'高增长但需持续验证技术领先'的关键阶段。"</div>
 
-  <h3>4. 三年预估增长空间</h3>
-  <div class="txt">
-    <span class="dot">·</span> 业绩增长：预计归母净利润从2025年的53亿元增至2028年的120-160亿元，年化增速约31-45%（取决于1.6T和硅光的渗透速度）<br>
-    <span class="dot">·</span> 估值修复：当前PE(TTM)约83.9倍，处于历史偏高区间；参考全球光模块及AI算力龙头PE 25-40倍，若1.6T放量顺利，有望消化估值<br>
-    <span class="dot">·</span> 股价目标：业绩增长约100-170% × 估值基本持平或小幅提升 ≈ 3年预期收益约100-180%（基准情景）
+  <div class="mg" style="grid-template-columns:1fr 1fr 1fr;margin-top:10px">
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">经营：稳健</div><div class="ml">AI算力驱动高增长</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">财务：稳健</div><div class="ml">ROE改善中</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">市场：稳健</div><div class="ml">PE 80x已透支预期</div></div>
   </div>
 
-  <h3>5. 季度监控关键点</h3>
-  <div class="txt">
-    <span class="dot">·</span> Q1/Q2：800G/1.6T光模块出货量及收入占比变化、毛利率是否稳定在35%以上、新客户导入进度<br>
-    <span class="dot">·</span> Q3/Q4：下游云厂商资本开支指引、硅光模块渗透率是否提升、泰国等海外工厂产能利用率<br>
-    <span class="dot">·</span> 风险关注：英伟达/谷歌等大客户订单变化、竞争对手技术追赶情况、中美关税及出口管制政策变化
-  </div>
-
-  <h3>6. 逻辑证伪/止损触发点</h3>
-  <div class="txt">
-    1. 如果单季度营收增速连续2个季度低于15%，需重新审视下游需求增长逻辑<br>
-    2. 如果综合毛利率连续2个季度跌破32%，说明产品结构恶化或竞争加剧侵蚀溢价<br>
-    3. 如果英伟达/谷歌等核心客户削减订单或转向竞争对手，需高度重视客户集中风险<br>
-    4. 如果硅光/1.6T量产进度连续2个季度延后，需重新评估公司技术领先优势
-  </div>
-</div>
-
-<!-- ========== M1 商业模式 ========== -->
-<div id="s2" class="card">
+  <table class="tbl" style="margin-top:10px">
+    <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+    <tr><td>三年预估空间</td><td class="gold">增长空间</td><td>基于当前估值和业绩增长预测</td></tr>
+    <tr><td>季度监控</td><td>关键点</td><td>核心业务发展趋势</td></tr>
+    <tr><td>逻辑证伪点</td><td class="red">/止损触发点</td><td>触发需重新评估投资逻辑</td></tr>
+    <tr><td>止损触发</td><td class="red">触发点</td><td>估值风险警示</td></tr>
+  </table>
+</div><div id="s2" class="card">
   <h2>M1 商业模式 & 收入结构</h2>
   
   <h3>核心定位</h3>
@@ -425,11 +377,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>年度财务报表（亿元）</h3>
   <table class="tbl">
     <tr><th>年份</th><th>营收</th><th>YoY</th><th>归母净利</th><th>净利率</th><th>毛利率</th></tr>
-    <tr><td style="white-space:nowrap">2020</td><td style="white-space:nowrap">70.5</td><td class="green">+48.2%</td><td>8.7</td><td>12.3%</td><td>25.4%</td></tr>
-    <tr><td style="white-space:nowrap">2021</td><td style="white-space:nowrap">76.9</td><td>+9.1%</td><td>8.8</td><td>11.4%</td><td>25.8%</td></tr>
-    <tr><td style="white-space:nowrap">2022</td><td style="white-space:nowrap">96.4</td><td class="green">+25.3%</td><td>12.2</td><td>12.7%</td><td>29.4%</td></tr>
-    <tr><td style="white-space:nowrap">2023</td><td style="white-space:nowrap">107.2</td><td>+11.2%</td><td>21.7</td><td class="green">20.2%</td><td>33.1%</td></tr>
-    <tr><td style="white-space:nowrap">2024</td><td class="gold">239.6</td><td class="green">+123.5%</td><td style="white-space:nowrap">51.6</td><td>21.5%</td><td>35.2%</td></tr>
+    <tr><td>2020</td><td>70.5</td><td class="green">+48.2%</td><td>8.7</td><td>12.3%</td><td>25.4%</td></tr>
+    <tr><td>2021</td><td>76.9</td><td>+9.1%</td><td>8.8</td><td>11.4%</td><td>25.8%</td></tr>
+    <tr><td>2022</td><td>96.4</td><td class="green">+25.3%</td><td>12.2</td><td>12.7%</td><td>29.4%</td></tr>
+    <tr><td>2023</td><td>107.2</td><td>+11.2%</td><td>21.7</td><td class="green">20.2%</td><td>33.1%</td></tr>
+    <tr><td>2024</td><td class="gold">239.6</td><td class="green">+123.5%</td><td>51.6</td><td>21.5%</td><td>35.2%</td></tr>
     <tr><td class="gold">2025</td><td class="gold">328.0</td><td>+36.9%</td><td class="gold">53.0</td><td>16.2%</td><td class="gold">38.7%</td></tr>
   </table>
   <div class="desc" style="margin-top:6px;">备注：2024年是公司业绩爆发年，营收同比增长123.5%至239.6亿元，归母净利润增长137.8%至51.6亿元，核心驱动力是800G光模块大规模放量。2025年增速回升至36.9%且毛利率提升至38.7%创历史新高。2026年Q1营收102.69亿（+51.34%），净利22.78亿（+61.90%），1.6T光模块开始放量，新一轮高增长周期启动。</div>
@@ -442,11 +394,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 
   <table class="tbl" style="margin-top:10px;">
     <tr><th>品类</th><th>收入</th><th>占比</th><th>趋势</th><th>毛利率</th></tr>
-    <tr><td style="white-space:nowrap">高速光模块(400G+)</td><td style="white-space:nowrap">约200-220亿</td><td>80-85%</td><td class="green">↑ 快速增长</td><td class="green">38-42%</td></tr>
-    <tr><td style="white-space:nowrap">800G/1.6T</td><td style="white-space:nowrap">约120-140亿</td><td>约50%</td><td class="green">↑ 爆发增长</td><td class="green">40-45%</td></tr>
-    <tr><td style="white-space:nowrap">400G</td><td style="white-space:nowrap">约70-80亿</td><td>约30%</td><td>→ 稳定</td><td>32-35%</td></tr>
-    <tr><td style="white-space:nowrap">中低速</td><td style="white-space:nowrap">约25-30亿</td><td>10-12%</td><td class="red">↓ 萎缩</td><td>22-25%</td></tr>
-    <tr><td style="white-space:nowrap">其他</td><td style="white-space:nowrap">约8-10亿</td><td>3-5%</td><td>→ 稳定</td><td>20-25%</td></tr>
+    <tr><td>高速光模块(400G+)</td><td>约200-220亿</td><td>80-85%</td><td class="green">↑ 快速增长</td><td class="green">38-42%</td></tr>
+    <tr><td>800G/1.6T</td><td>约120-140亿</td><td>约50%</td><td class="green">↑ 爆发增长</td><td class="green">40-45%</td></tr>
+    <tr><td>400G</td><td>约70-80亿</td><td>约30%</td><td>→ 稳定</td><td>32-35%</td></tr>
+    <tr><td>中低速</td><td>约25-30亿</td><td>10-12%</td><td class="red">↓ 萎缩</td><td>22-25%</td></tr>
+    <tr><td>其他</td><td>约8-10亿</td><td>3-5%</td><td>→ 稳定</td><td>20-25%</td></tr>
   </table>
 
   <h3>商业模式评估</h3>
@@ -455,7 +407,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     <tr><td>核心定位</td><td class="gold">全球光模块龙头</td><td style="text-align:left;font-size:11px;">全球市占率第一，800G/1.6T全球唯二能大规模量产</td></tr>
     <tr><td>盈利模式</td><td class="green">高端溢价+规模+全球供应</td><td style="text-align:left;font-size:11px;">毛利率从25%→36%，净利率从11%→23%</td></tr>
     <tr><td>增长引擎</td><td class="gold">1.6T放量+硅光+海外扩产</td><td style="text-align:left;font-size:11px;">2026Q1 1.6T带动营收增速回升至51%</td></tr>
-    <tr><td style="white-space:nowrap">现金流模式</td><td style="white-space:nowrap">充沛但需持续CAPEX</td><td style="text-align:left;font-size:11px;">经营现金流约40亿+，研发+扩产CAPEX约15-20亿</td></tr>
+    <tr><td>现金流模式</td><td>充沛但需持续CAPEX</td><td style="text-align:left;font-size:11px;">经营现金流约40亿+，研发+扩产CAPEX约15-20亿</td></tr>
   </table>
 
   <div class="bq">
@@ -525,10 +477,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>管理层基本信息</h3>
   <table class="tbl">
     <tr><th>姓名</th><th>职务</th><th>任职年限</th><th>持股</th><th>专业背景</th></tr>
-    <tr><td style="white-space:nowrap">刘圣</td><td style="white-space:nowrap">董事长/总经理</td><td>15+年</td><td>约4-5%</td><td>佐治亚理工博士，光通信顶尖科学家</td></tr>
-    <tr><td style="white-space:nowrap">王伟修</td><td style="white-space:nowrap">副董事长</td><td>—</td><td>—</td><td>原中际装备创始人</td></tr>
-    <tr><td style="white-space:nowrap">王晓丽</td><td style="white-space:nowrap">CFO/董秘</td><td>—</td><td>—</td><td>—</td></tr>
-    <tr><td style="white-space:nowrap">核心团队</td><td style="white-space:nowrap">—</td><td>—</td><td>持股平台15-20%</td><td>硅谷归国博士+华为/中兴资深工程师</td></tr>
+    <tr><td>刘圣</td><td>董事长/总经理</td><td>15+年</td><td>约4-5%</td><td>佐治亚理工博士，光通信顶尖科学家</td></tr>
+    <tr><td>王伟修</td><td>副董事长</td><td>—</td><td>—</td><td>原中际装备创始人</td></tr>
+    <tr><td>王晓丽</td><td>CFO/董秘</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td>核心团队</td><td>—</td><td>—</td><td>持股平台15-20%</td><td>硅谷归国博士+华为/中兴资深工程师</td></tr>
   </table>
   <div class="txt" style="font-size:12px;">刘圣是美国佐治亚理工学院电子工程博士，曾在Pine Photonics、OpNext等光通信公司担任核心技术职务，2008年回国创立旭创科技，是中国光模块行业最具代表性的科学家创业者。2017年旭创科技借壳中际装备上市。</div>
 
@@ -561,11 +513,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>核心财务指标</h3>
   <table class="tbl">
     <tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
-    <tr><td style="white-space:nowrap">营收（亿）</td><td style="white-space:nowrap">76.9</td><td>96.4</td><td>107.2</td><td class="gold">239.6</td><td class="gold">328.0</td><td class="green">↑</td></tr>
-    <tr><td style="white-space:nowrap">净利（亿）</td><td style="white-space:nowrap">8.8</td><td>12.2</td><td>21.7</td><td>51.6</td><td class="gold">53.0</td><td class="green">↑</td></tr>
-    <tr><td style="white-space:nowrap">毛利率</td><td style="white-space:nowrap">25.8%</td><td>29.4%</td><td>33.1%</td><td>35.2%</td><td class="gold">38.7%</td><td class="green">↑</td></tr>
-    <tr><td style="white-space:nowrap">净利率</td><td style="white-space:nowrap">11.4%</td><td>12.7%</td><td class="gold">20.2%</td><td>21.5%</td><td>16.2%</td><td class="red">↓</td></tr>
-    <tr><td style="white-space:nowrap">ROE</td><td style="white-space:nowrap">约9%</td><td>约10%</td><td>约16%</td><td class="gold">约28%</td><td>约18%</td><td>回落</td></tr>
+    <tr><td>营收（亿）</td><td>76.9</td><td>96.4</td><td>107.2</td><td class="gold">239.6</td><td class="gold">328.0</td><td class="green">↑</td></tr>
+    <tr><td>净利（亿）</td><td>8.8</td><td>12.2</td><td>21.7</td><td>51.6</td><td class="gold">53.0</td><td class="green">↑</td></tr>
+    <tr><td>毛利率</td><td>25.8%</td><td>29.4%</td><td>33.1%</td><td>35.2%</td><td class="gold">38.7%</td><td class="green">↑</td></tr>
+    <tr><td>净利率</td><td>11.4%</td><td>12.7%</td><td class="gold">20.2%</td><td>21.5%</td><td>16.2%</td><td class="red">↓</td></tr>
+    <tr><td>ROE</td><td>约9%</td><td>约10%</td><td>约16%</td><td class="gold">约28%</td><td>约18%</td><td>回落</td></tr>
   </table>
 
   <div class="mg" style="margin-top:10px;">
@@ -580,37 +532,37 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>现金流量</h3>
   <table class="tbl">
     <tr><th>指标</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
-    <tr><td style="white-space:nowrap">经营现金流</td><td style="white-space:nowrap">约15亿</td><td>约38亿</td><td class="gold">约42亿</td><td class="green">↑ 持续增长</td></tr>
-    <tr><td style="white-space:nowrap">CAPEX</td><td style="white-space:nowrap">约8亿</td><td>约15亿</td><td>约18亿</td><td class="green">↑ 产能扩张</td></tr>
-    <tr><td style="white-space:nowrap">FCF</td><td style="white-space:nowrap">约7亿</td><td>约23亿</td><td>约24亿</td><td class="green">↑ 健康</td></tr>
-    <tr><td style="white-space:nowrap">FCF/净利</td><td style="white-space:nowrap">约32%</td><td>约45%</td><td>约41%</td><td>→ 健康</td></tr>
+    <tr><td>经营现金流</td><td>约15亿</td><td>约38亿</td><td class="gold">约42亿</td><td class="green">↑ 持续增长</td></tr>
+    <tr><td>CAPEX</td><td>约8亿</td><td>约15亿</td><td>约18亿</td><td class="green">↑ 产能扩张</td></tr>
+    <tr><td>FCF</td><td>约7亿</td><td>约23亿</td><td>约24亿</td><td class="green">↑ 健康</td></tr>
+    <tr><td>FCF/净利</td><td>约32%</td><td>约45%</td><td>约41%</td><td>→ 健康</td></tr>
   </table>
 
   <h3>资产负债结构</h3>
   <table class="tbl">
     <tr><th>指标</th><th>2023末</th><th>2024末</th><th class="gold">2025末</th><th>趋势</th></tr>
-    <tr><td style="white-space:nowrap">总资产</td><td style="white-space:nowrap">约120亿</td><td>约180亿</td><td>约210亿</td><td class="green">↑ 扩张</td></tr>
-    <tr><td style="white-space:nowrap">净资产</td><td style="white-space:nowrap">约80亿</td><td>约120亿</td><td>约150亿</td><td class="green">↑ 大幅增厚</td></tr>
-    <tr><td style="white-space:nowrap">资产负债率</td><td style="white-space:nowrap">约33%</td><td>约33%</td><td class="green">约29%</td><td class="green">↓ 持续改善</td></tr>
-    <tr><td style="white-space:nowrap">货币资金</td><td style="white-space:nowrap">约25亿</td><td>约40亿</td><td class="gold">约50亿</td><td class="green">↑ 充裕</td></tr>
-    <tr><td style="white-space:nowrap">有息负债</td><td style="white-space:nowrap">约15亿</td><td>约20亿</td><td>约18亿</td><td>→ 可控</td></tr>
+    <tr><td>总资产</td><td>约120亿</td><td>约180亿</td><td>约210亿</td><td class="green">↑ 扩张</td></tr>
+    <tr><td>净资产</td><td>约80亿</td><td>约120亿</td><td>约150亿</td><td class="green">↑ 大幅增厚</td></tr>
+    <tr><td>资产负债率</td><td>约33%</td><td>约33%</td><td class="green">约29%</td><td class="green">↓ 持续改善</td></tr>
+    <tr><td>货币资金</td><td>约25亿</td><td>约40亿</td><td class="gold">约50亿</td><td class="green">↑ 充裕</td></tr>
+    <tr><td>有息负债</td><td>约15亿</td><td>约20亿</td><td>约18亿</td><td>→ 可控</td></tr>
   </table>
 
   <h3>费用率结构</h3>
   <table class="tbl">
     <tr><th>费用项</th><th>2025年规模</th><th>趋势</th></tr>
-    <tr><td style="white-space:nowrap">研发费用</td><td style="white-space:nowrap">约12-15亿（费用率5-6%）</td><td class="green">↑ 持续加大投入</td></tr>
-    <tr><td style="white-space:nowrap">销售费用</td><td style="white-space:nowrap">约3-4亿（费用率1.2%）</td><td>→ 需求拉动模式</td></tr>
-    <tr><td style="white-space:nowrap">管理费用</td><td style="white-space:nowrap">约5-6亿（费用率2%）</td><td>→ 管理效率较高</td></tr>
-    <tr><td style="white-space:nowrap">财务费用</td><td style="white-space:nowrap">为负（汇兑收益+利息收入）</td><td class="green">→ 美元收入带来汇兑收益</td></tr>
+    <tr><td>研发费用</td><td>约12-15亿（费用率5-6%）</td><td class="green">↑ 持续加大投入</td></tr>
+    <tr><td>销售费用</td><td>约3-4亿（费用率1.2%）</td><td>→ 需求拉动模式</td></tr>
+    <tr><td>管理费用</td><td>约5-6亿（费用率2%）</td><td>→ 管理效率较高</td></tr>
+    <tr><td>财务费用</td><td>为负（汇兑收益+利息收入）</td><td class="green">→ 美元收入带来汇兑收益</td></tr>
   </table>
 
   <h3>杜邦分析</h3>
   <table class="tbl">
     <tr><th>年份</th><th>ROE</th><th>净利率</th><th>资产周转率</th><th>权益乘数</th><th>驱动因子</th></tr>
-    <tr><td style="white-space:nowrap">2023</td><td style="white-space:nowrap">约16%</td><td>20.2%</td><td>0.89×</td><td>1.49×</td><td>⭐ 净利率+杠杆</td></tr>
-    <tr><td style="white-space:nowrap">2024</td><td class="gold">约28%</td><td style="white-space:nowrap">21.5%</td><td class="gold">1.33×</td><td>1.50×</td><td>周转率大幅提升</td></tr>
-    <tr><td style="white-space:nowrap">2025</td><td style="white-space:nowrap">约18%</td><td>16.2%</td><td>1.33×</td><td>1.41×</td><td>净利率回落，周转提升</td></tr>
+    <tr><td>2023</td><td>约16%</td><td>20.2%</td><td>0.89×</td><td>1.49×</td><td>⭐ 净利率+杠杆</td></tr>
+    <tr><td>2024</td><td class="gold">约28%</td><td>21.5%</td><td class="gold">1.33×</td><td>1.50×</td><td>周转率大幅提升</td></tr>
+    <tr><td>2025</td><td>约18%</td><td>16.2%</td><td>1.33×</td><td>1.41×</td><td>净利率回落，周转提升</td></tr>
   </table>
 
   <div class="bq">
@@ -627,17 +579,17 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>成本结构</h3>
   <table class="tbl">
     <tr><th>成本项目</th><th>占比</th><th>趋势</th><th>议价能力</th></tr>
-    <tr><td style="white-space:nowrap">光芯片（EML/VCSEL）</td><td style="white-space:nowrap">30-35%</td><td class="red">↑</td><td>中</td></tr>
-    <tr><td style="white-space:nowrap">电芯片（DSP/Driver）</td><td style="white-space:nowrap">20-25%</td><td class="red">↑</td><td class="orange">中低（依赖博通/马威尔）</td></tr>
-    <tr><td style="white-space:nowrap">PCB及无源器件</td><td style="white-space:nowrap">10-15%</td><td>→</td><td>中</td></tr>
-    <tr><td style="white-space:nowrap">封装及人工</td><td style="white-space:nowrap">15-20%</td><td>→</td><td>中（泰国工厂降本）</td></tr>
-    <tr><td style="white-space:nowrap">其他（折旧等）</td><td style="white-space:nowrap">10-15%</td><td class="red">↑</td><td>—</td></tr>
+    <tr><td>光芯片（EML/VCSEL）</td><td>30-35%</td><td class="red">↑</td><td>中</td></tr>
+    <tr><td>电芯片（DSP/Driver）</td><td>20-25%</td><td class="red">↑</td><td class="orange">中低（依赖博通/马威尔）</td></tr>
+    <tr><td>PCB及无源器件</td><td>10-15%</td><td>→</td><td>中</td></tr>
+    <tr><td>封装及人工</td><td>15-20%</td><td>→</td><td>中（泰国工厂降本）</td></tr>
+    <tr><td>其他（折旧等）</td><td>10-15%</td><td class="red">↑</td><td>—</td></tr>
   </table>
 
   <h3>产业链议价权</h3>
   <table class="tbl">
     <tr><th>维度</th><th>评估</th><th>证据</th></tr>
-    <tr><td style="white-space:nowrap">对上游议价能力</td><td style="white-space:nowrap">中</td><td style="text-align:left;font-size:11px;">核心光芯片和电芯片依赖博通、马威尔等美系供应商，议价权有限；但采购规模大有一定议价空间</td></tr>
+    <tr><td>对上游议价能力</td><td>中</td><td style="text-align:left;font-size:11px;">核心光芯片和电芯片依赖博通、马威尔等美系供应商，议价权有限；但采购规模大有一定议价空间</td></tr>
     <tr><td>对下游议价能力</td><td class="green">中高</td><td style="text-align:left;font-size:11px;">全球唯二能大批量供应1.6T的厂商，技术稀缺性赋予较强议价权</td></tr>
     <tr><td>硅光自研提升</td><td class="green">中高</td><td style="text-align:left;font-size:11px;">硅光芯片部分自研可替代外购EML，降低对光芯片供应商依赖</td></tr>
   </table>
@@ -657,20 +609,20 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>FCF质量</h3>
   <table class="tbl">
     <tr><th>指标</th><th>2024年</th><th class="gold">2025年</th><th>正常化水平</th></tr>
-    <tr><td style="white-space:nowrap">经营现金流</td><td style="white-space:nowrap">约38亿</td><td class="gold">约42亿</td><td>40-50亿</td></tr>
-    <tr><td style="white-space:nowrap">CAPEX</td><td style="white-space:nowrap">约15亿</td><td>约18亿</td><td>15-20亿</td></tr>
-    <tr><td style="white-space:nowrap">FCF</td><td style="white-space:nowrap">约23亿</td><td>约24亿</td><td>20-30亿</td></tr>
-    <tr><td style="white-space:nowrap">FCF/净利润</td><td style="white-space:nowrap">约45%</td><td>约41%</td><td>40-50%</td></tr>
+    <tr><td>经营现金流</td><td>约38亿</td><td class="gold">约42亿</td><td>40-50亿</td></tr>
+    <tr><td>CAPEX</td><td>约15亿</td><td>约18亿</td><td>15-20亿</td></tr>
+    <tr><td>FCF</td><td>约23亿</td><td>约24亿</td><td>20-30亿</td></tr>
+    <tr><td>FCF/净利润</td><td>约45%</td><td>约41%</td><td>40-50%</td></tr>
   </table>
 
   <h3>估值指标</h3>
   <table class="tbl">
     <tr><th>指标</th><th>当前值</th><th>历史区间</th><th>评估</th></tr>
-    <tr><td style="white-space:nowrap">PE(静态)</td><td class="gold">约83.9倍</td><td style="white-space:nowrap">15-60倍</td><td class="gold">偏高</td></tr>
-    <tr><td style="white-space:nowrap">PE(2025)</td><td class="gold">约83.9倍</td><td style="white-space:nowrap">—</td><td class="gold">偏高</td></tr>
-    <tr><td style="white-space:nowrap">PB</td><td style="white-space:nowrap">约7.8倍</td><td>4-18倍</td><td>中性偏高</td></tr>
-    <tr><td style="white-space:nowrap">PS</td><td style="white-space:nowrap">约4.8倍</td><td>—</td><td>偏高（硬件公司正常）</td></tr>
-    <tr><td style="white-space:nowrap">股息率</td><td style="white-space:nowrap">约0.8%</td><td>—</td><td class="red">偏低</td></tr>
+    <tr><td>PE(静态)</td><td class="gold">约83.9倍</td><td>15-60倍</td><td class="gold">偏高</td></tr>
+    <tr><td>PE(2025)</td><td class="gold">约83.9倍</td><td>—</td><td class="gold">偏高</td></tr>
+    <tr><td>PB</td><td>约7.8倍</td><td>4-18倍</td><td>中性偏高</td></tr>
+    <tr><td>PS</td><td>约4.8倍</td><td>—</td><td>偏高（硬件公司正常）</td></tr>
+    <tr><td>股息率</td><td>约0.8%</td><td>—</td><td class="red">偏低</td></tr>
   </table>
 
   <div class="txt">当前市值约4,450亿元，静态PE约83.9倍。机构预测2026年归母净利润约76-80亿元，对应PE约55-58倍。参考全球光模块龙头（Coherent PE约25-35倍、新易盛PE约20-30倍），公司估值处于行业偏高水平。</div>
@@ -697,20 +649,20 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>行业空间</h3>
   <table class="tbl">
     <tr><th>市场</th><th>规模（2025E）</th><th>增速</th><th>公司收入</th><th>市占率</th></tr>
-    <tr><td style="white-space:nowrap">全球数据中心光模块</td><td style="white-space:nowrap">约100-120亿美元</td><td class="green">+25-35%</td><td>约35亿美元</td><td class="gold">约30-35%</td></tr>
-    <tr><td style="white-space:nowrap">AI光模块市场(800G+)</td><td style="white-space:nowrap">约40-50亿美元</td><td class="green">+50%+</td><td>约16-19亿美元</td><td class="gold">约35-40%</td></tr>
-    <tr><td style="white-space:nowrap">1.6T光模块</td><td style="white-space:nowrap">约5-10亿美元</td><td class="green">爆发初期</td><td>约3-4亿美元</td><td class="gold">约40-50%</td></tr>
-    <tr><td style="white-space:nowrap">硅光模块</td><td style="white-space:nowrap">约10-15亿美元</td><td class="green">+60%+</td><td>约0.7-1.1亿美元</td><td>约5-8%</td></tr>
+    <tr><td>全球数据中心光模块</td><td>约100-120亿美元</td><td class="green">+25-35%</td><td>约35亿美元</td><td class="gold">约30-35%</td></tr>
+    <tr><td>AI光模块市场(800G+)</td><td>约40-50亿美元</td><td class="green">+50%+</td><td>约16-19亿美元</td><td class="gold">约35-40%</td></tr>
+    <tr><td>1.6T光模块</td><td>约5-10亿美元</td><td class="green">爆发初期</td><td>约3-4亿美元</td><td class="gold">约40-50%</td></tr>
+    <tr><td>硅光模块</td><td>约10-15亿美元</td><td class="green">+60%+</td><td>约0.7-1.1亿美元</td><td>约5-8%</td></tr>
   </table>
 
   <h3>竞争态势</h3>
   <table class="tbl">
     <tr><th>竞争对手</th><th>竞争维度</th><th>公司相对优势</th></tr>
-    <tr><td style="white-space:nowrap">Coherent（美国）</td><td style="white-space:nowrap">800G/1.6T紧追</td><td class="green">规模更大、客户关系更深、成本更优</td></tr>
-    <tr><td style="white-space:nowrap">新易盛</td><td style="white-space:nowrap">800G放量跟进</td><td class="green">技术领先约1-2季度，规模优势显著</td></tr>
-    <tr><td style="white-space:nowrap">华工正源</td><td style="white-space:nowrap">400G/800G竞争</td><td>高端产品占比高，品牌溢价强</td></tr>
-    <tr><td style="white-space:nowrap">光迅科技</td><td style="white-space:nowrap">电信→数通转型</td><td class="green">AI光模块技术领先明显</td></tr>
-    <tr><td style="white-space:nowrap">英特尔（硅光）</td><td style="white-space:nowrap">硅光方案竞争</td><td>自研硅光+EML并行，方案更灵活</td></tr>
+    <tr><td>Coherent（美国）</td><td>800G/1.6T紧追</td><td class="green">规模更大、客户关系更深、成本更优</td></tr>
+    <tr><td>新易盛</td><td>800G放量跟进</td><td class="green">技术领先约1-2季度，规模优势显著</td></tr>
+    <tr><td>华工正源</td><td>400G/800G竞争</td><td>高端产品占比高，品牌溢价强</td></tr>
+    <tr><td>光迅科技</td><td>电信→数通转型</td><td class="green">AI光模块技术领先明显</td></tr>
+    <tr><td>英特尔（硅光）</td><td>硅光方案竞争</td><td>自研硅光+EML并行，方案更灵活</td></tr>
   </table>
 
   <h3>行业终局思考</h3>
@@ -731,11 +683,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>催化剂时间表</h3>
   <table class="tbl">
     <tr><th>时间</th><th>事件</th><th>预期影响</th></tr>
-    <tr><td style="white-space:nowrap">2026Q3</td><td style="white-space:nowrap">1.6T光模块大规模放量</td><td class="green">营收增速继续回升，单季营收超120亿</td></tr>
-    <tr><td style="white-space:nowrap">2026H2</td><td style="white-space:nowrap">英伟达Rubin架构发布</td><td class="green">1.6T需求进一步确认</td></tr>
-    <tr><td style="white-space:nowrap">2027H1</td><td style="white-space:nowrap">硅光渗透率超15%</td><td class="green">毛利率有望进一步提升</td></tr>
-    <tr><td style="white-space:nowrap">2027H2</td><td style="white-space:nowrap">泰国二期工厂满产</td><td>海外产能占比超60%</td></tr>
-    <tr><td style="white-space:nowrap">2027-2028</td><td style="white-space:nowrap">3.2T光模块预研完成</td><td>下一代技术储备验证</td></tr>
+    <tr><td>2026Q3</td><td>1.6T光模块大规模放量</td><td class="green">营收增速继续回升，单季营收超120亿</td></tr>
+    <tr><td>2026H2</td><td>英伟达Rubin架构发布</td><td class="green">1.6T需求进一步确认</td></tr>
+    <tr><td>2027H1</td><td>硅光渗透率超15%</td><td class="green">毛利率有望进一步提升</td></tr>
+    <tr><td>2027H2</td><td>泰国二期工厂满产</td><td>海外产能占比超60%</td></tr>
+    <tr><td>2027-2028</td><td>3.2T光模块预研完成</td><td>下一代技术储备验证</td></tr>
   </table>
 
   <h3>三年业绩预测</h3>
@@ -814,19 +766,19 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>风险类型</h3>
   <table class="tbl">
     <tr><th>风险类型</th><th>描述</th><th>概率</th><th>应对措施</th></tr>
-    <tr><td style="white-space:nowrap">AI资本开支周期性回落</td><td style="white-space:nowrap">北美云厂商大幅削减AI投资</td><td><span class="orange">中</span></td><td>拓展电信级和接入网市场</td></tr>
-    <tr><td style="white-space:nowrap">中美科技博弈</td><td style="white-space:nowrap">高端光模块被列入出口管制</td><td><span style="color:#ffc107;">中低</span></td><td>泰国工厂全球化产能配置</td></tr>
-    <tr><td style="white-space:nowrap">竞争对手技术突破</td><td style="white-space:nowrap">新易盛/Coherent率先量产下一代</td><td><span class="orange">中</span></td><td>持续高研发投入保持领先</td></tr>
-    <tr><td style="white-space:nowrap">客户集中风险</td><td style="white-space:nowrap">英伟达/谷歌削减订单</td><td><span class="orange">中</span></td><td>拓展亚马逊/Meta等更多客户</td></tr>
-    <tr><td style="white-space:nowrap">技术迭代失速</td><td style="white-space:nowrap">3.2T/硅光研发严重滞后</td><td><span style="color:#ffc107;">中低</span></td><td>加大研发投入+引进人才</td></tr>
+    <tr><td>AI资本开支周期性回落</td><td>北美云厂商大幅削减AI投资</td><td><span class="orange">中</span></td><td>拓展电信级和接入网市场</td></tr>
+    <tr><td>中美科技博弈</td><td>高端光模块被列入出口管制</td><td><span style="color:#ffc107;">中低</span></td><td>泰国工厂全球化产能配置</td></tr>
+    <tr><td>竞争对手技术突破</td><td>新易盛/Coherent率先量产下一代</td><td><span class="orange">中</span></td><td>持续高研发投入保持领先</td></tr>
+    <tr><td>客户集中风险</td><td>英伟达/谷歌削减订单</td><td><span class="orange">中</span></td><td>拓展亚马逊/Meta等更多客户</td></tr>
+    <tr><td>技术迭代失速</td><td>3.2T/硅光研发严重滞后</td><td><span style="color:#ffc107;">中低</span></td><td>加大研发投入+引进人才</td></tr>
   </table>
 
   <h3>敏感性分析</h3>
   <table class="tbl">
     <tr><th>压力情景</th><th>净利影响</th><th>股价压力</th></tr>
-    <tr><td style="white-space:nowrap">AI资本开支削减20%</td><td style="white-space:nowrap">-25%</td><td class="red">-22%</td></tr>
-    <tr><td style="white-space:nowrap">1.6T竞争加剧（毛利率-3pct）</td><td style="white-space:nowrap">-12%</td><td class="orange">-15%</td></tr>
-    <tr><td style="white-space:nowrap">大客户削减订单</td><td style="white-space:nowrap">-10%</td><td class="orange">-12%</td></tr>
+    <tr><td>AI资本开支削减20%</td><td>-25%</td><td class="red">-22%</td></tr>
+    <tr><td>1.6T竞争加剧（毛利率-3pct）</td><td>-12%</td><td class="orange">-15%</td></tr>
+    <tr><td>大客户削减订单</td><td>-10%</td><td class="orange">-12%</td></tr>
     <tr><td class="red">极端叠加</td><td class="red">-40%</td><td class="red" style="font-weight:bold;">-35%</td></tr>
   </table>
 
@@ -855,11 +807,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>清算价值</h3>
   <table class="tbl">
     <tr><th>资产项</th><th>账面价值</th><th>清算价值</th></tr>
-    <tr><td style="white-space:nowrap">货币资金</td><td style="white-space:nowrap">约50亿</td><td class="gold">50亿</td></tr>
-    <tr><td style="white-space:nowrap">应收账款</td><td style="white-space:nowrap">约40亿</td><td>28亿</td></tr>
-    <tr><td style="white-space:nowrap">存货</td><td style="white-space:nowrap">约50亿</td><td>20亿</td></tr>
-    <tr><td style="white-space:nowrap">固定资产+在建</td><td style="white-space:nowrap">约50亿</td><td>20亿</td></tr>
-    <tr><td style="white-space:nowrap">无形资产+商誉</td><td style="white-space:nowrap">约20亿</td><td>4亿</td></tr>
+    <tr><td>货币资金</td><td>约50亿</td><td class="gold">50亿</td></tr>
+    <tr><td>应收账款</td><td>约40亿</td><td>28亿</td></tr>
+    <tr><td>存货</td><td>约50亿</td><td>20亿</td></tr>
+    <tr><td>固定资产+在建</td><td>约50亿</td><td>20亿</td></tr>
+    <tr><td>无形资产+商誉</td><td>约20亿</td><td>4亿</td></tr>
     <tr><td class="gold">合计</td><td>约210亿</td><td>约122亿</td></tr>
   </table>
   <div class="txt">清算价值约122亿元，当前市值约1,260亿元。差额约1,138亿为"全球光模块龙头地位+与英伟达等客户的深度绑定+技术领先优势+团队能力"的持续经营溢价。</div>
@@ -899,17 +851,17 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>价值投资理论应用</h3>
   <table class="tbl">
     <tr><th>模块</th><th>大师理念</th><th>应用分析</th></tr>
-    <tr><td style="white-space:nowrap">M1</td><td style="white-space:nowrap">段永平<br>「本分」</td><td style="text-align:left;font-size:11px;">聚焦光模块领域十余年，从100G到1.6T持续深耕</td></tr>
-    <tr><td style="white-space:nowrap">M2</td><td style="white-space:nowrap">巴菲特<br>「护城河」</td><td style="text-align:left;font-size:11px;">技术领先4.5+成本优势4.0+客户绑定3.5，护城河较深</td></tr>
-    <tr><td style="white-space:nowrap">M3</td><td style="white-space:nowrap">巴菲特<br>「德才兼备」</td><td style="text-align:left;font-size:11px;">刘圣每代技术迭代均精准卡位，德才兼备</td></tr>
-    <tr><td style="white-space:nowrap">M4</td><td style="white-space:nowrap">巴菲特<br>「FCF为王」</td><td style="text-align:left;font-size:11px;">经营现金流42亿、FCF 24亿、资产负债率29%</td></tr>
-    <tr><td style="white-space:nowrap">M5</td><td style="white-space:nowrap">邱国鹭<br>「定价权」</td><td style="text-align:left;font-size:11px;">1.6T稀缺性和硅光自研赋予较强下游定价权</td></tr>
-    <tr><td style="white-space:nowrap">M6</td><td style="white-space:nowrap">巴菲特<br>「资本配置」</td><td style="text-align:left;font-size:11px;">ROE 25%，高投入高回报的科技制造模型</td></tr>
-    <tr><td style="white-space:nowrap">M7</td><td style="white-space:nowrap">邱国鹭<br>「剩者为王」</td><td style="text-align:left;font-size:11px;">光模块"强者恒强"，1.6T时代有助于提升市占率</td></tr>
-    <tr><td style="white-space:nowrap">M8</td><td style="white-space:nowrap">彼得·林奇<br>「增长类型」</td><td style="text-align:left;font-size:11px;">高速增长型——CAGR 30-41%，PEG 0.7倍</td></tr>
-    <tr><td style="white-space:nowrap">M9</td><td style="white-space:nowrap">芒格<br>「逆向思维」</td><td style="text-align:left;font-size:11px;">市场低估了Rubin架构带来的1.6T需求和硅光产业化速度</td></tr>
-    <tr><td style="white-space:nowrap">M10</td><td style="white-space:nowrap">芒格<br>「Pre-mortem」</td><td style="text-align:left;font-size:11px;">AI资本开支回落和竞争对手技术突破是两大核心风险</td></tr>
-    <tr><td style="white-space:nowrap">M11</td><td style="white-space:nowrap">巴菲特<br>「安全边际」</td><td style="text-align:left;font-size:11px;">PE 21.5倍+PEG 0.7倍，估值具有安全边际</td></tr>
+    <tr><td>M1</td><td>段永平<br>「本分」</td><td style="text-align:left;font-size:11px;">聚焦光模块领域十余年，从100G到1.6T持续深耕</td></tr>
+    <tr><td>M2</td><td>巴菲特<br>「护城河」</td><td style="text-align:left;font-size:11px;">技术领先4.5+成本优势4.0+客户绑定3.5，护城河较深</td></tr>
+    <tr><td>M3</td><td>巴菲特<br>「德才兼备」</td><td style="text-align:left;font-size:11px;">刘圣每代技术迭代均精准卡位，德才兼备</td></tr>
+    <tr><td>M4</td><td>巴菲特<br>「FCF为王」</td><td style="text-align:left;font-size:11px;">经营现金流42亿、FCF 24亿、资产负债率29%</td></tr>
+    <tr><td>M5</td><td>邱国鹭<br>「定价权」</td><td style="text-align:left;font-size:11px;">1.6T稀缺性和硅光自研赋予较强下游定价权</td></tr>
+    <tr><td>M6</td><td>巴菲特<br>「资本配置」</td><td style="text-align:left;font-size:11px;">ROE 25%，高投入高回报的科技制造模型</td></tr>
+    <tr><td>M7</td><td>邱国鹭<br>「剩者为王」</td><td style="text-align:left;font-size:11px;">光模块"强者恒强"，1.6T时代有助于提升市占率</td></tr>
+    <tr><td>M8</td><td>彼得·林奇<br>「增长类型」</td><td style="text-align:left;font-size:11px;">高速增长型——CAGR 30-41%，PEG 0.7倍</td></tr>
+    <tr><td>M9</td><td>芒格<br>「逆向思维」</td><td style="text-align:left;font-size:11px;">市场低估了Rubin架构带来的1.6T需求和硅光产业化速度</td></tr>
+    <tr><td>M10</td><td>芒格<br>「Pre-mortem」</td><td style="text-align:left;font-size:11px;">AI资本开支回落和竞争对手技术突破是两大核心风险</td></tr>
+    <tr><td>M11</td><td>巴菲特<br>「安全边际」</td><td style="text-align:left;font-size:11px;">PE 21.5倍+PEG 0.7倍，估值具有安全边际</td></tr>
   </table>
 </div>
 
@@ -920,12 +872,12 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>附录A：数据来源</h3>
   <table class="tbl">
     <tr><th>数据类型</th><th>来源平台</th><th>截止日期</th></tr>
-    <tr><td style="white-space:nowrap">财务报表</td><td style="white-space:nowrap">恒生聚源数据库 - dz_maindatanew</td><td>2025Q1</td></tr>
-    <tr><td style="white-space:nowrap">衍生财务指标</td><td style="white-space:nowrap">恒生聚源数据库 - fin_derivative</td><td>2025Q1</td></tr>
-    <tr><td style="white-space:nowrap">资产负债数据</td><td style="white-space:nowrap">恒生聚源数据库 - dz_balancesheetall</td><td>2025Q1</td></tr>
-    <tr><td style="white-space:nowrap">现金流数据</td><td style="white-space:nowrap">恒生聚源数据库 - dz_cashflowstatementall</td><td>2025Q1</td></tr>
-    <tr><td style="white-space:nowrap">估值数据</td><td style="white-space:nowrap">恒生聚源数据库 - dz_dindicesforvaluation</td><td>2026-06-02</td></tr>
-    <tr><td style="white-space:nowrap">机构预测</td><td style="white-space:nowrap">恒生聚源数据库 - c_ex_proforstat</td><td>2026-05</td></tr>
+    <tr><td>财务报表</td><td>恒生聚源数据库 - dz_maindatanew</td><td>2025Q1</td></tr>
+    <tr><td>衍生财务指标</td><td>恒生聚源数据库 - fin_derivative</td><td>2025Q1</td></tr>
+    <tr><td>资产负债数据</td><td>恒生聚源数据库 - dz_balancesheetall</td><td>2025Q1</td></tr>
+    <tr><td>现金流数据</td><td>恒生聚源数据库 - dz_cashflowstatementall</td><td>2025Q1</td></tr>
+    <tr><td>估值数据</td><td>恒生聚源数据库 - dz_dindicesforvaluation</td><td>2026-06-02</td></tr>
+    <tr><td>机构预测</td><td>恒生聚源数据库 - c_ex_proforstat</td><td>2026-05</td></tr>
   </table>
 
   <div class="txt" style="font-size:11px;">
