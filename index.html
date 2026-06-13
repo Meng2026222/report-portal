@@ -1289,8 +1289,8 @@ function updateHeaderBtn() {
     btn.onclick = function() { openLogin() }
   }
 }
-function showFeedback() { var fb = document.getElementById('feedbackForm'); if(fb) fb.style.display = ''; }
-function hideFeedback() { var fb = document.getElementById('feedbackForm'); if(fb) fb.style.display = 'none'; }
+function showFeedback() { var fb = document.querySelector('.site-footer'); if(fb) fb.style.display = ''; }
+function hideFeedback() { var fb = document.querySelector('.site-footer'); if(fb) fb.style.display = 'none'; }
 
 // ===== NICKNAME =====
 function showNicknameDialog(user) {
