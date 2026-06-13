@@ -1311,13 +1311,23 @@ function saveNickname() {
     if (res.data && res.data.id !== user.id) {
       msg.textContent = '该昵称已被使用'; btn.disabled = false; btn.textContent = '确定'; return
     }
-    getSupabase().from('profiles').upsert({id: user.id, nickname: nick, updated_at: new Date().toISOString()}, {onConflict: 'id'}).then(function(res2) {
-      if (res2.error) { msg.textContent = '保存失败: ' + res2.error.message; btn.disabled = false; btn.textContent = '确定'; return }
-      localStorage.setItem('SUPABASE_NICKNAME', nick)
-      closeNicknameDialog()
-      // Update all historical comments
-      getSupabase().from('comments').update({author_name: nick}).eq('user_id', user.id).then(function(){})
-      updateHeaderBtn()
+    getSupabase().auth.getSession().then(function(sess) {
+      var token = sess.data && sess.data.session ? sess.data.session.access_token : null;
+      if (!token) { msg.textContent = '请重新登录'; btn.disabled = false; btn.textContent = '确定'; return }
+      fetch(SUPABASE_URL + '/rest/v1/profiles', {
+        method: 'POST',
+        headers: {'apikey': SUPABASE_ANON_KEY, 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json', 'Prefer': 'resolution=merge-duplicates'},
+        body: JSON.stringify({id: user.id, nickname: nick, updated_at: new Date().toISOString()})
+      }).then(function(r) {
+        return r.json().then(function(d) { return {ok: r.ok, data: d} });
+      }).then(function(res) {
+        if (!res.ok) { msg.textContent = '保存失败'; btn.disabled = false; btn.textContent = '确定'; return }
+        localStorage.setItem('SUPABASE_NICKNAME', nick)
+        closeNicknameDialog()
+        // Update all historical comments
+        getSupabase().from('comments').update({author_name: nick}).eq('user_id', user.id).then(function(){})
+        updateHeaderBtn()
+      })
     })
   })
 }
