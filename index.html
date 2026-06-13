@@ -1286,9 +1286,11 @@ function setOtpMsg(msg, isError) {
 function showUserMenu() {
   var user = getStoredUser()
   if (!user) return
-  var choice = prompt('已登录: ' + user.email + '\n\n1 - 设置密码（之后可用密码登录）\n2 - 退出登录\n\n输入数字：')
-  if (choice === '1') showSetPwd()
-  else if (choice === '2') logout()
+  if (confirm('设置密码后可直接用邮箱+密码登录，不再需要邮件验证。\n\n确定 → 设置密码\n取消 → 退出登录')) {
+    showSetPwd()
+  } else {
+    logout()
+  }
 }
 
 function showSetPwd() {
