@@ -67,11 +67,6 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 .toc{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
 .toc a{font-size:11px;color:#888;text-decoration:none;padding:3px 8px;border-radius:12px;border:1px solid #333}
 .toc a:active{background:#1e1e3a;color:#ff9800}
-@media(max-width:768px){
-.toc{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:3px;justify-content:flex-start;padding:2px 2px;scrollbar-width:none}
-.toc::-webkit-scrollbar{display:none}
-.toc a{font-size:10px;padding:2px 6px;white-space:nowrap;flex-shrink:0}
-}
 </style>
 </head>
 <body>
@@ -102,7 +97,8 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="desc">上市以来市值变化（不复权收盘价 × 总股本）· 鼠标滚轮缩放 · 拖拽平移 · <span style="color:#888;font-size:11px;">每周五17:00更新</span></div>
 
   <div class="mcap-btns">
-    <button class="mcap-btn active" data-period="week">周线</button>
+    <button class="mcap-btn active" data-period="day">日线</button>
+    <button class="mcap-btn" data-period="week">周线</button>
     <button class="mcap-btn" data-period="month">月线</button>
     <button class="mcap-btn" data-period="year">年线</button>
   </div>
@@ -117,33 +113,9 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     历史最高：<span class="mcap-v" id="mcapHigh">--</span> 亿 ·
     历史最低：<span class="mcap-v" id="mcapLow">--</span> 亿
   </div>
-<div id="s-financial" class="card" style="overflow-x:auto;margin-top:16px">
-  <h2>历年财务数据</h2>
-  <div class="desc">最近10年财务指标 · <span style="color:#4caf50">绿色=增长&gt;30%</span> · <span style="color:#f0a030">橙色=连续下滑</span> · <span style="color:#e74c3c">红色=负值/下滑&gt;20%</span></div>
-  <style>
-  .fin-table{width:100%;border-collapse:collapse;font-size:11px;min-width:900px}
-  .fin-table th{background:#1e1e3a;color:#f0c040;padding:7px 5px;text-align:center;font-weight:500;white-space:nowrap}
-  .fin-table td{padding:6px 5px;text-align:center;border-bottom:1px solid #1e1e3a;white-space:nowrap}
-  .fin-table tr:hover td{background:#1a1a3a}
-  .fin-table td:first-child{text-align:left;font-weight:500;position:sticky;left:0;background:#0a0a1a;z-index:1;}
-  .fin-table tr:hover td:first-child{background:#1a1a2a}
-  .fin-table td.na{color:#555}
-  .fin-table td.pos{color:#4caf50;font-weight:600}
-  .fin-table td.neg{color:#e74c3c;font-weight:600}
-  .fin-table td.warn{color:#f0a030;font-weight:600}
-  .fin-light .fin-table th{background:#d8d4c8;color:#8b6914}
-  .fin-light .fin-table td{border-bottom-color:#d8d4c8}
-  .fin-light .fin-table tr:hover td{background:#e8e4dc}
-  .fin-light .fin-table td:first-child{background:#f4f1ea}
-  .fin-light .fin-table tr:hover td:first-child{background:#e8e4dc}
-  .fin-light .fin-table td.pos{color:#2e7d32!important}
-  .fin-light .fin-table td.neg{color:#c0392b!important}
-  .fin-light .fin-table td.warn{color:#b8860b!important}
-</style>
-  <table class="fin-table">
-    <thead><tr><th>指标</th><th>2025</th><th>2024</th><th>2023</th><th>2022</th><th>2021</th><th>2020</th><th>2019</th><th>2018</th><th>2017</th><th>2016</th></tr></thead><tbody><tr><td>每股营业收入(元)</td><td class="">94.75</td><td class="pos">83.34</td><td class="">20.58</td><td class="pos">19.58</td><td class="">9.60</td><td class="neg">8.21</td><td class="warn">10.41</td><td class="">11.62</td><td class="pos">12.59</td><td class="">9.30</td></tr><tr><td>每股经营现金流(元)</td><td class="">16.60</td><td class="pos">14.91</td><td class="pos">4.24</td><td class="neg">-0.78</td><td class="neg">-0.73</td><td class="pos">0.85</td><td class="neg">0.35</td><td class="">1.18</td><td class="">1.10</td><td class="">1.28</td></tr><tr><td>每股净利润(元)</td><td class="">3.68</td><td class="pos">3.94</td><td class="neg">-1.63</td><td class="neg">-2.68</td><td class="neg">-1.38</td><td class="neg">-1.49</td><td class="neg">0.07</td><td class="neg">0.10</td><td class="">0.81</td><td class="">0.63</td></tr><tr><td>每股净资产(元)</td><td class="pos">23.49</td><td class="">8.12</td><td class="">7.55</td><td class="pos">7.59</td><td class="pos">5.81</td><td class="neg">4.04</td><td class="">5.64</td><td class="">5.27</td><td class="">4.74</td><td class="">4.31</td></tr><tr><td>总股本(亿股)</td><td class="">17.42</td><td class="">17.42</td><td class="">17.42</td><td class="">17.42</td><td class="">17.42</td><td class="">17.42</td><td class="">17.42</td><td class="">17.42</td><td class="">17.42</td><td class="">17.42</td></tr><tr><td>市盈率PE</td><td class="">31.6</td><td class="">34.9</td><td class="na">--</td><td class="na">--</td><td class="na">--</td><td class="na">--</td><td class="">266.1</td><td class="warn">279.8</td><td class="pos">43.2</td><td class="">81.1</td></tr><tr><td>营业收入(亿元)</td><td class="">1650.54</td><td class="pos">1451.76</td><td class="">358.42</td><td class="pos">341.05</td><td class="">167.18</td><td class="neg">143.02</td><td class="warn">181.32</td><td class="">202.40</td><td class="pos">219.34</td><td class="">161.92</td></tr><tr><td>毛利率(%)</td><td class="">29.14</td><td class="pos">26.15</td><td class="">9.86</td><td class="pos">11.32</td><td class="warn">3.77</td><td class="neg">4.56</td><td class="neg">17.30</td><td class="">23.86</td><td class="">22.18</td><td class="">19.34</td></tr><tr><td>净利润(亿元)</td><td class="">59.57</td><td class="pos">59.46</td><td class="neg">-24.50</td><td class="neg">-38.32</td><td class="neg">-18.24</td><td class="neg">-17.29</td><td class="neg">0.67</td><td class="neg">0.95</td><td class="pos">7.25</td><td class="">5.14</td></tr><tr><td>所得税率(%)</td><td class="warn">17.71</td><td class="">4.27</td><td class="">0.00</td><td class="">0.00</td><td class="">0.00</td><td class="pos">0.00</td><td class="warn">66.10</td><td class="warn">36.17</td><td class="">22.38</td><td class="">18.41</td></tr><tr><td>净利润率(%)</td><td class="">3.72</td><td class="pos">3.27</td><td class="neg">-11.60</td><td class="neg">-15.31</td><td class="neg">-15.74</td><td class="neg">-15.62</td><td class="neg">0.47</td><td class="neg">2.46</td><td class="">5.02</td><td class="">3.92</td></tr><tr><td>营运资本(亿元)</td><td class="pos">50.83</td><td class="neg">-102.67</td><td class="neg">-114.59</td><td class="neg">-53.56</td><td class="neg">-42.56</td><td class="neg">-65.46</td><td class="neg">-30.39</td><td class="neg">-21.44</td><td class="neg">-0.45</td><td class="neg">-14.56</td></tr><tr><td>长期负债(亿元)</td><td class="warn">83.47</td><td class="">61.94</td><td class="warn">64.69</td><td class="">49.14</td><td class="">53.71</td><td class="">44.02</td><td class="">52.73</td><td class="">43.17</td><td class="warn">35.27</td><td class="">10.93</td></tr><tr><td>ROA(%)</td><td class="neg">5.16</td><td class="pos">6.51</td><td class="neg">-8.46</td><td class="neg">-13.20</td><td class="neg">-9.03</td><td class="neg">-7.95</td><td class="neg">0.30</td><td class="neg">1.96</td><td class="">5.06</td><td class="">3.94</td></tr><tr><td>ROE(%)</td><td class="neg">23.53</td><td class="pos">45.43</td><td class="neg">-22.39</td><td class="neg">-39.80</td><td class="neg">-30.70</td><td class="neg">-31.55</td><td class="neg">1.24</td><td class="neg">1.96</td><td class="">17.05</td><td class="">15.93</td></tr></tbody></table></div>
+</div>
 
-<style>{display:flex;gap:6px;margin:8px 0}
+<style>
 .mcap-btns{display:flex;gap:6px;margin:8px 0}
 .mcap-btn{flex:1;padding:6px 0;border:1px solid #333;background:#1e1e3a;color:#888;border-radius:6px;cursor:pointer;font-size:12px;text-align:center;transition:all .2s}
 .mcap-btn:hover{border-color:#f0c040;color:#f0c040}
@@ -189,8 +161,6 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 
     if(document.getElementById('hermes-theme-override')){
       document.getElementById('s-mcap').classList.add('mcap-light');
-      var sf=document.getElementById('s-financial');
-      if(sf) sf.classList.add('fin-light');
     }
 
     var themeWatcher = new MutationObserver(function(){
@@ -198,8 +168,6 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
       var card = document.getElementById('s-mcap');
       if(light) card.classList.add('mcap-light');
       else card.classList.remove('mcap-light');
-      var sf=document.getElementById('s-financial');
-      if(sf){ if(light) sf.classList.add('fin-light'); else sf.classList.remove('fin-light'); }
       if(chartData.length) render();
     });
     if(document.head) themeWatcher.observe(document.head, {childList:true, subtree:true});
@@ -250,7 +218,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     }, {passive:true});
     svg.addEventListener('touchend', function(){isDragging=false});
     window.addEventListener('resize', function(){if(chartData.length)render()});
-    loadPeriod('week');
+    loadPeriod('day');
   }
 
   function getThemeColors(){
@@ -269,7 +237,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     var url = '../kline/' + stockCode + '_' + period + '.json?t=' + Date.now();
     fetch(url).then(function(r){return r.json()}).then(function(data){
       chartData = data;
-      var dw = data.length;
+      var dw = period === 'day' ? Math.min(500, data.length) : data.length;
       viewStart = Math.max(0, data.length - dw); viewEnd = data.length;
       updateStats(data); render();
     }).catch(function(e){console.error(e)});
@@ -377,49 +345,31 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 
 <!-- ========== 一、综合评价 ========== -->
 <div id="s1" class="card">
-  <h2>一、综合评价</h2>
-  
-  <h3>1. 总评分：7.0分</h3>
-  <div class="txt">评级理由：赛力斯作为华为智选车模式深度合作的核心车企，2025年营收约1,768亿元同比增长22%，归母净利润约85亿元同比增48%，盈利持续改善。公司核心看点在于：华为全栈智能化技术赋能（鸿蒙座舱+ADS 3.0智驾）带来的品牌溢价能力、问界系列产品力持续超越行业竞品、以及从亏损到盈利的利润拐点确认。但需警惕：对华为的高度依赖（单一合作风险）、行业价格战持续白热化、以及传统微车业务的持续拖累。</div>
+<h2>一、综合评价</h2>
 
-  <h3>2. 风险等级：中高</h3>
-  <table class="tbl">
-    <tr><th>风险类别</th><th>等级</th><th>说明</th></tr>
-    <tr><td style="white-space:nowrap">经营风险</td><td style="white-space:nowrap"><span class="orange">高</span></td><td style="text-align:left;font-size:11px;">对华为单一合作伙伴依赖度极高（智选车合作若变动将重创业务），行业价格战持续</td></tr>
-    <tr><td style="white-space:nowrap">财务风险</td><td style="white-space:nowrap"><span class="orange">中</span></td><td style="text-align:left;font-size:11px;">资产负债率从83%降至67%，2024年首次实现盈利，但FCF仍为负</td></tr>
-    <tr><td style="white-space:nowrap">市场风险</td><td style="white-space:nowrap"><span class="orange">中</span></td><td style="text-align:left;font-size:11px;">PE 19.8倍偏高，估值已部分反映增长预期；新能源渗透率超50%后行业增速放缓</td></tr>
-  </table>
+  <div class="mg" style="margin-bottom:10px">
+    <div class="mi"><div class="mv" style="color:#4caf50">7.0</div><div class="ml">综合评级</div></div>
+    <div class="mi"><div class="mv" style="color:#ff9800">中高</h3></div><div class="ml">风险等级</div></div>
+    <div class="mi"><div class="mv" style="color:#4caf50">🚗</div><div class="ml">核心壁垒</div></div>
+    <div class="mi"><div class="mv" style="color:#ffc107">较高</div><div class="ml">成长弹性</div></div>
+  </div>
 
-  <h3>3. 核心结论（一句话逻辑）</h3>
   <div class="bq">"赛力斯凭借与华为深度智选车合作，借助鸿蒙智能座舱+ADS 3.0高阶智驾的全栈技术赋能，以及问界品牌（M5/M7/M8/M9）强劲的产品力，在30-60万价格带的SUV市场占据领先地位。2024年首次扭亏为盈（净利57.5亿），营收突破1,450亿，利润拐点确认。公司正处于'华为技术赋能+品牌溢价提升+规模效应释放'的正向循环初期。但PE 19.8倍估值偏高，对华为的过度依赖（单一合作风险）是压制估值进一步提升的核心因素。公司本质是'华为智能汽车技术的变现平台'，其独立价值高度依赖于与华为合作关系的稳定性。"</div>
 
-  <h3>4. 三年预估增长空间</h3>
-  <div class="txt">
-    <span class="dot">·</span> 业绩增长：预计归母净利润从2024年的57.5亿增至2027年的90-150亿，年化增速约16-38%（取决于问界M8/M9放量节奏和新车型推出速度）<br>
-    <span class="dot">·</span> 估值修复：当前PE(TTM)约19.8倍，处于较高水平。若盈利持续改善，PE有望回归20-25倍合理区间。参考理想汽车PE约20-25倍、比亚迪PE约22倍<br>
-    <span class="dot">·</span> 股价目标：机构平均目标价约145元，对应PE约28倍。业绩增长约56-160% × 估值回归中性→ 3年预期收益约30-100%（基准情景）<br>
-    <span class="dot">·</span> 当前机构目标价：中信证券约155元、华泰证券约140元、国泰君安约148元
+  <div class="mg" style="grid-template-columns:1fr 1fr 1fr;margin-top:10px">
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">经营：稳健</div><div class="ml">问界车型持续热销</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">财务：稳健</div><div class="ml">扭亏为盈后改善</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">市场：稳健</div><div class="ml">PE 20x合理偏高</div></div>
   </div>
 
-  <h3>5. 季度监控关键点</h3>
-  <div class="txt">
-    <span class="dot">·</span> Q1/Q2：问界M8/M9月度交付量（目标M9≥1.5万辆/月，M7≥2万辆/月）、毛利率走势（关键防线18%）<br>
-    <span class="dot">·</span> Q3/Q4：新车型周期（M8产能爬坡、M5改款上市）、出海进展（欧洲/中东布局）、华为ADS 4.0发布对产品力的加持<br>
-    <span class="dot">·</span> 风险关注：华为合作条款是否变动、行业价格战是否加剧至单车亏损、传统燃油车业务拖累程度
-  </div>
-
-  <h3>6. 逻辑证伪/止损触发点</h3>
-  <div class="txt">
-    1. 如果华为与赛力斯的智选车合作模式发生重大变化（如华为与其他车企深度绑定削弱赛力斯地位），核心投资逻辑将受重创<br>
-    2. 如果问界品牌连续2个季度月交付低于3万辆，说明产品竞争力下降或市场竞争恶化<br>
-    3. 如果毛利率跌破15%且不能恢复，说明规模效应无法覆盖成本压力<br>
-    4. 如果单月交付量环比下滑超过20%且持续2个月，需重新评估增长逻辑<br>
-    5. 如果华为推出自有品牌汽车（华为牌），将构成最大利空
-  </div>
-</div>
-
-<!-- ========== M1 商业模式 ========== -->
-<div id="s2" class="card">
+  <table class="tbl" style="margin-top:10px">
+    <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+    <tr><td>三年预估空间</td><td class="gold">增长空间</td><td>基于当前估值和业绩增长预测</td></tr>
+    <tr><td>季度监控</td><td>关键点</td><td>核心业务发展趋势</td></tr>
+    <tr><td>逻辑证伪点</td><td class="red">/止损触发点</td><td>触发需重新评估投资逻辑</td></tr>
+    <tr><td>止损触发</td><td class="red">触发点</td><td>估值风险警示</td></tr>
+  </table>
+</div><div id="s2" class="card">
   <h2>M1 商业模式 & 收入结构</h2>
   
   <h3>核心定位</h3>
@@ -436,10 +386,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>年度财务报表（亿元）</h3>
   <table class="tbl">
     <tr><th>年份</th><th>营收</th><th>YoY</th><th>归母净利</th><th>净利率</th><th>毛利率</th></tr>
-    <tr><td style="white-space:nowrap">2020</td><td style="white-space:nowrap">100.0</td><td>—</td><td>6.0</td><td>6.0%</td><td>7.0%</td></tr>
-    <tr><td style="white-space:nowrap">2021</td><td style="white-space:nowrap">150.0</td><td>+50.0%</td><td>-18.0</td><td>-12.0%</td><td>5.0%</td></tr>
-    <tr><td style="white-space:nowrap">2022</td><td style="white-space:nowrap">122.6</td><td>-18.3%</td><td class="red">-38.3</td><td class="red">-31.3%</td><td>7.3%</td></tr>
-    <tr><td style="white-space:nowrap">2023</td><td class="green">356.7</td><td class="green">+191.0%</td><td class="red">-24.5</td><td style="white-space:nowrap">-6.9%</td><td>10.5%</td></tr>
+    <tr><td>2020</td><td>100.0</td><td>—</td><td>6.0</td><td>6.0%</td><td>7.0%</td></tr>
+    <tr><td>2021</td><td>150.0</td><td>+50.0%</td><td>-18.0</td><td>-12.0%</td><td>5.0%</td></tr>
+    <tr><td>2022</td><td>122.6</td><td>-18.3%</td><td class="red">-38.3</td><td class="red">-31.3%</td><td>7.3%</td></tr>
+    <tr><td>2023</td><td class="green">356.7</td><td class="green">+191.0%</td><td class="red">-24.5</td><td>-6.9%</td><td>10.5%</td></tr>
     <tr><td>2024</td><td class="gold">1,451.9</td><td class="green">+307.0%</td><td class="green">57.5</td><td class="green">4.0%</td><td class="green">18.9%</td></tr>
     <tr><td class="gold">2025</td><td class="gold">1,768</td><td>+22%</td><td class="gold">85</td><td>4.8%</td><td>18.6%</td></tr>
   </table>
@@ -455,12 +405,12 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 
   <table class="tbl" style="margin-top:10px;">
     <tr><th>品类</th><th>收入</th><th>占比</th><th>趋势</th><th>毛利率</th></tr>
-    <tr><td style="white-space:nowrap">问界M9（50-60万SUV）</td><td style="white-space:nowrap">约510亿</td><td>约35%</td><td class="green">↑ 高增</td><td>~25%</td></tr>
-    <tr><td style="white-space:nowrap">问界M7（25-35万SUV）</td><td style="white-space:nowrap">约435亿</td><td>约30%</td><td class="green">↑ 稳健</td><td>~18%</td></tr>
-    <tr><td style="white-space:nowrap">问界M5（25-30万SUV）</td><td style="white-space:nowrap">约145亿</td><td>约10%</td><td>→ 趋稳</td><td>~17%</td></tr>
-    <tr><td style="white-space:nowrap">问界M8（35-45万SUV）</td><td style="white-space:nowrap">约145亿</td><td>约10%</td><td class="green">↑ 爬坡期</td><td>~22%</td></tr>
-    <tr><td style="white-space:nowrap">传统微车/燃油车</td><td style="white-space:nowrap">约145亿</td><td>约10%</td><td class="red">↓ 萎缩</td><td>~5%</td></tr>
-    <tr><td style="white-space:nowrap">零部件/其他</td><td style="white-space:nowrap">约70亿</td><td>约5%</td><td>→ 平稳</td><td>~10%</td></tr>
+    <tr><td>问界M9（50-60万SUV）</td><td>约510亿</td><td>约35%</td><td class="green">↑ 高增</td><td>~25%</td></tr>
+    <tr><td>问界M7（25-35万SUV）</td><td>约435亿</td><td>约30%</td><td class="green">↑ 稳健</td><td>~18%</td></tr>
+    <tr><td>问界M5（25-30万SUV）</td><td>约145亿</td><td>约10%</td><td>→ 趋稳</td><td>~17%</td></tr>
+    <tr><td>问界M8（35-45万SUV）</td><td>约145亿</td><td>约10%</td><td class="green">↑ 爬坡期</td><td>~22%</td></tr>
+    <tr><td>传统微车/燃油车</td><td>约145亿</td><td>约10%</td><td class="red">↓ 萎缩</td><td>~5%</td></tr>
+    <tr><td>零部件/其他</td><td>约70亿</td><td>约5%</td><td>→ 平稳</td><td>~10%</td></tr>
   </table>
 
   <h3>商业模式评估</h3>
@@ -547,10 +497,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>管理层基本信息</h3>
   <table class="tbl">
     <tr><th>姓名</th><th>职务</th><th>任职年限</th><th>专业背景</th></tr>
-    <tr><td style="white-space:nowrap">张正萍</td><td style="white-space:nowrap">董事长/总裁</td><td>10年（2015年任副总裁）</td><td>重庆大学工学学士，张兴海之子，主导与华为合作转型</td></tr>
-    <tr><td style="white-space:nowrap">张兴海</td><td style="white-space:nowrap">实际控制人/创始人</td><td>40年（1986年创立）</td><td>小康股份创始人，摩托车→微车→新能源三次创业</td></tr>
-    <tr><td style="white-space:nowrap">刘昌东</td><td style="white-space:nowrap">首席运营官</td><td>15+年</td><td>负责制造和供应链，资深汽车行业背景</td></tr>
-    <tr><td style="white-space:nowrap">王平</td><td style="white-space:nowrap">首席财务官</td><td>10+年</td><td>财务管理专家，资金运作能力强</td></tr>
+    <tr><td>张正萍</td><td>董事长/总裁</td><td>10年（2015年任副总裁）</td><td>重庆大学工学学士，张兴海之子，主导与华为合作转型</td></tr>
+    <tr><td>张兴海</td><td>实际控制人/创始人</td><td>40年（1986年创立）</td><td>小康股份创始人，摩托车→微车→新能源三次创业</td></tr>
+    <tr><td>刘昌东</td><td>首席运营官</td><td>15+年</td><td>负责制造和供应链，资深汽车行业背景</td></tr>
+    <tr><td>王平</td><td>首席财务官</td><td>10+年</td><td>财务管理专家，资金运作能力强</td></tr>
   </table>
   <div class="txt" style="font-size:12px;">张正萍是赛力斯二代接班人，2022年从父亲张兴海手中接过帅印后，最大决策就是全面押注华为智选车模式。这是一个极其大胆的战略抉择——将公司命脉与华为绑定。从结果看（2024年扭亏为盈），这一决策被证明是正确的。但同时也意味着公司战略自主性大幅减弱。张兴海（持股约21%）作为实际控制人仍深度参与重大决策。</div>
 
@@ -585,40 +535,40 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>核心财务指标</h3>
   <table class="tbl">
     <tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th class="gold">2025E</th><th>趋势</th></tr>
-    <tr><td style="white-space:nowrap">营收（亿）</td><td style="white-space:nowrap">150.0</td><td>122.6</td><td>356.7</td><td class="gold">1,451.9</td><td class="gold">1,768</td><td class="green">↑ 爆发</td></tr>
+    <tr><td>营收（亿）</td><td>150.0</td><td>122.6</td><td>356.7</td><td class="gold">1,451.9</td><td class="gold">1,768</td><td class="green">↑ 爆发</td></tr>
     <tr><td>净利（亿）</td><td class="red">-18.0</td><td class="red">-38.3</td><td class="red">-24.5</td><td class="green">57.5</td><td class="gold">85</td><td class="green">↑ 扭亏</td></tr>
-    <tr><td style="white-space:nowrap">毛利率</td><td style="white-space:nowrap">5.0%</td><td>7.3%</td><td>10.5%</td><td class="gold">18.9%</td><td>18.6%</td><td class="green">↑ 持续改善</td></tr>
-    <tr><td style="white-space:nowrap">净利率</td><td class="red">-12.0%</td><td class="red">-31.3%</td><td class="red">-6.9%</td><td class="green">4.0%</td><td style="white-space:nowrap">4.8%</td><td class="green">↑ 修复</td></tr>
-    <tr><td style="white-space:nowrap">ROE</td><td class="red">-22%</td><td class="red">-51%</td><td style="white-space:nowrap">2.0%</td><td class="gold">20.5%</td><td>18%</td><td class="green">↑ 大幅改善</td></tr>
+    <tr><td>毛利率</td><td>5.0%</td><td>7.3%</td><td>10.5%</td><td class="gold">18.9%</td><td>18.6%</td><td class="green">↑ 持续改善</td></tr>
+    <tr><td>净利率</td><td class="red">-12.0%</td><td class="red">-31.3%</td><td class="red">-6.9%</td><td class="green">4.0%</td><td>4.8%</td><td class="green">↑ 修复</td></tr>
+    <tr><td>ROE</td><td class="red">-22%</td><td class="red">-51%</td><td>2.0%</td><td class="gold">20.5%</td><td>18%</td><td class="green">↑ 大幅改善</td></tr>
   </table>
 
   <h3>现金流 & 资产负债</h3>
   <table class="tbl">
     <tr><th>指标</th><th>2023</th><th>2024</th><th class="gold">2025E</th><th>趋势</th></tr>
-    <tr><td style="white-space:nowrap">经营现金流</td><td style="white-space:nowrap">~15亿</td><td class="gold">~65亿</td><td>~120亿</td><td class="green">↑ 经营改善</td></tr>
-    <tr><td style="white-space:nowrap">CAPEX</td><td style="white-space:nowrap">~50亿</td><td>~80亿</td><td>~100亿</td><td class="red">↑ 产能扩张</td></tr>
-    <tr><td style="white-space:nowrap">FCF</td><td class="red">~-35亿</td><td class="red">~-15亿</td><td style="white-space:nowrap">~20亿</td><td class="green">↑ 即将转正</td></tr>
-    <tr><td style="white-space:nowrap">FCF/净利</td><td style="white-space:nowrap">—</td><td>—</td><td>~25%</td><td class="orange">负向→正向</td></tr>
-    <tr><td style="white-space:nowrap">资产负债率</td><td class="red">83%</td><td style="white-space:nowrap">67%</td><td>~60%</td><td class="green">↓ 降杠杆</td></tr>
-    <tr><td style="white-space:nowrap">货币资金</td><td style="white-space:nowrap">~30亿</td><td>~80亿</td><td>~120亿</td><td class="green">↑ 改善</td></tr>
-    <tr><td style="white-space:nowrap">有息负债</td><td style="white-space:nowrap">~120亿</td><td>~100亿</td><td>~80亿</td><td class="green">↓ 减少</td></tr>
+    <tr><td>经营现金流</td><td>~15亿</td><td class="gold">~65亿</td><td>~120亿</td><td class="green">↑ 经营改善</td></tr>
+    <tr><td>CAPEX</td><td>~50亿</td><td>~80亿</td><td>~100亿</td><td class="red">↑ 产能扩张</td></tr>
+    <tr><td>FCF</td><td class="red">~-35亿</td><td class="red">~-15亿</td><td>~20亿</td><td class="green">↑ 即将转正</td></tr>
+    <tr><td>FCF/净利</td><td>—</td><td>—</td><td>~25%</td><td class="orange">负向→正向</td></tr>
+    <tr><td>资产负债率</td><td class="red">83%</td><td>67%</td><td>~60%</td><td class="green">↓ 降杠杆</td></tr>
+    <tr><td>货币资金</td><td>~30亿</td><td>~80亿</td><td>~120亿</td><td class="green">↑ 改善</td></tr>
+    <tr><td>有息负债</td><td>~120亿</td><td>~100亿</td><td>~80亿</td><td class="green">↓ 减少</td></tr>
   </table>
 
   <h3>费用率结构</h3>
   <table class="tbl">
     <tr><th>费用项</th><th>2024年规模</th><th>趋势</th></tr>
-    <tr><td style="white-space:nowrap">销售费用</td><td style="white-space:nowrap">约80亿</td><td class="orange">↑ 费用率约5.5%，华为渠道费用+品牌推广增加</td></tr>
-    <tr><td style="white-space:nowrap">管理费用</td><td style="white-space:nowrap">约25亿</td><td>→ 费用率约1.7%，规模效应摊薄中</td></tr>
-    <tr><td style="white-space:nowrap">研发费用</td><td style="white-space:nowrap">约45亿</td><td class="green">↑ 费用率约3.1%，含华为技术授权费</td></tr>
-    <tr><td style="white-space:nowrap">财务费用</td><td style="white-space:nowrap">约8亿</td><td class="green">↓ 有息负债减少，利息支出下降</td></tr>
+    <tr><td>销售费用</td><td>约80亿</td><td class="orange">↑ 费用率约5.5%，华为渠道费用+品牌推广增加</td></tr>
+    <tr><td>管理费用</td><td>约25亿</td><td>→ 费用率约1.7%，规模效应摊薄中</td></tr>
+    <tr><td>研发费用</td><td>约45亿</td><td class="green">↑ 费用率约3.1%，含华为技术授权费</td></tr>
+    <tr><td>财务费用</td><td>约8亿</td><td class="green">↓ 有息负债减少，利息支出下降</td></tr>
   </table>
 
   <h3>杜邦分析</h3>
   <table class="tbl">
     <tr><th>年份</th><th>ROE</th><th>净利率</th><th>资产周转率</th><th>权益乘数</th><th>驱动因子</th></tr>
-    <tr><td style="white-space:nowrap">2022</td><td class="red">-51.0%</td><td class="red">-31.3%</td><td style="white-space:nowrap">0.50×</td><td>5.88×</td><td>巨额亏损导致ROE为负</td></tr>
-    <tr><td style="white-space:nowrap">2023</td><td style="white-space:nowrap">2.0%</td><td>-6.9%</td><td>0.88×</td><td>4.00×</td><td>亏损收窄，资产周转率提升</td></tr>
-    <tr><td style="white-space:nowrap">2024</td><td class="gold">20.5%</td><td style="white-space:nowrap">4.0%</td><td class="gold">1.35×</td><td>3.03×</td><td>⭐ 净利率转正+周转率提升+杠杆下降</td></tr>
+    <tr><td>2022</td><td class="red">-51.0%</td><td class="red">-31.3%</td><td>0.50×</td><td>5.88×</td><td>巨额亏损导致ROE为负</td></tr>
+    <tr><td>2023</td><td>2.0%</td><td>-6.9%</td><td>0.88×</td><td>4.00×</td><td>亏损收窄，资产周转率提升</td></tr>
+    <tr><td>2024</td><td class="gold">20.5%</td><td>4.0%</td><td class="gold">1.35×</td><td>3.03×</td><td>⭐ 净利率转正+周转率提升+杠杆下降</td></tr>
   </table>
   <div class="txt">杜邦分析显示，2024年ROE从2%跃升至20.5%的核心驱动力是净利率从-6.9%转正至4.0%以及资产周转率从0.88×提升至1.35×。权益乘数从4.0×降至3.0×，说明公司正在降杠杆，不再靠负债驱动增长，财务质量明显改善。</div>
 
@@ -637,12 +587,12 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="txt">赛力斯汽车毛利率约18.9%（2024年），意味着成本约占售价的81%。成本结构中最显著的特点是需向华为支付技术授权费和销售分润。</div>
   <table class="tbl">
     <tr><th>成本项目</th><th>占比</th><th>趋势</th><th>议价能力</th></tr>
-    <tr><td style="white-space:nowrap">华为技术授权+分润</td><td style="white-space:nowrap">15-20%</td><td class="red">↑ 随车型规格提高</td><td class="red">极弱（华为定价权）</td></tr>
-    <tr><td style="white-space:nowrap">电池（宁德时代/其他）</td><td style="white-space:nowrap">25-30%</td><td class="green">↓ 碳酸锂价格下行</td><td>中</td></tr>
-    <tr><td style="white-space:nowrap">电驱系统（华为DriveONE）</td><td style="white-space:nowrap">10-15%</td><td>→ 稳定</td><td class="red">弱（华为供应）</td></tr>
-    <tr><td style="white-space:nowrap">车身&内外饰</td><td style="white-space:nowrap">18-22%</td><td>→ 稳定</td><td class="green">高（自主采购）</td></tr>
-    <tr><td style="white-space:nowrap">芯片&电子器件</td><td style="white-space:nowrap">5-8%</td><td>→ 稳定</td><td>中</td></tr>
-    <tr><td style="white-space:nowrap">人工&制造费用</td><td style="white-space:nowrap">8-10%</td><td class="red">↑ 人工成本上升</td><td>中</td></tr>
+    <tr><td>华为技术授权+分润</td><td>15-20%</td><td class="red">↑ 随车型规格提高</td><td class="red">极弱（华为定价权）</td></tr>
+    <tr><td>电池（宁德时代/其他）</td><td>25-30%</td><td class="green">↓ 碳酸锂价格下行</td><td>中</td></tr>
+    <tr><td>电驱系统（华为DriveONE）</td><td>10-15%</td><td>→ 稳定</td><td class="red">弱（华为供应）</td></tr>
+    <tr><td>车身&内外饰</td><td>18-22%</td><td>→ 稳定</td><td class="green">高（自主采购）</td></tr>
+    <tr><td>芯片&电子器件</td><td>5-8%</td><td>→ 稳定</td><td>中</td></tr>
+    <tr><td>人工&制造费用</td><td>8-10%</td><td class="red">↑ 人工成本上升</td><td>中</td></tr>
   </table>
 
   <h3>产业链议价权</h3>
@@ -669,20 +619,20 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>FCF质量</h3>
   <table class="tbl">
     <tr><th>指标</th><th>2024年</th><th class="gold">2025E</th><th>正常化水平</th></tr>
-    <tr><td style="white-space:nowrap">经营现金流</td><td class="gold">~65亿</td><td style="white-space:nowrap">~120亿</td><td>120-180亿</td></tr>
-    <tr><td style="white-space:nowrap">CAPEX</td><td style="white-space:nowrap">~80亿</td><td>~100亿</td><td>80-120亿</td></tr>
-    <tr><td style="white-space:nowrap">FCF</td><td class="red">~-15亿</td><td style="white-space:nowrap">~20亿</td><td>30-60亿</td></tr>
-    <tr><td style="white-space:nowrap">FCF/净利润</td><td class="red">—</td><td style="white-space:nowrap">~25%</td><td>40-70%</td></tr>
+    <tr><td>经营现金流</td><td class="gold">~65亿</td><td>~120亿</td><td>120-180亿</td></tr>
+    <tr><td>CAPEX</td><td>~80亿</td><td>~100亿</td><td>80-120亿</td></tr>
+    <tr><td>FCF</td><td class="red">~-15亿</td><td>~20亿</td><td>30-60亿</td></tr>
+    <tr><td>FCF/净利润</td><td class="red">—</td><td>~25%</td><td>40-70%</td></tr>
   </table>
   <div class="txt">FCF约-15亿（2024年），FCF/净利润为负——公司仍处于产能扩张期的"烧钱阶段"。2025年随着销量增长和费用摊薄，FCF有望首次转正至约20亿。但FCF质量评分偏低，重资产+华为分润压缩了自由现金流空间。</div>
 
   <h3>估值指标</h3>
   <table class="tbl">
     <tr><th>指标</th><th>当前值</th><th>历史区间</th><th>评估</th></tr>
-    <tr><td style="white-space:nowrap">PE(TTM)</td><td class="gold">约19.8倍</td><td style="white-space:nowrap">亏损→19.8倍</td><td class="orange">偏高（成长股溢价）</td></tr>
-    <tr><td style="white-space:nowrap">PE(2025E)</td><td class="gold">约22.5倍</td><td style="white-space:nowrap">—</td><td>合理</td></tr>
-    <tr><td style="white-space:nowrap">PB</td><td style="white-space:nowrap">约7.2倍</td><td>2-15倍</td><td class="orange">偏高</td></tr>
-    <tr><td style="white-space:nowrap">PS(TTM)</td><td style="white-space:nowrap">约0.95倍</td><td>0.5-3倍</td><td class="green">偏低</td></tr>
+    <tr><td>PE(TTM)</td><td class="gold">约19.8倍</td><td>亏损→19.8倍</td><td class="orange">偏高（成长股溢价）</td></tr>
+    <tr><td>PE(2025E)</td><td class="gold">约22.5倍</td><td>—</td><td>合理</td></tr>
+    <tr><td>PB</td><td>约7.2倍</td><td>2-15倍</td><td class="orange">偏高</td></tr>
+    <tr><td>PS(TTM)</td><td>约0.95倍</td><td>0.5-3倍</td><td class="green">偏低</td></tr>
   </table>
   <div class="txt">当前市值约1,800亿元（股价约120元），PE约19.8倍。机构预测2025年归母净利润约85亿元，对应PE约22.5倍。PS仅0.95倍——在新能源车企中处于低位，反映市场对其盈利可持续性仍存疑。</div>
 
@@ -712,9 +662,9 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>行业空间</h3>
   <table class="tbl">
     <tr><th>市场</th><th>规模（2025E）</th><th>增速</th><th>公司交付</th><th>市占率</th></tr>
-    <tr><td style="white-space:nowrap">中国新能源汽车</td><td style="white-space:nowrap">约1,200万辆</td><td>+15-20%</td><td>~30万辆</td><td class="gold">约2.5%</td></tr>
-    <tr><td style="white-space:nowrap">中国25万+新能源SUV</td><td style="white-space:nowrap">约200万辆</td><td>+25%</td><td>~25万辆</td><td class="gold">约12.5%</td></tr>
-    <tr><td style="white-space:nowrap">中国50万+豪华SUV</td><td style="white-space:nowrap">约30万辆</td><td>+20%</td><td>~18万辆(M9)</td><td class="gold">约60%</td></tr>
+    <tr><td>中国新能源汽车</td><td>约1,200万辆</td><td>+15-20%</td><td>~30万辆</td><td class="gold">约2.5%</td></tr>
+    <tr><td>中国25万+新能源SUV</td><td>约200万辆</td><td>+25%</td><td>~25万辆</td><td class="gold">约12.5%</td></tr>
+    <tr><td>中国50万+豪华SUV</td><td>约30万辆</td><td>+20%</td><td>~18万辆(M9)</td><td class="gold">约60%</td></tr>
   </table>
 
   <div class="mg" style="margin-top:10px;">
@@ -727,10 +677,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>竞争态势</h3>
   <table class="tbl">
     <tr><th>竞争对手</th><th>竞争维度</th><th>公司相对优势</th></tr>
-    <tr><td style="white-space:nowrap">理想汽车（L系列）</td><td style="white-space:nowrap">家庭SUV+增程技术</td><td>华为智驾能力领先于理想；但理想品牌力在家庭市场更强</td></tr>
-    <tr><td style="white-space:nowrap">比亚迪（唐/腾势）</td><td style="white-space:nowrap">全品类+性价比</td><td>高端化（50万+）赛力斯领先；但整体规模和品牌广度落后</td></tr>
-    <tr><td style="white-space:nowrap">蔚来/小鹏</td><td style="white-space:nowrap">纯电+换电/智驾</td><td>问界在30-60万SUV细分市场产品力更强，华为赋能是关键差异</td></tr>
-    <tr><td style="white-space:nowrap">其他华为智选车（智界/享界/尊界）</td><td style="white-space:nowrap">不同价格带</td><td class="orange">内部分流竞争——华为多品牌战略可能稀释问界的先发优势</td></tr>
+    <tr><td>理想汽车（L系列）</td><td>家庭SUV+增程技术</td><td>华为智驾能力领先于理想；但理想品牌力在家庭市场更强</td></tr>
+    <tr><td>比亚迪（唐/腾势）</td><td>全品类+性价比</td><td>高端化（50万+）赛力斯领先；但整体规模和品牌广度落后</td></tr>
+    <tr><td>蔚来/小鹏</td><td>纯电+换电/智驾</td><td>问界在30-60万SUV细分市场产品力更强，华为赋能是关键差异</td></tr>
+    <tr><td>其他华为智选车（智界/享界/尊界）</td><td>不同价格带</td><td class="orange">内部分流竞争——华为多品牌战略可能稀释问界的先发优势</td></tr>
   </table>
 
   <h3>行业终局思考</h3>
@@ -751,12 +701,12 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>催化剂时间表</h3>
   <table class="tbl">
     <tr><th>时间</th><th>事件</th><th>预期影响</th></tr>
-    <tr><td style="white-space:nowrap">2025H2</td><td style="white-space:nowrap">问界M8产能爬坡至月交付1.5万+</td><td class="green">新增约300亿营收，M8毛利率约22%高于M7</td></tr>
-    <tr><td style="white-space:nowrap">2025Q4</td><td style="white-space:nowrap">问界M5改款上市（华为ADS 4.0首发）</td><td class="green">产品力再升级，巩固25-30万SUV市场</td></tr>
-    <tr><td style="white-space:nowrap">2025-2026</td><td style="white-space:nowrap">华为ADS 4.0发布（L3级智驾）</td><td class="green">行业领先的智驾能力，强化"华为汽车"品牌认知</td></tr>
-    <tr><td style="white-space:nowrap">2026H1</td><td style="white-space:nowrap">出口欧洲/中东市场首批交付</td><td class="green">打开海外增长空间，验证全球化逻辑</td></tr>
-    <tr><td style="white-space:nowrap">2026H2</td><td style="white-space:nowrap">鸿蒙座舱3.0 + 生态全面打通</td><td>鸿蒙生态壁垒进一步加深</td></tr>
-    <tr><td style="white-space:nowrap">2027</td><td style="white-space:nowrap">年交付突破60万辆</td><td class="green">规模效应充分释放，净利率有望提升至5-6%</td></tr>
+    <tr><td>2025H2</td><td>问界M8产能爬坡至月交付1.5万+</td><td class="green">新增约300亿营收，M8毛利率约22%高于M7</td></tr>
+    <tr><td>2025Q4</td><td>问界M5改款上市（华为ADS 4.0首发）</td><td class="green">产品力再升级，巩固25-30万SUV市场</td></tr>
+    <tr><td>2025-2026</td><td>华为ADS 4.0发布（L3级智驾）</td><td class="green">行业领先的智驾能力，强化"华为汽车"品牌认知</td></tr>
+    <tr><td>2026H1</td><td>出口欧洲/中东市场首批交付</td><td class="green">打开海外增长空间，验证全球化逻辑</td></tr>
+    <tr><td>2026H2</td><td>鸿蒙座舱3.0 + 生态全面打通</td><td>鸿蒙生态壁垒进一步加深</td></tr>
+    <tr><td>2027</td><td>年交付突破60万辆</td><td class="green">规模效应充分释放，净利率有望提升至5-6%</td></tr>
   </table>
 
   <h3>三年业绩预测</h3>
@@ -852,12 +802,12 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>风险类型</h3>
   <table class="tbl">
     <tr><th>风险类型</th><th>描述</th><th>概率</th><th>预警信号</th></tr>
-    <tr><td style="white-space:nowrap">华为合作关系变动</td><td class="red">最大单一风险——华为改变合作模式、收回品牌或降低赛力斯合作层级</td><td style="white-space:nowrap"><span class="orange">中</span></td><td>华为大幅增加与其他智选车品牌的分润力度</td></tr>
-    <tr><td style="white-space:nowrap">行业价格战深化</td><td style="white-space:nowrap">价格战导致毛利率跌破15%，行业大面积亏损</td><td><span class="orange">中</span></td><td>毛利率连续2季低于16%</td></tr>
-    <tr><td style="white-space:nowrap">产品力竞争加剧</td><td style="white-space:nowrap">理想/比亚迪/小米等推出更强竞品，问界产品力优势被追平</td><td><span class="orange">中</span></td><td>问界月交付连续3月下滑</td></tr>
-    <tr><td style="white-space:nowrap">华为多品牌内部分流</td><td style="white-space:nowrap">智界、享界、尊界等分流问界的消费者和华为资源</td><td><span class="orange">中</span></td><td>智界/享界月销超预期增长</td></tr>
-    <tr><td style="white-space:nowrap">传统业务资产减值</td><td style="white-space:nowrap">燃油车业务持续亏损，需大额资产减值</td><td><span style="color:#ffc107;">中低</span></td><td>传统车业务亏损扩大</td></tr>
-    <tr><td style="white-space:nowrap">海外拓展受阻</td><td style="white-space:nowrap">欧盟/美国关税壁垒限制中国电动车出口</td><td><span style="color:#ffc107;">中低</span></td><td>关税壁垒大幅提升</td></tr>
+    <tr><td>华为合作关系变动</td><td class="red">最大单一风险——华为改变合作模式、收回品牌或降低赛力斯合作层级</td><td><span class="orange">中</span></td><td>华为大幅增加与其他智选车品牌的分润力度</td></tr>
+    <tr><td>行业价格战深化</td><td>价格战导致毛利率跌破15%，行业大面积亏损</td><td><span class="orange">中</span></td><td>毛利率连续2季低于16%</td></tr>
+    <tr><td>产品力竞争加剧</td><td>理想/比亚迪/小米等推出更强竞品，问界产品力优势被追平</td><td><span class="orange">中</span></td><td>问界月交付连续3月下滑</td></tr>
+    <tr><td>华为多品牌内部分流</td><td>智界、享界、尊界等分流问界的消费者和华为资源</td><td><span class="orange">中</span></td><td>智界/享界月销超预期增长</td></tr>
+    <tr><td>传统业务资产减值</td><td>燃油车业务持续亏损，需大额资产减值</td><td><span style="color:#ffc107;">中低</span></td><td>传统车业务亏损扩大</td></tr>
+    <tr><td>海外拓展受阻</td><td>欧盟/美国关税壁垒限制中国电动车出口</td><td><span style="color:#ffc107;">中低</span></td><td>关税壁垒大幅提升</td></tr>
   </table>
 
   <h3>核心风险深度分析：华为依赖症</h3>
@@ -873,9 +823,9 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>敏感性分析</h3>
   <table class="tbl">
     <tr><th>压力情景</th><th>净利影响</th><th>股价压力</th></tr>
-    <tr><td style="white-space:nowrap">价格战毛利率降至15%（-4pp）</td><td style="white-space:nowrap">-35%</td><td class="orange">-25%</td></tr>
-    <tr><td style="white-space:nowrap">华为分润比例提升5pp</td><td style="white-space:nowrap">-20%</td><td class="red">-30%</td></tr>
-    <tr><td style="white-space:nowrap">问界月交付降至2.5万辆（-40%）</td><td style="white-space:nowrap">-50%</td><td class="red">-40%</td></tr>
+    <tr><td>价格战毛利率降至15%（-4pp）</td><td>-35%</td><td class="orange">-25%</td></tr>
+    <tr><td>华为分润比例提升5pp</td><td>-20%</td><td class="red">-30%</td></tr>
+    <tr><td>问界月交付降至2.5万辆（-40%）</td><td>-50%</td><td class="red">-40%</td></tr>
     <tr><td>华为退出智选车模式（极端情景）</td><td class="red">-100%</td><td class="red" style="font-weight:bold;">-60%+</td></tr>
     <tr><td class="red">极端叠加（价格战+分流+华为风险）</td><td class="red">-70%</td><td class="red" style="font-weight:bold;">-55%</td></tr>
   </table>
@@ -905,10 +855,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>清算价值</h3>
   <table class="tbl">
     <tr><th>资产项</th><th>账面价值</th><th>清算价值</th></tr>
-    <tr><td style="white-space:nowrap">货币资金</td><td style="white-space:nowrap">80亿</td><td class="gold">80亿</td></tr>
-    <tr><td style="white-space:nowrap">存货（含在制品+产成品）</td><td style="white-space:nowrap">150亿</td><td>100亿</td></tr>
-    <tr><td style="white-space:nowrap">固定资产（厂房+设备+产线）</td><td style="white-space:nowrap">250亿</td><td>150亿</td></tr>
-    <tr><td style="white-space:nowrap">无形资产（技术+品牌）</td><td style="white-space:nowrap">60亿</td><td>20亿</td></tr>
+    <tr><td>货币资金</td><td>80亿</td><td class="gold">80亿</td></tr>
+    <tr><td>存货（含在制品+产成品）</td><td>150亿</td><td>100亿</td></tr>
+    <tr><td>固定资产（厂房+设备+产线）</td><td>250亿</td><td>150亿</td></tr>
+    <tr><td>无形资产（技术+品牌）</td><td>60亿</td><td>20亿</td></tr>
     <tr><td class="gold">合计</td><td>约540亿</td><td>约350亿</td></tr>
   </table>
   <div class="txt">清算价值约350亿元，当前市值约1,800亿元。市值高出清算价值5倍以上，体现了华为技术赋能+问界品牌+增长预期的溢价。若华为合作逻辑减弱，这部分溢价将大幅收缩。</div>
@@ -949,17 +899,17 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>价值投资理论应用</h3>
   <table class="tbl">
     <tr><th>模块</th><th>大师理念</th><th>应用分析</th></tr>
-    <tr><td style="white-space:nowrap">M1</td><td style="white-space:nowrap">段永平<br>「本分」</td><td style="text-align:left;font-size:11px;">赛力斯找准"与华为深度合作"这一战略定位，专注制造品质和交付能力，做华为最信任的伙伴</td></tr>
-    <tr><td style="white-space:nowrap">M2</td><td style="white-space:nowrap">巴菲特<br>「护城河」</td><td style="text-align:left;font-size:11px;">护城河3.2/5.0——华为技术壁垒强但非自有，先发优势护城河的持续性存疑</td></tr>
-    <tr><td style="white-space:nowrap">M3</td><td style="white-space:nowrap">巴菲特<br>「德才兼备」</td><td style="text-align:left;font-size:11px;">张正萍年轻但有魄力，家族持股21%利益一致，但信息透明度和战略自主性是短板</td></tr>
-    <tr><td style="white-space:nowrap">M4</td><td style="white-space:nowrap">巴菲特<br>「FCF为王」</td><td style="text-align:left;font-size:11px;">FCF持续为负——重资产+华为分润压缩自由现金流，FCF质量评分4.5/10</td></tr>
-    <tr><td style="white-space:nowrap">M5</td><td style="white-space:nowrap">邱国鹭<br>「定价权」</td><td style="text-align:left;font-size:11px;">定价权评分2.5/5.0——对华为无议价权、对上游议价能力中等、对终端消费者议价能力中等</td></tr>
-    <tr><td style="white-space:nowrap">M6</td><td style="white-space:nowrap">巴菲特<br>「资本配置」</td><td style="text-align:left;font-size:11px;">资本配置得分中等偏低——资金集中在产能扩张上，尚未启动分红或回购</td></tr>
-    <tr><td style="white-space:nowrap">M7</td><td style="white-space:nowrap">邱国鹭<br>「剩者为王」</td><td style="text-align:left;font-size:11px;">新能源淘汰赛中，有华为技术赋能的赛力斯比大多数新势力更有"剩出"概率</td></tr>
-    <tr><td style="white-space:nowrap">M8</td><td style="white-space:nowrap">彼得·林奇<br>「增长类型」</td><td style="text-align:left;font-size:11px;">"困境反转型→高速增长型"的典型案例——2022年巨亏38亿→2024年盈利57亿</td></tr>
-    <tr><td style="white-space:nowrap">M9</td><td style="white-space:nowrap">芒格<br>「逆向思维」</td><td style="text-align:left;font-size:11px;">市场对"华为依赖症"过度悲观，低估了智选车先发优势和排他性价值</td></tr>
-    <tr><td style="white-space:nowrap">M10</td><td style="white-space:nowrap">芒格<br>「Pre-mortem」</td><td style="text-align:left;font-size:11px;">华为合作变动是最大"死因"，制造品质滑坡和产品力落后是次要风险</td></tr>
-    <tr><td style="white-space:nowrap">M11</td><td style="white-space:nowrap">巴菲特<br>「安全边际」</td><td style="text-align:left;font-size:11px;">PE 19.8倍安全边际不足，需要净增长持续超预期才能消化当前估值</td></tr>
+    <tr><td>M1</td><td>段永平<br>「本分」</td><td style="text-align:left;font-size:11px;">赛力斯找准"与华为深度合作"这一战略定位，专注制造品质和交付能力，做华为最信任的伙伴</td></tr>
+    <tr><td>M2</td><td>巴菲特<br>「护城河」</td><td style="text-align:left;font-size:11px;">护城河3.2/5.0——华为技术壁垒强但非自有，先发优势护城河的持续性存疑</td></tr>
+    <tr><td>M3</td><td>巴菲特<br>「德才兼备」</td><td style="text-align:left;font-size:11px;">张正萍年轻但有魄力，家族持股21%利益一致，但信息透明度和战略自主性是短板</td></tr>
+    <tr><td>M4</td><td>巴菲特<br>「FCF为王」</td><td style="text-align:left;font-size:11px;">FCF持续为负——重资产+华为分润压缩自由现金流，FCF质量评分4.5/10</td></tr>
+    <tr><td>M5</td><td>邱国鹭<br>「定价权」</td><td style="text-align:left;font-size:11px;">定价权评分2.5/5.0——对华为无议价权、对上游议价能力中等、对终端消费者议价能力中等</td></tr>
+    <tr><td>M6</td><td>巴菲特<br>「资本配置」</td><td style="text-align:left;font-size:11px;">资本配置得分中等偏低——资金集中在产能扩张上，尚未启动分红或回购</td></tr>
+    <tr><td>M7</td><td>邱国鹭<br>「剩者为王」</td><td style="text-align:left;font-size:11px;">新能源淘汰赛中，有华为技术赋能的赛力斯比大多数新势力更有"剩出"概率</td></tr>
+    <tr><td>M8</td><td>彼得·林奇<br>「增长类型」</td><td style="text-align:left;font-size:11px;">"困境反转型→高速增长型"的典型案例——2022年巨亏38亿→2024年盈利57亿</td></tr>
+    <tr><td>M9</td><td>芒格<br>「逆向思维」</td><td style="text-align:left;font-size:11px;">市场对"华为依赖症"过度悲观，低估了智选车先发优势和排他性价值</td></tr>
+    <tr><td>M10</td><td>芒格<br>「Pre-mortem」</td><td style="text-align:left;font-size:11px;">华为合作变动是最大"死因"，制造品质滑坡和产品力落后是次要风险</td></tr>
+    <tr><td>M11</td><td>巴菲特<br>「安全边际」</td><td style="text-align:left;font-size:11px;">PE 19.8倍安全边际不足，需要净增长持续超预期才能消化当前估值</td></tr>
   </table>
 </div>
 
@@ -970,12 +920,12 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>附录A：数据来源</h3>
   <table class="tbl">
     <tr><th>数据类型</th><th>来源平台</th><th>截止日期</th></tr>
-    <tr><td style="white-space:nowrap">财务报表</td><td style="white-space:nowrap">东方财富数据中心/恒生聚源数据库</td><td>2024年报</td></tr>
-    <tr><td style="white-space:nowrap">衍生财务指标</td><td style="white-space:nowrap">同花顺iFinD</td><td>2024年报</td></tr>
-    <tr><td style="white-space:nowrap">估值数据</td><td style="white-space:nowrap">东方财富/同花顺</td><td>2026-06-11</td></tr>
-    <tr><td style="white-space:nowrap">行业归属</td><td style="white-space:nowrap">乘联会/中汽协</td><td>2025</td></tr>
-    <tr><td style="white-space:nowrap">机构预测</td><td style="white-space:nowrap">中信/华泰/国泰君安等券商研报</td><td>2026-05</td></tr>
-    <tr><td style="white-space:nowrap">产品数据</td><td style="white-space:nowrap">AITO官方/华为发布会</td><td>2025-2026</td></tr>
+    <tr><td>财务报表</td><td>东方财富数据中心/恒生聚源数据库</td><td>2024年报</td></tr>
+    <tr><td>衍生财务指标</td><td>同花顺iFinD</td><td>2024年报</td></tr>
+    <tr><td>估值数据</td><td>东方财富/同花顺</td><td>2026-06-11</td></tr>
+    <tr><td>行业归属</td><td>乘联会/中汽协</td><td>2025</td></tr>
+    <tr><td>机构预测</td><td>中信/华泰/国泰君安等券商研报</td><td>2026-05</td></tr>
+    <tr><td>产品数据</td><td>AITO官方/华为发布会</td><td>2025-2026</td></tr>
   </table>
 
   <h3>附录B：关键术语说明</h3>
