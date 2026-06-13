@@ -109,14 +109,17 @@ html{scroll-behavior:smooth}
 
 /* ===== COMMENTS ===== */
 .waline-wrap{max-width:720px;margin:0 auto;padding:12px 16px}
-.comment-toggle{display:flex;align-items:center;gap:6px;padding:8px 16px;cursor:pointer;border-top:1px solid var(--b2);background:var(--bg4);flex-shrink:0;user-select:none;font-size:12px;color:var(--t2)}
+.comment-toggle{display:flex;align-items:center;gap:6px;padding:10px 16px;cursor:pointer;border-top:1px solid var(--b2);background:var(--bg4);flex-shrink:0;user-select:none;font-size:13px;color:var(--t2)}
 .comment-toggle:hover{background:var(--bg5)}
-.comment-toggle .arrow{font-size:10px;transition:transform .2s;margin-left:auto}
-.comment-toggle.open .arrow{transform:rotate(90deg)}
+.comment-toggle .arrow{font-size:11px;margin-left:auto}
 .comment-toggle .count{margin-left:4px;color:var(--accent);font-weight:600}
-.comment-body{max-height:0;overflow:hidden;transition:max-height .4s ease;flex-shrink:0;background:var(--bg)}
-.comment-body.open{max-height:50vh;overflow-y:auto}
-.comment-body .waline-wrap{padding:8px 16px 16px}
+.comment-fullscreen{display:none;position:absolute;inset:0;z-index:200;background:var(--bg);flex-direction:column}
+.comment-fullscreen.active{display:flex}
+.comment-fs-header{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--b2);flex-shrink:0;font-size:14px;color:var(--t1);font-weight:600}
+.comment-fs-close{margin-left:auto;border:none;background:var(--bg5);color:var(--t2);font-size:12px;padding:5px 12px;border-radius:6px;cursor:pointer;font-family:inherit}
+.comment-fs-close:active{opacity:.7}
+.comment-fs-body{flex:1;overflow-y:auto;padding:8px 0}
+.comment-fs-body .waline-wrap{padding:8px 16px}
 .comment-section{font-size:13px}
 .comment-heading{font-size:15px;color:var(--t1);margin:16px 0 12px}
 .comment-form{margin:12px 0;padding:12px;background:var(--bg3);border-radius:8px;border:1px solid var(--b2)}
@@ -655,10 +658,16 @@ html{scroll-behavior:smooth}
   <!-- ===== COMMENTS SECTION (games) ===== -->
   <div class="comment-toggle" id="commentToggle-game" onclick="toggleComments('game')">
     💬 评论 <span class="count" id="commentCount-game">0</span>
-    <span class="arrow">▶</span>
+    <span class="arrow">▲</span>
   </div>
-  <div class="comment-body" id="commentBody-game">
-    <div class="waline-wrap"><div id="waline-game"></div></div>
+  <div class="comment-fullscreen" id="commentFs-game">
+    <div class="comment-fs-header">
+      💬 评论 <span class="count" id="commentFsCount-game">0</span>
+      <button class="comment-fs-close" onclick="toggleComments('game')">▼ 收起</button>
+    </div>
+    <div class="comment-fs-body" id="commentFsBody-game">
+      <div class="waline-wrap"><div id="waline-game"></div></div>
+    </div>
   </div>
 </div>
 
@@ -678,10 +687,16 @@ html{scroll-behavior:smooth}
   <!-- ===== COMMENTS SECTION (report) ===== -->
   <div class="comment-toggle" id="commentToggle-report" onclick="toggleComments('report')">
     💬 评论 <span class="count" id="commentCount-report">0</span>
-    <span class="arrow">▶</span>
+    <span class="arrow">▲</span>
   </div>
-  <div class="comment-body" id="commentBody-report">
-    <div class="waline-wrap"><div id="comment-report"></div></div>
+  <div class="comment-fullscreen" id="commentFs-report">
+    <div class="comment-fs-header">
+      💬 评论 <span class="count" id="commentFsCount-report">0</span>
+      <button class="comment-fs-close" onclick="toggleComments('report')">▼ 收起</button>
+    </div>
+    <div class="comment-fs-body" id="commentFsBody-report">
+      <div class="waline-wrap"><div id="comment-report"></div></div>
+    </div>
   </div>
 </div>
 
@@ -697,10 +712,16 @@ html{scroll-behavior:smooth}
   <!-- ===== COMMENTS SECTION (book) ===== -->
   <div class="comment-toggle" id="commentToggle-book" onclick="toggleComments('book')">
     💬 评论 <span class="count" id="commentCount-book">0</span>
-    <span class="arrow">▶</span>
+    <span class="arrow">▲</span>
   </div>
-  <div class="comment-body" id="commentBody-book">
-    <div class="waline-wrap"><div id="comment-book"></div></div>
+  <div class="comment-fullscreen" id="commentFs-book">
+    <div class="comment-fs-header">
+      💬 评论 <span class="count" id="commentFsCount-book">0</span>
+      <button class="comment-fs-close" onclick="toggleComments('book')">▼ 收起</button>
+    </div>
+    <div class="comment-fs-body" id="commentFsBody-book">
+      <div class="waline-wrap"><div id="comment-book"></div></div>
+    </div>
   </div>
 </div>
 
@@ -862,8 +883,8 @@ function onFrameLoaded() {
       scrollTimer = setTimeout(function() {
         var d = iframeDoc.documentElement;
         if (d.scrollHeight - d.scrollTop - d.clientHeight < 60) {
-          var body = document.getElementById('commentBody-report');
-          if (body && !body.classList.contains('open')) {
+          var fs = document.getElementById('commentFs-report');
+          if (fs && !fs.classList.contains('active')) {
             toggleComments('report');
           }
         }
@@ -1433,22 +1454,24 @@ function loadComments(path, containerId) {
   getSupabase().from('comments').select('*').eq('path', path).order('created_at', { ascending: false }).then(function(res) {
     if (res.error) { el.innerHTML = '<div class="comment-error">加载失败</div>'; return; }
     renderComments(el, res.data || [], path);
-    // Update comment count on toggle bar
+    // Update comment count on toggle bar and fullscreen header
     var prefix = containerId === 'comment-report' ? 'report' : containerId === 'comment-book' ? 'book' : containerId === 'waline-game' ? 'game' : '';
     if (prefix) {
+      var n = (res.data || []).length;
       var cnt = document.getElementById('commentCount-' + prefix);
-      if (cnt) cnt.textContent = (res.data || []).length;
+      if (cnt) cnt.textContent = n;
+      var fcnt = document.getElementById('commentFsCount-' + prefix);
+      if (fcnt) fcnt.textContent = n;
     }
   });
 }
 
 function toggleComments(type) {
-  var body = document.getElementById('commentBody-' + type);
+  var fs = document.getElementById('commentFs-' + type);
   var toggle = document.getElementById('commentToggle-' + type);
-  if (!body || !toggle) return;
-  var isOpen = body.classList.toggle('open');
-  toggle.classList.toggle('open', isOpen);
-  // Load comments if opening for the first time
+  if (!fs || !toggle) return;
+  var isOpen = fs.classList.toggle('active');
+  // Load comments if opening
   if (isOpen) {
     var containerMap = {report:'comment-report', book:'comment-book', game:'waline-game'};
     var cid = containerMap[type];
