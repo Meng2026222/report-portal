@@ -1468,13 +1468,15 @@ function toggleComments(type) {
   var fs = document.getElementById('commentFs-' + type);
   var toggle = document.getElementById('commentToggle-' + type);
   if (!fs || !toggle) return;
-  // Close if open, otherwise open full screen
+  // Close if open
   if (fs.classList.contains('active') || fs.classList.contains('peek')) {
     fs.classList.remove('active', 'peek');
     return;
   }
-  fs.classList.add('active');
+  // Open peek (40%) first
+  fs.classList.add('peek');
   loadCommentsIfNeeded(type);
+  attachPeekScroll(type);
 }
 
 function peekComments(type) {
@@ -1482,6 +1484,7 @@ function peekComments(type) {
   if (!fs || fs.classList.contains('active') || fs.classList.contains('peek')) return;
   fs.classList.add('peek');
   loadCommentsIfNeeded(type);
+  attachPeekScroll(type);
 }
 
 function expandComments(type) {
@@ -1489,6 +1492,22 @@ function expandComments(type) {
   if (!fs) return;
   fs.classList.remove('peek');
   fs.classList.add('active');
+}
+
+function attachPeekScroll(type) {
+  var body = document.getElementById('commentFsBody-' + type);
+  if (!body || body._peekScrollAttached) return;
+  body._peekScrollAttached = true;
+  var timer;
+  body.addEventListener('scroll', function() {
+    clearTimeout(timer);
+    timer = setTimeout(function() {
+      // If scrolled near bottom of peek area, expand to full
+      if (body.scrollHeight - body.scrollTop - body.clientHeight < 80) {
+        expandComments(type);
+      }
+    }, 100);
+  }, {passive: true});
 }
 
 function loadCommentsIfNeeded(type) {
