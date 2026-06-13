@@ -1699,6 +1699,7 @@ try {
   getSupabase().auth.getSession().then(function(res) {
     if (res.data && res.data.session) {
       localStorage.setItem('SUPABASE_USER', JSON.stringify(res.data.session.user));
+      localStorage.setItem('SUPABASE_TOKEN', res.data.session.access_token);
     }
     updateHeaderBtn();
   });
