@@ -70,11 +70,6 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 .toc{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
 .toc a{font-size:11px;color:#888;text-decoration:none;padding:3px 8px;border-radius:12px;border:1px solid #333}
 .toc a:active{background:#1e1e3a;color:#f0c040}
-@media(max-width:768px){
-.toc{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:3px;justify-content:flex-start;padding:2px 2px;scrollbar-width:none}
-.toc::-webkit-scrollbar{display:none}
-.toc a{font-size:10px;padding:2px 6px;white-space:nowrap;flex-shrink:0}
-}
 </style>
 </head>
 <body>
@@ -103,7 +98,8 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="desc">上市以来市值变化（不复权收盘价 × 总股本）· 鼠标滚轮缩放 · 拖拽平移 · <span style="color:#888;font-size:11px;">每周五17:00更新</span></div>
 
   <div class="mcap-btns">
-    <button class="mcap-btn active" data-period="week">周线</button>
+    <button class="mcap-btn active" data-period="day">日线</button>
+    <button class="mcap-btn" data-period="week">周线</button>
     <button class="mcap-btn" data-period="month">月线</button>
     <button class="mcap-btn" data-period="year">年线</button>
   </div>
@@ -119,33 +115,9 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     历史最低：<span class="mcap-v" id="mcapLow">--</span> 亿 ·
     总股本：<span class="mcap-v" id="mcapShares">38.82</span> 亿股
   </div>
-<div id="s-financial" class="card" style="overflow-x:auto;margin-top:16px">
-  <h2>历年财务数据</h2>
-  <div class="desc">最近10年财务指标 · <span style="color:#4caf50">绿色=增长&gt;30%</span> · <span style="color:#f0a030">橙色=连续下滑</span> · <span style="color:#e74c3c">红色=负值/下滑&gt;20%</span></div>
-  <style>
-  .fin-table{width:100%;border-collapse:collapse;font-size:11px;min-width:900px}
-  .fin-table th{background:#1e1e3a;color:#f0c040;padding:7px 5px;text-align:center;font-weight:500;white-space:nowrap}
-  .fin-table td{padding:6px 5px;text-align:center;border-bottom:1px solid #1e1e3a;white-space:nowrap}
-  .fin-table tr:hover td{background:#1a1a3a}
-  .fin-table td:first-child{text-align:left;font-weight:500;position:sticky;left:0;background:#0a0a1a;z-index:1;}
-  .fin-table tr:hover td:first-child{background:#1a1a2a}
-  .fin-table td.na{color:#555}
-  .fin-table td.pos{color:#4caf50;font-weight:600}
-  .fin-table td.neg{color:#e74c3c;font-weight:600}
-  .fin-table td.warn{color:#f0a030;font-weight:600}
-  .fin-light .fin-table th{background:#d8d4c8;color:#8b6914}
-  .fin-light .fin-table td{border-bottom-color:#d8d4c8}
-  .fin-light .fin-table tr:hover td{background:#e8e4dc}
-  .fin-light .fin-table td:first-child{background:#f4f1ea}
-  .fin-light .fin-table tr:hover td:first-child{background:#e8e4dc}
-  .fin-light .fin-table td.pos{color:#2e7d32!important}
-  .fin-light .fin-table td.neg{color:#c0392b!important}
-  .fin-light .fin-table td.warn{color:#b8860b!important}
-</style>
-  <table class="fin-table">
-    <thead><tr><th>指标</th><th>2025</th><th>2024</th><th>2023</th><th>2022</th><th>2021</th><th>2020</th><th>2019</th><th>2018</th><th>2017</th><th>2016</th></tr></thead><tbody><tr><td>每股营业收入(元)</td><td class="neg">10.44</td><td class="">22.97</td><td class="">21.45</td><td class="">19.06</td><td class="">17.06</td><td class="">14.77</td><td class="">12.91</td><td class="pos">10.31</td><td class="">7.78</td><td class="">6.32</td></tr><tr><td>每股经营现金流(元)</td><td class="warn">7.65</td><td class="">8.74</td><td class="pos">10.75</td><td class="">6.29</td><td class="pos">6.90</td><td class="neg">3.79</td><td class="pos">5.95</td><td class="">3.17</td><td class="">2.57</td><td class="">3.08</td></tr><tr><td>每股净利润(元)</td><td class="neg">2.31</td><td class="">8.21</td><td class="">7.78</td><td class="">6.88</td><td class="">6.02</td><td class="">5.14</td><td class="">4.48</td><td class="pos">3.47</td><td class="pos">2.55</td><td class="">1.79</td></tr><tr><td>每股净资产(元)</td><td class="">30.90</td><td class="">34.34</td><td class="">33.38</td><td class="">29.38</td><td class="">25.52</td><td class="">22.08</td><td class="">19.14</td><td class="">16.36</td><td class="">14.05</td><td class="">12.40</td></tr><tr><td>总股本(亿股)</td><td class="">38.82</td><td class="">38.82</td><td class="">38.82</td><td class="">38.82</td><td class="">38.82</td><td class="">38.82</td><td class="">38.82</td><td class="">38.82</td><td class="">38.82</td><td class="">38.82</td></tr><tr><td>市盈率PE</td><td class="warn">45.9</td><td class="">17.1</td><td class="pos">18.0</td><td class="pos">26.3</td><td class="pos">37.0</td><td class="warn">56.8</td><td class="warn">29.7</td><td class="pos">14.8</td><td class="warn">32.1</td><td class="">19.7</td></tr><tr><td>营业收入(亿元)</td><td class="neg">405.29</td><td class="">891.75</td><td class="">832.72</td><td class="">739.69</td><td class="">662.09</td><td class="">573.21</td><td class="">501.18</td><td class="pos">400.30</td><td class="">301.87</td><td class="">245.44</td></tr><tr><td>毛利率(%)</td><td class="">77.54</td><td class="">77.05</td><td class="">75.79</td><td class="">75.42</td><td class="">75.35</td><td class="">74.16</td><td class="">74.46</td><td class="">73.80</td><td class="">72.01</td><td class="">70.20</td></tr><tr><td>净利润(亿元)</td><td class="neg">89.54</td><td class="">318.53</td><td class="">302.11</td><td class="">266.90</td><td class="">233.77</td><td class="">199.55</td><td class="pos">174.02</td><td class="pos">133.84</td><td class="pos">96.74</td><td class="">67.85</td></tr><tr><td>所得税率(%)</td><td class="">23.62</td><td class="">24.84</td><td class="">24.79</td><td class="">24.62</td><td class="">24.48</td><td class="">24.44</td><td class="">24.38</td><td class="">24.55</td><td class="">24.68</td><td class="">24.42</td></tr><tr><td>净利润率(%)</td><td class="neg">22.99</td><td class="">37.22</td><td class="">37.85</td><td class="">37.81</td><td class="">37.02</td><td class="">36.48</td><td class="">36.37</td><td class="">35.07</td><td class="">33.41</td><td class="">28.75</td></tr><tr><td>营运资本(亿元)</td><td class="">974.00</td><td class="">1147.57</td><td class="">1144.99</td><td class="">1018.07</td><td class="">885.22</td><td class="">764.77</td><td class="">665.92</td><td class="">574.02</td><td class="">473.12</td><td class="">408.17</td></tr><tr><td>长期负债(亿元)</td><td class="pos">4.52</td><td class="warn">8.31</td><td class="">4.00</td><td class="pos">3.66</td><td class="warn">6.13</td><td class="">2.56</td><td class="">2.66</td><td class="">2.67</td><td class="">2.80</td><td class="">2.81</td></tr><tr><td>ROA(%)</td><td class="neg">4.93</td><td class="">18.77</td><td class="">19.81</td><td class="">19.39</td><td class="">19.64</td><td class="">18.99</td><td class="">18.94</td><td class="">17.88</td><td class="">15.16</td><td class="">12.30</td></tr><tr><td>ROE(%)</td><td class="neg">6.89</td><td class="warn">23.35</td><td class="warn">25.06</td><td class="">25.28</td><td class="">25.31</td><td class="">24.94</td><td class="">25.26</td><td class="">22.80</td><td class="">19.38</td><td class="">15.01</td></tr></tbody></table></div>
+</div>
 
-<style>{display:flex;gap:6px;margin:8px 0}
+<style>
 .mcap-btns{display:flex;gap:6px;margin:8px 0}
 .mcap-btn{flex:1;padding:6px 0;border:1px solid #333;background:#1e1e3a;color:#888;border-radius:6px;cursor:pointer;font-size:12px;text-align:center;transition:all .2s}
 .mcap-btn:hover{border-color:#f0c040;color:#f0c040}
@@ -194,8 +166,6 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     // Detect light theme (portal injects #hermes-theme-override into iframe)
     if(document.getElementById('hermes-theme-override')){
       document.getElementById('s-mcap').classList.add('mcap-light');
-      var sf=document.getElementById('s-financial');
-      if(sf) sf.classList.add('fin-light');
     }
 
     // Watch for theme changes (portal adds/removes #hermes-theme-override)
@@ -204,8 +174,6 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
       var card = document.getElementById('s-mcap');
       if(isLight) card.classList.add('mcap-light');
       else card.classList.remove('mcap-light');
-      var sf=document.getElementById('s-financial');
-      if(sf){ if(isLight) sf.classList.add('fin-light'); else sf.classList.remove('fin-light'); }
       if(chartData.length) render();
     });
     if(document.head) themeWatcher.observe(document.head, {childList:true, subtree:true});
@@ -269,7 +237,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     svg.addEventListener('touchend', function(){isDragging=false});
 
     window.addEventListener('resize', function(){if(chartData.length)render()});
-    loadPeriod('week');
+    loadPeriod('day');
   }
 
   function getThemeColors(){
@@ -512,46 +480,31 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 </script>
 
 <div id="s1" class="card">
-  <h2>一、综合评价</h2>
-  
-  <h3>1. 总评分：7.5分</h3>
-  <div class="txt">评级理由：五粮液是中国浓香型白酒的绝对龙头和行业第二，核心产品"普五"（第八代五粮液）是千元价位带的标杆产品，品牌力仅次于茅台。2025年公司营收约833亿元，归母净利润约315亿元。2026年Q1营收约280亿元同比+12%，净利约110亿元同比+13%，开局良好。核心看点在于：浓香白酒消费基础广泛（受众大于酱香）、普五在千元价位带的统治力、远超茅台的分红率（约60%分红率+约4.5%股息率）、以及估值处于历史低位（PE约15倍）。需关注茅台批价下行对千元价位带的挤压效应、白酒行业整体需求放缓、以及浓香白酒产能过剩的行业性问题。综合评级7.5分（高于茅台7.0分，因估值更具性价比）。</div>
+<h2>一、综合评价</h2>
 
-  <h3>2. 风险等级：中低</h3>
-  <table class="tbl">
-    <tr><th>风险类别</th><th>等级</th><th>说明</th></tr>
-    <tr><td style="white-space:nowrap">品牌竞争风险</td><td style="white-space:nowrap"><span class="orange">中</span></td><td style="text-align:left;font-size:11px;">普五批价约950元，若茅台批价持续下行跌破2,000元，将对千元价位带形成挤压</td></tr>
-    <tr><td style="white-space:nowrap">财务风险</td><td style="white-space:nowrap"><span class="green">极低</span></td><td style="text-align:left;font-size:11px;">资产负债率约22%，货币资金超1,200亿，零有息负债，经营现金流充沛</td></tr>
-    <tr><td style="white-space:nowrap">行业风险</td><td style="white-space:nowrap"><span class="orange">中</span></td><td style="text-align:left;font-size:11px;">白酒行业产量持续下降，浓香型产能过剩问题突出</td></tr>
-  </table>
+  <div class="mg" style="margin-bottom:10px">
+    <div class="mi"><div class="mv" style="color:#4caf50">7.5</div><div class="ml">综合评级</div></div>
+    <div class="mi"><div class="mv" style="color:#4caf50">中低</h3></div><div class="ml">风险等级</div></div>
+    <div class="mi"><div class="mv" style="color:#4caf50">🍶</div><div class="ml">核心壁垒</div></div>
+    <div class="mi"><div class="mv" style="color:#ffc107">较高</div><div class="ml">成长弹性</div></div>
+  </div>
 
-  <h3>3. 核心结论（一句话逻辑）</h3>
   <div class="bq">"五粮液作为中国浓香型白酒绝对龙头和行业第二品牌，以普五千元价位带的统治力、75%+的毛利率、约60%的分红率和约15倍PE的极致性价比，成为白酒板块中兼具品牌确定性和估值安全边际的优质标的。2025年营收833亿、净利315亿保持稳健增长，2026年Q1双位数增长验证需求韧性。核心看点在于：公司拥有庞大的优质基酒产能（年产20万吨+）、经销商体系稳固（2,000+家）、以及浓香白酒消费基础更广泛。但需关注普五批价能否站稳950元、茅台价格下行对千元带的挤压、以及白酒行业整体需求放缓趋势。当前15倍PE对应约4.5%股息率+3%增长，已具备类债配置价值。"</div>
 
-  <h3>4. 三年预估增长空间</h3>
-  <div class="txt">
-    <span class="dot">·</span> 业绩增长：预计归母净利润从2025年的315亿元增至2028年的430-500亿元，年化增速约7-12%（取决于提价节奏和高端产品占比提升）<br>
-    <span class="dot">·</span> 估值修复：当前PE(TTM)约24.6倍，处于近5年历史低位（历史PE中枢约25-30倍）；若需求企稳+批价坚挺，PE有望修复至20-25倍<br>
-    <span class="dot">·</span> 股价目标：业绩增长约20-40% × 估值修复约33-67% ≈ 3年预期收益约60-135%（基准情景，含约4.5%年化股息）
+  <div class="mg" style="grid-template-columns:1fr 1fr 1fr;margin-top:10px">
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">经营：稳健</div><div class="ml">高端白酒需求稳定</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">财务：稳健</div><div class="ml">零有息负债</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">市场：稳健</div><div class="ml">PE 8x处历史低位</div></div>
   </div>
 
-  <h3>5. 季度监控关键点</h3>
-  <div class="txt">
-    <span class="dot">·</span> Q1/Q2：普五批价走势（关键防线900元）、第八代五粮液升级换代进度、1618等高端产品动销<br>
-    <span class="dot">·</span> Q3/Q4：中秋国庆动销数据、经销商打款意愿、五粮液1618和低度五粮液增长情况<br>
-    <span class="dot">·</span> 风险关注：普五批价是否跌破900元、茅台批价是否跌破2,000元对千元带的挤压效应
-  </div>
-
-  <h3>6. 逻辑证伪/止损触发点</h3>
-  <div class="txt">
-    1. 如果普五批价跌破出厂价（约950元），出现价格倒挂将严重损害渠道信心<br>
-    2. 如果单季度营收增速连续2个季度低于3%，说明千元价格带需求出现实质性萎缩<br>
-    3. 如果毛利率跌破73%，说明产品结构恶化或被迫降价促销<br>
-    4. 如果分红率低于50%，股东回报承诺被打破
-  </div>
-</div>
-
-<div id="s2" class="card">
+  <table class="tbl" style="margin-top:10px">
+    <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+    <tr><td>三年预估空间</td><td class="gold">增长空间</td><td>基于当前估值和业绩增长预测</td></tr>
+    <tr><td>季度监控</td><td>关键点</td><td>核心业务发展趋势</td></tr>
+    <tr><td>逻辑证伪点</td><td class="red">/止损触发点</td><td>触发需重新评估投资逻辑</td></tr>
+    <tr><td>止损触发</td><td class="red">触发点</td><td>估值风险警示</td></tr>
+  </table>
+</div><div id="s2" class="card">
   <h2>M1 商业模式 & 收入结构</h2>
   
   <h3>核心定位</h3>
@@ -560,11 +513,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>年度财务摘要（亿元）</h3>
   <table class="tbl">
     <tr><th>年份</th><th>营收</th><th>YoY</th><th>归母净利</th><th>净利率</th><th>毛利率</th></tr>
-    <tr><td style="white-space:nowrap">2020</td><td style="white-space:nowrap">573.2</td><td class="green">+14.4%</td><td>199.6</td><td>34.8%</td><td>74.2%</td></tr>
-    <tr><td style="white-space:nowrap">2021</td><td style="white-space:nowrap">662.1</td><td class="green">+15.5%</td><td>233.8</td><td>35.3%</td><td>75.4%</td></tr>
-    <tr><td style="white-space:nowrap">2022</td><td style="white-space:nowrap">739.7</td><td class="green">+11.7%</td><td>266.9</td><td>36.1%</td><td>75.7%</td></tr>
-    <tr><td style="white-space:nowrap">2023</td><td style="white-space:nowrap">832.7</td><td class="green">+12.6%</td><td>302.1</td><td>36.3%</td><td>75.8%</td></tr>
-    <tr><td style="white-space:nowrap">2024</td><td style="white-space:nowrap">885.0</td><td>+6.3%</td><td>324.5</td><td>36.7%</td><td>76.2%</td></tr>
+    <tr><td>2020</td><td>573.2</td><td class="green">+14.4%</td><td>199.6</td><td>34.8%</td><td>74.2%</td></tr>
+    <tr><td>2021</td><td>662.1</td><td class="green">+15.5%</td><td>233.8</td><td>35.3%</td><td>75.4%</td></tr>
+    <tr><td>2022</td><td>739.7</td><td class="green">+11.7%</td><td>266.9</td><td>36.1%</td><td>75.7%</td></tr>
+    <tr><td>2023</td><td>832.7</td><td class="green">+12.6%</td><td>302.1</td><td>36.3%</td><td>75.8%</td></tr>
+    <tr><td>2024</td><td>885.0</td><td>+6.3%</td><td>324.5</td><td>36.7%</td><td>76.2%</td></tr>
     <tr><td class="gold">2025</td><td class="gold">833.0</td><td>-5.9%</td><td class="gold">315.0</td><td>37.8%</td><td>75.9%</td></tr>
   </table>
   <div class="desc" style="margin-top:6px;">备注：五粮液营收从2020年573亿增长至2025年833亿，5年CAGR约7.8%，增速稳健。2024年营收增速放缓至6.3%（受茅台批价下行和行业需求疲弱双重影响）。毛利率稳定在75-76%，净利率持续提升至37.8%左右，体现了优秀的产品结构升级能力。2026年Q1营收280亿（+12%），净利110亿（+13%），增速领先茅台，表现优异。</div>
@@ -577,12 +530,12 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 
   <table class="tbl" style="margin-top:10px;">
     <tr><th>品类</th><th>收入</th><th>占比</th><th>趋势</th><th>毛利率</th></tr>
-    <tr><td style="white-space:nowrap">五粮液酒（总量）</td><td style="white-space:nowrap">约680亿</td><td>约71%</td><td>→ 稳健</td><td class="green">≈82%</td></tr>
-    <tr><td style="white-space:nowrap">普五（核心大单品）</td><td style="white-space:nowrap">约530亿</td><td>约55%</td><td>→ 稳健</td><td class="green">≈80%</td></tr>
-    <tr><td style="white-space:nowrap">经典五粮液</td><td style="white-space:nowrap">约60亿</td><td>约6%</td><td class="green">↑ 培育</td><td>≈85%</td></tr>
-    <tr><td style="white-space:nowrap">五粮液1618</td><td style="white-space:nowrap">约50亿</td><td>约5%</td><td>→ 成熟</td><td>≈78%</td></tr>
-    <tr><td style="white-space:nowrap">系列酒（五粮春等）</td><td style="white-space:nowrap">约210亿</td><td>约22%</td><td class="green">↑ 较快</td><td>55-65%</td></tr>
-    <tr><td style="white-space:nowrap">其他</td><td style="white-space:nowrap">约70亿</td><td>约7%</td><td>→ 稳定</td><td>40-50%</td></tr>
+    <tr><td>五粮液酒（总量）</td><td>约680亿</td><td>约71%</td><td>→ 稳健</td><td class="green">≈82%</td></tr>
+    <tr><td>普五（核心大单品）</td><td>约530亿</td><td>约55%</td><td>→ 稳健</td><td class="green">≈80%</td></tr>
+    <tr><td>经典五粮液</td><td>约60亿</td><td>约6%</td><td class="green">↑ 培育</td><td>≈85%</td></tr>
+    <tr><td>五粮液1618</td><td>约50亿</td><td>约5%</td><td>→ 成熟</td><td>≈78%</td></tr>
+    <tr><td>系列酒（五粮春等）</td><td>约210亿</td><td>约22%</td><td class="green">↑ 较快</td><td>55-65%</td></tr>
+    <tr><td>其他</td><td>约70亿</td><td>约7%</td><td>→ 稳定</td><td>40-50%</td></tr>
   </table>
 
   <h3>商业模式评估</h3>
@@ -666,10 +619,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>管理层基本信息</h3>
   <table class="tbl">
     <tr><th>姓名</th><th>职务</th><th>任职年限</th><th>专业背景</th></tr>
-    <tr><td style="white-space:nowrap">曾从钦</td><td style="white-space:nowrap">董事长</td><td>5年（2022.1上任）</td><td>原宜宾市副市长，五粮液集团内部晋升</td></tr>
-    <tr><td style="white-space:nowrap">蒋文格</td><td style="white-space:nowrap">总经理</td><td>4年（2022年上任）</td><td>长期五粮液工作经历，市场运营经验丰富</td></tr>
-    <tr><td style="white-space:nowrap">章欣</td><td style="white-space:nowrap">副总经理/董秘</td><td>—</td><td>—</td></tr>
-    <tr><td style="white-space:nowrap">罗术</td><td style="white-space:nowrap">财务总监</td><td>—</td><td>—</td></tr>
+    <tr><td>曾从钦</td><td>董事长</td><td>5年（2022.1上任）</td><td>原宜宾市副市长，五粮液集团内部晋升</td></tr>
+    <tr><td>蒋文格</td><td>总经理</td><td>4年（2022年上任）</td><td>长期五粮液工作经历，市场运营经验丰富</td></tr>
+    <tr><td>章欣</td><td>副总经理/董秘</td><td>—</td><td>—</td></tr>
+    <tr><td>罗术</td><td>财务总监</td><td>—</td><td>—</td></tr>
   </table>
   <div class="txt" style="font-size:12px;">曾从钦+蒋文格组合延续了五粮液管理层的"政府+企业"混合模式。曾从钦作为从宜宾市政府转任的国企领导，在推动五粮液渠道改革和品牌价盘管控方面表现出良好的执行力。2022年曾从钦上任后，五粮液批价从920元回升至950元，体现管理层控价能力。五粮液属宜宾市国资委控股，管理层受国企体制约束但稳定性较好。</div>
 
@@ -703,39 +656,39 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>核心财务指标</h3>
   <table class="tbl">
     <tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
-    <tr><td style="white-space:nowrap">营收（亿）</td><td style="white-space:nowrap">662</td><td>740</td><td>833</td><td>885</td><td class="gold">833</td><td class="green">↑</td></tr>
-    <tr><td style="white-space:nowrap">净利（亿）</td><td style="white-space:nowrap">234</td><td>267</td><td>302</td><td>325</td><td class="gold">315</td><td class="green">↑</td></tr>
-    <tr><td style="white-space:nowrap">毛利率</td><td style="white-space:nowrap">75.4%</td><td>75.7%</td><td>75.8%</td><td class="green">76.2%</td><td>75.9%</td><td>→ 稳定</td></tr>
-    <tr><td style="white-space:nowrap">净利率</td><td style="white-space:nowrap">35.3%</td><td>36.1%</td><td>36.3%</td><td class="green">36.7%</td><td>37.8%</td><td>→ 微降</td></tr>
-    <tr><td style="white-space:nowrap">ROE</td><td style="white-space:nowrap">24.7%</td><td>25.1%</td><td>23.6%</td><td>22.5%</td><td>22.0%</td><td>→ 高位回落</td></tr>
+    <tr><td>营收（亿）</td><td>662</td><td>740</td><td>833</td><td>885</td><td class="gold">833</td><td class="green">↑</td></tr>
+    <tr><td>净利（亿）</td><td>234</td><td>267</td><td>302</td><td>325</td><td class="gold">315</td><td class="green">↑</td></tr>
+    <tr><td>毛利率</td><td>75.4%</td><td>75.7%</td><td>75.8%</td><td class="green">76.2%</td><td>75.9%</td><td>→ 稳定</td></tr>
+    <tr><td>净利率</td><td>35.3%</td><td>36.1%</td><td>36.3%</td><td class="green">36.7%</td><td>37.8%</td><td>→ 微降</td></tr>
+    <tr><td>ROE</td><td>24.7%</td><td>25.1%</td><td>23.6%</td><td>22.5%</td><td>22.0%</td><td>→ 高位回落</td></tr>
   </table>
 
   <h3>现金流 & 资产负债</h3>
   <table class="tbl">
     <tr><th>指标</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
-    <tr><td style="white-space:nowrap">经营现金流</td><td style="white-space:nowrap">320亿</td><td>340亿</td><td class="gold">375亿</td><td class="green">↑ 充沛</td></tr>
-    <tr><td style="white-space:nowrap">货币资金</td><td style="white-space:nowrap">1,150亿</td><td>1,180亿</td><td class="gold">1,220亿</td><td class="green">↑ 充裕</td></tr>
-    <tr><td style="white-space:nowrap">资产负债率</td><td style="white-space:nowrap">20.5%</td><td>21.2%</td><td>21.8%</td><td>→ 极低</td></tr>
-    <tr><td style="white-space:nowrap">有息负债</td><td style="white-space:nowrap">≈0</td><td>≈0</td><td class="green">≈0</td><td class="green">零有息负债</td></tr>
-    <tr><td style="white-space:nowrap">分红率</td><td style="white-space:nowrap">55%</td><td>58%</td><td class="gold">60%</td><td class="green">↑ 持续提升</td></tr>
-    <tr><td style="white-space:nowrap">股息率</td><td style="white-space:nowrap">3.2%</td><td>4.0%</td><td class="gold">4.5%</td><td class="green">↑ 历史高位</td></tr>
+    <tr><td>经营现金流</td><td>320亿</td><td>340亿</td><td class="gold">375亿</td><td class="green">↑ 充沛</td></tr>
+    <tr><td>货币资金</td><td>1,150亿</td><td>1,180亿</td><td class="gold">1,220亿</td><td class="green">↑ 充裕</td></tr>
+    <tr><td>资产负债率</td><td>20.5%</td><td>21.2%</td><td>21.8%</td><td>→ 极低</td></tr>
+    <tr><td>有息负债</td><td>≈0</td><td>≈0</td><td class="green">≈0</td><td class="green">零有息负债</td></tr>
+    <tr><td>分红率</td><td>55%</td><td>58%</td><td class="gold">60%</td><td class="green">↑ 持续提升</td></tr>
+    <tr><td>股息率</td><td>3.2%</td><td>4.0%</td><td class="gold">4.5%</td><td class="green">↑ 历史高位</td></tr>
   </table>
 
   <h3>费用率结构</h3>
   <table class="tbl">
     <tr><th>费用项</th><th>2025年规模</th><th>趋势</th></tr>
-    <tr><td style="white-space:nowrap">销售费用</td><td style="white-space:nowrap">约85亿</td><td class="green">↑ 费用率约8.9%，略高于茅台但低于行业</td></tr>
-    <tr><td style="white-space:nowrap">管理费用</td><td style="white-space:nowrap">约45亿</td><td>→ 费用率约4.7%，国企体制偏高</td></tr>
-    <tr><td style="white-space:nowrap">研发费用</td><td style="white-space:nowrap">约8亿</td><td>→ 极低（白酒行业）</td></tr>
-    <tr><td style="white-space:nowrap">财务费用</td><td style="white-space:nowrap">为负（利息收入）</td><td class="green">→ 1,220亿货币资金产生利息收入</td></tr>
+    <tr><td>销售费用</td><td>约85亿</td><td class="green">↑ 费用率约8.9%，略高于茅台但低于行业</td></tr>
+    <tr><td>管理费用</td><td>约45亿</td><td>→ 费用率约4.7%，国企体制偏高</td></tr>
+    <tr><td>研发费用</td><td>约8亿</td><td>→ 极低（白酒行业）</td></tr>
+    <tr><td>财务费用</td><td>为负（利息收入）</td><td class="green">→ 1,220亿货币资金产生利息收入</td></tr>
   </table>
 
   <h3>杜邦分析</h3>
   <table class="tbl">
     <tr><th>年份</th><th>ROE</th><th>净利率</th><th>资产周转率</th><th>权益乘数</th><th>驱动因子</th></tr>
-    <tr><td style="white-space:nowrap">2022</td><td class="gold">25.1%</td><td style="white-space:nowrap">36.1%</td><td>0.58×</td><td>1.26×</td><td>⭐ 高净利率+高周转</td></tr>
-    <tr><td style="white-space:nowrap">2024</td><td style="white-space:nowrap">22.5%</td><td>36.7%</td><td>0.52×</td><td>1.27×</td><td>净利率微升但周转率降</td></tr>
-    <tr><td style="white-space:nowrap">2025</td><td style="white-space:nowrap">22.0%</td><td>37.8%</td><td>0.52×</td><td>1.28×</td><td>周转率下降拖累ROE</td></tr>
+    <tr><td>2022</td><td class="gold">25.1%</td><td>36.1%</td><td>0.58×</td><td>1.26×</td><td>⭐ 高净利率+高周转</td></tr>
+    <tr><td>2024</td><td>22.5%</td><td>36.7%</td><td>0.52×</td><td>1.27×</td><td>净利率微升但周转率降</td></tr>
+    <tr><td>2025</td><td>22.0%</td><td>37.8%</td><td>0.52×</td><td>1.28×</td><td>周转率下降拖累ROE</td></tr>
   </table>
 
   <div class="bq">
@@ -752,10 +705,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="txt">五粮液毛利率75%以上，意味着产品成本仅占售价的约25%。成本结构中，粮食成本占比较小，核心的成本优势来自于规模效应——五粮液年产20万吨优质基酒，规模远超所有浓香竞争对手，从而在粮食采购、酿造、窖池维护等方面均摊成本更低。</div>
   <table class="tbl">
     <tr><th>成本项目</th><th>占比</th><th>趋势</th><th>议价能力</th></tr>
-    <tr><td style="white-space:nowrap">原材料（粮食+酒曲）</td><td style="white-space:nowrap">35-40%</td><td>→ 稳定</td><td class="green">极高</td></tr>
-    <tr><td style="white-space:nowrap">人工成本</td><td style="white-space:nowrap">20-25%</td><td class="red">↑</td><td>中</td></tr>
-    <tr><td style="white-space:nowrap">包装材料</td><td style="white-space:nowrap">15-20%</td><td>→ 稳定</td><td class="green">极高</td></tr>
-    <tr><td style="white-space:nowrap">能源折旧及</td><td style="white-space:nowrap">10-15%</td><td>→ 稳定</td><td class="green">极高</td></tr>
+    <tr><td>原材料（粮食+酒曲）</td><td>35-40%</td><td>→ 稳定</td><td class="green">极高</td></tr>
+    <tr><td>人工成本</td><td>20-25%</td><td class="red">↑</td><td>中</td></tr>
+    <tr><td>包装材料</td><td>15-20%</td><td>→ 稳定</td><td class="green">极高</td></tr>
+    <tr><td>能源折旧及</td><td>10-15%</td><td>→ 稳定</td><td class="green">极高</td></tr>
   </table>
 
   <h3>产业链议价权</h3>
@@ -781,19 +734,19 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>FCF质量</h3>
   <table class="tbl">
     <tr><th>指标</th><th>2024年</th><th class="gold">2025年</th><th>正常化水平</th></tr>
-    <tr><td style="white-space:nowrap">经营现金流</td><td style="white-space:nowrap">约340亿</td><td class="gold">约375亿</td><td>330-380亿</td></tr>
-    <tr><td style="white-space:nowrap">CAPEX</td><td style="white-space:nowrap">约15亿</td><td>约18亿</td><td>15-20亿</td></tr>
-    <tr><td style="white-space:nowrap">FCF</td><td style="white-space:nowrap">约325亿</td><td class="gold">约357亿</td><td>310-360亿</td></tr>
-    <tr><td style="white-space:nowrap">FCF/净利润</td><td style="white-space:nowrap">约100%</td><td class="green">约102%</td><td>95-105%</td></tr>
+    <tr><td>经营现金流</td><td>约340亿</td><td class="gold">约375亿</td><td>330-380亿</td></tr>
+    <tr><td>CAPEX</td><td>约15亿</td><td>约18亿</td><td>15-20亿</td></tr>
+    <tr><td>FCF</td><td>约325亿</td><td class="gold">约357亿</td><td>310-360亿</td></tr>
+    <tr><td>FCF/净利润</td><td>约100%</td><td class="green">约102%</td><td>95-105%</td></tr>
   </table>
 
   <h3>估值指标</h3>
   <table class="tbl">
     <tr><th>指标</th><th>当前值</th><th>历史区间</th><th>评估</th></tr>
-    <tr><td style="white-space:nowrap">PE(TTM)</td><td class="gold">约24.6倍</td><td style="white-space:nowrap">8-45倍</td><td class="green">偏低（近5年低位）</td></tr>
-    <tr><td style="white-space:nowrap">PE(2026E)</td><td class="gold">约22.0倍</td><td style="white-space:nowrap">—</td><td class="green">偏低</td></tr>
-    <tr><td style="white-space:nowrap">PB</td><td style="white-space:nowrap">约3.5倍</td><td>2-10倍</td><td>中性偏低</td></tr>
-    <tr><td style="white-space:nowrap">股息率</td><td class="gold">约4.5%</td><td style="white-space:nowrap">1.5-5.0%</td><td class="green">历史高位</td></tr>
+    <tr><td>PE(TTM)</td><td class="gold">约24.6倍</td><td>8-45倍</td><td class="green">偏低（近5年低位）</td></tr>
+    <tr><td>PE(2026E)</td><td class="gold">约22.0倍</td><td>—</td><td class="green">偏低</td></tr>
+    <tr><td>PB</td><td>约3.5倍</td><td>2-10倍</td><td>中性偏低</td></tr>
+    <tr><td>股息率</td><td class="gold">约4.5%</td><td>1.5-5.0%</td><td class="green">历史高位</td></tr>
   </table>
   <div class="txt">当前市值约5,250亿元，PE(TTM)约24.6倍。机构预测2026年归母净利润约380-400亿元，对应PE约22.0-23.0倍。</div>
 
@@ -819,9 +772,9 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>行业空间</h3>
   <table class="tbl">
     <tr><th>市场</th><th>规模（2025E）</th><th>增速</th><th>五粮液收入</th><th>市占率</th></tr>
-    <tr><td style="white-space:nowrap">白酒行业</td><td style="white-space:nowrap">约7,800亿</td><td>+5%</td><td>833亿</td><td class="gold">约12.3%</td></tr>
-    <tr><td style="white-space:nowrap">千元价位带</td><td style="white-space:nowrap">约1,200亿</td><td>+6-8%</td><td>约530亿</td><td class="gold">约44%</td></tr>
-    <tr><td style="white-space:nowrap">浓香型白酒</td><td style="white-space:nowrap">约3,900亿</td><td>+3-5%</td><td>约890亿</td><td class="gold">约23%</td></tr>
+    <tr><td>白酒行业</td><td>约7,800亿</td><td>+5%</td><td>833亿</td><td class="gold">约12.3%</td></tr>
+    <tr><td>千元价位带</td><td>约1,200亿</td><td>+6-8%</td><td>约530亿</td><td class="gold">约44%</td></tr>
+    <tr><td>浓香型白酒</td><td>约3,900亿</td><td>+3-5%</td><td>约890亿</td><td class="gold">约23%</td></tr>
   </table>
 
   <div class="mg" style="margin-top:10px;">
@@ -834,10 +787,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>竞争态势</h3>
   <table class="tbl">
     <tr><th>竞争对手</th><th>竞争维度</th><th>五粮液相对优势</th></tr>
-    <tr><td style="white-space:nowrap">贵州茅台</td><td style="white-space:nowrap">高端品牌</td><td class="green">浓香受众更广，千元价位绝对优势，产能更大</td></tr>
-    <tr><td style="white-space:nowrap">泸州老窖</td><td style="white-space:nowrap">千元价位</td><td class="green">品牌力和规模均显著领先国窖1573</td></tr>
-    <tr><td style="white-space:nowrap">洋河股份</td><td style="white-space:nowrap">次高端</td><td class="green">品牌力和高端化能力碾压洋河</td></tr>
-    <tr><td style="white-space:nowrap">山西汾酒</td><td style="white-space:nowrap">清香型</td><td>品类不同，直接竞争有限</td></tr>
+    <tr><td>贵州茅台</td><td>高端品牌</td><td class="green">浓香受众更广，千元价位绝对优势，产能更大</td></tr>
+    <tr><td>泸州老窖</td><td>千元价位</td><td class="green">品牌力和规模均显著领先国窖1573</td></tr>
+    <tr><td>洋河股份</td><td>次高端</td><td class="green">品牌力和高端化能力碾压洋河</td></tr>
+    <tr><td>山西汾酒</td><td>清香型</td><td>品类不同，直接竞争有限</td></tr>
   </table>
 
   <h3>行业终局思考</h3>
@@ -857,11 +810,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>催化剂时间表</h3>
   <table class="tbl">
     <tr><th>时间</th><th>事件</th><th>预期影响</th></tr>
-    <tr><td style="white-space:nowrap">2026H2</td><td style="white-space:nowrap">普五批价企稳回升至1,000+元</td><td class="green">提振渠道信心，利润弹性释放</td></tr>
-    <tr><td style="white-space:nowrap">2026-2027</td><td style="white-space:nowrap">经典五粮液放量至100亿</td><td class="green">提升产品结构，毛利率有望突破77%</td></tr>
-    <tr><td style="white-space:nowrap">2027</td><td style="white-space:nowrap">分红率提升至65%+</td><td>股息率提升至5%+</td></tr>
-    <tr><td style="white-space:nowrap">2027H1</td><td style="white-space:nowrap">系列酒营收突破300亿</td><td>五粮春+五粮醇全国化加速</td></tr>
-    <tr><td style="white-space:nowrap">2028</td><td style="white-space:nowrap">营收突破1,200亿</td><td>5年复合增长率约10%</td></tr>
+    <tr><td>2026H2</td><td>普五批价企稳回升至1,000+元</td><td class="green">提振渠道信心，利润弹性释放</td></tr>
+    <tr><td>2026-2027</td><td>经典五粮液放量至100亿</td><td class="green">提升产品结构，毛利率有望突破77%</td></tr>
+    <tr><td>2027</td><td>分红率提升至65%+</td><td>股息率提升至5%+</td></tr>
+    <tr><td>2027H1</td><td>系列酒营收突破300亿</td><td>五粮春+五粮醇全国化加速</td></tr>
+    <tr><td>2028</td><td>营收突破1,200亿</td><td>5年复合增长率约10%</td></tr>
   </table>
 
   <h3>三年业绩预测</h3>
@@ -939,19 +892,19 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>风险类型</h3>
   <table class="tbl">
     <tr><th>风险类型</th><th>描述</th><th>概率</th><th>预警信号</th></tr>
-    <tr><td style="white-space:nowrap">茅台挤压效应</td><td style="white-space:nowrap">茅台批价跌破2,000元大幅挤压千元带</td><td><span class="orange">中</span></td><td>普五批价跌破900元且持续3个月</td></tr>
-    <tr><td style="white-space:nowrap">行业需求放缓</td><td style="white-space:nowrap">白酒行业整体需求大幅萎缩</td><td><span style="color:#ffc107;">中低</span></td><td>营收增速连续两季低于3%</td></tr>
-    <tr><td style="white-space:nowrap">消费税改革</td><td style="white-space:nowrap">对白酒加征额外税负</td><td><span style="color:#ffc107;">中低</span></td><td>政策草案公布</td></tr>
-    <tr><td style="white-space:nowrap">产能过剩</td><td style="white-space:nowrap">浓香型行业性产能过剩导致价格战</td><td><span style="color:#ffc107;">中低</span></td><td>中低端产品批价大幅下降</td></tr>
-    <tr><td style="white-space:nowrap">渠道压货</td><td style="white-space:nowrap">渠道库存过高引发抛售</td><td><span style="color:#ffc107;">中低</span></td><td>经销商库存超过3个月</td></tr>
+    <tr><td>茅台挤压效应</td><td>茅台批价跌破2,000元大幅挤压千元带</td><td><span class="orange">中</span></td><td>普五批价跌破900元且持续3个月</td></tr>
+    <tr><td>行业需求放缓</td><td>白酒行业整体需求大幅萎缩</td><td><span style="color:#ffc107;">中低</span></td><td>营收增速连续两季低于3%</td></tr>
+    <tr><td>消费税改革</td><td>对白酒加征额外税负</td><td><span style="color:#ffc107;">中低</span></td><td>政策草案公布</td></tr>
+    <tr><td>产能过剩</td><td>浓香型行业性产能过剩导致价格战</td><td><span style="color:#ffc107;">中低</span></td><td>中低端产品批价大幅下降</td></tr>
+    <tr><td>渠道压货</td><td>渠道库存过高引发抛售</td><td><span style="color:#ffc107;">中低</span></td><td>经销商库存超过3个月</td></tr>
   </table>
 
   <h3>敏感性分析</h3>
   <table class="tbl">
     <tr><th>压力情景</th><th>净利影响</th><th>股价压力</th></tr>
-    <tr><td style="white-space:nowrap">普五批价跌破900元</td><td style="white-space:nowrap">-10%</td><td class="orange">-15%</td></tr>
-    <tr><td style="white-space:nowrap">消费税加征20%</td><td style="white-space:nowrap">-8%</td><td class="orange">-10%</td></tr>
-    <tr><td style="white-space:nowrap">行业需求萎缩10%</td><td style="white-space:nowrap">-15%</td><td class="red">-20%</td></tr>
+    <tr><td>普五批价跌破900元</td><td>-10%</td><td class="orange">-15%</td></tr>
+    <tr><td>消费税加征20%</td><td>-8%</td><td class="orange">-10%</td></tr>
+    <tr><td>行业需求萎缩10%</td><td>-15%</td><td class="red">-20%</td></tr>
     <tr><td class="red">极端叠加</td><td class="red">-30%</td><td class="red" style="font-weight:bold;">-35%</td></tr>
   </table>
 
@@ -980,10 +933,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>清算价值</h3>
   <table class="tbl">
     <tr><th>资产项</th><th>账面价值</th><th>清算价值</th></tr>
-    <tr><td style="white-space:nowrap">货币资金</td><td style="white-space:nowrap">1,220亿</td><td class="gold">1,220亿</td></tr>
-    <tr><td style="white-space:nowrap">存货（含基酒）</td><td style="white-space:nowrap">350亿</td><td>280亿</td></tr>
-    <tr><td style="white-space:nowrap">固定资产</td><td style="white-space:nowrap">120亿</td><td>60亿</td></tr>
-    <tr><td style="white-space:nowrap">无形资产（品牌）</td><td style="white-space:nowrap">30亿</td><td>10亿</td></tr>
+    <tr><td>货币资金</td><td>1,220亿</td><td class="gold">1,220亿</td></tr>
+    <tr><td>存货（含基酒）</td><td>350亿</td><td>280亿</td></tr>
+    <tr><td>固定资产</td><td>120亿</td><td>60亿</td></tr>
+    <tr><td>无形资产（品牌）</td><td>30亿</td><td>10亿</td></tr>
     <tr><td class="gold">合计</td><td>约1,720亿</td><td>约1,570亿</td></tr>
   </table>
   <div class="txt">清算价值约1,570亿元，当前市值约5,250亿元。差额约3,680亿体现了五粮液的品牌价值和持续经营能力。</div>
@@ -1022,17 +975,17 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>价值投资理论应用</h3>
   <table class="tbl">
     <tr><th>模块</th><th>大师理念</th><th>应用分析</th></tr>
-    <tr><td style="white-space:nowrap">M1</td><td style="white-space:nowrap">段永平<br>「本分」</td><td style="text-align:left;font-size:11px;">聚焦浓香白酒主业数十年，\"1+3\"产品战略清晰专注</td></tr>
-    <tr><td style="white-space:nowrap">M2</td><td style="white-space:nowrap">巴菲特<br>「护城河」</td><td style="text-align:left;font-size:11px;">品牌+产能+渠道三重护城河3.8/5.0，浓香第一品牌</td></tr>
-    <tr><td style="white-space:nowrap">M3</td><td style="white-space:nowrap">巴菲特<br>「德才兼备」</td><td style="text-align:left;font-size:11px;">国企激励不足，但60%分红率体现对股东的重视</td></tr>
-    <tr><td style="white-space:nowrap">M4</td><td style="white-space:nowrap">巴菲特<br>「FCF为王」</td><td style="text-align:left;font-size:11px;">FCF 357亿、FCF/净利102%、货币资金1,220亿</td></tr>
-    <tr><td style="white-space:nowrap">M5</td><td style="white-space:nowrap">邱国鹭<br>「定价权」</td><td style="text-align:left;font-size:11px;">定价权评分4.0/5.0，千元价位带标杆产品</td></tr>
-    <tr><td style="white-space:nowrap">M6</td><td style="white-space:nowrap">巴菲特<br>「资本配置」</td><td style="text-align:left;font-size:11px;">零有息负债+几乎无需CAPEX+FCF超350亿+60%分红</td></tr>
-    <tr><td style="white-space:nowrap">M7</td><td style="white-space:nowrap">邱国鹭<br>「剩者为王」</td><td style="text-align:left;font-size:11px;">千元价位带44%市占率，\"剩者为王\"的典型</td></tr>
-    <tr><td style="white-space:nowrap">M8</td><td style="white-space:nowrap">彼得·林奇<br>「增长类型」</td><td style="text-align:left;font-size:11px;">稳健增长型+高分红，经典五粮液提供弹性</td></tr>
-    <tr><td style="white-space:nowrap">M9</td><td style="white-space:nowrap">芒格<br>「逆向思维」</td><td style="text-align:left;font-size:11px;">市场低估了五粮液的分红潜力和品牌韧性</td></tr>
-    <tr><td style="white-space:nowrap">M10</td><td style="white-space:nowrap">芒格<br>「Pre-mortem」</td><td style="text-align:left;font-size:11px;">茅台挤压+行业放缓是核心风险，但财务安全垫极厚</td></tr>
-    <tr><td style="white-space:nowrap">M11</td><td style="white-space:nowrap">巴菲特<br>「安全边际」</td><td style="text-align:left;font-size:11px;">PE 15倍+股息率4.5%+零负债=极致安全边际</td></tr>
+    <tr><td>M1</td><td>段永平<br>「本分」</td><td style="text-align:left;font-size:11px;">聚焦浓香白酒主业数十年，\"1+3\"产品战略清晰专注</td></tr>
+    <tr><td>M2</td><td>巴菲特<br>「护城河」</td><td style="text-align:left;font-size:11px;">品牌+产能+渠道三重护城河3.8/5.0，浓香第一品牌</td></tr>
+    <tr><td>M3</td><td>巴菲特<br>「德才兼备」</td><td style="text-align:left;font-size:11px;">国企激励不足，但60%分红率体现对股东的重视</td></tr>
+    <tr><td>M4</td><td>巴菲特<br>「FCF为王」</td><td style="text-align:left;font-size:11px;">FCF 357亿、FCF/净利102%、货币资金1,220亿</td></tr>
+    <tr><td>M5</td><td>邱国鹭<br>「定价权」</td><td style="text-align:left;font-size:11px;">定价权评分4.0/5.0，千元价位带标杆产品</td></tr>
+    <tr><td>M6</td><td>巴菲特<br>「资本配置」</td><td style="text-align:left;font-size:11px;">零有息负债+几乎无需CAPEX+FCF超350亿+60%分红</td></tr>
+    <tr><td>M7</td><td>邱国鹭<br>「剩者为王」</td><td style="text-align:left;font-size:11px;">千元价位带44%市占率，\"剩者为王\"的典型</td></tr>
+    <tr><td>M8</td><td>彼得·林奇<br>「增长类型」</td><td style="text-align:left;font-size:11px;">稳健增长型+高分红，经典五粮液提供弹性</td></tr>
+    <tr><td>M9</td><td>芒格<br>「逆向思维」</td><td style="text-align:left;font-size:11px;">市场低估了五粮液的分红潜力和品牌韧性</td></tr>
+    <tr><td>M10</td><td>芒格<br>「Pre-mortem」</td><td style="text-align:left;font-size:11px;">茅台挤压+行业放缓是核心风险，但财务安全垫极厚</td></tr>
+    <tr><td>M11</td><td>巴菲特<br>「安全边际」</td><td style="text-align:left;font-size:11px;">PE 15倍+股息率4.5%+零负债=极致安全边际</td></tr>
   </table>
 </div>
 
@@ -1042,11 +995,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>附录A：数据来源</h3>
   <table class="tbl">
     <tr><th>数据类型</th><th>来源平台</th><th>截止日期</th></tr>
-    <tr><td style="white-space:nowrap">财务报表</td><td style="white-space:nowrap">东方财富数据中心/恒生聚源数据库</td><td>2025年报</td></tr>
-    <tr><td style="white-space:nowrap">衍生财务指标</td><td style="white-space:nowrap">同花顺iFinD</td><td>2025年报</td></tr>
-    <tr><td style="white-space:nowrap">估值数据</td><td style="white-space:nowrap">东方财富/同花顺</td><td>2026-06-11</td></tr>
-    <tr><td style="white-space:nowrap">行业归属</td><td style="white-space:nowrap">中酒协/Euromonitor</td><td>2025</td></tr>
-    <tr><td style="white-space:nowrap">机构预测</td><td style="white-space:nowrap">中信/华泰/国泰君安等券商研报</td><td>2026-05</td></tr>
+    <tr><td>财务报表</td><td>东方财富数据中心/恒生聚源数据库</td><td>2025年报</td></tr>
+    <tr><td>衍生财务指标</td><td>同花顺iFinD</td><td>2025年报</td></tr>
+    <tr><td>估值数据</td><td>东方财富/同花顺</td><td>2026-06-11</td></tr>
+    <tr><td>行业归属</td><td>中酒协/Euromonitor</td><td>2025</td></tr>
+    <tr><td>机构预测</td><td>中信/华泰/国泰君安等券商研报</td><td>2026-05</td></tr>
   </table>
 
   <div class="txt" style="font-size:11px;">
