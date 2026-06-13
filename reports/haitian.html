@@ -67,11 +67,6 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 .toc{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
 .toc a{font-size:11px;color:#888;text-decoration:none;padding:3px 8px;border-radius:12px;border:1px solid #333}
 .toc a:active{background:#1e1e3a;color:#f0c040}
-@media(max-width:768px){
-.toc{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:3px;justify-content:flex-start;padding:2px 2px;scrollbar-width:none}
-.toc::-webkit-scrollbar{display:none}
-.toc a{font-size:10px;padding:2px 6px;white-space:nowrap;flex-shrink:0}
-}
 </style>
 </head>
 <body>
@@ -102,7 +97,8 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="desc">上市以来市值变化（不复权收盘价 × 总股本）· 鼠标滚轮缩放 · 拖拽平移 · <span style="color:#888;font-size:11px;">每周五17:00更新</span></div>
 
   <div class="mcap-btns">
-    <button class="mcap-btn active" data-period="week">周线</button>
+    <button class="mcap-btn active" data-period="day">日线</button>
+    <button class="mcap-btn" data-period="week">周线</button>
     <button class="mcap-btn" data-period="month">月线</button>
     <button class="mcap-btn" data-period="year">年线</button>
   </div>
@@ -117,31 +113,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     历史最高：<span class="mcap-v" id="mcapHigh">--</span> 亿 ·
     历史最低：<span class="mcap-v" id="mcapLow">--</span> 亿
   </div>
-<div id="s-financial" class="card" style="overflow-x:auto;margin-top:16px">
-  <h2>历年财务数据</h2>
-  <div class="desc">最近10年财务指标 · <span style="color:#4caf50">绿色=增长&gt;30%</span> · <span style="color:#f0a030">橙色=连续下滑</span> · <span style="color:#e74c3c">红色=负值/下滑&gt;20%</span></div>
-  <style>
-  .fin-table{width:100%;border-collapse:collapse;font-size:11px;min-width:900px}
-  .fin-table th{background:#1e1e3a;color:#f0c040;padding:7px 5px;text-align:center;font-weight:500;white-space:nowrap}
-  .fin-table td{padding:6px 5px;text-align:center;border-bottom:1px solid #1e1e3a;white-space:nowrap}
-  .fin-table tr:hover td{background:#1a1a3a}
-  .fin-table td:first-child{text-align:left;font-weight:500;position:sticky;left:0;background:#0a0a1a;z-index:1;}
-  .fin-table tr:hover td:first-child{background:#1a1a2a}
-  .fin-table td.na{color:#555}
-  .fin-table td.pos{color:#4caf50;font-weight:600}
-  .fin-table td.neg{color:#e74c3c;font-weight:600}
-  .fin-table td.warn{color:#f0a030;font-weight:600}
-  .fin-light .fin-table th{background:#d8d4c8;color:#8b6914}
-  .fin-light .fin-table td{border-bottom-color:#d8d4c8}
-  .fin-light .fin-table tr:hover td{background:#e8e4dc}
-  .fin-light .fin-table td:first-child{background:#f4f1ea}
-  .fin-light .fin-table tr:hover td:first-child{background:#e8e4dc}
-  .fin-light .fin-table td.pos{color:#2e7d32!important}
-  .fin-light .fin-table td.neg{color:#c0392b!important}
-  .fin-light .fin-table td.warn{color:#b8860b!important}
-</style>
-  <table class="fin-table">
-    <thead><tr><th>指标</th><th>2025</th><th>2024</th><th>2023</th><th>2022</th><th>2021</th><th>2020</th><th>2019</th><th>2018</th><th>2017</th><th>2016</th></tr></thead><tbody><tr><td>每股营业收入(元)</td><td class="">4.93</td><td class="">4.60</td><td class="">4.20</td><td class="">4.38</td><td class="">4.27</td><td class="">3.89</td><td class="">3.38</td><td class="">2.91</td><td class="">2.49</td><td class="">2.13</td></tr><tr><td>每股经营现金流(元)</td><td class="">1.32</td><td class="">1.23</td><td class="pos">1.32</td><td class="neg">0.83</td><td class="neg">1.50</td><td class="">2.14</td><td class="">2.43</td><td class="">2.22</td><td class="">1.75</td><td class="">1.51</td></tr><tr><td>每股净利润(元)</td><td class="">1.23</td><td class="">1.14</td><td class="warn">1.01</td><td class="neg">1.11</td><td class="warn">1.44</td><td class="">1.52</td><td class="">1.65</td><td class="">1.62</td><td class="">1.31</td><td class="">1.05</td></tr><tr><td>每股净资产(元)</td><td class="">7.06</td><td class="">5.56</td><td class="">5.13</td><td class="">5.70</td><td class="">5.56</td><td class="">6.19</td><td class="">6.14</td><td class="">5.14</td><td class="">4.35</td><td class="">3.70</td></tr><tr><td>总股本(亿股)</td><td class="">58.52</td><td class="">58.52</td><td class="">58.52</td><td class="">58.52</td><td class="">58.52</td><td class="">58.52</td><td class="">58.52</td><td class="">58.52</td><td class="">58.52</td><td class="">58.52</td></tr><tr><td>市盈率PE</td><td class="pos">29.2</td><td class="">40.2</td><td class="pos">37.5</td><td class="">71.4</td><td class="pos">87.6</td><td class="warn">174.2</td><td class="">111.7</td><td class="">87.6</td><td class="warn">84.7</td><td class="">57.4</td></tr><tr><td>营业收入(亿元)</td><td class="">288.73</td><td class="">269.05</td><td class="">245.59</td><td class="">256.10</td><td class="">250.04</td><td class="">227.92</td><td class="">197.97</td><td class="">170.34</td><td class="">145.84</td><td class="">124.59</td></tr><tr><td>毛利率(%)</td><td class="">40.22</td><td class="">36.97</td><td class="warn">34.74</td><td class="warn">35.68</td><td class="warn">38.66</td><td class="warn">42.17</td><td class="">45.44</td><td class="">46.47</td><td class="">45.69</td><td class="">43.95</td></tr><tr><td>净利润(亿元)</td><td class="">70.38</td><td class="">63.44</td><td class="warn">56.27</td><td class="">61.98</td><td class="">66.71</td><td class="">64.03</td><td class="">53.53</td><td class="">43.65</td><td class="">35.31</td><td class="">28.43</td></tr><tr><td>所得税率(%)</td><td class="">18.03</td><td class="">15.40</td><td class="">16.28</td><td class="">15.77</td><td class="">14.70</td><td class="">16.14</td><td class="">16.01</td><td class="">16.39</td><td class="">16.22</td><td class="">16.71</td></tr><tr><td>净利润率(%)</td><td class="">24.40</td><td class="">23.62</td><td class="warn">22.97</td><td class="warn">24.22</td><td class="">26.68</td><td class="">28.12</td><td class="">27.06</td><td class="">25.63</td><td class="">24.21</td><td class="">22.82</td></tr><tr><td>营运资本(亿元)</td><td class="">281.30</td><td class="">238.47</td><td class="">218.38</td><td class="">202.54</td><td class="">181.02</td><td class="">151.20</td><td class="">122.91</td><td class="pos">96.87</td><td class="pos">72.80</td><td class="">54.25</td></tr><tr><td>长期负债(亿元)</td><td class="">4.91</td><td class="">4.73</td><td class="">4.54</td><td class="">4.55</td><td class="">3.61</td><td class="warn">2.87</td><td class="warn">1.78</td><td class="warn">1.35</td><td class="">0.58</td><td class="">0.46</td></tr><tr><td>ROA(%)</td><td class="">15.14</td><td class="">16.03</td><td class="warn">15.57</td><td class="warn">18.41</td><td class="warn">21.22</td><td class="warn">23.61</td><td class="">23.86</td><td class="">23.94</td><td class="">23.70</td><td class="">22.78</td></tr><tr><td>ROE(%)</td><td class="">19.59</td><td class="">21.77</td><td class="warn">20.72</td><td class="warn">25.52</td><td class="">31.63</td><td class="">36.13</td><td class="">33.69</td><td class="">32.66</td><td class="">31.12</td><td class="">31.65</td></tr></tbody></table></div>
+</div>
 
 <style>
 .mcap-btns{display:flex;gap:6px;margin:8px 0}
@@ -189,8 +161,6 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 
     if(document.getElementById('hermes-theme-override')){
       document.getElementById('s-mcap').classList.add('mcap-light');
-      var sf=document.getElementById('s-financial');
-      if(sf) sf.classList.add('fin-light');
     }
 
     var themeWatcher = new MutationObserver(function(){
@@ -198,8 +168,6 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
       var card = document.getElementById('s-mcap');
       if(light) card.classList.add('mcap-light');
       else card.classList.remove('mcap-light');
-      var sf=document.getElementById('s-financial');
-      if(sf){ if(light) sf.classList.add('fin-light'); else sf.classList.remove('fin-light'); }
       if(chartData.length) render();
     });
     if(document.head) themeWatcher.observe(document.head, {childList:true, subtree:true});
@@ -250,7 +218,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     }, {passive:true});
     svg.addEventListener('touchend', function(){isDragging=false});
     window.addEventListener('resize', function(){if(chartData.length)render()});
-    loadPeriod('week');
+    loadPeriod('day');
   }
 
   function getThemeColors(){
@@ -269,7 +237,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     var url = '../kline/' + stockCode + '_' + period + '.json?t=' + Date.now();
     fetch(url).then(function(r){return r.json()}).then(function(data){
       chartData = data;
-      var dw = data.length;
+      var dw = period === 'day' ? Math.min(500, data.length) : data.length;
       viewStart = Math.max(0, data.length - dw); viewEnd = data.length;
       updateStats(data); render();
     }).catch(function(e){console.error(e)});
@@ -377,47 +345,31 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 
 <!-- ========== 一、综合评价 ========== -->
 <div id="s1" class="card">
-  <h2>一、综合评价</h2>
-  
-  <h3>1. 总评分：7.0分</h3>
-  <div class="txt">评级理由：海天味业是中国调味品行业绝对龙头，核心产品酱油市占率约18-20%，在A股消费品板块中以高毛利率、高净利率、高ROE著称。2025年公司营收约269亿元，归母净利润约63亿元。2026年Q1营收约82亿元同比+10.5%，归母净利润约20亿元同比+11.8%，开局良好。公司核心看点在于：强大的品牌壁垒（海天=酱油的代名词）、35%+的超高净利率（消费品行业罕见）、极低的销售费用率（品牌自然动销能力强）、以及持续提升的分红回报。但需关注：酱油行业增速放缓至3-5%的成熟期、原材料（大豆/盐）价格波动、蚝油/调味酱等新品拓展节奏慢于预期、以及估值长期处于高溢价区间（PE 30-60倍）。</div>
+<h2>一、综合评价</h2>
 
-  <h3>2. 风险等级：中低</h3>
-  <table class="tbl">
-    <tr><th>风险类别</th><th>等级</th><th>说明</th></tr>
-    <tr><td style="white-space:nowrap">经营风险</td><td style="white-space:nowrap"><span style="color:#ffc107;">中低</span></td><td style="text-align:left;font-size:11px;">酱油行业增速放缓，大豆价格波动影响生产成本</td></tr>
-    <tr><td style="white-space:nowrap">财务风险</td><td style="white-space:nowrap"><span class="green">极低</span></td><td style="text-align:left;font-size:11px;">资产负债率约24%，零有息负债，经营现金流约75亿，财务质量顶级</td></tr>
-    <tr><td style="white-space:nowrap">市场风险</td><td style="white-space:nowrap"><span class="orange">中</span></td><td style="text-align:left;font-size:11px;">消费降级影响调味品结构升级；千禾、中炬高新等区域性品牌竞争加剧</td></tr>
-  </table>
+  <div class="mg" style="margin-bottom:10px">
+    <div class="mi"><div class="mv" style="color:#4caf50">7.0</div><div class="ml">综合评级</div></div>
+    <div class="mi"><div class="mv" style="color:#4caf50">中低</h3></div><div class="ml">风险等级</div></div>
+    <div class="mi"><div class="mv" style="color:#4caf50">🏛️</div><div class="ml">核心壁垒</div></div>
+    <div class="mi"><div class="mv" style="color:#ffc107">较高</div><div class="ml">成长弹性</div></div>
+  </div>
 
-  <h3>3. 核心结论（一句话逻辑）</h3>
   <div class="bq">"海天味业凭借其中国调味品行业最深的品牌护城河（海天=酱油的代名词）、35%+的超高净利率（消费品行业最高水平）、零有息负债的顶级财务质量、以及持续提升的股东回报，是A股最具性价比的消费类核心资产之一。2025年营收269亿、净利63亿，2026年Q1营收增速10.5%验证消费韧性。但酱油行业增速放缓至3-5%、原材料（大豆）价格波动、及估值长期处于30-40倍PE区间（远高于国际调味品龙头15-25倍），反映了市场对其确定性的高度认可但也带来估值过高风险。公司处于'高确定+高估值'的定位，需关注消费复苏节奏和新品增长动能。"</div>
 
-  <h3>4. 三年预估增长空间</h3>
-  <div class="txt">
-    <span class="dot">·</span> 业绩增长：预计归母净利润从2025年的63亿元增至2028年的80-90亿元，年化增速约7-11%（取决于提价节奏和新品放量）<br>
-    <span class="dot">·</span> 估值修复：当前PE(TTM)约28.3倍，处于近5年历史中位（历史PE区间25-80倍）。若消费复苏+业绩增速提升，估值有望维持在30-35倍<br>
-    <span class="dot">·</span> 股价目标：业绩增长约23-38% × 估值基本持平 ≈ 3年预期收益约25-40%（基准情景，含约2%年化股息）
+  <div class="mg" style="grid-template-columns:1fr 1fr 1fr;margin-top:10px">
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">经营：稳健</div><div class="ml">业务运行稳定</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">财务：稳健</div><div class="ml">财务状况健康</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">市场：稳健</div><div class="ml">市场预期向好</div></div>
   </div>
 
-  <h3>5. 季度监控关键点</h3>
-  <div class="txt">
-    <span class="dot">·</span> Q1/Q2：春节旺季动销数据、渠道库存水平、大豆价格走势<br>
-    <span class="dot">·</span> Q3/Q4：蚝油/调味酱新品放量情况、餐饮渠道恢复速度、年底提价窗口<br>
-    <span class="dot">·</span> 风险关注：千禾味业零添加酱油市占率提升、大豆价格大幅上涨、渠道窜货问题
-  </div>
-
-  <h3>6. 逻辑证伪/止损触发点</h3>
-  <div class="txt">
-    1. 如果单季度营收增速连续2个季度低于3%，说明酱油主业出现实质性萎缩<br>
-    2. 如果毛利率跌破35%，说明成本端或竞争格局出现重大恶化<br>
-    3. 如果千禾味业在酱油行业市占率超过8%（目前约5%），零添加趋势可能重塑行业格局<br>
-    4. 如果蚝油/调味酱收入增速连续2年低于10%，第二增长曲线逻辑失效
-  </div>
-</div>
-
-<!-- ========== M1 商业模式 ========== -->
-<div id="s2" class="card">
+  <table class="tbl" style="margin-top:10px">
+    <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+    <tr><td>三年预估空间</td><td class="gold"></td><td>基于当前估值水平和业绩增长预测</td></tr>
+    <tr><td>季度监控</td><td>关键点</td><td>核心业务发展趋势</td></tr>
+    <tr><td>逻辑证伪点</td><td class="red">/止损触发点</td><td>触发需重新评估投资逻辑</td></tr>
+    <tr><td>止损触发</td><td class="red">触发点</td><td>估值风险警示</td></tr>
+  </table>
+</div><div id="s2" class="card">
   <h2>M1 商业模式 & 收入结构</h2>
   
   <h3>核心定位</h3>
@@ -426,11 +378,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>年度财务报表（亿元）</h3>
   <table class="tbl">
     <tr><th>年份</th><th>营收</th><th>YoY</th><th>归母净利</th><th>净利率</th><th>毛利率</th></tr>
-    <tr><td style="white-space:nowrap">2020</td><td style="white-space:nowrap">227.9</td><td>+15.3%</td><td>64.0</td><td>28.1%</td><td class="green">42.2%</td></tr>
-    <tr><td style="white-space:nowrap">2021</td><td style="white-space:nowrap">250.0</td><td class="green">+9.7%</td><td>66.7</td><td>26.7%</td><td>38.7%</td></tr>
-    <tr><td style="white-space:nowrap">2022</td><td style="white-space:nowrap">256.1</td><td>+2.4%</td><td>62.0</td><td>24.2%</td><td>33.5%</td></tr>
-    <tr><td style="white-space:nowrap">2023</td><td style="white-space:nowrap">245.6</td><td>-4.1%</td><td>56.0</td><td>22.8%</td><td>34.2%</td></tr>
-    <tr><td style="white-space:nowrap">2024</td><td style="white-space:nowrap">250.9</td><td>+2.2%</td><td>60.3</td><td>24.0%</td><td>36.5%</td></tr>
+    <tr><td>2020</td><td>227.9</td><td>+15.3%</td><td>64.0</td><td>28.1%</td><td class="green">42.2%</td></tr>
+    <tr><td>2021</td><td>250.0</td><td class="green">+9.7%</td><td>66.7</td><td>26.7%</td><td>38.7%</td></tr>
+    <tr><td>2022</td><td>256.1</td><td>+2.4%</td><td>62.0</td><td>24.2%</td><td>33.5%</td></tr>
+    <tr><td>2023</td><td>245.6</td><td>-4.1%</td><td>56.0</td><td>22.8%</td><td>34.2%</td></tr>
+    <tr><td>2024</td><td>250.9</td><td>+2.2%</td><td>60.3</td><td>24.0%</td><td>36.5%</td></tr>
     <tr><td class="gold">2025</td><td class="gold">269.0</td><td class="green">+7.2%</td><td class="gold">63.0</td><td class="gold">23.4%</td><td>36.8%</td></tr>
   </table>
   <div class="desc" style="margin-top:6px;">备注：2020-2021年受疫情催化家庭消费（C端）爆发，营收高增长。2022年大豆价格暴涨至5,000元/吨+，毛利率从42%骤降至33.5%，是近年来成本端最困难的时期。2023年营收首次出现负增长（-4.1%），主要因餐饮渠道恢复不及预期+渠道去库存。2024年起逐步恢复，2025年增速提升至7.2%，受益于成本端改善（大豆价格回落至3,800元/吨）和餐饮消费复苏。2026年Q1营收82亿（+10.5%），净利20亿（+11.8%），开局良好。毛利率从33.5%低点恢复至36.8%，但尚未回到40%以上。</div>
@@ -444,11 +396,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 
   <table class="tbl" style="margin-top:10px;">
     <tr><th>品类</th><th>收入（亿）</th><th>占比</th><th>趋势</th><th>毛利率</th></tr>
-    <tr><td style="white-space:nowrap">酱油</td><td style="white-space:nowrap">约150</td><td>约55%</td><td>→ 稳健</td><td class="green">40-45%</td></tr>
-    <tr><td style="white-space:nowrap">蚝油</td><td style="white-space:nowrap">约49</td><td>约18%</td><td class="green">↑ 增长</td><td>35-38%</td></tr>
-    <tr><td style="white-space:nowrap">调味酱</td><td style="white-space:nowrap">约33</td><td>约12%</td><td>→ 趋稳</td><td>38-40%</td></tr>
-    <tr><td style="white-space:nowrap">食醋/料酒</td><td style="white-space:nowrap">约27</td><td>约10%</td><td class="green">↑ 培育</td><td>30-35%</td></tr>
-    <tr><td style="white-space:nowrap">其他</td><td style="white-space:nowrap">约13</td><td>约5%</td><td>→ 多元</td><td>28-35%</td></tr>
+    <tr><td>酱油</td><td>约150</td><td>约55%</td><td>→ 稳健</td><td class="green">40-45%</td></tr>
+    <tr><td>蚝油</td><td>约49</td><td>约18%</td><td class="green">↑ 增长</td><td>35-38%</td></tr>
+    <tr><td>调味酱</td><td>约33</td><td>约12%</td><td>→ 趋稳</td><td>38-40%</td></tr>
+    <tr><td>食醋/料酒</td><td>约27</td><td>约10%</td><td class="green">↑ 培育</td><td>30-35%</td></tr>
+    <tr><td>其他</td><td>约13</td><td>约5%</td><td>→ 多元</td><td>28-35%</td></tr>
   </table>
 
   <h3>商业模式评估</h3>
@@ -535,10 +487,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>管理层基本信息</h3>
   <table class="tbl">
     <tr><th>姓名</th><th>职务</th><th>任职年限</th><th>专业背景</th></tr>
-    <tr><td style="white-space:nowrap">庞康</td><td style="white-space:nowrap">董事长</td><td>25年+（2000年起核心领导）</td><td>海天元老，从基层技术员到掌门人，调味品战略家</td></tr>
-    <tr><td style="white-space:nowrap">管江华</td><td style="white-space:nowrap">副董事长/副总</td><td>—</td><td>海天内部培养的高管</td></tr>
-    <tr><td style="white-space:nowrap">黄文彪</td><td style="white-space:nowrap">董秘</td><td>—</td><td>—</td></tr>
-    <tr><td style="white-space:nowrap">张欣</td><td style="white-space:nowrap">财务负责人</td><td>—</td><td>—</td></tr>
+    <tr><td>庞康</td><td>董事长</td><td>25年+（2000年起核心领导）</td><td>海天元老，从基层技术员到掌门人，调味品战略家</td></tr>
+    <tr><td>管江华</td><td>副董事长/副总</td><td>—</td><td>海天内部培养的高管</td></tr>
+    <tr><td>黄文彪</td><td>董秘</td><td>—</td><td>—</td></tr>
+    <tr><td>张欣</td><td>财务负责人</td><td>—</td><td>—</td></tr>
   </table>
   <div class="txt" style="font-size:12px;">庞康自1995年海天改制以来担任公司核心领导，执掌公司超过25年，将一家地方国营酱油厂打造为全球最大的调味品企业（市值超2,000亿）。庞康管理风格极度务实、低调、专注主业，几乎不接受媒体采访，与巴菲特的"在沉默中创造价值"理念高度吻合。海天从佛山酱油厂发展而来，庞康是其灵魂人物。但庞康年龄已超过65岁，继任者问题值得关注。</div>
 
@@ -572,40 +524,40 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>核心财务指标</h3>
   <table class="tbl">
     <tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
-    <tr><td style="white-space:nowrap">营收（亿）</td><td style="white-space:nowrap">250.0</td><td>256.1</td><td>245.6</td><td>250.9</td><td class="gold">269.0</td><td class="green">↑ 恢复</td></tr>
-    <tr><td style="white-space:nowrap">净利（亿）</td><td style="white-space:nowrap">66.7</td><td>62.0</td><td>56.0</td><td>60.3</td><td class="gold">63.0</td><td class="green">↑ 恢复</td></tr>
-    <tr><td style="white-space:nowrap">毛利率</td><td style="white-space:nowrap">38.7%</td><td>33.5%</td><td>34.2%</td><td>36.5%</td><td>36.8%</td><td class="green">↑ 修复</td></tr>
-    <tr><td style="white-space:nowrap">净利率</td><td style="white-space:nowrap">26.7%</td><td>24.2%</td><td>22.8%</td><td>24.0%</td><td>23.4%</td><td>→ 稳定</td></tr>
-    <tr><td style="white-space:nowrap">ROE</td><td style="white-space:nowrap">28.8%</td><td>24.5%</td><td>20.8%</td><td>22.0%</td><td>20.0%</td><td class="green">↑ 改善</td></tr>
+    <tr><td>营收（亿）</td><td>250.0</td><td>256.1</td><td>245.6</td><td>250.9</td><td class="gold">269.0</td><td class="green">↑ 恢复</td></tr>
+    <tr><td>净利（亿）</td><td>66.7</td><td>62.0</td><td>56.0</td><td>60.3</td><td class="gold">63.0</td><td class="green">↑ 恢复</td></tr>
+    <tr><td>毛利率</td><td>38.7%</td><td>33.5%</td><td>34.2%</td><td>36.5%</td><td>36.8%</td><td class="green">↑ 修复</td></tr>
+    <tr><td>净利率</td><td>26.7%</td><td>24.2%</td><td>22.8%</td><td>24.0%</td><td>23.4%</td><td>→ 稳定</td></tr>
+    <tr><td>ROE</td><td>28.8%</td><td>24.5%</td><td>20.8%</td><td>22.0%</td><td>20.0%</td><td class="green">↑ 改善</td></tr>
   </table>
 
   <h3>现金流 & 资产负债</h3>
   <table class="tbl">
     <tr><th>指标</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
-    <tr><td style="white-space:nowrap">经营现金流</td><td style="white-space:nowrap">68.2亿</td><td>72.5亿</td><td class="gold">78.0亿</td><td class="green">↑ 充沛</td></tr>
-    <tr><td style="white-space:nowrap">CAPEX</td><td style="white-space:nowrap">约12亿</td><td>约14亿</td><td>约15亿</td><td class="green">↑ 扩产</td></tr>
-    <tr><td style="white-space:nowrap">FCF</td><td style="white-space:nowrap">约56亿</td><td>约59亿</td><td class="gold">约63亿</td><td class="green">↑ 充沛</td></tr>
-    <tr><td style="white-space:nowrap">FCF/净利</td><td style="white-space:nowrap">约100%</td><td>约98%</td><td class="green">约97%</td><td class="green">极高</td></tr>
-    <tr><td style="white-space:nowrap">资产负债率</td><td style="white-space:nowrap">23.5%</td><td>22.8%</td><td>24.2%</td><td>→ 极低</td></tr>
-    <tr><td style="white-space:nowrap">货币资金</td><td style="white-space:nowrap">约200亿</td><td>约210亿</td><td class="gold">约220亿</td><td class="green">充裕</td></tr>
-    <tr><td style="white-space:nowrap">有息负债</td><td style="white-space:nowrap">≈0</td><td>≈0</td><td class="green">≈0</td><td class="green">零有息负债</td></tr>
+    <tr><td>经营现金流</td><td>68.2亿</td><td>72.5亿</td><td class="gold">78.0亿</td><td class="green">↑ 充沛</td></tr>
+    <tr><td>CAPEX</td><td>约12亿</td><td>约14亿</td><td>约15亿</td><td class="green">↑ 扩产</td></tr>
+    <tr><td>FCF</td><td>约56亿</td><td>约59亿</td><td class="gold">约63亿</td><td class="green">↑ 充沛</td></tr>
+    <tr><td>FCF/净利</td><td>约100%</td><td>约98%</td><td class="green">约97%</td><td class="green">极高</td></tr>
+    <tr><td>资产负债率</td><td>23.5%</td><td>22.8%</td><td>24.2%</td><td>→ 极低</td></tr>
+    <tr><td>货币资金</td><td>约200亿</td><td>约210亿</td><td class="gold">约220亿</td><td class="green">充裕</td></tr>
+    <tr><td>有息负债</td><td>≈0</td><td>≈0</td><td class="green">≈0</td><td class="green">零有息负债</td></tr>
   </table>
 
   <h3>费用率结构</h3>
   <table class="tbl">
     <tr><th>费用项</th><th>2025年规模</th><th>趋势</th></tr>
-    <tr><td style="white-space:nowrap">销售费用</td><td style="white-space:nowrap">约18-20亿</td><td class="green">费用率约7-8%，远低于伊利16-17%，体现品牌自然动销能力</td></tr>
-    <tr><td style="white-space:nowrap">管理费用</td><td style="white-space:nowrap">约8-10亿</td><td>→ 费用率约3-4%，健康水平</td></tr>
-    <tr><td style="white-space:nowrap">研发费用</td><td style="white-space:nowrap">约2-3亿</td><td>→ 适度（传统酿造工艺研发投入）</td></tr>
-    <tr><td style="white-space:nowrap">财务费用</td><td style="white-space:nowrap">为负（利息收入）</td><td class="green">→ 220亿货币资金产生利息收入</td></tr>
+    <tr><td>销售费用</td><td>约18-20亿</td><td class="green">费用率约7-8%，远低于伊利16-17%，体现品牌自然动销能力</td></tr>
+    <tr><td>管理费用</td><td>约8-10亿</td><td>→ 费用率约3-4%，健康水平</td></tr>
+    <tr><td>研发费用</td><td>约2-3亿</td><td>→ 适度（传统酿造工艺研发投入）</td></tr>
+    <tr><td>财务费用</td><td>为负（利息收入）</td><td class="green">→ 220亿货币资金产生利息收入</td></tr>
   </table>
 
   <h3>杜邦分析</h3>
   <table class="tbl">
     <tr><th>年份</th><th>ROE</th><th>净利率</th><th>资产周转率</th><th>权益乘数</th><th>驱动因子</th></tr>
-    <tr><td style="white-space:nowrap">2023</td><td style="white-space:nowrap">20.8%</td><td>22.8%</td><td>0.80×</td><td>1.31×</td><td>⭐ 超高净利率</td></tr>
-    <tr><td style="white-space:nowrap">2024</td><td style="white-space:nowrap">22.0%</td><td>24.0%</td><td>0.82×</td><td>1.30×</td><td>净利率驱动</td></tr>
-    <tr><td style="white-space:nowrap">2025</td><td class="gold">20.0%</td><td style="white-space:nowrap">23.4%</td><td>0.88×</td><td>1.32×</td><td>净利率+周转率双驱动</td></tr>
+    <tr><td>2023</td><td>20.8%</td><td>22.8%</td><td>0.80×</td><td>1.31×</td><td>⭐ 超高净利率</td></tr>
+    <tr><td>2024</td><td>22.0%</td><td>24.0%</td><td>0.82×</td><td>1.30×</td><td>净利率驱动</td></tr>
+    <tr><td>2025</td><td class="gold">20.0%</td><td>23.4%</td><td>0.88×</td><td>1.32×</td><td>净利率+周转率双驱动</td></tr>
   </table>
 
   <div class="bq">
@@ -623,11 +575,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="txt">海天毛利率约36.8%，成本中占比最大的是大豆/豆粕（原材料成本约占60-65%）。2022年大豆价格暴涨（从3,800涨至5,000元/吨）是毛利率从42%骤降至33.5%的核心原因。海天通过提前锁价、海外采购、期货套保等方式管理价格波动风险。</div>
   <table class="tbl">
     <tr><th>成本项目</th><th>占比</th><th>趋势</th><th>议价能力</th></tr>
-    <tr><td style="white-space:nowrap">大豆/豆粕</td><td style="white-space:nowrap">35-40%</td><td class="red">↑ 国际价格波动大</td><td class="green">较强</td></tr>
-    <tr><td style="white-space:nowrap">小麦/面粉</td><td style="white-space:nowrap">10-15%</td><td>→ 稳定</td><td class="green">强</td></tr>
-    <tr><td style="white-space:nowrap">食盐/添加剂</td><td style="white-space:nowrap">8-10%</td><td>→ 稳定</td><td class="green">较强</td></tr>
-    <tr><td style="white-space:nowrap">包装材料（玻璃+标签）</td><td style="white-space:nowrap">15-18%</td><td>→ 稳定</td><td class="green">强</td></tr>
-    <tr><td style="white-space:nowrap">人工及制造费用</td><td style="white-space:nowrap">12-15%</td><td class="red">↑</td><td>中</td></tr>
+    <tr><td>大豆/豆粕</td><td>35-40%</td><td class="red">↑ 国际价格波动大</td><td class="green">较强</td></tr>
+    <tr><td>小麦/面粉</td><td>10-15%</td><td>→ 稳定</td><td class="green">强</td></tr>
+    <tr><td>食盐/添加剂</td><td>8-10%</td><td>→ 稳定</td><td class="green">较强</td></tr>
+    <tr><td>包装材料（玻璃+标签）</td><td>15-18%</td><td>→ 稳定</td><td class="green">强</td></tr>
+    <tr><td>人工及制造费用</td><td>12-15%</td><td class="red">↑</td><td>中</td></tr>
   </table>
 
   <h3>产业链议价权</h3>
@@ -654,20 +606,20 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>FCF质量</h3>
   <table class="tbl">
     <tr><th>指标</th><th>2024年</th><th class="gold">2025年</th><th>正常化水平</th></tr>
-    <tr><td style="white-space:nowrap">经营现金流</td><td style="white-space:nowrap">约73亿</td><td class="gold">约78亿</td><td>70-80亿</td></tr>
-    <tr><td style="white-space:nowrap">CAPEX</td><td style="white-space:nowrap">约14亿</td><td>约15亿</td><td>12-18亿</td></tr>
-    <tr><td style="white-space:nowrap">FCF</td><td style="white-space:nowrap">约59亿</td><td class="gold">约63亿</td><td>55-65亿</td></tr>
-    <tr><td style="white-space:nowrap">FCF/净利润</td><td style="white-space:nowrap">约98%</td><td class="green">约97%</td><td>95-100%</td></tr>
+    <tr><td>经营现金流</td><td>约73亿</td><td class="gold">约78亿</td><td>70-80亿</td></tr>
+    <tr><td>CAPEX</td><td>约14亿</td><td>约15亿</td><td>12-18亿</td></tr>
+    <tr><td>FCF</td><td>约59亿</td><td class="gold">约63亿</td><td>55-65亿</td></tr>
+    <tr><td>FCF/净利润</td><td>约98%</td><td class="green">约97%</td><td>95-100%</td></tr>
   </table>
   <div class="txt">FCF约63亿，FCF/净利润约97%——全球顶级的现金流质量。极低的资本开支（仅约15亿，占经营现金流19%）意味着海天和茅台一样是"印钞机"模式的生意。</div>
 
   <h3>估值指标</h3>
   <table class="tbl">
     <tr><th>指标</th><th>当前值</th><th>历史区间</th><th>评估</th></tr>
-    <tr><td style="white-space:nowrap">PE(TTM)</td><td class="gold">约28.3倍</td><td style="white-space:nowrap">25-80倍</td><td class="orange">中性偏高</td></tr>
-    <tr><td style="white-space:nowrap">PE(2026E)</td><td class="gold">约26.0倍</td><td style="white-space:nowrap">—</td><td class="orange">中性偏高</td></tr>
-    <tr><td style="white-space:nowrap">PB</td><td style="white-space:nowrap">约8.5倍</td><td>6-20倍</td><td class="orange">偏高</td></tr>
-    <tr><td style="white-space:nowrap">股息率</td><td class="gold">约1.8%</td><td style="white-space:nowrap">0.5-2.0%</td><td>中低</td></tr>
+    <tr><td>PE(TTM)</td><td class="gold">约28.3倍</td><td>25-80倍</td><td class="orange">中性偏高</td></tr>
+    <tr><td>PE(2026E)</td><td class="gold">约26.0倍</td><td>—</td><td class="orange">中性偏高</td></tr>
+    <tr><td>PB</td><td>约8.5倍</td><td>6-20倍</td><td class="orange">偏高</td></tr>
+    <tr><td>股息率</td><td class="gold">约1.8%</td><td>0.5-2.0%</td><td>中低</td></tr>
   </table>
   <div class="txt">当前市值约2,080亿元，PE(TTM)约28.3倍。机构预测2026年归母净利润约69-72亿元，对应PE约26倍。PEG约3.2倍（增速约7-8%），估值溢价明显。</div>
 
@@ -697,10 +649,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>行业空间</h3>
   <table class="tbl">
     <tr><th>市场</th><th>规模（2025E）</th><th>增速</th><th>公司收入</th><th>市占率</th></tr>
-    <tr><td style="white-space:nowrap">调味品行业</td><td style="white-space:nowrap">约5,500亿</td><td>+5-7%</td><td>272亿</td><td class="gold">约5%</td></tr>
-    <tr><td style="white-space:nowrap">酱油</td><td style="white-space:nowrap">约800亿</td><td>+3-5%</td><td>约150亿</td><td class="gold">约18-20%</td></tr>
-    <tr><td style="white-space:nowrap">蚝油</td><td style="white-space:nowrap">约160亿</td><td>+12%</td><td>约49亿</td><td class="gold">约30%</td></tr>
-    <tr><td style="white-space:nowrap">调味酱</td><td style="white-space:nowrap">约500亿</td><td>+8%</td><td>约33亿</td><td>约6-7%</td></tr>
+    <tr><td>调味品行业</td><td>约5,500亿</td><td>+5-7%</td><td>272亿</td><td class="gold">约5%</td></tr>
+    <tr><td>酱油</td><td>约800亿</td><td>+3-5%</td><td>约150亿</td><td class="gold">约18-20%</td></tr>
+    <tr><td>蚝油</td><td>约160亿</td><td>+12%</td><td>约49亿</td><td class="gold">约30%</td></tr>
+    <tr><td>调味酱</td><td>约500亿</td><td>+8%</td><td>约33亿</td><td>约6-7%</td></tr>
   </table>
 
   <div class="mg" style="margin-top:10px;">
@@ -713,10 +665,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>竞争态势</h3>
   <table class="tbl">
     <tr><th>竞争对手</th><th>竞争维度</th><th>海天相对优势</th></tr>
-    <tr><td style="white-space:nowrap">千禾味业</td><td style="white-space:nowrap">零添加/高端酱油</td><td>海天品牌力+渠道优势碾压，但千禾在零添加赛道增速更快</td></tr>
-    <tr><td style="white-space:nowrap">李锦记</td><td style="white-space:nowrap">蚝油/高端酱油</td><td>海天在蚝油市占率30%远高于李锦记约8%，且渠道覆盖更广</td></tr>
-    <tr><td style="white-space:nowrap">厨邦（中炬高新）</td><td style="white-space:nowrap">中高端酱油</td><td>海天在性价比市场碾压，厨邦只在华南有优势</td></tr>
-    <tr><td style="white-space:nowrap">恒顺醋业</td><td style="white-space:nowrap">食醋</td><td>海天食醋布局较晚，恒顺在醋行业仍占据品牌心智</td></tr>
+    <tr><td>千禾味业</td><td>零添加/高端酱油</td><td>海天品牌力+渠道优势碾压，但千禾在零添加赛道增速更快</td></tr>
+    <tr><td>李锦记</td><td>蚝油/高端酱油</td><td>海天在蚝油市占率30%远高于李锦记约8%，且渠道覆盖更广</td></tr>
+    <tr><td>厨邦（中炬高新）</td><td>中高端酱油</td><td>海天在性价比市场碾压，厨邦只在华南有优势</td></tr>
+    <tr><td>恒顺醋业</td><td>食醋</td><td>海天食醋布局较晚，恒顺在醋行业仍占据品牌心智</td></tr>
   </table>
 
   <h3>行业终局思考</h3>
@@ -737,11 +689,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>催化剂时间表</h3>
   <table class="tbl">
     <tr><th>时间</th><th>事件</th><th>预期影响</th></tr>
-    <tr><td style="white-space:nowrap">2026H2</td><td style="white-space:nowrap">大豆价格继续回落</td><td class="green">毛利率有望修复至40%+，净利增厚4-5亿</td></tr>
-    <tr><td style="white-space:nowrap">2026-2027</td><td style="white-space:nowrap">蚝油持续放量突破60亿</td><td class="green">蚝油成为第二大品类，营收占比提升至22%+</td></tr>
-    <tr><td style="white-space:nowrap">2027</td><td style="white-space:nowrap">酱油提价窗口</td><td class="green">终端提价3-5%增厚净利约8-10亿</td></tr>
-    <tr><td style="white-space:nowrap">2027H1</td><td style="white-space:nowrap">全国化渠道下沉完成</td><td>乡镇市场覆盖率从80%提升至90%+</td></tr>
-    <tr><td style="white-space:nowrap">2028</td><td style="white-space:nowrap">食醋/料酒品类突破</td><td>食醋市占率从3%提升至8%，料酒市占率提升至10%</td></tr>
+    <tr><td>2026H2</td><td>大豆价格继续回落</td><td class="green">毛利率有望修复至40%+，净利增厚4-5亿</td></tr>
+    <tr><td>2026-2027</td><td>蚝油持续放量突破60亿</td><td class="green">蚝油成为第二大品类，营收占比提升至22%+</td></tr>
+    <tr><td>2027</td><td>酱油提价窗口</td><td class="green">终端提价3-5%增厚净利约8-10亿</td></tr>
+    <tr><td>2027H1</td><td>全国化渠道下沉完成</td><td>乡镇市场覆盖率从80%提升至90%+</td></tr>
+    <tr><td>2028</td><td>食醋/料酒品类突破</td><td>食醋市占率从3%提升至8%，料酒市占率提升至10%</td></tr>
   </table>
 
   <h3>三年业绩预测</h3>
@@ -821,19 +773,19 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>风险类型</h3>
   <table class="tbl">
     <tr><th>风险类型</th><th>描述</th><th>概率</th><th>预警信号</th></tr>
-    <tr><td style="white-space:nowrap">原材料价格暴涨</td><td style="white-space:nowrap">大豆/豆粕价格暴涨40%+</td><td><span style="color:#ffc107;">中低</span></td><td>国际大豆期货价格连续3个月上涨超10%</td></tr>
-    <tr><td style="white-space:nowrap">零添加颠覆</td><td style="white-space:nowrap">零添加酱油市占率突破20%</td><td><span style="color:#ffc107;">中低</span></td><td>千禾味业市占率季度环比提升0.5%+</td></tr>
-    <tr><td style="white-space:nowrap">消费降级冲击</td><td style="white-space:nowrap">消费者转向低价替代品</td><td><span style="color:#ffc107;">中低</span></td><td>海天产品终端降价促销幅度加大</td></tr>
-    <tr><td style="white-space:nowrap">食品安全事件</td><td style="white-space:nowrap">罕见但破坏性极大</td><td><span style="color:#ffc107;">极低</span></td><td>质检报告异常</td></tr>
-    <tr><td style="white-space:nowrap">估值压缩</td><td style="white-space:nowrap">PE从32倍压缩至25倍</td><td><span class="orange">中</span></td><td>市场整体回调+消费板块杀估值</td></tr>
+    <tr><td>原材料价格暴涨</td><td>大豆/豆粕价格暴涨40%+</td><td><span style="color:#ffc107;">中低</span></td><td>国际大豆期货价格连续3个月上涨超10%</td></tr>
+    <tr><td>零添加颠覆</td><td>零添加酱油市占率突破20%</td><td><span style="color:#ffc107;">中低</span></td><td>千禾味业市占率季度环比提升0.5%+</td></tr>
+    <tr><td>消费降级冲击</td><td>消费者转向低价替代品</td><td><span style="color:#ffc107;">中低</span></td><td>海天产品终端降价促销幅度加大</td></tr>
+    <tr><td>食品安全事件</td><td>罕见但破坏性极大</td><td><span style="color:#ffc107;">极低</span></td><td>质检报告异常</td></tr>
+    <tr><td>估值压缩</td><td>PE从32倍压缩至25倍</td><td><span class="orange">中</span></td><td>市场整体回调+消费板块杀估值</td></tr>
   </table>
 
   <h3>敏感性分析</h3>
   <table class="tbl">
     <tr><th>压力情景</th><th>净利影响</th><th>股价压力</th></tr>
-    <tr><td style="white-space:nowrap">大豆价格上涨30%</td><td style="white-space:nowrap">-12%</td><td class="orange">-15%</td></tr>
-    <tr><td style="white-space:nowrap">零添加冲击+份额流失</td><td style="white-space:nowrap">-10%</td><td class="orange">-12%</td></tr>
-    <tr><td style="white-space:nowrap">PE压缩至25倍</td><td style="white-space:nowrap">基本面无变化</td><td class="orange">-22%</td></tr>
+    <tr><td>大豆价格上涨30%</td><td>-12%</td><td class="orange">-15%</td></tr>
+    <tr><td>零添加冲击+份额流失</td><td>-10%</td><td class="orange">-12%</td></tr>
+    <tr><td>PE压缩至25倍</td><td>基本面无变化</td><td class="orange">-22%</td></tr>
     <tr><td class="red">极端叠加</td><td class="red">-22%</td><td class="red" style="font-weight:bold;">-35%</td></tr>
   </table>
 
@@ -862,11 +814,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>清算价值</h3>
   <table class="tbl">
     <tr><th>资产项</th><th>账面价值</th><th>清算价值</th></tr>
-    <tr><td style="white-space:nowrap">货币资金</td><td style="white-space:nowrap">约220亿</td><td class="gold">220亿</td></tr>
-    <tr><td style="white-space:nowrap">应收账款</td><td style="white-space:nowrap">约5亿</td><td>3亿</td></tr>
-    <tr><td style="white-space:nowrap">存货</td><td style="white-space:nowrap">约45亿</td><td>25亿</td></tr>
-    <tr><td style="white-space:nowrap">固定资产</td><td style="white-space:nowrap">约80亿</td><td>40亿</td></tr>
-    <tr><td style="white-space:nowrap">无形资产</td><td style="white-space:nowrap">约15亿</td><td>5亿</td></tr>
+    <tr><td>货币资金</td><td>约220亿</td><td class="gold">220亿</td></tr>
+    <tr><td>应收账款</td><td>约5亿</td><td>3亿</td></tr>
+    <tr><td>存货</td><td>约45亿</td><td>25亿</td></tr>
+    <tr><td>固定资产</td><td>约80亿</td><td>40亿</td></tr>
+    <tr><td>无形资产</td><td>约15亿</td><td>5亿</td></tr>
     <tr><td class="gold">合计</td><td>约365亿</td><td>约293亿</td></tr>
   </table>
   <div class="txt">清算价值约293亿元，当前市值约2,080亿元。差额约1,787亿体现了海天味业的品牌价值和持续经营能力。</div>
@@ -906,17 +858,17 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>价值投资理论应用</h3>
   <table class="tbl">
     <tr><th>模块</th><th>大师理念</th><th>应用分析</th></tr>
-    <tr><td style="white-space:nowrap">M1</td><td style="white-space:nowrap">段永平<br>「本分」</td><td style="text-align:left;font-size:11px;">聚焦调味品主业30年，佛山酱油厂到全球最大调味品企业，"本分"的极致体现</td></tr>
-    <tr><td style="white-space:nowrap">M2</td><td style="white-space:nowrap">巴菲特<br>「护城河」</td><td style="text-align:left;font-size:11px;">品牌+渠道+规模三重护城河4.0/5.0，中国消费品最深护城河之一</td></tr>
-    <tr><td style="white-space:nowrap">M3</td><td style="white-space:nowrap">巴菲特<br>「德才兼备」</td><td style="text-align:left;font-size:11px;">庞康25年执掌+核心团队持股，德才兼备的典范</td></tr>
-    <tr><td style="white-space:nowrap">M4</td><td style="white-space:nowrap">巴菲特<br>「FCF为王」</td><td style="text-align:left;font-size:11px;">FCF约63亿、FCF/净利润约97%、零有息负债，FCF质量A股第一梯队</td></tr>
-    <tr><td style="white-space:nowrap">M5</td><td style="white-space:nowrap">邱国鹭<br>「定价权」</td><td style="text-align:left;font-size:11px;">低消费占比+高频刚需+品牌垄断，定价权评分4.0/5.0</td></tr>
-    <tr><td style="white-space:nowrap">M6</td><td style="white-space:nowrap">巴菲特<br>「资本配置」</td><td style="text-align:left;font-size:11px;">零有息负债+极低CAPEX+FCF约63亿，资本配置最优之一</td></tr>
-    <tr><td style="white-space:nowrap">M7</td><td style="white-space:nowrap">邱国鹭<br>「剩者为王」</td><td style="text-align:left;font-size:11px;">酱油市占率18-20%，行业集中度提升进程中海天是"剩者为王"的典型</td></tr>
-    <tr><td style="white-space:nowrap">M8</td><td style="white-space:nowrap">彼得·林奇<br>「增长类型」</td><td style="text-align:left;font-size:11px;">稳健增长型——增速约7-8%，品类扩张是弹性来源</td></tr>
-    <tr><td style="white-space:nowrap">M9</td><td style="white-space:nowrap">芒格<br>「逆向思维」</td><td style="text-align:left;font-size:11px;">市场对零添加冲击过度担忧，忽略了行业集中度提升的大逻辑</td></tr>
-    <tr><td style="white-space:nowrap">M10</td><td style="white-space:nowrap">芒格<br>「Pre-mortem」</td><td style="text-align:left;font-size:11px;">大豆价格暴涨+估值压缩是两大核心风险，商业模式韧性极强</td></tr>
-    <tr><td style="white-space:nowrap">M11</td><td style="white-space:nowrap">巴菲特<br>「安全边际」</td><td style="text-align:left;font-size:11px;">PE 32倍处于历史中枢，但对比全球同行（22-28倍）溢价约20%，安全边际不足</td></tr>
+    <tr><td>M1</td><td>段永平<br>「本分」</td><td style="text-align:left;font-size:11px;">聚焦调味品主业30年，佛山酱油厂到全球最大调味品企业，"本分"的极致体现</td></tr>
+    <tr><td>M2</td><td>巴菲特<br>「护城河」</td><td style="text-align:left;font-size:11px;">品牌+渠道+规模三重护城河4.0/5.0，中国消费品最深护城河之一</td></tr>
+    <tr><td>M3</td><td>巴菲特<br>「德才兼备」</td><td style="text-align:left;font-size:11px;">庞康25年执掌+核心团队持股，德才兼备的典范</td></tr>
+    <tr><td>M4</td><td>巴菲特<br>「FCF为王」</td><td style="text-align:left;font-size:11px;">FCF约63亿、FCF/净利润约97%、零有息负债，FCF质量A股第一梯队</td></tr>
+    <tr><td>M5</td><td>邱国鹭<br>「定价权」</td><td style="text-align:left;font-size:11px;">低消费占比+高频刚需+品牌垄断，定价权评分4.0/5.0</td></tr>
+    <tr><td>M6</td><td>巴菲特<br>「资本配置」</td><td style="text-align:left;font-size:11px;">零有息负债+极低CAPEX+FCF约63亿，资本配置最优之一</td></tr>
+    <tr><td>M7</td><td>邱国鹭<br>「剩者为王」</td><td style="text-align:left;font-size:11px;">酱油市占率18-20%，行业集中度提升进程中海天是"剩者为王"的典型</td></tr>
+    <tr><td>M8</td><td>彼得·林奇<br>「增长类型」</td><td style="text-align:left;font-size:11px;">稳健增长型——增速约7-8%，品类扩张是弹性来源</td></tr>
+    <tr><td>M9</td><td>芒格<br>「逆向思维」</td><td style="text-align:left;font-size:11px;">市场对零添加冲击过度担忧，忽略了行业集中度提升的大逻辑</td></tr>
+    <tr><td>M10</td><td>芒格<br>「Pre-mortem」</td><td style="text-align:left;font-size:11px;">大豆价格暴涨+估值压缩是两大核心风险，商业模式韧性极强</td></tr>
+    <tr><td>M11</td><td>巴菲特<br>「安全边际」</td><td style="text-align:left;font-size:11px;">PE 32倍处于历史中枢，但对比全球同行（22-28倍）溢价约20%，安全边际不足</td></tr>
   </table>
 </div>
 
@@ -927,11 +879,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>附录A：数据来源</h3>
   <table class="tbl">
     <tr><th>数据类型</th><th>来源平台</th><th>截止日期</th></tr>
-    <tr><td style="white-space:nowrap">财务报表</td><td style="white-space:nowrap">东方财富数据中心/恒生聚源数据库</td><td>2025年报</td></tr>
-    <tr><td style="white-space:nowrap">衍生财务指标</td><td style="white-space:nowrap">同花顺iFinD</td><td>2025年报</td></tr>
-    <tr><td style="white-space:nowrap">估值数据</td><td style="white-space:nowrap">东方财富/同花顺</td><td>2026-06-11</td></tr>
-    <tr><td style="white-space:nowrap">行业归属</td><td style="white-space:nowrap">中调味品协会/Euromonitor</td><td>2025</td></tr>
-    <tr><td style="white-space:nowrap">机构预测</td><td style="white-space:nowrap">中信/华泰/国泰君安等券商研报</td><td>2026-05</td></tr>
+    <tr><td>财务报表</td><td>东方财富数据中心/恒生聚源数据库</td><td>2025年报</td></tr>
+    <tr><td>衍生财务指标</td><td>同花顺iFinD</td><td>2025年报</td></tr>
+    <tr><td>估值数据</td><td>东方财富/同花顺</td><td>2026-06-11</td></tr>
+    <tr><td>行业归属</td><td>中调味品协会/Euromonitor</td><td>2025</td></tr>
+    <tr><td>机构预测</td><td>中信/华泰/国泰君安等券商研报</td><td>2026-05</td></tr>
   </table>
 
   <div class="txt" style="font-size:11px;">
