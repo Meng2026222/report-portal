@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>{{COMPANY_NAME_CN}} · 完整投资研究报告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;background:#0a0a1a;color:#e0e0e0;padding:14px;font-size:14px;line-height:1.6}
+h1{font-size:22px;color:#fff;margin:16px 0 4px;text-align:center}
+h2{font-size:16px;color:#4caf50;margin:20px 0 10px;border-left:3px solid #4caf50;padding-left:10px}
+h3{font-size:14px;color:#ccc;margin:14px 0 6px}
+h4{font-size:13px;color:#aaa;margin:10px 0 4px}
+.desc{font-size:12px;color:#888;margin-bottom:10px}
+.card{background:#0d1a1a;border-radius:12px;padding:14px;margin-bottom:12px;border:1px solid #1a3a3a}
+.sc-wrap{text-align:center;margin-bottom:16px}
+.score-ring{width:80px;height:80px;border-radius:50%;background:conic-gradient(#4caf50 0deg 252deg,#333 252deg 360deg);display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+.score-inner{width:62px;height:62px;border-radius:50%;background:#0d1a1a;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-num{font-size:24px;font-weight:bold;color:#4caf50;line-height:1}
+.score-label{font-size:10px;color:#888}
+.dim-row{display:flex;align-items:center;margin:6px 0}
+.dim-label{width:60px;font-size:12px;color:#aaa;flex-shrink:0}
+.dim-bg{flex:1;height:10px;background:#1e3e3a;border-radius:5px;margin:0 8px;overflow:hidden}
+.dim-fill{height:100%;border-radius:5px}
+.dim-sc{width:28px;text-align:right;font-size:12px;font-weight:bold;flex-shrink:0}
+.c9{background:#4caf50}.c7{background:#8bc34a}.c6{background:#ffc107}
+.tbl{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}
+.tbl th{background:#1e3e3a;color:#4caf50;padding:7px 5px;text-align:center;font-weight:500}
+.tbl td{padding:6px 5px;text-align:center;border-bottom:1px solid #1e3e3a;font-size:11px}
+.tbl td:first-child{white-space:nowrap;font-size:12px}
+.tbl tr:last-child td{border-bottom:none}
+.gold{color:#4caf50;font-weight:bold}.green{color:#4caf50}.red{color:#f44336}.orange{color:#ff9800}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mi{background:#0a0a1a;border-radius:8px;padding:10px;text-align:center}
+.mv{font-size:18px;font-weight:bold;color:#fff}
+.ml{font-size:10px;color:#888;margin-top:2px}
+.hb{display:flex;align-items:flex-start;margin:4px 0;min-height:20px}
+.hl{width:72px;font-size:11px;color:#aaa;flex-shrink:0;padding-top:2px}
+.ht{flex:1;height:16px;background:#1e3e3a;border-radius:8px;overflow:visible;margin:0 6px;position:relative}
+.hf{height:16px;border-radius:8px;display:flex;align-items:center;padding-left:6px;font-size:10px;color:#fff;overflow:visible;white-space:nowrap;text-shadow:0 0 3px rgba(0,0,0,.8);min-width:0}
+.hv{font-size:10px;color:#999;white-space:nowrap;flex-shrink:0;padding-top:2px;margin-left:2px}
+.scn{display:flex;gap:6px;margin:8px 0}
+.scc{flex:1;border-radius:8px;padding:10px;text-align:center}
+.scc h4{font-size:12px;margin-bottom:4px;color:#fff}
+.scc .pct{font-size:18px;font-weight:bold}
+.scc .dt{font-size:10px;color:#ccc;margin-top:3px}
+.sc1{background:#1a3a1a;border:1px solid #2a5a2a}.sc1 .pct{color:#4caf50}
+.sc2{background:#1a2a3a;border:1px solid #2a3a5a}.sc2 .pct{color:#f0c040}
+.sc3{background:#3a1a1a;border:1px solid #5a2a2a}.sc3 .pct{color:#f44336}
+.tg{display:inline-block;font-size:10px;padding:1px 7px;border-radius:10px;margin:1px}
+.tgg{background:#1a3a1a;color:#4caf50;border:1px solid #2a5a2a}
+.tgr{background:#3a1a1a;color:#f44336;border:1px solid #5a2a2a}
+.tgo{background:#3a2a1a;color:#4caf50;border:1px solid #2a5a2a}
+.tgy{background:#222;color:#aaa;border:1px solid #333}
+.txt{padding:6px 0;font-size:13px;color:#ccc;line-height:1.7}
+.txt .dot{color:#4caf50;margin-right:4px}
+.bq{padding:10px;background:#0a0a1a;border-radius:8px;border-left:3px solid #4caf50;margin:8px 0;font-size:13px;color:#ddd;line-height:1.7}
+.cp{display:flex;align-items:center;margin:4px 0;font-size:12px}
+.cp .nm{width:88px;color:#aaa;flex-shrink:0}
+.cp .bt{flex:1;height:14px;background:#1e3e3a;border-radius:7px;overflow:hidden;margin:0 6px}
+.cp .bf{height:100%;border-radius:7px}
+.cp .vl{width:48px;text-align:right;font-weight:bold;flex-shrink:0}
+.footer{text-align:center;font-size:10px;color:#555;margin:24px 0 10px;padding-top:14px;border-top:1px solid #1e3e3a;line-height:1.8}
+.sticky-top{position:sticky;top:0;z-index:10;background:#0a0a1a;padding:8px 0;border-bottom:1px solid #1e3e3a;margin-bottom:12px}
+.toc{display:flex;flex-wrap:nowrap;gap:4px;justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:4px 2px;scrollbar-width:none}
+.toc::-webkit-scrollbar{display:none}
+.toc a{font-size:10px;color:#888;text-decoration:none;padding:3px 7px;border-radius:10px;border:1px solid #333;white-space:nowrap;flex-shrink:0}
+.toc a:active{background:#1e3e3a;color:#4caf50}
+
+</style>
+</head>
+<body>
+
+<div class="sticky-top">
+  <div style="text-align:center;font-size:11px;color:#555;margin-bottom:4px;">📌 点击跳转</div>
+  <div class="toc">
+    <a href="#s0">评分</a><a href="#s1">综合评价</a><a href="#s2">M1商业模式</a>
+    <a href="#s3">M2壁垒</a><a href="#s4">M3管理层</a><a href="#s5">M4财务</a>
+    <a href="#s6">M5产业链</a><a href="#s7">M6估值</a><a href="#s8">M7市占率</a>
+    <a href="#s9">M8催化剂</a><a href="#s10">M9预期差</a><a href="#s11">M10风险</a>
+    <a href="#s12">综合评级</a><a href="#s13">附录</a>
+  </div>
+</div>
+
+<div id="s0" class="sc-wrap">
+  <div class="score-ring"><div class="score-inner"><div class="score-num">{{SCORE}}</div><div class="score-label">/10</div></div></div>
+  <h1 style="margin-top:4px;">{{COMPANY_NAME_CN}} <span style="font-size:14px;color:#888;font-weight:400;">{{STOCK_CODE}}</span></h1>
+  <div class="desc">{{RATING_DESC}}</div>
+  <div><span class="tg tgo">{{RATING_TEXT}}</span><span class="tg tgy">{{DATA_DATE}}</span></div>
+</div>
+
+<div id="s-mcap" class="card">
+  <h2>市值走势</h2>
+  <div class="desc">上市以来市值变化（不复权收盘价 × 总股本）· 鼠标滚轮缩放 · 拖拽平移 · <span style="color:#888;font-size:11px;">每周五17:00更新</span></div>
+
+  <div class="mcap-btns">
+    <button class="mcap-btn active" data-period="week">周线</button>
+    <button class="mcap-btn" data-period="month">月线</button>
+    <button class="mcap-btn" data-period="year">年线</button>
+  </div>
+
+  <div class="mcap-chart-wrap">
+    <div class="mcap-tooltip" id="mcapTooltip"></div>
+    <svg id="mcapSvg" width="100%" height="380"></svg>
+  </div>
+
+  <div class="mcap-info">
+    当前市值：<span class="mcap-v" id="mcapCurrent">--</span> 亿 ·
+    历史最高：<span class="mcap-v" id="mcapHigh">--</span> 亿 ·
+    历史最低：<span class="mcap-v" id="mcapLow">--</span> 亿 ·
+    总股本：<span class="mcap-v" id="mcapShares">13.71</span> 亿股
+  </div>
+</div>
+
+<div id="s-financial" class="card" style="overflow-x:auto;margin-top:16px">
+  <h2>历年财务数据</h2>
+  <div class="desc">最近10年财务指标 · <span style="color:#4caf50">绿色=增长>30%</span> · <span style="color:#f0a030">橙色=连续下滑</span> · <span style="color:#e74c3c">红色=负值/下滑>20%</span></div>
+  <style>
+  .fin-table{width:100%;border-collapse:collapse;font-size:11px}
+  .fin-table th{background:#1e1e3a;color:#f0c040;padding:7px 5px;text-align:center;font-weight:500;white-space:nowrap}
+  .fin-table td{padding:6px 5px;text-align:center;border-bottom:1px solid #1e1e3a;white-space:nowrap}
+  .fin-table tr:hover td{background:#1a1a3a}
+  .fin-table td:first-child{text-align:left;font-weight:500;position:sticky;left:0;background:#0a0a1a;z-index:1}
+  .fin-table tr:hover td:first-child{background:#1a1a2a}
+  .fin-table td.na{color:#555}
+  .fin-table td.pos{color:#4caf50;font-weight:600}
+  .fin-table td.neg{color:#e74c3c;font-weight:600}
+  .fin-table td.warn{color:#f0a030;font-weight:600}
+  .fin-light .fin-table th{background:#d8d4c8;color:#8b6914}
+  .fin-light .fin-table td{border-bottom-color:#d8d4c8}
+  .fin-light .fin-table tr:hover td{background:#e8e4dc}
+  .fin-light .fin-table td:first-child{background:#f4f1ea}
+  .fin-light .fin-table tr:hover td:first-child{background:#e8e4dc}
+  .fin-light .fin-table td.pos{color:#2e7d32!important}
+  .fin-light .fin-table td.neg{color:#c0392b!important}
+  .fin-light .fin-table td.warn{color:#b8860b!important}
+</style>
+  <table class="fin-table">
+    <thead><tr><th>指标</th><th>2025</th><th>2024</th><th>2023</th><th>2022</th><th>2021</th><th>2020</th><th>2019</th><th>2018</th><th>2017</th><th>2016</th></tr></thead>
+    <tbody>
+      <tr><td>每股营业收入(元)</td><td class="warn">12.58</td><td class="">13.56</td><td class="">13.02</td><td class="">11.21</td><td class="">10.65</td><td class="">9.35</td><td class="warn">9.68</td><td class="">10.36</td><td class="">9.75</td><td class="">8.82</td></tr>
+      <tr><td>每股经营现金流(元)</td><td class="pos">1.96</td><td class="neg">0.55</td><td class="neg">1.36</td><td class="">2.26</td><td class="pos">2.50</td><td class="">1.59</td><td class="">1.66</td><td class="pos">1.41</td><td class="pos">1.07</td><td class="">0.76</td></tr>
+      <tr><td>每股净利润(元)</td><td class="neg">0.87</td><td class="warn">1.11</td><td class="">1.22</td><td class="">1.04</td><td class="">0.90</td><td class="">0.75</td><td class="warn">0.72</td><td class="">0.83</td><td class="">0.74</td><td class="">0.68</td></tr>
+      <tr><td>每股净资产(元)</td><td class="">9.96</td><td class="">9.62</td><td class="">9.52</td><td class="">8.61</td><td class="">7.75</td><td class="">7.17</td><td class="warn">6.73</td><td class="">6.75</td><td class="">6.14</td><td class="">5.68</td></tr>
+      <tr><td>总股本(亿股)</td><td class="">13.71</td><td class="">13.71</td><td class="">13.71</td><td class="">13.71</td><td class="">13.71</td><td class="">13.71</td><td class="">13.71</td><td class="">13.71</td><td class="">13.71</td><td class="">13.71</td></tr>
+      <tr><td>市盈率PE</td><td class="">37.2</td><td class="">36.5</td><td class="">44.1</td><td class="">42.9</td><td class="">50.3</td><td class="">31.8</td><td class="">39.2</td><td class="">33.3</td><td class="">43.5</td><td class="">46.1</td></tr>
+      <tr><td>营业收入(亿元)</td><td class="warn">172.56</td><td class="">185.97</td><td class="">178.61</td><td class="">153.72</td><td class="">146.03</td><td class="">128.26</td><td class="warn">132.77</td><td class="">142.09</td><td class="">133.76</td><td class="">120.91</td></tr>
+      <tr><td>毛利率(%)</td><td class="">42.87</td><td class="">43.96</td><td class="warn">47.29</td><td class="">48.80</td><td class="">47.62</td><td class="">47.04</td><td class="">46.76</td><td class="">46.75</td><td class="">46.24</td><td class="">45.98</td></tr>
+      <tr><td>净利润(亿元)</td><td class="neg">11.89</td><td class="warn">15.26</td><td class="">16.69</td><td class="">14.27</td><td class="">12.27</td><td class="">10.31</td><td class="warn">9.85</td><td class="">11.34</td><td class="">10.17</td><td class="">9.33</td></tr>
+      <tr><td>所得税率(%)</td><td class="">19.42</td><td class="">18.72</td><td class="">16.15</td><td class="">18.88</td><td class="">18.76</td><td class="">18.49</td><td class="">20.60</td><td class="">19.16</td><td class="">18.62</td><td class="">18.50</td></tr>
+      <tr><td>净利润率(%)</td><td class="neg">9.46</td><td class="warn">12.26</td><td class="">14.46</td><td class="">14.34</td><td class="">12.95</td><td class="">12.60</td><td class="">11.76</td><td class="warn">12.83</td><td class="">13.02</td><td class="">12.92</td></tr>
+      <tr><td>营运资本(亿元)</td><td class="">168.84</td><td class="warn">160.98</td><td class="">161.99</td><td class="">142.24</td><td class="">118.71</td><td class="warn">109.29</td><td class="">112.19</td><td class="">111.70</td><td class="">102.20</td><td class="">95.31</td></tr>
+      <tr><td>长期负债(亿元)</td><td class="">27.23</td><td class="">26.99</td><td class="">26.71</td><td class="">22.55</td><td class="">20.98</td><td class="pos">6.93</td><td class="">13.68</td><td class="">11.04</td><td class="">10.77</td><td class="">10.60</td></tr>
+      <tr><td>ROA(%)</td><td class="neg">5.28</td><td class="warn">7.44</td><td class="">9.04</td><td class="">8.46</td><td class="">8.06</td><td class="">7.56</td><td class="">7.54</td><td class="">9.30</td><td class="">9.74</td><td class="">9.94</td></tr>
+      <tr><td>ROE(%)</td><td class="neg">8.86</td><td class="warn">11.49</td><td class="">13.42</td><td class="">12.72</td><td class="">12.01</td><td class="">10.82</td><td class="warn">10.34</td><td class="">12.83</td><td class="">12.55</td><td class="">12.51</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<style>
+.mcap-btns{display:flex;gap:6px;margin:8px 0}
+.mcap-btn{flex:1;padding:6px 0;border:1px solid #333;background:#1e3e3a;color:#888;border-radius:6px;cursor:pointer;font-size:12px;text-align:center;transition:all .2s}
+.mcap-btn:hover{border-color:#4caf50;color:#4caf50}
+.mcap-btn.active{background:#4caf50;color:#0a0a1a;border-color:#4caf50;font-weight:bold}
+.mcap-chart-wrap{position:relative;width:100%;border-radius:8px;background:#0d0d20;border:1px solid #1e3e3a}
+.mcap-chart-wrap svg{display:block}
+.mcap-tooltip{position:absolute;display:none;background:rgba(10,10,26,.92);border:1px solid #4caf50;border-radius:6px;padding:6px 10px;font-size:12px;color:#fff;pointer-events:none;z-index:10;white-space:nowrap;transform:translate(-50%,-110%)}
+.mcap-tooltip .tt-date{color:#888;font-size:10px}
+.mcap-tooltip .tt-val{color:#4caf50;font-weight:bold}
+.mcap-info{text-align:center;font-size:12px;color:#888;margin-top:8px;padding:6px;background:#0d0d20;border-radius:6px}
+.mcap-v{color:#4caf50;font-weight:bold}
+.mcap-axis path,.mcap-axis line{stroke:#333;stroke-width:1}
+.mcap-axis text{fill:#666;font-size:10px}
+.mcap-grid line{stroke:#1e3e3a;stroke-width:0.5;stroke-dasharray:3,3}
+.mcap-light .mcap-btn{border-color:#c8c0b0;background:#e8e4dc;color:#707070}
+.mcap-light .mcap-btn:hover{border-color:#b8860b;color:#b8860b}
+.mcap-light .mcap-btn.active{background:#b8860b;color:#fff;border-color:#b8860b}
+.mcap-light .mcap-chart-wrap{background:#f4f1ea;border-color:#d8d4c8}
+.mcap-light .mcap-tooltip{background:rgba(255,255,255,.95);border-color:#b8860b;color:#3d3d3d}
+.mcap-light .mcap-tooltip .tt-date{color:#808080}
+.mcap-light .mcap-tooltip .tt-val{color:#b8860b}
+.mcap-light .mcap-info{background:#e8e4dc;color:#808080}
+.mcap-light .mcap-v{color:#b8860b}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  var stockCode = '{{STOCK_CODE}}';
+  var chartData = [];
+  var viewStart = 0, viewEnd = 0;
+  var isDragging = false, dragStartX = 0, dragViewStart = 0;
+  var svg, tooltip, wrap;
+  var W = 0, H = 380;
+  var M = {top:20, right:20, bottom:35, left:65};
+
+  function init(){
+    svg = document.getElementById('mcapSvg');
+    tooltip = document.getElementById('mcapTooltip');
+    wrap = svg.parentElement;
+    svg.style.cursor = 'crosshair';
+
+    if(document.getElementById('hermes-theme-override')){
+      document.getElementById('s-mcap').classList.add('mcap-light');
+      var sf = document.getElementById('s-financial');
+      if(sf) sf.classList.add('fin-light');
+    }
+
+    var themeWatcher = new MutationObserver(function(){
+      var light = !!document.getElementById('hermes-theme-override');
+      var card = document.getElementById('s-mcap');
+      if(light) card.classList.add('mcap-light');
+      else card.classList.remove('mcap-light');
+      var sf = document.getElementById('s-financial');
+      if(sf){ if(light) sf.classList.add('fin-light'); else sf.classList.remove('fin-light'); }
+      if(chartData.length) render();
+    });
+    if(document.head) themeWatcher.observe(document.head, {childList:true, subtree:true});
+
+    document.querySelectorAll('.mcap-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        document.querySelectorAll('.mcap-btn').forEach(function(b){b.classList.remove('active')});
+        btn.classList.add('active');
+        loadPeriod(btn.getAttribute('data-period'));
+      });
+    });
+
+    svg.addEventListener('wheel', onWheel, {passive:false});
+    svg.addEventListener('mousedown', onDragStart);
+    window.addEventListener('mousemove', onDragMove);
+    window.addEventListener('mouseup', onDragEnd);
+    svg.addEventListener('mousemove', onHover);
+    svg.addEventListener('mouseleave', function(){
+      tooltip.style.display='none';
+      var cv=svg.querySelector('#mcapCrossV');if(cv)cv.setAttribute('opacity','0');
+      var ch2=svg.querySelector('#mcapCrossH');if(ch2)ch2.setAttribute('opacity','0');
+      var cd=svg.querySelector('#mcapCrossDot');if(cd)cd.setAttribute('opacity','0');
+    });
+
+    var touchDist = 0;
+    svg.addEventListener('touchstart', function(e){
+      if(e.touches.length === 1){
+        isDragging = true; dragStartX = e.touches[0].clientX; dragViewStart = viewStart;
+      }else if(e.touches.length === 2){
+        touchDist = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
+      }
+    }, {passive:true});
+    svg.addEventListener('touchmove', function(e){
+      if(e.touches.length === 1 && isDragging){
+        var dx = e.touches[0].clientX - dragStartX;
+        var range = viewEnd - viewStart;
+        if(range > 1){
+          var shift = Math.round(-dx / ((W-M.left-M.right)/range));
+          var ns = Math.max(0, Math.min(chartData.length-range, dragViewStart + shift));
+          viewStart = ns; viewEnd = viewStart + range; render();
+        }
+        isDragging = false;
+      }else if(e.touches.length === 2){
+        var nd = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
+        if(touchDist > 0){doZoom(nd > touchDist ? 1 : -1, (e.touches[0].clientX+e.touches[1].clientX)/2);}
+        touchDist = nd;
+      }
+    }, {passive:true});
+    svg.addEventListener('touchend', function(){isDragging=false});
+    window.addEventListener('resize', function(){if(chartData.length)render()});
+    loadPeriod('week');
+  }
+
+  function getThemeColors(){
+    var light = !!document.getElementById('hermes-theme-override');
+    return {
+      line: light ? '#b8860b' : '#4caf50',
+      grid: light ? '#e0dcd0' : '#1e3e3a',
+      axisText: light ? '#999' : '#666',
+      gradTop: light ? '#b8860b' : '#4caf50',
+      gradBot: light ? '#b8860b' : '#4caf50',
+      gradTo: '0.25', gradBo: '0.01'
+    };
+  }
+
+  function loadPeriod(period){
+    var url = '../kline/' + stockCode + '_' + period + '.json?t=' + Date.now();
+    fetch(url).then(function(r){return r.json()}).then(function(data){
+      chartData = data;
+      var dw = data.length;
+      viewStart = Math.max(0, data.length - dw); viewEnd = data.length;
+      updateStats(data); render();
+    }).catch(function(e){console.error(e)});
+  }
+
+  function updateStats(data){
+    if(!data.length) return;
+    var last = data[data.length-1];
+    var high = data.reduce(function(a,b){return a.value>b.value?a:b});
+    var low = data.reduce(function(a,b){return a.value<b.value?a:b});
+    document.getElementById('mcapCurrent').textContent = last.value.toFixed(1);
+    document.getElementById('mcapHigh').textContent = high.value.toFixed(1);
+    document.getElementById('mcapLow').textContent = low.value.toFixed(1);
+  }
+
+  function render(){
+    if(!chartData.length) return;
+    var rect = wrap.getBoundingClientRect();
+    W = Math.max(300, rect.width || 600); H = 380;
+    svg.style.width = W + 'px'; svg.style.height = H + 'px';
+    var cw = W - M.left - M.right, ch = H - M.top - M.bottom;
+    if(cw <= 0 || ch <= 0) return;
+    var visible = chartData.slice(viewStart, viewEnd);
+    var n = visible.length; if(n === 0) return;
+    var minVal = Infinity, maxVal = -Infinity;
+    for(var i=0;i<n;i++){var v=visible[i].value;if(v<minVal)minVal=v;if(v>maxVal)maxVal=v;}
+    var pad = (maxVal - minVal) * 0.05 || maxVal * 0.05 || 100;
+    minVal = Math.max(0, minVal - pad); maxVal = maxVal + pad;
+    var xS = function(i){return M.left+(i/(n-1||1))*cw};
+    var yS = function(v){return M.top+ch-(v-minVal)/(maxVal-minVal)*ch};
+    var pts = '';
+    for(var i=0;i<n;i++){pts += (i===0?'':' ')+xS(i).toFixed(1)+','+yS(visible[i].value).toFixed(1);}
+    var tc = getThemeColors(), h = '';
+    h += '<g class="mcap-grid">';
+    for(var gi=0;gi<=5;gi++){var gv=minVal+(maxVal-minVal)*(gi/5),gy=yS(gv);h+='<line x1="'+M.left+'" y1="'+gy.toFixed(1)+'" x2="'+(M.left+cw)+'" y2="'+gy.toFixed(1)+'" stroke="'+tc.grid+'"/>';h+='<text x="'+(M.left-8)+'" y="'+(gy+4)+'" text-anchor="end" fill="'+tc.axisText+'" font-size="10">'+fmtVal(gv)+'</text>';}
+    h += '</g><g class="mcap-axis">';
+    var ls = Math.max(1, Math.floor(n / Math.min(10, n)));
+    for(var li=0;li<n;li+=ls){var lx=xS(li);h+='<text x="'+lx.toFixed(1)+'" y="'+(H-5)+'" text-anchor="middle" fill="'+tc.axisText+'" font-size="9" transform="rotate(-30,'+lx.toFixed(1)+','+(H-10)+')">'+visible[li].time+'</text>';}
+    h += '<text x="'+xS(n-1).toFixed(1)+'" y="'+(H-5)+'" text-anchor="middle" fill="'+tc.axisText+'" font-size="9" transform="rotate(-30,'+xS(n-1).toFixed(1)+','+(H-10)+')">'+visible[n-1].time+'</text></g>';
+    var fp = 'M'+M.left+','+(M.top+ch)+' '; for(var i=0;i<n;i++){fp+='L'+xS(i).toFixed(1)+','+yS(visible[i].value).toFixed(1)+' ';}
+    fp += 'L'+(M.left+cw)+','+(M.top+ch)+' Z';
+    h += '<path d="'+fp+'" fill="url(#mgG)" opacity="0.35"/>';
+    h += '<polyline points="'+pts+'" fill="none" stroke="'+tc.line+'" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>';
+    h += '<line id="mcapCrossV" x1="0" y1="'+M.top+'" x2="0" y2="'+(M.top+ch)+'" stroke="'+tc.line+'" stroke-width="1" stroke-dasharray="4,3" opacity="0" pointer-events="none"/>';
+    h += '<line id="mcapCrossH" x1="'+M.left+'" y1="0" x2="'+(M.left+cw)+'" y2="0" stroke="'+tc.line+'" stroke-width="1" stroke-dasharray="4,3" opacity="0" pointer-events="none"/>';
+    h += '<circle id="mcapCrossDot" cx="0" cy="0" r="4" fill="'+tc.line+'" stroke="#fff" stroke-width="1.5" opacity="0" pointer-events="none"/>';
+    var df = '<defs><linearGradient id="mgG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="'+tc.gradTop+'" stop-opacity="'+tc.gradTo+'"/><stop offset="100%" stop-color="'+tc.gradBot+'" stop-opacity="'+tc.gradBo+'"/></linearGradient></defs>';
+    svg.innerHTML = df + h;
+  }
+
+  function fmtVal(v){return v>=10000?(v/10000).toFixed(1)+'万亿':v.toFixed(0)+'亿';}
+
+  function doZoom(dir, cx){
+    var n = chartData.length, range = viewEnd - viewStart;
+    if(dir > 0) range = Math.max(10, Math.round(range * 0.75)); else range = Math.min(n, Math.round(range * 1.35));
+    if(range < 2) range = 2; if(range > n) range = n;
+    var rect = svg.getBoundingClientRect();
+    var mx = (cx || rect.left+rect.width/2) - rect.left - M.left;
+    var cw = W - M.left - M.right;
+    var ci = viewStart + (viewEnd-viewStart) * Math.max(0, Math.min(1, mx/cw));
+    viewStart = Math.round(ci - range/2); viewEnd = viewStart + range;
+    if(viewStart < 0){viewStart=0;viewEnd=range;} if(viewEnd>n){viewEnd=n;viewStart=n-range;}
+    render();
+  }
+
+  function onWheel(e){e.preventDefault();doZoom(e.deltaY<0?1:-1,e.clientX);}
+  function onDragStart(e){isDragging=true;dragStartX=e.clientX;dragViewStart=viewStart;svg.style.cursor='grabbing';}
+  function onDragMove(e){
+    if(!isDragging) return;
+    var dx = e.clientX - dragStartX, range = viewEnd-viewStart;
+    if(range<=1) return;
+    var cw = W-M.left-M.right; if(cw<=0) return;
+    var shift = Math.round(-dx/(cw/range));
+    var ns = Math.max(0, Math.min(chartData.length-range, dragViewStart+shift));
+    if(ns !== viewStart){viewStart=ns;viewEnd=viewStart+range;render();}
+  }
+  function onDragEnd(){isDragging=false;svg.style.cursor='crosshair';}
+
+  function onHover(e){
+    if(isDragging || !chartData.length) return;
+    var rect = svg.getBoundingClientRect();
+    var mx = e.clientX-rect.left-M.left, cw=W-M.left-M.right;
+    if(cw<=0||viewEnd-viewStart<=0) return;
+    var idx = viewStart + Math.round(mx/cw*(viewEnd-viewStart-1));
+    if(idx<0||idx>=chartData.length) return;
+    var pt = chartData[idx], ri = idx-viewStart, nn=viewEnd-viewStart;
+    var px = M.left+(ri/(nn-1||1))*cw, vis=chartData.slice(viewStart,viewEnd);
+    var minV=Infinity,maxV=-Infinity; for(var i=0;i<vis.length;i++){var v=vis[i].value;if(v<minV)minV=v;if(v>maxV)maxV=v;}
+    var p=(maxV-minV)*0.05||maxV*0.05||100; minV=Math.max(0,minV-p);maxV=maxV+p;
+    var ch=H-M.top-M.bottom, py=M.top+ch-(pt.value-minV)/(maxV-minV)*ch;
+    var cv=svg.querySelector('#mcapCrossV'),ch2=svg.querySelector('#mcapCrossH'),cd=svg.querySelector('#mcapCrossDot');
+    if(cv){cv.setAttribute('x1',px);cv.setAttribute('x2',px);cv.setAttribute('opacity','0.6');}
+    if(ch2){ch2.setAttribute('y1',py);ch2.setAttribute('y2',py);ch2.setAttribute('opacity','0.6');}
+    if(cd){cd.setAttribute('cx',px);cd.setAttribute('cy',py);cd.setAttribute('opacity','1');}
+    tooltip.innerHTML = '<span class="tt-date">'+pt.time+'</span> · 市值 <span class="tt-val">'+pt.value.toFixed(1)+'亿</span>';
+    tooltip.style.display='block'; tooltip.style.left=px+'px';
+    if(py<50){tooltip.style.top=(py+24)+'px';tooltip.style.transform='translate(-50%,0%)';}
+    else{tooltip.style.top=py+'px';tooltip.style.transform='translate(-50%,-110%)';}
+  }
+
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+})();
+</script>
+
+<div id="s1" class="card"><h2>一、综合评价</h2>
+  <div class="mg" style="margin-bottom:10px">
+    <div class="mi"><div class="mv" style="color:{{CARD1_COLOR}}">{{CARD1_VAL}}</div><div class="ml">{{CARD1_LABEL}}</div></div>
+    <div class="mi"><div class="mv" style="color:{{CARD2_COLOR}}">{{CARD2_VAL}}</div><div class="ml">{{CARD2_LABEL}}</div></div>
+    <div class="mi"><div class="mv" style="color:{{CARD3_COLOR}}">{{CARD3_VAL}}</div><div class="ml">{{CARD3_LABEL}}</div></div>
+    <div class="mi"><div class="mv" style="color:{{CARD4_COLOR}}">{{CARD4_VAL}}</div><div class="ml">{{CARD4_LABEL}}</div></div>
+  </div>
+  <div class="bq">核心逻辑：{{CORE_LOGIC}}</div>
+  <div class="mg" style="grid-template-columns:1fr 1fr 1fr;margin-top:10px">
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">{{LABEL_1_TITLE}}</div><div class="ml">{{LABEL_1}}</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#ff9800">{{LABEL_2_TITLE}}</div><div class="ml">{{LABEL_2}}</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#ffc107">{{LABEL_3_TITLE}}</div><div class="ml">{{LABEL_3}}</div></div>
+  </div>
+  <table class="tbl" style="margin-top:10px">
+    <tr><th style="width:100px">指标</th><th style="width:140px">数值</th><th style="width:40%">说明</th></tr>
+    <tr><td>三年预估空间</td><td class="gold">{{LOGIC_1_VAL}}</td><td>{{LOGIC_1}}</td></tr>
+    <tr><td>季度监控</td><td>{{LOGIC_2}}</td><td>{{LOGIC_2_DETAIL}}</td></tr>
+    <tr><td>逻辑证伪点</td><td class="red">{{LOGIC_3}}</td><td>{{LOGIC_3_DETAIL}}</td></tr>
+    <tr><td>止损触发</td><td class="red">{{LOGIC_4}}</td><td>{{LOGIC_4_DETAIL}}</td></tr>
+  </table></div>
+
+<div id="s2" class="card"><h2>M1 商业模式 & 收入结构</h2>
+  <h3>核心定位</h3>
+  <div class="txt">{{COMPANY_DESC_SHORT}}，手机/笔记本电池pack全球市占率约25%，核心客户包括苹果、华为、小米等顶级品牌。公司以"消费电池+动力电池+储能"三轮驱动，消费电池贡献约70%收入（稳定现金流），动力电池约20%（高速增长），储能约10%（培育期）。近年来向HEV动力电池赛道加速转型，走差异化路线避开与宁德时代、比亚迪正面竞争。</div>
+
+  <h3>年度财务摘要（亿元）</h3>
+  <table class="tbl">
+    <tr><th>年份</th><th>营收</th><th>YoY</th><th>归母净利</th><th>净利率</th><th>毛利率</th></tr>
+{{M1_ANNUAL_ROWS}}
+</table>
+  <div class="desc" style="margin-top:6px;">{{M1_ANNUAL_REMARK}}</div>
+
+  <h3>分业务收入结构（2025年）</h3>
+  {{M1_HB_BAR_1}}
+  {{M1_HB_BAR_2}}
+  {{M1_HB_BAR_3}}
+
+  <table class="tbl" style="margin-top:10px;">
+    <tr><th>业务线</th><th>收入</th><th>占比</th><th>趋势</th><th>毛利率</th></tr>
+{{M1_REVENUE_ROWS}}
+</table>
+
+  <h3>商业模式评估</h3>
+  <table class="tbl">
+    <tr><th>维度</th><th>评估</th><th>证据</th></tr>
+{{M1_BIZ_MODEL_ROWS}}
+</table>
+
+  <div class="bq">
+    <b>核心结论：</b><br>
+    <span class="dot">·</span> {{COMPANY_DESC_LONG}}<br>
+    {{M1_CONCLUSION_2}}<br>
+    {{M1_CONCLUSION_3}}<br>
+    {{M1_CONCLUSION_4}}
+  </div></div>
+
+<div id="s3" class="card"><h2>M2 壁垒斜率分析</h2>
+  <div class="desc">核心理念：护城河不是静态的，需要关注其演变趋势——拓宽（↑）、稳定（→）、侵蚀（↓）</div>
+
+  <h3>壁垒类型评估</h3>
+  <div class="hb"><span class="hl">市占率壁垒</span><div class="ht"><div class="hf" style="width:60%;background:#f0c040;">3.0</div></div></div>
+  <div class="hb"><span class="hl">客户粘性</span><div class="ht"><div class="hf" style="width:80%;background:#4caf50;">4.0</div></div></div>
+  <div class="hb"><span class="hl">规模壁垒</span><div class="ht"><div class="hf" style="width:70%;background:#4caf50;">3.5</div></div></div>
+  <div class="hb"><span class="hl">技术研发</span><div class="ht"><div class="hf" style="width:60%;background:#f0c040;">3.0</div></div></div>
+  <div class="hb"><span class="hl">垂直整合</span><div class="ht"><div class="hf" style="width:30%;background:#888;">1.5</div></div></div>
+  <div class="hb"><span class="hl">专利壁垒</span><div class="ht"><div class="hf" style="width:50%;background:#f0c040;">2.5</div></div></div>
+
+  <div style="padding:8px;background:#0d0d20;border-radius:8px;text-align:center;margin-top:8px;">
+    <span style="color:#f0c040;font-size:16px;font-weight:bold;">综合评分 2.9/5.0</span>
+    <span style="color:#888;font-size:12px;margin-left:6px;">→ 护城河中低，B2B制造模式壁垒有限</span>
+  </div>
+
+  <h3>壁垒深度解析</h3>
+  <div class="txt">
+    <b style="color:#4caf50;">客户粘性——核心优势</b><br>
+    <span class="dot">·</span> 与苹果/华为等顶级品牌认证周期2-3年，进入壁垒高、切换成本大<br>
+    <span class="dot">·</span> 但大客户议价能力极强，毛利率长期受压<br>
+    <span class="dot">·</span> 客户集中度高（前五大客户占收入约60%），单一客户流失风险较大<br><br>
+    <b style="color:#f0c040;">规模壁垒——中等优势</b><br>
+    <span class="dot">·</span> 全球最大消费电池pack厂，规模效应显著<br>
+    <span class="dot">·</span> 但产品同质化程度高，竞争对手（德赛电池等）可快速跟进<br>
+    <span class="dot">·</span> 动力电池规模远不及一线厂商，成本劣势较明显<br><br>
+    <b style="color:#f0c040;">技术壁垒——中等偏弱</b><br>
+    <span class="dot">·</span> 5,000+专利，消费电池技术成熟壁垒不高<br>
+    <span class="dot">·</span> 动力电池技术与宁德时代/比亚迪有较大差距<br>
+    <span class="dot">·</span> HEV电池（48V系统）技术门槛相对较低<br><br>
+    <b style="color:#888;">垂直整合——薄弱</b><br>
+    <span class="dot">·</span> 缺乏上游锂/钴/镍等资源布局<br>
+    <span class="dot">·</span> 电芯主要外采，pack组装环节附加值低
+  </div>
+
+  <h3>护城河陷阱识别</h3>
+  <div class="txt" style="color:#f44336;">
+    <b>警惕信号：</b><br>
+    <span class="dot">·</span> 消费电池制造本质是低端制造——毛利率<20%、净利率<3%，不是好生意<br>
+    <span class="dot">·</span> 品牌认证壁垒虽高，但大客户（苹果/华为）议价能力极强，利润被压薄<br>
+    <span class="dot">·</span> 动力电池领域面临激烈价格战，产能利用率低导致动力电池持续亏损<br>
+    <span class="dot">·</span> 固态电池等颠覆性技术可能影响整个电池行业格局
+  </div>
+
+  <div class="bq">
+    <b>真正的护城河：</b><br>
+    <span class="dot">·</span> "顶级品牌认证+全球最大产能"的双重壁垒——客户认证2-3年、产能规模全球第一<br>
+    <span class="dot">·</span> 消费电子领域25%市占率的先发优势——品牌厂商主动选择龙头供应商<br>
+    <span class="dot">·</span> HEV动力电池的差异化路线——避开红海竞争，打开成长空间
+  </div>
+
+  <div class="bq">
+    <b>核心结论：</b><br>
+    <span class="dot">·</span> {{COMPANY_NAME_CN}}护城河综合评分2.9/5.0，属于中等偏弱水平<br>
+    <span class="dot">·</span> 护城河整体趋势：客户粘性稳定（→）、规模壁垒面临价格战侵蚀（↓）<br>
+    <span class="dot">·</span> 最大的护城河风险：消费电池制造同质化 + 大客户压价 + 动力电池亏损
+  </div></div>
+
+<div id="s4" class="card"><h2>M3 管理层分析</h2>
+
+  <h3>管理层基本信息</h3>
+  <table class="tbl">
+    <tr><th>姓名</th><th>职务</th><th>任职年限</th><th>背景</th></tr>
+    <tr><td>王威</td><td>董事长</td><td>24年</td><td>公司创始人，电池行业资深专家，消费电池领域深耕20+年</td></tr>
+    <tr><td>王明旺</td><td>副董事长</td><td>24年</td><td>联合创始人，战略规划和产业链布局核心人物</td></tr>
+  </table>
+  <div class="txt" style="font-size:12px;">王威、王明旺兄弟作为{{COMPANY_NAME_CN}}创始人，从1997年创业至今已深耕电池行业近30年。兄弟二人均为技术出身，带领公司从消费电池pack起家做到全球第一。管理层风格稳健务实，不盲目跟风——在动力电池热潮中选择HEV差异化路线而非与一线厂商正面竞争，体现了战略定力。但管理层持股相对分散（兄弟合计约25%），激励强度中等。</div>
+
+  <h3>管理层评分</h3>
+  <div class="hb"><span class="hl">战略执行力</span><div class="ht"><div class="hf" style="width:70%;background:#4caf50;">7/10</div></div></div>
+  <div class="hb"><span class="hl">指引准确性</span><div class="ht"><div class="hf" style="width:60%;background:#f0c040;">6/10</div></div></div>
+  <div class="hb"><span class="hl">创新能力</span><div class="ht"><div class="hf" style="width:60%;background:#f0c040;">6/10</div></div></div>
+  <div class="hb"><span class="hl">股东回报</span><div class="ht"><div class="hf" style="width:40%;background:#888;">4/10</div></div></div>
+
+  <div class="bq">
+    <b>关键解读：</b><br>
+    <span class="dot">·</span> 王威兄弟技术出身+深耕行业近30年，是消费电池领域最懂技术的企业家<br>
+    <span class="dot">·</span> 管理层风格稳健务实——HEV差异化路线避免正面竞争，是正确但非激进的选择<br>
+    <span class="dot">·</span> 分红率约20%，处于再投资阶段，股东回报一般<br>
+    <span class="dot">·</span> 与竞争对手德赛电池相比，{{COMPANY_NAME_CN}}管理层更具前瞻性（更早布局动力电池）
+  </div>
+
+  <div class="bq">
+    <b>核心结论：综合评分 6.5/10</b><br>
+    <span class="dot">·</span> 亮点：创始人深耕行业近30年、战略方向正确（消费→动力转型）<br>
+    <span class="dot">·</span> 风险点：家族企业色彩浓厚、分红率低、动力电池转型仍在兑现中
+  </div></div>
+
+<div id="s5" class="card"><h2>M4 财务复盘 & 资本配置</h2>
+
+  <h3>核心财务指标</h3>
+  <table class="tbl">
+    <tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
+    <tr><td>营收（亿）</td><td>394</td><td>523</td><td>479</td><td>560</td><td class="gold">632</td><td class="green">↑</td></tr>
+    <tr><td>净利（亿）</td><td class="gold">11.6</td><td>10.6</td><td class="gold">12.8</td><td class="gold">15.0</td><td>11.0</td><td class="red">↓</td></tr>
+    <tr><td>毛利率</td><td>18.2%</td><td>15.8%</td><td>16.5%</td><td>16.0%</td><td>15.2%</td><td class="red">↓</td></tr>
+    <tr><td>净利率</td><td>2.9%</td><td>2.0%</td><td>2.7%</td><td>2.7%</td><td>1.7%</td><td class="red">↓</td></tr>
+    <tr><td>ROE</td><td>7.0%</td><td>4.8%</td><td>5.5%</td><td>6.3%</td><td>4.4%</td><td class="red">↓</td></tr>
+  </table>
+
+  <h3>现金流 & 资产负债</h3>
+  <table class="tbl">
+    <tr><th>指标</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
+    <tr><td>经营现金流</td><td>约18亿</td><td>约7亿</td><td class="gold">约27亿</td><td class="green">↑ 改善</td></tr>
+    <tr><td>CAPEX</td><td>约35亿</td><td>约45亿</td><td>约55亿</td><td class="red">↑ 投入期</td></tr>
+    <tr><td>FCF</td><td>约-17亿</td><td>约-38亿</td><td>约-28亿</td><td class="red">持续为负</td></tr>
+    <tr><td>资产负债率</td><td>62.5%</td><td>64.0%</td><td>65.2%</td><td class="red">↑ 升高</td></tr>
+    <tr><td>有息负债</td><td>约85亿</td><td>约95亿</td><td>约105亿</td><td class="red">↑ 增加</td></tr>
+  </table>
+
+  <h3>费用率结构</h3>
+  <table class="tbl">
+    <tr><th>费用项</th><th>2025年规模</th><th>趋势</th></tr>
+    <tr><td>研发费用</td><td>约20亿</td><td class="green">↑ 费用率约3.2%，动力电池研发投入增加</td></tr>
+    <tr><td>销售费用</td><td>约8亿</td><td>→ 费用率约1.1%，B端为主较低</td></tr>
+    <tr><td>管理费用</td><td>约12亿</td><td>→ 费用率约1.7%</td></tr>
+    <tr><td>财务费用</td><td>约5亿</td><td class="red">↑ 有息负债增加导致利息支出上升</td></tr>
+  </table>
+
+  <h3>关键指标卡</h3>
+  <div class="mg">
+    <div class="mi"><div class="mv gold">25%</div><div class="ml">消费电池全球市占率</div></div>
+    <div class="mi"><div class="mv" style="color:#ffc107;">1.7%</div><div class="ml">净利率（极低）</div></div>
+    <div class="mi"><div class="mv" style="color:#ffc107;">65%</div><div class="ml">资产负债率（偏高）</div></div>
+    <div class="mi"><div class="mv" style="color:#ffc107;">约-28亿</div><div class="ml">FCF（为负）</div></div>
+  </div>
+
+  <div class="bq">
+    <b>核心结论：财务质量评分 4.5/10（制造业中偏低）</b><br>
+    ✅ 营收持续增长、经营现金流改善、全球消费电池龙头地位稳固<br>
+    ⚠️ 净利率仅1.7%是核心短板、FCF持续为负（动力电池投入期）、资产负债率升至65%
+  </div></div>
+
+<div id="s6" class="card"><h2>M5 成本结构 & 产业链议价权</h2>
+
+  <h3>成本结构</h3>
+  <div class="txt">营业成本占营收约85%（毛利率15%）。消费电池pack制造的成本结构中，原材料（电芯、电路板、结构件、辅料）占比约70%、人工约10%、制造费用约15%、其他5%。电芯是最大成本项（占原材料约60%），电芯价格受上游锂/钴/镍行情影响较大。动力电池成本结构类似但材料占比更高（约80%），产能利用率低导致折旧单位成本偏高。</div>
+  <table class="tbl">
+    <tr><th>成本项目</th><th>占比</th><th>趋势</th><th>说明</th></tr>
+    <tr><td>电芯（外采）</td><td>40-45%</td><td class="red">↓</td><td>碳酸锂价格下跌利好，但供应商集中</td></tr>
+    <tr><td>电路板/结构件</td><td>20-25%</td><td>→ 稳定</td><td>标准化配件，价格竞争充分</td></tr>
+    <tr><td>人工</td><td>约10%</td><td class="red">↑</td><td>自动化程度提升部分抵消人工成本上涨</td></tr>
+    <tr><td>制造费用</td><td>约15%</td><td class="red">↑</td><td>动力电池产能利用率低推高单位制造费用</td></tr>
+  </table>
+
+  <h3>产业链议价权</h3>
+  <table class="tbl">
+    <tr><th>维度</th><th>评估</th><th>证据</th></tr>
+{{M1_BIZ_MODEL_ROWS}}
+</table>
+
+  <div class="bq">
+    <b>核心结论：</b><br>
+    <span class="dot">·</span> 定价权评估：<b>2.0/5.0</b> —— 下游大客户议价权强，基本无定价权<br>
+    <span class="dot">·</span> 成本结构中电芯占比高，外采模式缺乏垂直整合，成本控制能力有限<br>
+    <span class="dot">·</span> 碳酸锂价格低位运行利好成本端，但电芯厂商降价空间有限<br>
+    <span class="dot">·</span> ⚠️ 大客户集中度风险——前五大客户占比约60%，单一客户丢失影响巨大
+  </div></div>
+
+<div id="s7" class="card"><h2>M6 FCF效率 & 估值</h2>
+
+  <h3>FCF质量</h3>
+  <table class="tbl">
+    <tr><th>指标</th><th>2024年</th><th class="gold">2025年</th><th>正常化水平</th></tr>
+    <tr><td>经营现金流</td><td>约7亿</td><td class="gold">约27亿</td><td>20-30亿</td></tr>
+    <tr><td>CAPEX</td><td>约45亿</td><td>约55亿</td><td>30-50亿</td></tr>
+    <tr><td>FCF</td><td>约-38亿</td><td>约-28亿</td><td>约-15~-30亿</td></tr>
+    <tr><td>FCF/净利润</td><td>约-253%</td><td>约-255%</td><td>为负（投入期）</td></tr>
+  </table>
+  <div class="txt">FCF持续为负（约-28亿），FCF/净利润远低于0。动力电池投入期CAPEX高峰期（约55亿），预计2027年产能利用率提升后FCF有望转正。</div>
+
+  <h3>估值指标</h3>
+  <table class="tbl">
+    <tr><th>指标</th><th>当前值</th><th>历史区间</th><th>评估</th></tr>
+    <tr><td>PE(TTM)</td><td class="gold">约30倍</td><td>18-60倍</td><td>中性偏高（含成长预期）</td></tr>
+    <tr><td>PE(2026E)</td><td>约24倍</td><td>—</td><td>中性</td></tr>
+    <tr><td>PB</td><td>约1.8倍</td><td>1.2-3.5倍</td><td>偏低</td></tr>
+    <tr><td>PS(TTM)</td><td>约0.5倍</td><td>0.3-1.0倍</td><td>偏低</td></tr>
+  </table>
+
+  <h3>消费电池龙头PE对比</h3>
+  <div class="cp"><span class="nm">{{COMPANY_NAME_CN}}</span><div class="bt"><div class="bf" style="width:75%;background:#f0c040;"></div></div><span class="vl gold">30×</span></div>
+  <div class="cp"><span class="nm">德赛电池</span><div class="bt"><div class="bf" style="width:40%;background:#4caf50;"></div></div><span class="vl green">16×</span></div>
+  <div class="cp"><span class="nm">珠海冠宇</span><div class="bt"><div class="bf" style="width:55%;background:#f0c040;"></div></div><span class="vl">22×</span></div>
+  <div class="cp"><span class="nm">宁德时代</span><div class="bt"><div class="bf" style="width:55%;background:#4caf50;"></div></div><span class="vl green">22×</span></div>
+  <div class="desc" style="margin-top:6px;">📌 {{COMPANY_NAME_CN}}PE远高于纯消费电池同行（德赛16x、冠宇22x），反映动力电池成长溢价。相对于宁德时代（22x）也更高，说明市场对{{COMPANY_NAME_CN}}动力电池转型的成长性给予了较高预期。</div>
+
+  <div class="bq">
+    <b>关键解读：</b><br>
+    <span class="dot">·</span> FCF质量评分：<b>3.0/10</b> —— FCF持续为负是核心硬伤，动力电池投入期还需2-3年<br>
+    <span class="dot">·</span> 当前30倍PE在消费电子制造中偏高，但包含了动力电池成长预期（隐含PE约15x消费+PS≈1x动力）<br>
+    <span class="dot">·</span> 分步估值：消费电池15-20x合理（~250亿）+ 动力电池PS≈1x（~150亿），合计目标市值约400亿（当前约340亿）
+  </div></div>
+
+<div id="s8" class="card"><h2>M7 增量市占率 & 行业终局</h2>
+
+  <h3>行业空间</h3>
+  <table class="tbl">
+    <tr><th>市场</th><th>规模（2025E）</th><th>增速</th><th>{{COMPANY_NAME_CN}}出货/份额</th><th>市占率</th></tr>
+    <tr><td>全球手机电池pack</td><td>约800亿</td><td>→ 0-3%</td><td>约200亿</td><td class="gold">≈25%</td></tr>
+    <tr><td>全球动力电池</td><td>约1,300GWh</td><td>+25-30%</td><td>约25GWh</td><td>≈2%</td></tr>
+    <tr><td>全球储能电池</td><td>约400GWh</td><td>+40-50%</td><td>约5GWh</td><td>≈1%</td></tr>
+  </table>
+
+  <div class="mg" style="margin-top:10px;">
+    <div class="mi"><div class="mv gold">25%</div><div class="ml">手机电池pack市占率</div></div>
+    <div class="mi"><div class="mv" style="color:#ffc107;">2%</div><div class="ml">动力电池全球市占率</div></div>
+    <div class="mi"><div class="mv green">~200亿</div><div class="ml">消费电池年收入</div></div>
+    <div class="mi"><div class="mv green">>50%</div><div class="ml">动力电池收入增速</div></div>
+  </div>
+
+  <h3>竞争态势</h3>
+  <table class="tbl">
+    <tr><th>竞争对手</th><th>竞争维度</th><th style="width:40%">公司相对优势</th></tr>
+    <tr><td>德赛电池</td><td>消费电池</td><td>规模更大、客户覆盖更广（苹果+安卓双线），但净利率相近</td></tr>
+    <tr><td>珠海冠宇</td><td>消费电池</td><td>笔记本电池份额接近，{{COMPANY_NAME_CN}}手机端更强</td></tr>
+    <tr><td>宁德时代</td><td>动力电池</td><td class="orange">规模差距巨大，但{{COMPANY_NAME_CN}}走HEV差异化路线避免正面竞争</td></tr>
+    <tr><td>比亚迪</td><td>动力电池</td><td class="orange">自产自用+刀片电池优势，{{COMPANY_NAME_CN}}聚焦48V HEV系统差异化</td></tr>
+  </table>
+
+  <h3>行业终局思考</h3>
+  <div class="txt">消费电池行业已成熟，全球手机/笔记本出货量趋稳（年增0-3%），行业格局稳定——{{COMPANY_NAME_CN}}+德赛电池+冠宇三家合计约60%份额。提升空间有限，但龙头地位稳固。动力电池行业正经历"产能过剩→行业出清→集中度提升"周期，全球产能利用率约40-50%。{{COMPANY_NAME_CN}}在动力电池领域市占率仅2%，但聚焦HEV（48V/MHEV）等差异化赛道，避开与宁德/比亚迪正面竞争。行业终局大概率呈现"宁德+比亚迪双寡头+若干差异化厂商"格局，{{COMPANY_NAME_CN}}作为HEV差异化厂商有望占一席之地。</div>
+
+  <div class="bq">
+    <b>核心结论：</b><br>
+    <span class="dot">·</span> 增量市占率趋势：消费电池→稳定（25%已成为天花板），动力电池↑加速提升<br>
+    <span class="dot">·</span> 最大增量来源：动力电池HEV赛道（增速>50%）+储能起步+AI换机驱动消费升级<br>
+    <span class="dot">·</span> 竞争态势：消费龙头地位稳固，动力差异化路线是正确但需时间验证
+  </div></div>
+
+<div id="s9" class="card"><h2>M8 三年资本计划 & 催化剂</h2>
+
+  <h3>催化剂时间表</h3>
+  <table class="tbl">
+    <tr><th style="width:80px">时间</th><th style="width:30%">事件</th><th style="width:40%">预期影响</th></tr>
+    <tr><td>2026-2027</td><td>动力电池产能利用率提升</td><td class="green">南京/南昌基地满产，动力电池减亏</td></tr>
+    <tr><td>2027</td><td>HEV电池新客户定点量产</td><td class="green">动力电池收入翻倍，毛利率改善</td></tr>
+    <tr><td>2027-2028</td><td>储能业务放量</td><td class="green">储能成为第三增长曲线</td></tr>
+    <tr><td>2027-2028</td><td>消费电子换机周期</td><td>AI PC/手机推动电池升级需求</td></tr>
+  </table>
+
+  <h3>三年业绩预测</h3>
+  <table class="tbl">
+    <tr><th>情景</th><th>2026E</th><th>2027E</th><th>2028E</th><th>毛利率趋势</th></tr>
+    <tr><td class="green">乐观</td><td>净利16亿</td><td>22亿</td><td>32亿</td><td>16→18%</td></tr>
+    <tr><td class="gold">基准</td><td>净利14亿</td><td>18亿</td><td>25亿</td><td>→ 15.5%</td></tr>
+    <tr><td class="red">悲观</td><td>净利10亿</td><td>12亿</td><td>14亿</td><td>14→13%</td></tr>
+  </table>
+
+  <div class="bq">
+    <b>核心结论：</b><br>
+    <span class="dot">·</span> 未来3年净利润CAGR预期：<b>15-30%</b>（基准-乐观）<br>
+    <span class="dot">·</span> 最大增长引擎：动力电池减亏→扭亏 + 消费电子AI换机 + 储能放量<br>
+    <span class="dot">·</span> 关键假设：动力电池2027年减亏、2028年盈亏平衡；消费电池AI换机周期2027启动
+  </div></div>
+
+<div id="s10" class="card"><h2>M9 预期差 & 市场共识</h2>
+
+  <table class="tbl">
+    <tr><th style="width:60px">议题</th><th style="width:100px">市场共识</th><th style="width:40%">独立判断</th><th style="width:50px">方向</th></tr>
+    <tr>
+      <td>动力电池前景</td>
+      <td style="color:#888;">竞争激烈，短期难盈利</td>
+      <td style="color:#4caf50;">HEV差异化赛道+储能放量，2028有望扭亏</td>
+      <td><span class="tg tgg">看多</span></td>
+    </tr>
+    <tr>
+      <td>消费电池增长</td>
+      <td style="color:#888;">存量市场</td>
+      <td style="color:#888;">AI PC/手机换机潮带来结构性机会</td>
+      <td><span class="tg tgo">中性</span></td>
+    </tr>
+    <tr>
+      <td>盈利能力</td>
+      <td style="color:#888;">低利润率是结构性问题</td>
+      <td style="color:#888;">动力电池占比提升后利润率有望改善</td>
+      <td><span class="tg tgo">中性</span></td>
+    </tr>
+    <tr>
+      <td>估值水平</td>
+      <td style="color:#888;">PE 30x偏高</td>
+      <td style="color:#4caf50;">分步估值：消费20x+动力PS=合理区间</td>
+      <td><span class="tg tgg">看多</span></td>
+    </tr>
+    <tr>
+      <td>动力电池差异化</td>
+      <td style="color:#888;">HEV市场太小</td>
+      <td style="color:#4caf50;">48V/MHEV是过渡刚需，全球渗透率仍在提升</td>
+      <td><span class="tg tgg">看多</span></td>
+    </tr>
+  </table>
+
+  <div class="bq">
+    <b>关键解读：</b><br>
+    <span class="dot">·</span> 市场对{{COMPANY_NAME_CN}}的共识是"消费电池代工厂+动力电池亏损包袱"，导致估值被压制<br>
+    <span class="dot">·</span> 关键预期差在于：市场低估了HEV差异化赛道的空间（全球渗透率仅15%，仍在提升）<br>
+    <span class="dot">·</span> 市场对动力电池亏损过度悲观——HEV电池技术门槛低于纯电，盈亏平衡点更易达到<br>
+    <span class="dot">·</span> 当前30倍PE看似昂贵，但分步估值下消费+动力合计合理市值约400亿，仍有~15%上行空间
+  </div></div>
+
+<div id="s11" class="card"><h2>M10 Pre-mortem & 核心风险</h2>
+
+  <h3>风险类型</h3>
+  <table class="tbl">
+    <tr><th style="width:80px">风险类型</th><th>描述</th><th style="width:50px">概率</th><th style="width:40%">预警信号</th></tr>
+    <tr><td>大客户流失</td><td>苹果/华为等核心客户转单</td><td><span class="orange">中</span></td><td>客户收入集中度变化/订单下滑</td></tr>
+    <tr><td>动力电池亏损</td><td>产能利用率低+价格战加剧</td><td><span class="orange">中</span></td><td>毛利率持续为负</td></tr>
+    <tr><td>原材料波动</td><td>锂/钴价格大幅上涨</td><td class="green">中低</td><td>碳酸锂价格>15万/吨</td></tr>
+    <tr><td>技术变革</td><td>固态电池等颠覆性技术</td><td class="green">低</td><td>头部企业固态电池量产进度</td></tr>
+    <tr><td>流动性风险</td><td>高负债+低利润→偿债能力</td><td class="green">中低</td><td>负债率突破70%</td></tr>
+  </table>
+
+  <h3>敏感性分析</h3>
+  <table class="tbl">
+    <tr><th>压力情景</th><th>净利影响</th><th>股价压力</th></tr>
+    <tr><td>消费电池毛利率降至12%</td><td>-20%</td><td class="orange">-15%</td></tr>
+    <tr><td>动力电池持续亏损至2028</td><td>-35%</td><td class="orange">-25%</td></tr>
+    <tr><td>大客户（苹果）转单</td><td>-30%</td><td class="orange">-30%</td></tr>
+    <tr><td class="red">极端叠加</td><td class="red">-60%</td><td class="red" style="font-weight:bold;">-50%</td></tr>
+  </table>
+
+  <h3>三情景分析</h3>
+  <div class="scn">
+    <div class="scc sc1"><h4>✅ 乐观</h4><div class="pct">28-35元</div><div class="dt">+50~80%<br>动力电池扭亏+储能放量</div></div>
+    <div class="scc sc2"><h4>🟡 中性</h4><div class="pct">20-25元</div><div class="dt">+10~30%<br>消费稳定+动力减亏</div></div>
+    <div class="scc sc3"><h4>🔴 悲观</h4><div class="pct">12-16元</div><div class="dt">-15~-35%<br>大客户流失+动力亏损</div></div>
+  </div>
+
+  <h3>避雷清单</h3>
+  <table class="tbl">
+    <tr><th>检查项</th><th>结果</th></tr>
+    <tr><td>应收账款增速>收入增速？</td><td><span class="tg tgo">需关注</span> 应收/收入比约20%</td></tr>
+    <tr><td>经营现金流持续为负？</td><td><span class="tgg">否 ✓ 2025年回正至27亿</span></td></tr>
+    <tr><td>存货异常堆积？</td><td><span class="tg tgo">需关注</span> 动力电池库存周转偏慢</td></tr>
+    <tr><td>大客户收入集中度>50%？</td><td><span class="tgr">⚠ 前五大客户约60%</span></td></tr>
+    <tr><td>大股东高比例质押？</td><td><span class="tgg">否 ✓ 质押率可控</span></td></tr>
+  </table>
+  <div style="padding:10px;background:#1a3a1a;border-radius:8px;text-align:center;margin-top:8px;border:1px solid #2a5a2a;">
+    <span style="color:#4caf50;">✅ 财务整体可控，核心关注动力电池扭亏时间和客户集中度风险</span>
+  </div>
+
+  <h3>清算价值</h3>
+  <table class="tbl">
+    <tr><th>资产项</th><th>账面价值</th><th>清算价值</th></tr>
+    <tr><td>货币资金</td><td>约50亿</td><td class="gold">50亿</td></tr>
+    <tr><td>存货</td><td>约70亿</td><td>40亿</td></tr>
+    <tr><td>固定资产（产能+设备）</td><td>约120亿</td><td>60亿</td></tr>
+    <tr><td>应收账款</td><td>约90亿</td><td>60亿</td></tr>
+    <tr><td class="gold">合计</td><td>约330亿</td><td>约210亿</td></tr>
+  </table>
+  <div class="txt">清算价值约210亿元，当前市值约340亿元。差额约130亿体现了持续经营价值（消费电池全球龙头的客户关系+品牌认证价值）。PB 1.8x提供有限安全边际，高负债率（~65%）削弱了资产价值保护。</div></div>
+
+<div id="s12" class="card"><h2>六、综合评级 & 最终结论</h2>
+  <h3>六维评分</h3>
+  <div class="dim-row"><div class="dim-label">商业模式</div><div class="dim-bg"><div class="dim-fill c7" style="width:60%"></div></div><div class="dim-sc gold">6/10</div></div>
+  <div class="dim-row"><div class="dim-label">护城河</div><div class="dim-bg"><div class="dim-fill c7" style="width:60%"></div></div><div class="dim-sc gold">6/10</div></div>
+  <div class="dim-row"><div class="dim-label">管理层</div><div class="dim-bg"><div class="dim-fill c7" style="width:65%"></div></div><div class="dim-sc gold">6.5/10</div></div>
+  <div class="dim-row"><div class="dim-label">财务健康</div><div class="dim-bg"><div class="dim-fill c6" style="width:45%"></div></div><div class="dim-sc gold">4.5/10</div></div>
+  <div class="dim-row"><div class="dim-label">估值</div><div class="dim-bg"><div class="dim-fill c6" style="width:50%"></div></div><div class="dim-sc gold">5/10</div></div>
+  <div class="dim-row"><div class="dim-label">成长性</div><div class="dim-bg"><div class="dim-fill c7" style="width:60%"></div></div><div class="dim-sc gold">6/10</div></div>
+  <h3>核心亮点</h3>
+  <div class="txt"><span class="dot">●</span><b>消费电池全球龙头：</b>手机/笔记本电池pack全球第一，客户关系稳定。</div>
+  <div class="txt"><span class="dot">●</span><b>动力电池差异化：</b>聚焦HEV赛道+储能，避开与一线厂商正面竞争。</div>
+  <div class="txt"><span class="dot">●</span><b>AI换机受益者：</b>AI PC/手机推动电池容量和密度升级，消费电子有望迎来换机潮。</div>
+  <h3>核心风险</h3>
+  <div class="txt"><span class="dot">●</span><b>低利润率困局：</b>净利率仅1.7%，盈利能力弱。</div>
+  <div class="txt"><span class="dot">●</span><b>动力电池不确定性：</b>需持续投入但盈利时间不确定。</div>
+  <div class="txt"><span class="dot">●</span><b>高负债率：</b>约65%，财务弹性受限。</div>
+  <h3>价值投资理念应用</h3>
+  <table class="tbl">
+    <tr><th style="width:50px">维度</th><th style="width:100px">代表人物</th><th style="width:40%">应用分析</th></tr>
+    <tr><td>M1</td><td style="white-space:nowrap">巴菲特<br><span style="font-size:10px;color:#888">「好生意」</span></td><td>电池制造不是好生意——低利润率、高资本开支、强客户议价权。巴菲特不会喜欢。</td></tr>
+    <tr><td>M2</td><td style="white-space:nowrap">段永平<br><span style="font-size:10px;color:#888">「差异化」</span></td><td>消费电池的规模优势是差异化，但容易被价格战侵蚀。HEV动力电池差异化赛道值得关注。</td></tr>
+    <tr><td>M3</td><td style="white-space:nowrap">彼得·林奇<br><span style="font-size:10px;color:#888">「快速增长型」</span></td><td>动力电池增速>50%符合快速增长型特征，但净利率低是隐忧。</td></tr>
+    <tr><td>M4</td><td style="white-space:nowrap">格雷厄姆<br><span style="font-size:10px;color:#888">「安全边际」</span></td><td>PB 1.8x提供有限安全边际，高负债削弱资产价值。</td></tr>
+    <tr><td>M5</td><td style="white-space:nowrap">查理·芒格<br><span style="font-size:10px;color:#888">「护城河」</span></td><td>客户粘性+规模优势是护城河，但护城河较窄。</td></tr>
+    <tr><td>M6</td><td style="white-space:nowrap">约翰·邓普顿<br><span style="font-size:10px;color:#888">「逆向估值」</span></td><td>PE 30x偏高，但PS 0.5x提供不同视角。邓普顿会等更低PE。</td></tr>
+    <tr><td>M7</td><td style="white-space:nowrap">费雪<br><span style="font-size:10px;color:#888">「成长空间」</span></td><td>动力电池+储能+AI换机，三重成长空间。</td></tr>
+    <tr><td>M8</td><td style="white-space:nowrap">彼得·林奇<br><span style="font-size:10px;color:#888">「催化剂驱动」</span></td><td>动力电池扭亏+储能放量是核心催化剂。</td></tr>
+    <tr><td>M9</td><td style="white-space:nowrap">塞思·卡拉曼<br><span style="font-size:10px;color:#888">「预期差」</span></td><td>市场对动力电池亏损过度悲观，低估了HEV差异化赛道的潜力。</td></tr>
+    <tr><td>M10</td><td style="white-space:nowrap">纳西姆·塔勒布<br><span style="font-size:10px;color:#888">「反脆弱」</span></td><td>高负债+低利润率=脆弱。主要黑天鹅是大客户流失或技术路线变革。</td></tr>
+  </table>
+  <div class="bq" style="margin-top:12px">
+    <b>最终结论：</b>{{COMPANY_DESC_LONG}}。消费电子业务提供稳定基本盘和现金流，动力电池和储能业务提供成长弹性。当前PE 30x基本合理，建议在PE<25x时（约18元）作为成长股配置。核心关注点：动力电池何时盈亏平衡、消费电子AI换机潮的兑现程度。适合愿意承受中等风险、看好新能源二线标的的投资者。
+  </div></div>
+
+<div id="s13" class="card">
+  <h2>附录</h2>
+  <div class="txt"><span class="dot">●</span>数据来源：{{DATA_SOURCE}}</div>
+  <div class="txt"><span class="dot">●</span>行业对比数据取自各公司2025年报/2026Q1季报，市场数据截至2026年6月12日。</div>
+  <div class="txt"><span class="dot">●</span>安宫牛黄丸细分数据为券商估算值，公司年报未完整披露。</div>
+  <div class="txt"><span class="dot">●</span>DCF估值采用简化模型，仅供内部参考，不构成投资建议。</div>
+  <div class="footer">
+    ⚠️ 声明：本内容仅供理论学习和研究练习使用，不构成投资建议，不能作为投资依据。股市有风险，投资需谨慎。<br>
+    {{REPORT_DATE}} | 数据截止：2026-06-12<br>
+    {{COMPANY_NAME_CN}}股份有限公司 · {{STOCK_CODE}}.{{STOCK_SUFFIX}}
+  </div>
+</div>
+
+</body>
+</html>

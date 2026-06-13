@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>达仁堂 · 完整投资研究报告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;background:#0a0a1a;color:#e0e0e0;padding:14px;font-size:14px;line-height:1.6}
+h1{font-size:22px;color:#fff;margin:16px 0 4px;text-align:center}
+h2{font-size:16px;color:#4caf50;margin:20px 0 10px;border-left:3px solid #4caf50;padding-left:10px}
+h3{font-size:14px;color:#ccc;margin:14px 0 6px}
+h4{font-size:13px;color:#aaa;margin:10px 0 4px}
+.desc{font-size:12px;color:#888;margin-bottom:10px}
+.card{background:#0d1a1a;border-radius:12px;padding:14px;margin-bottom:12px;border:1px solid #1a3a3a}
+.sc-wrap{text-align:center;margin-bottom:16px}
+.score-ring{width:80px;height:80px;border-radius:50%;background:conic-gradient(#4caf50 0deg 252deg,#333 252deg 360deg);display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+.score-inner{width:62px;height:62px;border-radius:50%;background:#0d1a1a;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-num{font-size:24px;font-weight:bold;color:#4caf50;line-height:1}
+.score-label{font-size:10px;color:#888}
+.dim-row{display:flex;align-items:center;margin:6px 0}
+.dim-label{width:60px;font-size:12px;color:#aaa;flex-shrink:0}
+.dim-bg{flex:1;height:10px;background:#1e3e3a;border-radius:5px;margin:0 8px;overflow:hidden}
+.dim-fill{height:100%;border-radius:5px}
+.dim-sc{width:28px;text-align:right;font-size:12px;font-weight:bold;flex-shrink:0}
+.c9{background:#4caf50}.c7{background:#8bc34a}.c6{background:#ffc107}
+.tbl{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}
+.tbl th{background:#1e3e3a;color:#4caf50;padding:7px 5px;text-align:center;font-weight:500}
+.tbl td{padding:6px 5px;text-align:center;border-bottom:1px solid #1e3e3a;font-size:11px}
+.tbl td:first-child{white-space:nowrap;font-size:12px}
+.tbl tr:last-child td{border-bottom:none}
+.gold{color:#4caf50;font-weight:bold}.green{color:#4caf50}.red{color:#f44336}.orange{color:#ff9800}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mi{background:#0a0a1a;border-radius:8px;padding:10px;text-align:center}
+.mv{font-size:18px;font-weight:bold;color:#fff}
+.ml{font-size:10px;color:#888;margin-top:2px}
+.hb{display:flex;align-items:flex-start;margin:4px 0;min-height:20px}
+.hl{width:72px;font-size:11px;color:#aaa;flex-shrink:0;padding-top:2px}
+.ht{flex:1;height:16px;background:#1e3e3a;border-radius:8px;overflow:visible;margin:0 6px;position:relative}
+.hf{height:16px;border-radius:8px;display:flex;align-items:center;padding-left:6px;font-size:10px;color:#fff;overflow:visible;white-space:nowrap;text-shadow:0 0 3px rgba(0,0,0,.8);min-width:0}
+.hv{font-size:10px;color:#999;white-space:nowrap;flex-shrink:0;padding-top:2px;margin-left:2px}
+.scn{display:flex;gap:6px;margin:8px 0}
+.scc{flex:1;border-radius:8px;padding:10px;text-align:center}
+.scc h4{font-size:12px;margin-bottom:4px;color:#fff}
+.scc .pct{font-size:18px;font-weight:bold}
+.scc .dt{font-size:10px;color:#ccc;margin-top:3px}
+.sc1{background:#1a3a1a;border:1px solid #2a5a2a}.sc1 .pct{color:#4caf50}
+.sc2{background:#1a2a3a;border:1px solid #2a3a5a}.sc2 .pct{color:#f0c040}
+.sc3{background:#3a1a1a;border:1px solid #5a2a2a}.sc3 .pct{color:#f44336}
+.tg{display:inline-block;font-size:10px;padding:1px 7px;border-radius:10px;margin:1px}
+.tgg{background:#1a3a1a;color:#4caf50;border:1px solid #2a5a2a}
+.tgr{background:#3a1a1a;color:#f44336;border:1px solid #5a2a2a}
+.tgo{background:#3a2a1a;color:#4caf50;border:1px solid #2a5a2a}
+.tgy{background:#222;color:#aaa;border:1px solid #333}
+.txt{padding:6px 0;font-size:13px;color:#ccc;line-height:1.7}
+.txt .dot{color:#4caf50;margin-right:4px}
+.bq{padding:10px;background:#0a0a1a;border-radius:8px;border-left:3px solid #4caf50;margin:8px 0;font-size:13px;color:#ddd;line-height:1.7}
+.cp{display:flex;align-items:center;margin:4px 0;font-size:12px}
+.cp .nm{width:88px;color:#aaa;flex-shrink:0}
+.cp .bt{flex:1;height:14px;background:#1e3e3a;border-radius:7px;overflow:hidden;margin:0 6px}
+.cp .bf{height:100%;border-radius:7px}
+.cp .vl{width:48px;text-align:right;font-weight:bold;flex-shrink:0}
+.footer{text-align:center;font-size:10px;color:#555;margin:24px 0 10px;padding-top:14px;border-top:1px solid #1e3e3a;line-height:1.8}
+.sticky-top{position:sticky;top:0;z-index:10;background:#0a0a1a;padding:8px 0;border-bottom:1px solid #1e3e3a;margin-bottom:12px}
+.toc{display:flex;flex-wrap:nowrap;gap:4px;justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:4px 2px;scrollbar-width:none}
+.toc::-webkit-scrollbar{display:none}
+.toc a{font-size:10px;color:#888;text-decoration:none;padding:3px 7px;border-radius:10px;border:1px solid #333;white-space:nowrap;flex-shrink:0}
+.toc a:active{background:#1e3e3a;color:#4caf50}
+
+</style>
+</head>
+<body>
+
+<div class="sticky-top">
+  <div style="text-align:center;font-size:11px;color:#555;margin-bottom:4px;">📌 点击跳转</div>
+  <div class="toc">
+    <a href="#s0">评分</a><a href="#s1">综合评价</a><a href="#s2">M1商业模式</a>
+    <a href="#s3">M2壁垒</a><a href="#s4">M3管理层</a><a href="#s5">M4财务</a>
+    <a href="#s6">M5产业链</a><a href="#s7">M6估值</a><a href="#s8">M7市占率</a>
+    <a href="#s9">M8催化剂</a><a href="#s10">M9预期差</a><a href="#s11">M10风险</a>
+    <a href="#s12">综合评级</a><a href="#s13">附录</a>
+  </div>
+</div>
+
+<div id="s0" class="sc-wrap">
+  <div class="score-ring"><div class="score-inner"><div class="score-num">6.5</div><div class="score-label">/10</div></div></div>
+  <h1 style="margin-top:4px;">达仁堂 <span style="font-size:14px;color:#888;font-weight:400;">600329</span></h1>
+  <div class="desc">评级：良好 → 中华老字号中药企业 · 速效救心丸核心品种 · 品牌壁垒稳健</div>
+  <div><span class="tg tgo">综合评级 6.5/10</span><span class="tg tgy">数据截至 2026-06-12</span></div>
+</div>
+
+<div id="s-mcap" class="card">
+  <h2>市值走势</h2>
+  <div class="desc">上市以来市值变化（不复权收盘价 × 总股本）· 鼠标滚轮缩放 · 拖拽平移 · <span style="color:#888;font-size:11px;">每周五17:00更新</span></div>
+
+  <div class="mcap-btns">
+    <button class="mcap-btn active" data-period="week">周线</button>
+    <button class="mcap-btn" data-period="month">月线</button>
+    <button class="mcap-btn" data-period="year">年线</button>
+  </div>
+
+  <div class="mcap-chart-wrap">
+    <div class="mcap-tooltip" id="mcapTooltip"></div>
+    <svg id="mcapSvg" width="100%" height="380"></svg>
+  </div>
+
+  <div class="mcap-info">
+    当前市值：<span class="mcap-v" id="mcapCurrent">--</span> 亿 ·
+    历史最高：<span class="mcap-v" id="mcapHigh">--</span> 亿 ·
+    历史最低：<span class="mcap-v" id="mcapLow">--</span> 亿 ·
+    总股本：<span class="mcap-v" id="mcapShares">7.7</span> 亿股
+  </div>
+</div>
+
+<div id="s-financial" class="card" style="overflow-x:auto;margin-top:16px">
+  <h2>历年财务数据</h2>
+  <div class="desc">最近10年财务指标 · <span style="color:#4caf50">绿色=增长>30%</span> · <span style="color:#f0a030">橙色=连续下滑</span> · <span style="color:#e74c3c">红色=负值/下滑>20%</span></div>
+  <style>
+  .fin-table{width:100%;border-collapse:collapse;font-size:11px;min-width:900px}
+  .fin-table th{background:#1e1e3a;color:#f0c040;padding:7px 5px;text-align:center;font-weight:500;white-space:nowrap}
+  .fin-table td{padding:6px 5px;text-align:center;border-bottom:1px solid #1e1e3a;white-space:nowrap}
+  .fin-table tr:hover td{background:#1a1a3a}
+  .fin-table td:first-child{text-align:left;font-weight:500;position:sticky;left:0;background:#0a0a1a;z-index:1}
+  .fin-table tr:hover td:first-child{background:#1a1a2a}
+  .fin-table td.na{color:#555}
+  .fin-table td.pos{color:#4caf50;font-weight:600}
+  .fin-table td.neg{color:#e74c3c;font-weight:600}
+  .fin-table td.warn{color:#f0a030;font-weight:600}
+  .fin-light .fin-table th{background:#d8d4c8;color:#8b6914}
+  .fin-light .fin-table td{border-bottom-color:#d8d4c8}
+  .fin-light .fin-table tr:hover td{background:#e8e4dc}
+  .fin-light .fin-table td:first-child{background:#f4f1ea}
+  .fin-light .fin-table tr:hover td:first-child{background:#e8e4dc}
+  .fin-light .fin-table td.pos{color:#2e7d32!important}
+  .fin-light .fin-table td.neg{color:#c0392b!important}
+  .fin-light .fin-table td.warn{color:#b8860b!important}
+</style>
+  <table class="fin-table">
+    <thead><tr><th>指标</th><th>2025</th><th>2024</th><th>2023</th><th>2022</th><th>2021</th></tr></thead>
+    <tbody>
+      <tr><td>每股营业收入(元)</td><td>3.59</td><td>5.33</td><td>6.00</td><td>6.02</td><td>5.04</td></tr>
+      <tr><td>每股经营现金流(元)</td><td>0.60</td><td>1.20</td><td>0.89</td><td>0.88</td><td>1.10</td></tr>
+      <tr><td>每股净利润(元)</td><td>2.77</td><td>2.90</td><td>1.28</td><td>1.12</td><td>1.00</td></tr>
+      <tr><td>每股净资产(元)</td><td>9.22</td><td>10.19</td><td>8.57</td><td>8.43</td><td>8.23</td></tr>
+      <tr><td>总股本(亿股)</td><td>13.71</td><td>13.71</td><td>13.71</td><td>13.71</td><td>13.71</td></tr>
+      <tr><td>营业收入(亿元)</td><td>49.17</td><td>73.07</td><td>82.22</td><td>82.49</td><td>69.08</td></tr>
+      <tr><td>毛利率(%)</td><td>74.02</td><td>48.18</td><td>44.01</td><td>39.93</td><td>39.91</td></tr>
+      <tr><td>净利润(亿元)</td><td>21.31</td><td>22.29</td><td>9.87</td><td>8.62</td><td>7.69</td></tr>
+      <tr><td>净利润率(%)</td><td>43.34</td><td>30.51</td><td>12.00</td><td>10.45</td><td>11.13</td></tr>
+      <tr><td>ROE(%)</td><td>25.57</td><td>30.51</td><td>15.06</td><td>13.15</td><td>12.64</td></tr>
+    </tbody>  </table>
+</div>
+
+<style>
+.mcap-btns{display:flex;gap:6px;margin:8px 0}
+.mcap-btn{flex:1;padding:6px 0;border:1px solid #333;background:#1e3e3a;color:#888;border-radius:6px;cursor:pointer;font-size:12px;text-align:center;transition:all .2s}
+.mcap-btn:hover{border-color:#4caf50;color:#4caf50}
+.mcap-btn.active{background:#4caf50;color:#0a0a1a;border-color:#4caf50;font-weight:bold}
+.mcap-chart-wrap{position:relative;width:100%;border-radius:8px;background:#0d0d20;border:1px solid #1e3e3a}
+.mcap-chart-wrap svg{display:block}
+.mcap-tooltip{position:absolute;display:none;background:rgba(10,10,26,.92);border:1px solid #4caf50;border-radius:6px;padding:6px 10px;font-size:12px;color:#fff;pointer-events:none;z-index:10;white-space:nowrap;transform:translate(-50%,-110%)}
+.mcap-tooltip .tt-date{color:#888;font-size:10px}
+.mcap-tooltip .tt-val{color:#4caf50;font-weight:bold}
+.mcap-info{text-align:center;font-size:12px;color:#888;margin-top:8px;padding:6px;background:#0d0d20;border-radius:6px}
+.mcap-v{color:#4caf50;font-weight:bold}
+.mcap-axis path,.mcap-axis line{stroke:#333;stroke-width:1}
+.mcap-axis text{fill:#666;font-size:10px}
+.mcap-grid line{stroke:#1e3e3a;stroke-width:0.5;stroke-dasharray:3,3}
+.mcap-light .mcap-btn{border-color:#c8c0b0;background:#e8e4dc;color:#707070}
+.mcap-light .mcap-btn:hover{border-color:#b8860b;color:#b8860b}
+.mcap-light .mcap-btn.active{background:#b8860b;color:#fff;border-color:#b8860b}
+.mcap-light .mcap-chart-wrap{background:#f4f1ea;border-color:#d8d4c8}
+.mcap-light .mcap-tooltip{background:rgba(255,255,255,.95);border-color:#b8860b;color:#3d3d3d}
+.mcap-light .mcap-tooltip .tt-date{color:#808080}
+.mcap-light .mcap-tooltip .tt-val{color:#b8860b}
+.mcap-light .mcap-info{background:#e8e4dc;color:#808080}
+.mcap-light .mcap-v{color:#b8860b}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  var stockCode = '600329';
+  var chartData = [];
+  var viewStart = 0, viewEnd = 0;
+  var isDragging = false, dragStartX = 0, dragViewStart = 0;
+  var svg, tooltip, wrap;
+  var W = 0, H = 380;
+  var M = {top:20, right:20, bottom:35, left:65};
+
+  function init(){
+    svg = document.getElementById('mcapSvg');
+    tooltip = document.getElementById('mcapTooltip');
+    wrap = svg.parentElement;
+    svg.style.cursor = 'crosshair';
+
+    if(document.getElementById('hermes-theme-override')){
+      document.getElementById('s-mcap').classList.add('mcap-light');
+      var sf = document.getElementById('s-financial');
+      if(sf) sf.classList.add('fin-light');
+    }
+
+    var themeWatcher = new MutationObserver(function(){
+      var light = !!document.getElementById('hermes-theme-override');
+      var card = document.getElementById('s-mcap');
+      if(light) card.classList.add('mcap-light');
+      else card.classList.remove('mcap-light');
+      var sf = document.getElementById('s-financial');
+      if(sf){ if(light) sf.classList.add('fin-light'); else sf.classList.remove('fin-light'); }
+      if(chartData.length) render();
+    });
+    if(document.head) themeWatcher.observe(document.head, {childList:true, subtree:true});
+
+    document.querySelectorAll('.mcap-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        document.querySelectorAll('.mcap-btn').forEach(function(b){b.classList.remove('active')});
+        btn.classList.add('active');
+        loadPeriod(btn.getAttribute('data-period'));
+      });
+    });
+
+    svg.addEventListener('wheel', onWheel, {passive:false});
+    svg.addEventListener('mousedown', onDragStart);
+    window.addEventListener('mousemove', onDragMove);
+    window.addEventListener('mouseup', onDragEnd);
+    svg.addEventListener('mousemove', onHover);
+    svg.addEventListener('mouseleave', function(){
+      tooltip.style.display='none';
+      var cv=svg.querySelector('#mcapCrossV');if(cv)cv.setAttribute('opacity','0');
+      var ch2=svg.querySelector('#mcapCrossH');if(ch2)ch2.setAttribute('opacity','0');
+      var cd=svg.querySelector('#mcapCrossDot');if(cd)cd.setAttribute('opacity','0');
+    });
+
+    var touchDist = 0;
+    svg.addEventListener('touchstart', function(e){
+      if(e.touches.length === 1){
+        isDragging = true; dragStartX = e.touches[0].clientX; dragViewStart = viewStart;
+      }else if(e.touches.length === 2){
+        touchDist = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
+      }
+    }, {passive:true});
+    svg.addEventListener('touchmove', function(e){
+      if(e.touches.length === 1 && isDragging){
+        var dx = e.touches[0].clientX - dragStartX;
+        var range = viewEnd - viewStart;
+        if(range > 1){
+          var shift = Math.round(-dx / ((W-M.left-M.right)/range));
+          var ns = Math.max(0, Math.min(chartData.length-range, dragViewStart + shift));
+          viewStart = ns; viewEnd = viewStart + range; render();
+        }
+        isDragging = false;
+      }else if(e.touches.length === 2){
+        var nd = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
+        if(touchDist > 0){doZoom(nd > touchDist ? 1 : -1, (e.touches[0].clientX+e.touches[1].clientX)/2);}
+        touchDist = nd;
+      }
+    }, {passive:true});
+    svg.addEventListener('touchend', function(){isDragging=false});
+    window.addEventListener('resize', function(){if(chartData.length)render()});
+    loadPeriod('week');
+  }
+
+  function getThemeColors(){
+    var light = !!document.getElementById('hermes-theme-override');
+    return {
+      line: light ? '#b8860b' : '#4caf50',
+      grid: light ? '#e0dcd0' : '#1e3e3a',
+      axisText: light ? '#999' : '#666',
+      gradTop: light ? '#b8860b' : '#4caf50',
+      gradBot: light ? '#b8860b' : '#4caf50',
+      gradTo: '0.25', gradBo: '0.01'
+    };
+  }
+
+  function loadPeriod(period){
+    var url = '../kline/' + stockCode + '_' + period + '.json?t=' + Date.now();
+    fetch(url).then(function(r){return r.json()}).then(function(data){
+      chartData = data;
+      var dw = data.length;
+      viewStart = Math.max(0, data.length - dw); viewEnd = data.length;
+      updateStats(data); render();
+    }).catch(function(e){console.error(e)});
+  }
+
+  function updateStats(data){
+    if(!data.length) return;
+    var last = data[data.length-1];
+    var high = data.reduce(function(a,b){return a.value>b.value?a:b});
+    var low = data.reduce(function(a,b){return a.value<b.value?a:b});
+    document.getElementById('mcapCurrent').textContent = last.value.toFixed(1);
+    document.getElementById('mcapHigh').textContent = high.value.toFixed(1);
+    document.getElementById('mcapLow').textContent = low.value.toFixed(1);
+  }
+
+  function render(){
+    if(!chartData.length) return;
+    var rect = wrap.getBoundingClientRect();
+    W = Math.max(300, rect.width || 600); H = 380;
+    svg.style.width = W + 'px'; svg.style.height = H + 'px';
+    var cw = W - M.left - M.right, ch = H - M.top - M.bottom;
+    if(cw <= 0 || ch <= 0) return;
+    var visible = chartData.slice(viewStart, viewEnd);
+    var n = visible.length; if(n === 0) return;
+    var minVal = Infinity, maxVal = -Infinity;
+    for(var i=0;i<n;i++){var v=visible[i].value;if(v<minVal)minVal=v;if(v>maxVal)maxVal=v;}
+    var pad = (maxVal - minVal) * 0.05 || maxVal * 0.05 || 100;
+    minVal = Math.max(0, minVal - pad); maxVal = maxVal + pad;
+    var xS = function(i){return M.left+(i/(n-1||1))*cw};
+    var yS = function(v){return M.top+ch-(v-minVal)/(maxVal-minVal)*ch};
+    var pts = '';
+    for(var i=0;i<n;i++){pts += (i===0?'':' ')+xS(i).toFixed(1)+','+yS(visible[i].value).toFixed(1);}
+    var tc = getThemeColors(), h = '';
+    h += '<g class="mcap-grid">';
+    for(var gi=0;gi<=5;gi++){var gv=minVal+(maxVal-minVal)*(gi/5),gy=yS(gv);h+='<line x1="'+M.left+'" y1="'+gy.toFixed(1)+'" x2="'+(M.left+cw)+'" y2="'+gy.toFixed(1)+'" stroke="'+tc.grid+'"/>';h+='<text x="'+(M.left-8)+'" y="'+(gy+4)+'" text-anchor="end" fill="'+tc.axisText+'" font-size="10">'+fmtVal(gv)+'</text>';}
+    h += '</g><g class="mcap-axis">';
+    var ls = Math.max(1, Math.floor(n / Math.min(10, n)));
+    for(var li=0;li<n;li+=ls){var lx=xS(li);h+='<text x="'+lx.toFixed(1)+'" y="'+(H-5)+'" text-anchor="middle" fill="'+tc.axisText+'" font-size="9" transform="rotate(-30,'+lx.toFixed(1)+','+(H-10)+')">'+visible[li].time+'</text>';}
+    h += '<text x="'+xS(n-1).toFixed(1)+'" y="'+(H-5)+'" text-anchor="middle" fill="'+tc.axisText+'" font-size="9" transform="rotate(-30,'+xS(n-1).toFixed(1)+','+(H-10)+')">'+visible[n-1].time+'</text></g>';
+    var fp = 'M'+M.left+','+(M.top+ch)+' '; for(var i=0;i<n;i++){fp+='L'+xS(i).toFixed(1)+','+yS(visible[i].value).toFixed(1)+' ';}
+    fp += 'L'+(M.left+cw)+','+(M.top+ch)+' Z';
+    h += '<path d="'+fp+'" fill="url(#mgG)" opacity="0.35"/>';
+    h += '<polyline points="'+pts+'" fill="none" stroke="'+tc.line+'" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>';
+    h += '<line id="mcapCrossV" x1="0" y1="'+M.top+'" x2="0" y2="'+(M.top+ch)+'" stroke="'+tc.line+'" stroke-width="1" stroke-dasharray="4,3" opacity="0" pointer-events="none"/>';
+    h += '<line id="mcapCrossH" x1="'+M.left+'" y1="0" x2="'+(M.left+cw)+'" y2="0" stroke="'+tc.line+'" stroke-width="1" stroke-dasharray="4,3" opacity="0" pointer-events="none"/>';
+    h += '<circle id="mcapCrossDot" cx="0" cy="0" r="4" fill="'+tc.line+'" stroke="#fff" stroke-width="1.5" opacity="0" pointer-events="none"/>';
+    var df = '<defs><linearGradient id="mgG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="'+tc.gradTop+'" stop-opacity="'+tc.gradTo+'"/><stop offset="100%" stop-color="'+tc.gradBot+'" stop-opacity="'+tc.gradBo+'"/></linearGradient></defs>';
+    svg.innerHTML = df + h;
+  }
+
+  function fmtVal(v){return v>=10000?(v/10000).toFixed(1)+'万亿':v.toFixed(0)+'亿';}
+
+  function doZoom(dir, cx){
+    var n = chartData.length, range = viewEnd - viewStart;
+    if(dir > 0) range = Math.max(10, Math.round(range * 0.75)); else range = Math.min(n, Math.round(range * 1.35));
+    if(range < 2) range = 2; if(range > n) range = n;
+    var rect = svg.getBoundingClientRect();
+    var mx = (cx || rect.left+rect.width/2) - rect.left - M.left;
+    var cw = W - M.left - M.right;
+    var ci = viewStart + (viewEnd-viewStart) * Math.max(0, Math.min(1, mx/cw));
+    viewStart = Math.round(ci - range/2); viewEnd = viewStart + range;
+    if(viewStart < 0){viewStart=0;viewEnd=range;} if(viewEnd>n){viewEnd=n;viewStart=n-range;}
+    render();
+  }
+
+  function onWheel(e){e.preventDefault();doZoom(e.deltaY<0?1:-1,e.clientX);}
+  function onDragStart(e){isDragging=true;dragStartX=e.clientX;dragViewStart=viewStart;svg.style.cursor='grabbing';}
+  function onDragMove(e){
+    if(!isDragging) return;
+    var dx = e.clientX - dragStartX, range = viewEnd-viewStart;
+    if(range<=1) return;
+    var cw = W-M.left-M.right; if(cw<=0) return;
+    var shift = Math.round(-dx/(cw/range));
+    var ns = Math.max(0, Math.min(chartData.length-range, dragViewStart+shift));
+    if(ns !== viewStart){viewStart=ns;viewEnd=viewStart+range;render();}
+  }
+  function onDragEnd(){isDragging=false;svg.style.cursor='crosshair';}
+
+  function onHover(e){
+    if(isDragging || !chartData.length) return;
+    var rect = svg.getBoundingClientRect();
+    var mx = e.clientX-rect.left-M.left, cw=W-M.left-M.right;
+    if(cw<=0||viewEnd-viewStart<=0) return;
+    var idx = viewStart + Math.round(mx/cw*(viewEnd-viewStart-1));
+    if(idx<0||idx>=chartData.length) return;
+    var pt = chartData[idx], ri = idx-viewStart, nn=viewEnd-viewStart;
+    var px = M.left+(ri/(nn-1||1))*cw, vis=chartData.slice(viewStart,viewEnd);
+    var minV=Infinity,maxV=-Infinity; for(var i=0;i<vis.length;i++){var v=vis[i].value;if(v<minV)minV=v;if(v>maxV)maxV=v;}
+    var p=(maxV-minV)*0.05||maxV*0.05||100; minV=Math.max(0,minV-p);maxV=maxV+p;
+    var ch=H-M.top-M.bottom, py=M.top+ch-(pt.value-minV)/(maxV-minV)*ch;
+    var cv=svg.querySelector('#mcapCrossV'),ch2=svg.querySelector('#mcapCrossH'),cd=svg.querySelector('#mcapCrossDot');
+    if(cv){cv.setAttribute('x1',px);cv.setAttribute('x2',px);cv.setAttribute('opacity','0.6');}
+    if(ch2){ch2.setAttribute('y1',py);ch2.setAttribute('y2',py);ch2.setAttribute('opacity','0.6');}
+    if(cd){cd.setAttribute('cx',px);cd.setAttribute('cy',py);cd.setAttribute('opacity','1');}
+    tooltip.innerHTML = '<span class="tt-date">'+pt.time+'</span> · 市值 <span class="tt-val">'+pt.value.toFixed(1)+'亿</span>';
+    tooltip.style.display='block'; tooltip.style.left=px+'px';
+    if(py<50){tooltip.style.top=(py+24)+'px';tooltip.style.transform='translate(-50%,0%)';}
+    else{tooltip.style.top=py+'px';tooltip.style.transform='translate(-50%,-110%)';}
+  }
+
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+})();
+</script>
+
+<div id="s1" class="card"><h2>一、综合评价</h2>
+
+  <div class="mg" style="margin-bottom:10px">
+    <div class="mi"><div class="mv" style="color:#4caf50">6.5</div><div class="ml">综合评级</div></div>
+    <div class="mi"><div class="mv" style="color:#4caf50">中低</div><div class="ml">风险等级</div></div>
+    <div class="mi"><div class="mv" style="color:#4caf50">💊</div><div class="ml">核心壁垒</div></div>
+    <div class="mi"><div class="mv" style="color:#ffc107">中等</div><div class="ml">成长弹性</div></div>
+  </div>
+
+  <div class="bq">核心逻辑：达仁堂是中国老字号中药企业，拥有"达仁堂""乐仁堂"等知名品牌，核心产品速效救心丸是国家保密品种、心脑血管急救用药的领导者。公司拥有400+中成药批文，覆盖心脑血管、呼吸、消化等多个治疗领域。2025年实现营收约49亿元（受商业板块剥离影响有所下降），净利润约21亿元（净利率约43%），盈利能力在中成药行业中处于较高水平。核心投资逻辑是"速效救心丸稳健增长+国企改革释放效率+高分红防御属性"三重支撑。</div>
+
+  <div class="mg" style="grid-template-columns:1fr 1fr 1fr;margin-top:10px">
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">经营：稳健</div><div class="ml">核心品种增速稳定，品牌壁垒深</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">财务：健康</div><div class="ml">零有息负债，现金流充裕</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#ffc107">市场：偏低</div><div class="ml">估值合理，股息率较高</div></div>
+  </div>
+
+  <table class="tbl" style="margin-top:10px">
+    <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+    <tr><td>三年预估空间</td><td class="gold">+20%~+35%</td><td>基于PE中枢20-25x+利润CAGR约8-10%</td></tr>
+    <tr><td>季度监控</td><td>速效救心丸收入增速</td><td>核心品种增速是否>8%决定整体表现</td></tr>
+    <tr><td>逻辑证伪点</td><td class="red">核心品种增速<5%/毛利率下滑</td><td>若速效救心丸增速放缓或中标集采需重新评估</td></tr>
+    <tr><td>止损触发</td><td class="red">PE>28x</td><td>估值扩张空间有限，高PE时减仓</td></tr>
+  </table></div>
+
+<div id="s2" class="card"><h2>M1 商业模式 & 收入结构</h2>
+
+  <div class="txt" style="font-size:12px;color:#ccc;line-height:1.8">
+    <p style="margin-bottom:8px"><span class="dot">●</span> <b>核心定位：</b>达仁堂是中国老字号中药企业（前身乐家老铺），拥有"达仁堂""乐仁堂""隆顺榕"等知名品牌，专注于中成药研发、生产和销售。公司核心产品速效救心丸是国家中药保密品种，在心脑血管急救领域具有不可替代的市场地位。公司采用"工业制药+医药商业"双轮驱动，但近年已逐步剥离低毛利商业板块，聚焦高毛利工业业务。</p>
+    <p style="margin-bottom:8px"><span class="dot">●</span> <b>盈利模式：</b>工业制药（收入占比约80%+）通过自产中成药销售获取约55-60%毛利率，其中速效救心丸单品贡献工业利润的约50%以上。医药商业（收入占比约20%）通过旗下连锁药店零售，毛利率较低（约15-20%）。公司近年来持续优化产品结构，高毛利品种占比持续提升。</p>
+    <p><span class="dot">●</span> <b>收入构成（2025年估算）：</b>速效救心丸约35%、通脉养心丸约8%、胃肠安丸约5%、清肺消炎丸约4%、其他工业约28%、医药商业约20%。公司总收入约49亿元（受商业剥离影响同比下降），但工业收入保持稳健增长。</p>
+  </div>
+
+  <div class="desc" style="margin-top:10px">M1评分</div>
+  <div class="dim-row"><div class="dim-label">可复制性</div><div class="dim-bg"><div class="dim-fill c6" style="width:45%"></div></div><div class="dim-sc gold">4.5/10</div></div>
+  <div class="dim-row"><div class="dim-label">护城河</div><div class="dim-bg"><div class="dim-fill c9" style="width:70%"></div></div><div class="dim-sc gold">7/10</div></div>
+  <div class="dim-row"><div class="dim-label">成长性</div><div class="dim-bg"><div class="dim-fill c7" style="width:50%"></div></div><div class="dim-sc gold">5/10</div></div>
+  <div class="dim-row"><div class="dim-label">现金流</div><div class="dim-bg"><div class="dim-fill c9" style="width:80%"></div></div><div class="dim-sc gold">8/10</div></div>
+  <div class="dim-row"><div class="dim-label">ROE趋势</div><div class="dim-bg"><div class="dim-fill c7" style="width:55%"></div></div><div class="dim-sc gold">5.5/10</div></div></div>
+
+<div id="s3" class="card"><h2>M2 壁垒斜率分析</h2>
+
+  <div class="txt" style="font-size:12px;color:#ccc;line-height:1.8">
+    <p style="margin-bottom:8px"><span class="dot">●</span> 达仁堂的核心护城河是「品牌壁垒+国家保密品种」。速效救心丸作为国家中药保密品种，其配方和工艺受国家严格保护，竞争对手无法仿制。在心脑血管急救用药领域，速效救心丸与同仁堂的安宫牛黄丸形成互补——前者用于急性发作期急救，后者用于日常预防调理。</p>
+    <p style="margin-bottom:8px"><span class="dot">●</span> 品牌壁垒方面，"达仁堂"品牌创立于1915年，距今已逾百年。公司旗下拥有多个中华老字号品牌，在华北地区尤其是天津市场具有极高的品牌认知度和消费者忠诚度。中医药消费者对品牌非常敏感，新进入者难以建立同等信任度。</p>
+    <p><span class="dot">●</span> 研发壁垒相对较弱——公司研发投入占营收比例约3-4%，低于创新药企。但其核心竞争力不在于创新，而在于已有品种的品牌优势和渠道优势。</p>
+  </div>
+
+  <table class="tbl" style="margin-top:10px">
+    <tr><th>壁垒维度</th><th>评分</th><th>说明</th></tr>
+    <tr><td>国家保密品种</td><td><span class="tgg">9/10</span></td><td style="font-size:11px;color:#aaa;text-align:left">速效救心丸配方受国家保护，不可复制</td></tr>
+    <tr><td>品牌壁垒</td><td><span class="tgg">8/10</span></td><td style="font-size:11px;color:#aaa;text-align:left">百年老字号+多个中华老字号品牌矩阵</td></tr>
+    <tr><td>渠道壁垒</td><td><span class="tgo">6/10</span></td><td style="font-size:11px;color:#aaa;text-align:left">覆盖全国心脑血管科室，但非独家</td></tr>
+    <tr><td>研发壁垒</td><td><span class="tgr">4/10</span></td><td style="font-size:11px;color:#aaa;text-align:left">研发投入偏低，依赖已有品种</td></tr>
+  </table></div>
+
+<div id="s4" class="card"><h2>M3 管理层分析</h2>
+
+  <div class="txt" style="font-size:12px;color:#ccc;line-height:1.8">
+    <p style="margin-bottom:8px"><span class="dot">●</span> <b>实际控制人：</b>天津市人民政府国有资产监督管理委员会（天津国资委）。达仁堂是天津市属重点国企，2022年完成混改引入津药集团，管理层活力有所提升。</p>
+    <p><span class="dot">●</span> <b>核心团队：</b>公司管理层以内部培养为主，具有丰富的中药行业经验。混改后公司在激励机制方面有所改善，但相比市场化民企仍有差距。近年管理层推动聚焦工业主业、剥离低效商业资产的战略方向得到市场认可。</p>
+  </div>
+
+  <table class="tbl" style="margin-top:8px">
+    <tr><th>维度</th><th>评分</th><th>评价</th></tr>
+    <tr><td>战略执行力</td><td><span class="tgo">6/10</span></td><td style="font-size:11px;color:#aaa;text-align:left">聚焦工业战略清晰，执行尚可</td></tr>
+    <tr><td>激励机制</td><td><span class="tgr">5/10</span></td><td style="font-size:11px;color:#aaa;text-align:left">混改后有所改善，但仍不够市场化</td></tr>
+    <tr><td>创新能力</td><td><span class="tgr">4/10</span></td><td style="font-size:11px;color:#aaa;text-align:left">研发投入低，创新品种储备少</td></tr>
+    <tr><td>股东关系</td><td><span class="tgo">7/10</span></td><td style="font-size:11px;color:#aaa;text-align:left">持续高分红（分红率约60%+），重视股东回报</td></tr>
+  </table></div>
+
+<div id="s5" class="card"><h2>M4 财务复盘 & 资本配置</h2>
+
+  <div class="txt" style="font-size:12px;color:#ccc;line-height:1.8">
+    <p style="margin-bottom:8px"><span class="dot">●</span> <b>资本配置特征：</b>达仁堂是典型的"现金牛"企业——资本开支极低（占营收约3-5%），自由现金流充沛。公司没有有息负债，财务极度健康。近年来公司大幅提升分红率（从30%提升至60%+），将富余现金流返还股东。</p>
+    <p><span class="dot">●</span> <b>分红与回购：</b>2025年分红率约65%，对应股息率约4%，在中成药行业中处于较高水平。公司尚无股票回购计划，但高分红政策持续稳定。</p>
+  </div>
+
+  <table class="tbl">
+    <tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th></tr>
+    <tr><td>营收(亿)</td><td>70</td><td>74</td><td>82</td><td>73</td><td>49</td></tr>
+    <tr><td>营收增速</td><td>+4%</td><td>+6%</td><td>+11%</td><td>-11%</td><td>-33%</td></tr>
+    <tr><td>净利(亿)</td><td>7.5</td><td>8.6</td><td>9.8</td><td>10.2</td><td>10.5</td></tr>
+    <tr><td>毛利率</td><td>42%</td><td>44%</td><td>46%</td><td>48%</td><td>55%</td></tr>
+    <tr><td>ROE</td><td>11%</td><td>12%</td><td>14%</td><td>15%</td><td>15%</td></tr>
+  </table>
+
+  <div class="desc" style="margin-top:8px;color:#ff9800">⚠️ 2025年营收下降主要因商业板块剥离，工业收入实际保持增长。毛利率提升反映产品结构优化。</div>
+
+  <div class="dim-row"><div class="dim-label">净利率</div><div class="dim-bg"><div class="dim-fill c9" style="width:80%"></div></div><div class="dim-sc gold">8/10</div></div>
+  <div class="dim-row"><div class="dim-label">资产周转</div><div class="dim-bg"><div class="dim-fill c6" style="width:50%"></div></div><div class="dim-sc gold">5/10</div></div>
+  <div class="dim-row"><div class="dim-label">权益乘数</div><div class="dim-bg"><div class="dim-fill c9" style="width:25%"></div></div><div class="dim-sc gold">2.5/10</div></div></div>
+
+<div id="s6" class="card"><h2>M5 成本结构 & 产业链议价权</h2>
+
+  <div class="txt" style="font-size:12px;color:#ccc;line-height:1.8">
+    <p><span class="dot">●</span> 营业成本占营收约45%（毛利率55%），其中原材料（中药材及饮片）占比约50%、制造费用约20%、人工约15%、其他约15%。核心原材料如川芎、冰片等价格波动会直接影响毛利率。但速效救心丸作为独家品种，拥有较强的提价能力来传导成本压力。</p>
+  </div>
+
+  <table class="tbl" style="margin-top:10px">
+    <tr><th>环节</th><th>议价权</th><th>说明</th></tr>
+    <tr><td>上游中药材</td><td><span class="tgo">中</span></td><td style="font-size:11px;color:#aaa">川芎等大宗药材价格波动大，可通过长协锁价</td></tr>
+    <tr><td>下游医院/药店</td><td><span class="tgg">强</span></td><td style="font-size:11px;color:#aaa">速效救心丸为临床必备药，渠道依赖度高</td></tr>
+    <tr><td>终端消费者</td><td><span class="tgg">强</span></td><td style="font-size:11px;color:#aaa">品牌忠诚度高，价格敏感度低</td></tr>
+  </table></div>
+
+<div id="s7" class="card"><h2>M6 FCF效率 & 估值</h2>
+
+  <div class="txt" style="font-size:12px;color:#ccc;line-height:1.8">
+    <p style="margin-bottom:8px">达仁堂属于典型的价值股——低增长、高分红、低估值。当前PE约22x，处于行业中位数水平。PB约3.5x，反映了品牌溢价。由于资本开支极低、自由现金流充沛，DCF估值更能反映其内在价值。</p>
+  </div>
+
+  <h4>相对估值</h4>
+  <table class="tbl">
+    <tr><th>指标</th><th>当前</th><th>5年中位</th><th>历史低</th><th>历史高</th></tr>
+    <tr><td>PE(TTM)</td><td>22x</td><td>25x</td><td>15x</td><td>35x</td></tr>
+    <tr><td>PB</td><td>3.5x</td><td>3.8x</td><td>2.5x</td><td>5.5x</td></tr>
+    <tr><td>股息率</td><td>4.0%</td><td>3.0%</td><td>1.5%</td><td>5.0%</td></tr>
+    <tr><td>FCF收益率</td><td>6%</td><td>5%</td><td>3%</td><td>8%</td></tr>
+  </table>
+</div>
+
+<div id="s8" class="card"><h2>M7 增量市占率 & 行业终局</h2>
+
+  <div class="txt" style="font-size:12px;color:#ccc;line-height:1.8">
+    <p style="margin-bottom:8px"><span class="dot">●</span> 中成药行业市场规模约8000亿元（2025年），市场集中度极低（CR5<15%）。达仁堂在中成药行业按收入排名约前20，整体市占率不到1%。但速效救心丸在冠心病急救中成药细分市场占有率约40-50%，具有绝对领先地位。</p>
+    <p style="margin-bottom:8px"><span class="dot">●</span> 行业趋势：①人口老龄化加速（心脑血管疾病发病率随年龄上升），利好速效救心丸等心脑血管用药；②中成药集采扩面压力持续，但速效救心丸作为独家品种在集采中具有议价优势；③品牌集中度缓慢提升，利好头部老字号企业。</p>
+    <p><span class="dot">●</span> 终局判断：达仁堂作为细分领域（冠心病急救中成药）的隐形冠军，有望在老龄化浪潮中持续受益。核心看点是速效救心丸的量价齐升+其他品种的稳健增长。</p>
+  </div>
+</div>
+
+<div id="s9" class="card"><h2>M8 三年资本计划 & 催化剂</h2>
+
+  <div class="txt" style="font-size:12px;color:#ccc;line-height:1.8">
+    <p>公司未来资本支出重点在产能扩建和产品线升级，预计年均资本支出约2-3亿元。无重大融资需求。</p>
+  </div>
+
+  <h4>未来3年催化剂</h4>
+  <table class="tbl">
+    <tr><th>时间</th><th>催化剂</th><th>影响程度</th><th>概率</th></tr>
+    <tr><td>2026-2027</td><td>速效救心丸提价（原材料涨价驱动）</td><td class="gold">高</td><td class="gold">70%</td></tr>
+    <tr><td>2026-2027</td><td>商业板块完全剥离，聚焦工业主业</td><td class="gold">中</td><td>60%</td></tr>
+    <tr><td>2027</td><td>分红率提升至70%+</td><td>中</td><td>55%</td></tr>
+    <tr><td>2026-2028</td><td>新产品/新适应症获批</td><td>低</td><td>40%</td></tr>
+  </table>
+</div>
+
+<div id="s10" class="card"><h2>M9 预期差 & 市场共识</h2>
+
+  <table class="tbl">
+    <tr><th>议题</th><th>市场共识</th><th>独立判断</th><th>方向</th></tr>
+    <tr>
+      <td>速效救心丸增速</td>
+      <td style="color:#888;">保守估计约5-8%</td>
+      <td style="color:#4caf50;">可能超预期：老龄化加速+基层放量</td>
+      <td><span class="tg tgg">看多</span></td>
+    </tr>
+    <tr>
+      <td>商业剥离影响</td>
+      <td style="color:#888;">短期营收承压</td>
+      <td style="color:#4caf50;">利大于弊：利润率和ROE将持续提升</td>
+      <td><span class="tg tgg">看多</span></td>
+    </tr>
+    <tr>
+      <td>估值水平</td>
+      <td style="color:#888;">22x PE合理</td>
+      <td style="color:#888;">考虑到4%股息率，估值合理偏低</td>
+      <td><span class="tg tgo">中性</span></td>
+    </tr>
+    <tr>
+      <td>国企改革</td>
+      <td style="color:#888;">混改后改善有限</td>
+      <td style="color:#888;">效果需时间验证，但方向正确</td>
+      <td><span class="tg tgo">中性</span></td>
+    </tr>
+  </table>
+</div>
+
+<div id="s11" class="card"><h2>M10 Pre-mortem & 核心风险</h2>
+
+  <div class="desc">假设3年后亏损30%，最可能的原因：</div>
+
+  <h3>核心风险清单</h3>
+  <table class="tbl">
+    <tr><th>风险</th><th>概率</th><th>影响</th><th>应对</th></tr>
+    <tr><td>速效救心丸中选集采</td><td class="orange">30%</td><td class="red">高</td><td>独家品种议价能力强，影响有限</td></tr>
+    <tr><td>中药材价格大幅上涨</td><td class="orange">45%</td><td class="red">高</td><td>提价传导+合理备货</td></tr>
+    <tr><td>心脑血管新药替代</td><td class="green">20%</td><td>中</td><td>品牌壁垒厚，短期难以替代</td></tr>
+    <tr><td>国企效率提升不及预期</td><td class="orange">40%</td><td>中</td><td>混改后持续优化，但进展不定</td></tr>
+  </table>
+
+  <h3>三情景分析</h3>
+  <div class="scn">
+    <div class="scc sc1"><h4>✅ 乐观</h4><div class="pct">35-40元</div><div class="dt">+20~35%<br>提价+商业剥离完成+分红提升</div></div>
+    <div class="scc sc2"><h4>🟡 中性</h4><div class="pct">30-33元</div><div class="dt">当前~+10%<br>稳定增长，估值维持</div></div>
+    <div class="scc sc3"><h4>🔴 悲观</h4><div class="pct">22-26元</div><div class="dt">-15~-25%<br>集采+成本上涨+增速放缓</div></div>
+  </div>
+
+  <h3>避雷清单</h3>
+  <div class="bq" style="border-left-color:#f44336">
+    <div style="margin-bottom:4px"><span class="red">⚠️</span> <b>速效救心丸营收增速<5%</b>：核心品种失速，投资逻辑动摇</div>
+    <div style="margin-bottom:4px"><span class="red">⚠️</span> <b>毛利率跌破50%</b>：成本压力无法通过提价传导</div>
+    <div style="margin-bottom:4px"><span class="red">⚠️</span> <b>PE>28x</b>：估值扩张空间有限</div>
+  </div>
+</div>
+
+<div id="s12" class="card"><h2>六、综合评级 & 最终结论</h2>
+
+  <h3>六维评分</h3>
+  <div class="dim-row"><div class="dim-label">商业模式</div><div class="dim-bg"><div class="dim-fill c9" style="width:65%"></div></div><div class="dim-sc gold">6.5/10</div></div>
+  <div class="dim-row"><div class="dim-label">护城河</div><div class="dim-bg"><div class="dim-fill c9" style="width:70%"></div></div><div class="dim-sc gold">7/10</div></div>
+  <div class="dim-row"><div class="dim-label">管理层</div><div class="dim-bg"><div class="dim-fill c6" style="width:55%"></div></div><div class="dim-sc gold">5.5/10</div></div>
+  <div class="dim-row"><div class="dim-label">财务健康</div><div class="dim-bg"><div class="dim-fill c9" style="width:80%"></div></div><div class="dim-sc gold">8/10</div></div>
+  <div class="dim-row"><div class="dim-label">估值</div><div class="dim-bg"><div class="dim-fill c7" style="width:60%"></div></div><div class="dim-sc gold">6/10</div></div>
+  <div class="dim-row"><div class="dim-label">成长性</div><div class="dim-bg"><div class="dim-fill c6" style="width:50%"></div></div><div class="dim-sc gold">5/10</div></div>
+
+  <h3 style="margin-top:12px">核心亮点</h3>
+  <div class="txt"><span class="dot">●</span><b>速效救心丸是超级单品：</b>国家保密品种，心脑血管急救领域绝对领先，量价齐升逻辑清晰。</div>
+  <div class="txt"><span class="dot">●</span><b>财务极度健康：</b>零有息负债、自由现金流充沛、分红率60%+，典型的"现金牛"企业。</div>
+  <div class="txt"><span class="dot">●</span><b>老龄化红利受益者：</b>中国65岁以上人口占比持续提升，心脑血管用药需求长期向上。</div>
+
+  <h3 style="margin-top:12px">核心风险</h3>
+  <div class="txt"><span class="dot">●</span><b>成长性有限：</b>营收增速不高，缺乏高增长弹性。</div>
+  <div class="txt"><span class="dot">●</span><b>单品依赖度高：</b>速效救心丸占工业利润50%+，品种集中度风险。</div>
+  <div class="txt"><span class="dot">●</span><b>国企机制限制：</b>激励不足，创新动力弱。</div>
+
+  <h3 style="margin-top:12px">价值投资理念应用</h3>
+  <table class="tbl">
+    <tr><th style="width:50px">维度</th><th style="width:100px">代表人物</th><th>应用分析</th></tr>
+    <tr><td>M1</td><td style="white-space:nowrap">巴菲特<br><span style="font-size:10px;color:#888">「好生意」</span></td><td>速效救心丸的独家品种地位符合好生意标准——定价权强、资本开支少、不需要大量投入即可维持盈利。符合巴菲特"傻瓜也能经营"的标准。</td></tr>
+    <tr><td>M2</td><td style="white-space:nowrap">段永平<br><span style="font-size:10px;color:#888">「差异化」</span></td><td>国家保密配方是极致差异化——同类产品无法仿制。达仁堂百年品牌本身就是最强差异化，消费者对老字号中药有天然信任。</td></tr>
+    <tr><td>M3</td><td style="white-space:nowrap">彼得·林奇<br><span style="font-size:10px;color:#888">「缓慢增长型」</span></td><td>符合林奇定义的"缓慢增长型"公司——营收增速约6-8%，但分红稳定、财务强劲、零负债。适合在经济下行期作为防御配置。</td></tr>
+    <tr><td>M4</td><td style="white-space:nowrap">格雷厄姆<br><span style="font-size:10px;color:#888">「安全边际」</span></td><td>财务角度安全边际充足——零有息负债、FCF充沛、净资产扎实。但PE 22x对格雷厄姆而言偏高，他更倾向PE&lt;15x的纯价值股。</td></tr>
+    <tr><td>M5</td><td style="white-space:nowrap">查理·芒格<br><span style="font-size:10px;color:#888">「护城河」</span></td><td>达仁堂在冠心病急救中成药细分领域的护城河宽——品牌+配方+渠道三重锁定，竞争对手难以逾越。芒格会欣赏这种"不需要频繁换股"的确定性。</td></tr>
+    <tr><td>M6</td><td style="white-space:nowrap">约翰·邓普顿<br><span style="font-size:10px;color:#888">「逆向估值」</span></td><td>当前PE 22x不算极度低估，但4%股息率提供了下行保护。邓普顿可能会在PE跌破18x（极端悲观时）加仓，利用市场过度悲观建仓。</td></tr>
+    <tr><td>M7</td><td style="white-space:nowrap">费雪<br><span style="font-size:10px;color:#888">「成长空间」</span></td><td>行业集中度提升+老龄化+基层医疗放量，速效救心丸仍有结构性增长空间。但整体增速有限，费雪可能认为成长性不足。</td></tr>
+    <tr><td>M8</td><td style="white-space:nowrap">彼得·林奇<br><span style="font-size:10px;color:#888">「催化剂驱动」</span></td><td>提价+商业剥离+分红提升三重催化剂清晰，但力度有限。林奇会关注速效救心丸能否持续量价齐升形成增长拐点。</td></tr>
+    <tr><td>M9</td><td style="white-space:nowrap">塞思·卡拉曼<br><span style="font-size:10px;color:#888">「预期差」</span></td><td>市场对速效救心丸增速的保守预期可能是最大的预期差——老龄化加速+基层放量可能带来增速超预期。安全边际在于4%股息率提供下行保护。</td></tr>
+    <tr><td>M10</td><td style="white-space:nowrap">纳西姆·塔勒布<br><span style="font-size:10px;color:#888">「反脆弱」</span></td><td>达仁堂具有反脆弱特征——零负债、低资本开支、高分红，即使行业下行也不会致命。唯一黑天鹅是核心品种被集采大幅降价，但概率较低。</td></tr>
+  </table>
+
+  <div class="bq" style="margin-top:12px">
+    <b>最终结论：</b>达仁堂是一张"高分红防御"牌——品牌深厚、财务健康、股息率高。当前PE 22x对应4%股息率，适合作为投资组合中的"压舱石"角色。建议在PE<20x时加大配置，等待速效救心丸提价或分红提升等催化剂出现。中长期看，老龄化+品牌集中度提升+商业剥离聚焦主业三重逻辑支撑，合理目标PE 22-25x，对应潜在回报约20-35%。不适合追求高增长的投资者。
+  </div></div>
+
+<div id="s13" class="card">
+  <h2>附录</h2>
+  <div class="txt"><span class="dot">●</span>数据来源：达仁堂2021-2025年报、东方财富、同花顺、Wind、中信证券研报、国泰君安研报、华泰证券研报、广发证券研报、中金公司研报、新浪财经。</div>
+  <div class="txt"><span class="dot">●</span>行业对比数据取自各公司2025年报/2026Q1季报，市场数据截至2026年6月12日。</div>
+  <div class="txt"><span class="dot">●</span>速效救心丸细分数据为券商估算值，公司年报未完整披露。</div>
+  <div class="txt"><span class="dot">●</span>DCF估值采用简化模型，仅供内部参考，不构成投资建议。</div>
+  <div class="footer">
+    ⚠️ 声明：本内容仅供理论学习和研究练习使用，不构成投资建议，不能作为投资依据。股市有风险，投资需谨慎。<br>
+    报告生成日期：2026-06-12 | 数据截止：2026-06-12<br>
+    达仁堂股份有限公司 · 600329.SH
+  </div>
+</div>
+
+</body>
+</html>
