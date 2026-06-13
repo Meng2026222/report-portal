@@ -24,6 +24,13 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 .dim-fill{height:100%;border-radius:5px}
 .dim-sc{width:28px;text-align:right;font-size:12px;font-weight:bold;flex-shrink:0}
 .c9{background:#4caf50}.c7{background:#8bc34a}.c6{background:#ffc107}
+
+html{scroll-behavior:smooth}
+[id^="s"]{scroll-margin-top:70px}
+.back-top{position:fixed;right:16px;bottom:16px;width:40px;height:40px;border-radius:50%;background:#f0c040;color:#000;border:none;font-size:18px;cursor:pointer;opacity:.7;transition:.3s;z-index:99;line-height:40px;text-align:center;padding:0}
+.back-top:hover{opacity:1}
+.tbl-wrap{overflow-x:auto;margin:8px 0}
+.tbl{min-width:600px}
 .tbl{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}
 .tbl th{background:#1e1e3a;color:#f0c040;padding:7px 5px;text-align:center;font-weight:500}
 .tbl td{padding:6px 5px;text-align:center;border-bottom:1px solid #1e1e3a}
@@ -354,12 +361,12 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="txt">评级理由：伊利股份作为中国乳制品行业绝对龙头，是A股消费品板块的重要配置标的。2025年公司营收约1,265亿元，归母净利润约104亿元，增速稳健但低于市场预期。2026年Q1营收约340亿元同比+8.5%，归母净利润约33亿元同比+10.2%，开局有所改善。公司核心看点在于：中国乳业双寡头格局下的龙头地位、覆盖全品类的产品矩阵（液态奶+奶粉+冷饮+奶酪）、完善的全国化渠道网络、以及强劲的经营现金流。但需关注：上游原奶价格低位压缩利润空间、蒙牛竞争加剧、出生率下降对婴幼儿奶粉的长期利空、以及行业价格战风险。公司整体处于"稳健但缺乏弹性"的价值股定位。</div>
 
   <h3>2. 风险等级：中低</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>风险类别</th><th>等级</th><th>说明</th></tr>
     <tr><td>经营风险</td><td><span class="orange">中</span></td><td style="text-align:left;font-size:11px;">原奶价格波动影响毛利率；婴幼儿奶粉受出生率下降影响；价格战侵蚀利润</td></tr>
     <tr><td>财务风险</td><td><span class="green">极低</span></td><td style="text-align:left;font-size:11px;">资产负债率约58%，有息负债率约25%，经营现金流约150亿，财务安全</td></tr>
     <tr><td>市场风险</td><td><span class="orange">中</span></td><td style="text-align:left;font-size:11px;">消费降级趋势压低产品均价；行业竞争格局恶化；原材料成本波动</td></tr>
-  </table>
+  </table></div>
 
   <h3>3. 核心结论（一句话逻辑）</h3>
   <div class="bq">"伊利股份是中国乳业绝对龙头，凭借覆盖全品类（液态奶/奶粉/冷饮/奶酪）的产品矩阵、300万+终端网点的渠道网络、以及持续的品类创新，构筑了稳固的行业领先地位。2025年营收1,265亿、净利104亿连续增长的背后是结构升级（金典/安慕希等高端产品占比提升）和多元化布局（奶粉+奶酪+冷饮）的组合驱动。但上游原奶价格低位压缩毛差、出生率下降利空婴配粉、蒙牛竞争胶着等制约因素使得公司处于'龙头稳固但增速平淡'的阶段，市场给予的PE估值中枢约15-20倍。公司更适合作为稳健型配置而非高弹性标的。"</div>
@@ -395,7 +402,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="txt">中国乳制品行业绝对龙头——伊利股份是中国最大的乳制品企业，覆盖液态奶（常温+低温）、奶粉及奶制品、冷饮和奶酪四大品类。公司通过"高端产品引领+全渠道深耕+国际化布局"的三层战略，稳居全球乳业五强。核心品牌矩阵包括金典（高端白奶）、安慕希（常温酸奶）、畅意（功能性乳品）、QQ星（儿童乳品）等。公司已从单一液态奶企业转型为综合性营养食品集团。</div>
 
   <h3>年度财务报表（亿元）</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>年份</th><th>营收</th><th>YoY</th><th>归母净利</th><th>净利率</th><th>毛利率</th></tr>
     <tr><td>2020</td><td>968.9</td><td>+7.4%</td><td>70.8</td><td>7.3%</td><td>36.0%</td></tr>
     <tr><td>2021</td><td>1,101.4</td><td class="green">+13.7%</td><td>87.1</td><td>7.9%</td><td class="green">36.2%</td></tr>
@@ -403,7 +410,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     <tr><td>2023</td><td>1,261.8</td><td>+2.9%</td><td>104.3</td><td>8.3%</td><td>32.6%</td></tr>
     <tr><td>2024</td><td>1,231.5</td><td>-2.4%</td><td>101.2</td><td>8.2%</td><td>33.8%</td></tr>
     <tr><td class="gold">2025</td><td class="gold">1,265.0</td><td class="green">+2.7%</td><td class="gold">104.0</td><td class="gold">8.2%</td><td>35.1%</td></tr>
-  </table>
+  </table></div>
   <div class="desc" style="margin-top:6px;">备注：2023年受原奶价格高企和消费疲软影响，营收增速骤降至2.9%；2024年营收出现-2.4%的下滑，为近年来首次负增长，主要因常温液态奶需求饱和+奶粉业务调整。2025年恢复增长至2.7%，受益于原奶成本改善。2026年Q1营收340亿（+8.5%），净利33亿（+10.2%），开局良好。毛利率中枢约34-35%，净利率约8-9%，在食品饮料行业中处于中等水平，反映了乳制品低毛利率、高周转的生意特征。</div>
 
   <h3>分品类收入结构（2025年）</h3>
@@ -414,23 +421,23 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="hb"><span class="hl">冷饮</span><div class="ht"><div class="hf" style="width:10%;background:linear-gradient(90deg,#9c27b0,#673ab7);"></div></div><span class="hv">≈10% · 130亿</span></div>
   <div class="hb"><span class="hl">奶酪及其他</span><div class="ht"><div class="hf" style="width:8%;background:#555;"></div></div><span class="hv">≈8% · 105亿</span></div>
 
-  <table class="tbl" style="margin-top:10px;">
+  <div class="tbl-wrap"><table class="tbl" style="margin-top:10px;">
     <tr><th>品类</th><th>收入（亿）</th><th>占比</th><th>趋势</th><th>毛利率</th></tr>
     <tr><td>常温液态奶</td><td>约550</td><td>约42%</td><td>→ 成熟稳定</td><td>38-42%</td></tr>
     <tr><td>低温液态奶</td><td>约215</td><td>约16%</td><td class="red">↓ 承压</td><td>35-38%</td></tr>
     <tr><td>奶粉及奶制品</td><td>约290</td><td>约22%</td><td class="green">↑ 增长</td><td>42-48%</td></tr>
     <tr><td>冷饮</td><td>约130</td><td>约10%</td><td class="green">↑ 较快</td><td>40-45%</td></tr>
     <tr><td>奶酪及其他</td><td>约105</td><td>约8%</td><td class="green">↑ 培育</td><td>30-35%</td></tr>
-  </table>
+  </table></div>
 
   <h3>商业模式评估</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>维度</th><th>评估</th><th>证据</th></tr>
     <tr><td>核心定位</td><td class="gold">行业龙头</td><td style="text-align:left;font-size:11px;">中国乳业双寡头之一，全球乳业五强，液态奶市占率约38%</td></tr>
     <tr><td>盈利模式</td><td>品牌溢价+规模效应</td><td style="text-align:left;font-size:11px;">毛利率34-35%、净利率8-9%、ROE约15-20%，中等偏上水平</td></tr>
     <tr><td>增长引擎</td><td class="green">结构升级+品类扩张</td><td style="text-align:left;font-size:11px;">金典、安慕希等高端产品占比从30%提升至50%+；奶粉+冷饮是第二曲线</td></tr>
     <tr><td>现金流模式</td><td class="green">稳定现金牛</td><td style="text-align:left;font-size:11px;">经营现金流约150-170亿，CAPEX约60-80亿，FCF约70-100亿</td></tr>
-  </table>
+  </table></div>
 
   <div class="bq">
     <b>核心结论：</b><br>
@@ -505,13 +512,13 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h2>M3 管理层分析</h2>
 
   <h3>管理层基本信息</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>姓名</th><th>职务</th><th>任职年限</th><th>专业背景</th></tr>
     <tr><td>潘刚</td><td>董事长/总裁</td><td>20年+（2005年起董事长）</td><td>伊利老将，从基层升至最高层，乳业战略家</td></tr>
     <tr><td>王丽</td><td>副总裁/财务负责人</td><td>—</td><td>伊利内部培养的财务管理专家</td></tr>
     <tr><td>邱向敏</td><td>董秘</td><td>—</td><td>—</td></tr>
     <tr><td>赵伟利</td><td>副总裁</td><td>—</td><td>负责液态奶业务线</td></tr>
-  </table>
+  </table></div>
   <div class="txt" style="font-size:12px;">潘刚自2005年执掌伊利以来，公司营收从不足100亿元增长至超过1,300亿元，实现了超过10倍的规模扩张。潘刚被公认为中国乳业最具战略眼光的领导者之一，管理风格强势而稳健，对产品创新和渠道建设投入极为重视。伊利属无实际控制人状态（股权极为分散），董事长潘刚拥有管理层实际控制权。</div>
 
   <h3>管理层能力评估</h3>
@@ -542,17 +549,17 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h2>M4 财务复盘 & 资本配置</h2>
 
   <h3>核心财务指标</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
     <tr><td>营收（亿）</td><td>1,101</td><td>1,227</td><td>1,262</td><td>1,232</td><td class="gold">1,265</td><td class="green">↑ 恢复</td></tr>
     <tr><td>净利（亿）</td><td>87.1</td><td>94.3</td><td>104.3</td><td>101.2</td><td class="gold">104.0</td><td class="green">↑ 缓慢</td></tr>
     <tr><td>毛利率</td><td>36.2%</td><td>35.3%</td><td>32.6%</td><td>33.8%</td><td>35.1%</td><td>→ 企稳</td></tr>
     <tr><td>净利率</td><td>7.9%</td><td>7.7%</td><td>8.3%</td><td>8.2%</td><td>8.2%</td><td>→ 稳定</td></tr>
     <tr><td>ROE</td><td>21.8%</td><td>19.5%</td><td>18.2%</td><td>16.0%</td><td>18.5%</td><td>→ 中等</td></tr>
-  </table>
+  </table></div>
 
   <h3>现金流 & 资产负债</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>指标</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
     <tr><td>经营现金流</td><td>156.4亿</td><td>142.5亿</td><td class="gold">168.0亿</td><td class="green">↑ 良好</td></tr>
     <tr><td>CAPEX</td><td>约75亿</td><td>约68亿</td><td>约72亿</td><td>→ 维持性</td></tr>
@@ -560,24 +567,24 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     <tr><td>FCF/净利</td><td>约78%</td><td>约74%</td><td>约89%</td><td class="green">↑ 提升</td></tr>
     <tr><td>资产负债率</td><td>58.4%</td><td>60.1%</td><td>57.8%</td><td>→ 中等</td></tr>
     <tr><td>有息负债</td><td>约220亿</td><td>约210亿</td><td>约190亿</td><td class="green">↓ 下降</td></tr>
-  </table>
+  </table></div>
 
   <h3>费用率结构</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>费用项</th><th>2025年规模</th><th>趋势</th></tr>
     <tr><td>销售费用</td><td>约200-220亿</td><td>→ 费用率约16-17%，行业正常水平，但仍有压缩空间</td></tr>
     <tr><td>管理费用</td><td>约45-50亿</td><td>→ 费用率约3.5-4%，合理水平</td></tr>
     <tr><td>研发费用</td><td>约8-10亿</td><td class="green">↑ 加大食品科技投入</td></tr>
     <tr><td>财务费用</td><td>约8-10亿</td><td>→ 有息负债约190亿，利息支出正常</td></tr>
-  </table>
+  </table></div>
 
   <h3>杜邦分析</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>年份</th><th>ROE</th><th>净利率</th><th>资产周转率</th><th>权益乘数</th><th>驱动因子</th></tr>
     <tr><td>2023</td><td>18.2%</td><td>8.3%</td><td>1.10×</td><td>2.40×</td><td>⭐ 高周转+杠杆</td></tr>
     <tr><td>2024</td><td>16.0%</td><td>8.2%</td><td>1.05×</td><td>2.50×</td><td>周转率和杠杆</td></tr>
     <tr><td>2025</td><td class="gold">18.5%</td><td>8.2%</td><td>1.12×</td><td>2.37×</td><td>周转率改善</td></tr>
-  </table>
+  </table></div>
 
   <div class="bq">
     <b>核心结论：财务质量评分：7.0/10（良好水平）</b><br>
@@ -592,30 +599,30 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 
   <h3>成本结构</h3>
   <div class="txt">伊利毛利率约34-35%，意味着产品成本占售价的约65%。与原奶这一大宗商品价格高度相关。2024-2025年国内原奶价格持续走低（从4.2元/kg降至约3.4元/kg），有利于降低成本，但也拖累了产品终端价格（终端促销降价）。</div>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>成本项目</th><th>占比</th><th>趋势</th><th>议价能力</th></tr>
     <tr><td>原奶采购</td><td>50-55%</td><td class="red">↓ 价格低位震荡</td><td class="green">较强</td></tr>
     <tr><td>包装材料</td><td>12-15%</td><td>→ 稳定</td><td class="green">强</td></tr>
     <tr><td>人工成本</td><td>8-10%</td><td class="red">↑ 逐年上涨</td><td>中</td></tr>
     <tr><td>运输物流</td><td>8-10%</td><td>→ 稳定</td><td class="green">较强</td></tr>
     <tr><td>折旧及能源</td><td>5-8%</td><td>→ 稳定</td><td>中</td></tr>
-  </table>
+  </table></div>
 
   <h3>产业链议价权</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>维度</th><th>评估</th><th>证据</th></tr>
     <tr><td>对上游议价能力</td><td class="green">强</td><td>全球最大原奶采购企业之一，对合作牧场有极强的议价能力</td></tr>
     <tr><td>对下游议价能力</td><td>中</td><td>对KA渠道/经销商有一定议价权，但受制于蒙牛竞争，终端提价须谨慎</td></tr>
     <tr><td>终端消费者议价力</td><td>弱</td><td>乳制品同质化严重，消费者有较大的品牌选择空间，提价空间有限</td></tr>
-  </table>
+  </table></div>
 
   <h3>原奶价格敏感度</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>原奶价格变化</th><th>毛利率影响</th><th>净利影响</th><th>伊利应对</th></tr>
     <tr><td>上涨10%（+0.35元/kg）</td><td>-2.5 pct</td><td>-10至12亿</td><td>终端提价+产品结构升级对冲</td></tr>
     <tr><td>下跌10%（-0.35元/kg）</td><td>+2.5 pct</td><td>+10至12亿</td><td>毛利率改善，但终端可能降价竞争</td></tr>
     <tr><td>稳定在3.2-3.8元/kg</td><td>→ 平稳</td><td>→ 可预期</td><td>最有利于经营的环境</td></tr>
-  </table>
+  </table></div>
 
   <div class="bq">
     <b>核心结论：</b><br>
@@ -632,23 +639,23 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h2>M6 FCF效率 & 估值</h2>
 
   <h3>FCF质量</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>指标</th><th>2024年</th><th class="gold">2025年</th><th>正常化水平</th></tr>
     <tr><td>经营现金流</td><td>约143亿</td><td class="gold">约168亿</td><td>150-170亿</td></tr>
     <tr><td>CAPEX</td><td>约68亿</td><td>约72亿</td><td>65-80亿</td></tr>
     <tr><td>FCF</td><td>约75亿</td><td class="gold">约96亿</td><td>70-100亿</td></tr>
     <tr><td>FCF/净利润</td><td>约74%</td><td class="green">约89%</td><td>75-95%</td></tr>
-  </table>
+  </table></div>
   <div class="txt">FCF约96亿，FCF/净利润约89%——良好的现金流质量。但CAPEX较高（约72亿，占经营现金流43%），因为乳制品行业需要持续投入牧场、冷链、产能等重资产。</div>
 
   <h3>估值指标</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>指标</th><th>当前值</th><th>历史区间</th><th>评估</th></tr>
     <tr><td>PE(TTM)</td><td class="gold">约13.4倍</td><td>12-35倍</td><td class="green">偏低（近5年低位）</td></tr>
     <tr><td>PE(2026E)</td><td class="gold">约12.0倍</td><td>—</td><td class="green">偏低</td></tr>
     <tr><td>PB</td><td>约2.8倍</td><td>2-7倍</td><td>偏低</td></tr>
     <tr><td>股息率</td><td class="gold">约3.5%</td><td>1.5-3.5%</td><td class="green">历史高位</td></tr>
-  </table>
+  </table></div>
   <div class="txt">当前市值约1,640亿元，PE(TTM)约13.4倍。机构预测2026年归母净利润约115-125亿元，对应PE约13.8倍。PEG约1.7倍（增速约8%）。</div>
 
   <h3>全球消费品龙头 PE 对比</h3>
@@ -674,13 +681,13 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h2>M7 增量市占率 & 行业终局</h2>
 
   <h3>行业空间</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>市场</th><th>规模（2025E）</th><th>增速</th><th>公司收入</th><th>市占率</th></tr>
     <tr><td>乳制品行业</td><td>约5,100亿</td><td>+3-5%</td><td>1,265亿</td><td class="gold">约25.9%</td></tr>
     <tr><td>液态奶</td><td>约2,800亿</td><td>约2%</td><td>约765亿</td><td class="gold">约38%</td></tr>
     <tr><td>婴幼儿奶粉</td><td>约1,000亿</td><td>-5%</td><td>约180亿</td><td>约18%</td></tr>
     <tr><td>冷饮</td><td>约600亿</td><td>约8%</td><td>约130亿</td><td>约22%</td></tr>
-  </table>
+  </table></div>
 
   <div class="mg" style="margin-top:10px;">
     <div class="mi"><div class="mv gold">25.9%</div><div class="ml">乳业整体市占率</div></div>
@@ -690,13 +697,13 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   </div>
 
   <h3>竞争态势</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>竞争对手</th><th>竞争维度</th><th>伊利相对优势</th></tr>
     <tr><td>蒙牛</td><td>液态奶全面竞争</td><td>伊利在常温液态奶领先约5-8个百分点，蒙牛在低温略强</td></tr>
     <tr><td>光明</td><td>低温奶区域竞争</td><td>伊利全国化渠道优势明显，光明仅在华东有优势</td></tr>
     <tr><td>飞鹤</td><td>婴幼儿奶粉</td><td>伊利通过澳优布局+自身品牌扩张，飞鹤在超高端更强</td></tr>
     <tr><td>妙可蓝多</td><td>奶酪</td><td>伊利奶酪起步晚于妙可蓝多，正在快速追赶</td></tr>
-  </table>
+  </table></div>
 
   <h3>行业终局思考</h3>
   <div class="txt">中国乳制品行业已进入成熟期（年增速约3-5%），常温液态奶基本饱和（人均消费量接近发达国家水平），增量主要来自低温奶升级、奶酪、功能性乳品和成人奶粉等细分品类。行业终局大概率维持"伊利+蒙牛双寡头"格局（合计市占率约62%），但两者差距在收窄（2019年伊利领先蒙牛约10个百分点，2025年缩窄至约5个百分点）。</div>
@@ -714,14 +721,14 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h2>M8 三年资本计划 & 催化剂</h2>
 
   <h3>催化剂时间表</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>时间</th><th>事件</th><th>预期影响</th></tr>
     <tr><td>2026H2</td><td>原奶价格企稳回升</td><td class="green">毛利率改善2-3个百分点，净利增厚15-20亿</td></tr>
     <tr><td>2026-2027</td><td>澳优奶粉整合完成</td><td class="green">奶粉收入突破300亿，伊利+澳优市占率提升至20%+</td></tr>
     <tr><td>2027</td><td>奶酪业务放量</td><td class="green">奶酪品类消费升级，预计收入突破150亿</td></tr>
     <tr><td>2027H1</td><td>东南亚/非洲市场扩张</td><td>国际化布局进入收获期，海外收入占比提升至15%</td></tr>
     <tr><td>2028</td><td>功能性乳品（A2/有机）放量</td><td>高端产品占比提升至55%+，净利率有望突破9%</td></tr>
-  </table>
+  </table></div>
 
   <h3>三年业绩预测</h3>
   <div class="scn">
@@ -730,12 +737,12 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     <div class="scc sc3"><h4>😟 悲观</h4><div class="pct">+3% CAGR</div><div class="dt">2028净利117亿</div></div>
   </div>
 
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>情景</th><th>2026E</th><th>2027E</th><th>2028E</th><th>毛利率</th></tr>
     <tr><td class="green">乐观</td><td>净利120亿</td><td>136亿</td><td>152亿</td><td>36→38%</td></tr>
     <tr><td class="gold">基准</td><td>净利116亿</td><td>126亿</td><td>136亿</td><td>→ 35%</td></tr>
     <tr><td class="red">悲观</td><td>净利104亿</td><td>112亿</td><td>117亿</td><td>33→31%</td></tr>
-  </table>
+  </table></div>
 
   <div class="bq">
     <b>核心结论：</b><br>
@@ -749,7 +756,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 <div id="s10" class="card">
   <h2>M9 预期差 & 市场共识</h2>
 
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>议题</th><th>市场共识</th><th>独立判断</th><th>方向</th></tr>
     <tr>
       <td>成长性</td>
@@ -781,7 +788,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
       <td style="color:#f44336;">蒙牛追赶速度超预期，差距在缩小</td>
       <td><span class="tg tgr">负向</span></td>
     </tr>
-  </table>
+  </table></div>
 
   <div class="bq">
     <b>关键解读：</b><br>
@@ -798,23 +805,23 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="desc">假设3年后亏损30%，最可能的原因：</div>
 
   <h3>风险类型</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>风险类型</th><th>描述</th><th>概率</th><th>预警信号</th></tr>
     <tr><td>原奶价格飙升</td><td>原奶价格暴涨30%+，毛利率大幅压缩</td><td><span style="color:#ffc107;">中低</span></td><td>国内原奶价格月环比上涨超5%</td></tr>
     <tr><td>行业价格战</td><td>蒙牛加大促销力度</td><td><span class="orange">中</span></td><td>销售费用率连续2个季度提升</td></tr>
     <tr><td>奶粉业务恶化</td><td>出生率加速下降</td><td><span class="orange">中</span></td><td>新生儿数据低于预期</td></tr>
     <tr><td>食品安全事故</td><td>罕见发生但破坏性极大</td><td><span style="color:#ffc107;">极低</span></td><td>质检报告异常</td></tr>
     <tr><td>管理层变动</td><td>潘刚退休后战略失焦</td><td><span style="color:#ffc107;">中低</span></td><td>核心管理层变动公告</td></tr>
-  </table>
+  </table></div>
 
   <h3>敏感性分析</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>压力情景</th><th>净利影响</th><th>股价压力</th></tr>
     <tr><td>原奶价格上涨20%</td><td>-15%</td><td class="orange">-15%</td></tr>
     <tr><td>行业价格战加剧</td><td>-12%</td><td class="orange">-10%</td></tr>
     <tr><td>出生率再降10%</td><td>-8%</td><td class="orange">-10%</td></tr>
     <tr><td class="red">极端叠加</td><td class="red">-32%</td><td class="red" style="font-weight:bold;">-30%</td></tr>
-  </table>
+  </table></div>
 
   <h3>三情景估值</h3>
   <div class="scn">
@@ -824,7 +831,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   </div>
 
   <h3>避雷清单</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>检查项</th><th>结果</th></tr>
     <tr><td>商誉占净资产>50%？</td><td><span class="tg tgg">否 ✓ 商誉约50亿（澳优收购），占净资产约8%</span></td></tr>
     <tr><td>应收账款增速>收入增速？</td><td><span class="tg tgg">否 ✓ 应收账款周转健康</span></td></tr>
@@ -833,13 +840,13 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     <tr><td>关联交易异常？</td><td><span class="tg tgg">否 ✓ 规范</span></td></tr>
     <tr><td>大股东高比例质押？</td><td><span class="tg tgg">否 ✓ 大股东质押率极低</span></td></tr>
     <tr><td>审计意见非标准？</td><td><span class="tg tgg">否 ✓ 标准无保留意见</span></td></tr>
-  </table>
+  </table></div>
   <div style="padding:10px;background:#1a3a1a;border-radius:8px;text-align:center;margin-top:8px;border:1px solid #2a5a2a;">
     <span style="color:#4caf50;">✅ 财务健康，不存在明显财务造假风险。主要风险在于行业竞争和上游成本波动</span>
   </div>
 
   <h3>清算价值</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>资产项</th><th>账面价值</th><th>清算价值</th></tr>
     <tr><td>货币资金</td><td>约180亿</td><td class="gold">180亿</td></tr>
     <tr><td>应收账款</td><td>约30亿</td><td>20亿</td></tr>
@@ -847,7 +854,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     <tr><td>固定资产</td><td>约350亿</td><td>175亿</td></tr>
     <tr><td>长期投资+商誉</td><td>约200亿</td><td>60亿</td></tr>
     <tr><td class="gold">合计</td><td>约900亿</td><td>约505亿</td></tr>
-  </table>
+  </table></div>
   <div class="txt">清算价值约505亿元，当前市值约1,640亿元。差额约1,135亿体现了伊利品牌价值和持续经营能力。</div>
 </div>
 
@@ -883,7 +890,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   </div>
 
   <h3>价值投资理论应用</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>模块</th><th>大师理念</th><th>应用分析</th></tr>
     <tr><td>M1</td><td>段永平<br>「本分」</td><td style="text-align:left;font-size:11px;">伊利专注乳业三十年，从内蒙回民奶食品厂到全球五强，极致聚焦主业</td></tr>
     <tr><td>M2</td><td>巴菲特<br>「护城河」</td><td style="text-align:left;font-size:11px;">渠道网络是核心护城河（300万+终端），但品牌转换成本低，整体3.5/5.0</td></tr>
@@ -896,7 +903,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     <tr><td>M9</td><td>芒格<br>「逆向思维」</td><td style="text-align:left;font-size:11px;">市场低估了奶粉+奶酪第二曲线的增长潜力</td></tr>
     <tr><td>M10</td><td>芒格<br>「Pre-mortem」</td><td style="text-align:left;font-size:11px;">原奶价格暴涨+价格战是最大风险，但龙头地位提供一定安全垫</td></tr>
     <tr><td>M11</td><td>巴菲特<br>「安全边际」</td><td style="text-align:left;font-size:11px;">PE 15倍处于历史低位，3.5%股息率提供下行保护</td></tr>
-  </table>
+  </table></div>
 </div>
 
 <!-- ========== 附录 ========== -->
@@ -904,14 +911,14 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h2>附录</h2>
   
   <h3>附录A：数据来源</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>数据类型</th><th>来源平台</th><th>截止日期</th></tr>
     <tr><td>财务报表</td><td>东方财富数据中心/恒生聚源数据库</td><td>2025年报</td></tr>
     <tr><td>衍生财务指标</td><td>同花顺iFinD</td><td>2025年报</td></tr>
     <tr><td>估值数据</td><td>东方财富/同花顺</td><td>2026-06-11</td></tr>
     <tr><td>行业归属</td><td>中乳协/Euromonitor</td><td>2025</td></tr>
     <tr><td>机构预测</td><td>中信/华泰/国泰君安等券商研报</td><td>2026-05</td></tr>
-  </table>
+  </table></div>
 
   <div class="txt" style="font-size:11px;">
     <b>数据声明：</b><br>
@@ -938,5 +945,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   伊利股份 · 600887 · 乳制品行业
 </div>
 
+
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 </body>
 </html>
