@@ -200,6 +200,8 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
       var card = document.getElementById('s-mcap');
       if(isLight) card.classList.add('mcap-light');
       else card.classList.remove('mcap-light');
+      var sf=document.getElementById('s-financial');
+      if(sf){ if(isLight) sf.classList.add('fin-light'); else sf.classList.remove('fin-light'); }
       if(chartData.length) render();
     });
     if(document.head) themeWatcher.observe(document.head, {childList:true, subtree:true});
