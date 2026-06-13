@@ -113,7 +113,31 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     历史最高：<span class="mcap-v" id="mcapHigh">--</span> 亿 ·
     历史最低：<span class="mcap-v" id="mcapLow">--</span> 亿
   </div>
-</div>
+<div id="s-financial" class="card" style="overflow-x:auto;margin-top:16px">
+  <h2>历年财务数据</h2>
+  <div class="desc">最近10年财务指标 · <span style="color:#4caf50">绿色=增长&gt;30%</span> · <span style="color:#f0a030">橙色=连续下滑</span> · <span style="color:#e74c3c">红色=负值/下滑&gt;20%</span></div>
+  <style>
+  .fin-table{width:100%;border-collapse:collapse;font-size:11px;min-width:900px}
+  .fin-table th{background:#1e1e3a;color:#f0c040;padding:7px 5px;text-align:center;font-weight:500;white-space:nowrap}
+  .fin-table td{padding:6px 5px;text-align:center;border-bottom:1px solid #1e1e3a;white-space:nowrap}
+  .fin-table tr:hover td{background:#1a1a3a}
+  .fin-table td:first-child{text-align:left;font-weight:500;position:sticky;left:0;background:#0a0a1a;z-index:1;min-width:90px}
+  .fin-table tr:hover td:first-child{background:#1a1a2a}
+  .fin-table td.na{color:#555}
+  .fin-table td.pos{color:#4caf50;font-weight:600}
+  .fin-table td.neg{color:#e74c3c;font-weight:600}
+  .fin-table td.warn{color:#f0a030;font-weight:600}
+  .fin-light .fin-table th{background:#d8d4c8;color:#8b6914}
+  .fin-light .fin-table td{border-bottom-color:#d8d4c8}
+  .fin-light .fin-table tr:hover td{background:#e8e4dc}
+  .fin-light .fin-table td:first-child{background:#f4f1ea}
+  .fin-light .fin-table tr:hover td:first-child{background:#e8e4dc}
+  .fin-light .fin-table td.pos{color:#2e7d32!important}
+  .fin-light .fin-table td.neg{color:#c0392b!important}
+  .fin-light .fin-table td.warn{color:#b8860b!important}
+</style>
+  <table class="fin-table">
+    <thead><tr><th>指标</th><th>2025</th><th>2024</th><th>2023</th><th>2022</th><th>2021</th><th>2020</th><th>2019</th><th>2018</th><th>2017</th><th>2016</th></tr></thead><tbody><tr><td>每股营业收入(元)</td><td class="">4.93</td><td class="">4.60</td><td class="">4.20</td><td class="">4.38</td><td class="">4.27</td><td class="">3.89</td><td class="">3.38</td><td class="">2.91</td><td class="">2.49</td><td class="">2.13</td></tr><tr><td>每股经营现金流(元)</td><td class="">1.32</td><td class="">1.23</td><td class="pos">1.32</td><td class="neg">0.83</td><td class="neg">1.50</td><td class="">2.14</td><td class="">2.43</td><td class="">2.22</td><td class="">1.75</td><td class="">1.51</td></tr><tr><td>每股净利润(元)</td><td class="">1.23</td><td class="">1.14</td><td class="warn">1.01</td><td class="neg">1.11</td><td class="warn">1.44</td><td class="">1.52</td><td class="">1.65</td><td class="">1.62</td><td class="">1.31</td><td class="">1.05</td></tr><tr><td>每股净资产(元)</td><td class="">7.06</td><td class="">5.56</td><td class="">5.13</td><td class="">5.70</td><td class="">5.56</td><td class="">6.19</td><td class="">6.14</td><td class="">5.14</td><td class="">4.35</td><td class="">3.70</td></tr><tr><td>总股本(亿股)</td><td class="">58.52</td><td class="">58.52</td><td class="">58.52</td><td class="">58.52</td><td class="">58.52</td><td class="">58.52</td><td class="">58.52</td><td class="">58.52</td><td class="">58.52</td><td class="">58.52</td></tr><tr><td>市盈率PE</td><td class="pos">29.2</td><td class="">40.2</td><td class="pos">37.5</td><td class="">71.4</td><td class="pos">87.6</td><td class="warn">174.2</td><td class="">111.7</td><td class="">87.6</td><td class="warn">84.7</td><td class="">57.4</td></tr><tr><td>营业收入(亿元)</td><td class="">288.73</td><td class="">269.05</td><td class="">245.59</td><td class="">256.10</td><td class="">250.04</td><td class="">227.92</td><td class="">197.97</td><td class="">170.34</td><td class="">145.84</td><td class="">124.59</td></tr><tr><td>毛利率(%)</td><td class="">40.22</td><td class="">36.97</td><td class="warn">34.74</td><td class="warn">35.68</td><td class="warn">38.66</td><td class="warn">42.17</td><td class="">45.44</td><td class="">46.47</td><td class="">45.69</td><td class="">43.95</td></tr><tr><td>净利润(亿元)</td><td class="">70.38</td><td class="">63.44</td><td class="warn">56.27</td><td class="">61.98</td><td class="">66.71</td><td class="">64.03</td><td class="">53.53</td><td class="">43.65</td><td class="">35.31</td><td class="">28.43</td></tr><tr><td>所得税率(%)</td><td class="">18.03</td><td class="">15.40</td><td class="">16.28</td><td class="">15.77</td><td class="">14.70</td><td class="">16.14</td><td class="">16.01</td><td class="">16.39</td><td class="">16.22</td><td class="">16.71</td></tr><tr><td>净利润率(%)</td><td class="">24.40</td><td class="">23.62</td><td class="warn">22.97</td><td class="warn">24.22</td><td class="">26.68</td><td class="">28.12</td><td class="">27.06</td><td class="">25.63</td><td class="">24.21</td><td class="">22.82</td></tr><tr><td>营运资本(亿元)</td><td class="">281.30</td><td class="">238.47</td><td class="">218.38</td><td class="">202.54</td><td class="">181.02</td><td class="">151.20</td><td class="">122.91</td><td class="pos">96.87</td><td class="pos">72.80</td><td class="">54.25</td></tr><tr><td>长期负债(亿元)</td><td class="">4.91</td><td class="">4.73</td><td class="">4.54</td><td class="">4.55</td><td class="">3.61</td><td class="warn">2.87</td><td class="warn">1.78</td><td class="warn">1.35</td><td class="">0.58</td><td class="">0.46</td></tr><tr><td>ROA(%)</td><td class="">15.14</td><td class="">16.03</td><td class="warn">15.57</td><td class="warn">18.41</td><td class="warn">21.22</td><td class="warn">23.61</td><td class="">23.86</td><td class="">23.94</td><td class="">23.70</td><td class="">22.78</td></tr><tr><td>ROE(%)</td><td class="">19.59</td><td class="">21.77</td><td class="warn">20.72</td><td class="warn">25.52</td><td class="">31.63</td><td class="">36.13</td><td class="">33.69</td><td class="">32.66</td><td class="">31.12</td><td class="">31.65</td></tr></tbody></table></div>
 
 <style>
 .mcap-btns{display:flex;gap:6px;margin:8px 0}
@@ -161,6 +185,8 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 
     if(document.getElementById('hermes-theme-override')){
       document.getElementById('s-mcap').classList.add('mcap-light');
+      var sf=document.getElementById('s-financial');
+      if(sf) sf.classList.add('fin-light');
     }
 
     var themeWatcher = new MutationObserver(function(){
@@ -168,6 +194,8 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
       var card = document.getElementById('s-mcap');
       if(light) card.classList.add('mcap-light');
       else card.classList.remove('mcap-light');
+      var sf=document.getElementById('s-financial');
+      if(sf){ if(light) sf.classList.add('fin-light'); else sf.classList.remove('fin-light'); }
       if(chartData.length) render();
     });
     if(document.head) themeWatcher.observe(document.head, {childList:true, subtree:true});
