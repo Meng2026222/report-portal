@@ -1047,7 +1047,8 @@ a{color:#b8860b!important}\
         ['[style*="background:#1a3a1a"]', 'background:#e8f5e9;border-color:#a5d6a7'],
         ['[style*="color:#888"]', 'color:#808080'],
         ['[style*="color:#555"]', 'color:#a0a0a0'],
-      ];
+      
+  {id:'601857',name:'中国石油',nameEn:'PetroChina',score:6.5,scoreMax:10,color:'#ffc107',heat:6,industry:'能源 · 石油天然气',desc:'全球能源巨头，中国最大油气生产商，天然气增长+高分红+估值修复。',tags:['能源龙头','央企','高分红'],metrics:{营收:'2.86万亿',净利:'1,573亿',毛利率:'21.6%',PE:'10x',ROE:'10.1%',分红率:'50%'},file:'601857.html'},];
       fixes.forEach(([sel, replace]) => {
         idoc.querySelectorAll(sel).forEach(el => {
           const s = el.getAttribute('style');
