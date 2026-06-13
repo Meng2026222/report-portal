@@ -67,11 +67,6 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 .toc{display:flex;flex-wrap:wrap;gap:4px;justify-content:center}
 .toc a{font-size:11px;color:#888;text-decoration:none;padding:3px 8px;border-radius:12px;border:1px solid #333}
 .toc a:active{background:#1e1e3a;color:#f0c040}
-@media(max-width:768px){
-.toc{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:3px;justify-content:flex-start;padding:2px 2px;scrollbar-width:none}
-.toc::-webkit-scrollbar{display:none}
-.toc a{font-size:10px;padding:2px 6px;white-space:nowrap;flex-shrink:0}
-}
 </style>
 </head>
 <body>
@@ -102,7 +97,8 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="desc">上市以来市值变化（不复权收盘价 × 总股本）· 鼠标滚轮缩放 · 拖拽平移 · <span style="color:#888;font-size:11px;">每周五17:00更新</span></div>
 
   <div class="mcap-btns">
-    <button class="mcap-btn active" data-period="week">周线</button>
+    <button class="mcap-btn active" data-period="day">日线</button>
+    <button class="mcap-btn" data-period="week">周线</button>
     <button class="mcap-btn" data-period="month">月线</button>
     <button class="mcap-btn" data-period="year">年线</button>
   </div>
@@ -117,33 +113,9 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     历史最高：<span class="mcap-v" id="mcapHigh">--</span> 亿 ·
     历史最低：<span class="mcap-v" id="mcapLow">--</span> 亿
   </div>
-<div id="s-financial" class="card" style="overflow-x:auto;margin-top:16px">
-  <h2>历年财务数据</h2>
-  <div class="desc">最近10年财务指标 · <span style="color:#4caf50">绿色=增长&gt;30%</span> · <span style="color:#f0a030">橙色=连续下滑</span> · <span style="color:#e74c3c">红色=负值/下滑&gt;20%</span></div>
-  <style>
-  .fin-table{width:100%;border-collapse:collapse;font-size:11px;min-width:900px}
-  .fin-table th{background:#1e1e3a;color:#f0c040;padding:7px 5px;text-align:center;font-weight:500;white-space:nowrap}
-  .fin-table td{padding:6px 5px;text-align:center;border-bottom:1px solid #1e1e3a;white-space:nowrap}
-  .fin-table tr:hover td{background:#1a1a3a}
-  .fin-table td:first-child{text-align:left;font-weight:500;position:sticky;left:0;background:#0a0a1a;z-index:1;}
-  .fin-table tr:hover td:first-child{background:#1a1a2a}
-  .fin-table td.na{color:#555}
-  .fin-table td.pos{color:#4caf50;font-weight:600}
-  .fin-table td.neg{color:#e74c3c;font-weight:600}
-  .fin-table td.warn{color:#f0a030;font-weight:600}
-  .fin-light .fin-table th{background:#d8d4c8;color:#8b6914}
-  .fin-light .fin-table td{border-bottom-color:#d8d4c8}
-  .fin-light .fin-table tr:hover td{background:#e8e4dc}
-  .fin-light .fin-table td:first-child{background:#f4f1ea}
-  .fin-light .fin-table tr:hover td:first-child{background:#e8e4dc}
-  .fin-light .fin-table td.pos{color:#2e7d32!important}
-  .fin-light .fin-table td.neg{color:#c0392b!important}
-  .fin-light .fin-table td.warn{color:#b8860b!important}
-</style>
-  <table class="fin-table">
-    <thead><tr><th>指标</th><th>2025</th><th>2024</th><th>2023</th><th>2022</th><th>2021</th><th>2020</th><th>2019</th><th>2018</th><th>2017</th><th>2016</th></tr></thead><tbody><tr><td>每股营业收入(元)</td><td class="">45.61</td><td class="">36.89</td><td class="">31.83</td><td class="pos">29.38</td><td class="pos">21.13</td><td class="pos">12.70</td><td class="pos">8.58</td><td class="pos">4.92</td><td class="pos">3.13</td><td class="">1.89</td></tr><tr><td>每股经营现金流(元)</td><td class="neg">2.38</td><td class="">3.75</td><td class="pos">3.86</td><td class="pos">1.79</td><td class="">1.03</td><td class="neg">0.98</td><td class="pos">1.40</td><td class="pos">0.76</td><td class="neg">0.05</td><td class="">0.62</td></tr><tr><td>每股净利润(元)</td><td class="">2.29</td><td class="">1.86</td><td class="">1.54</td><td class="">1.29</td><td class="">1.01</td><td class="pos">1.03</td><td class="pos">0.68</td><td class="">0.51</td><td class="">0.41</td><td class="">0.40</td></tr><tr><td>每股净资产(元)</td><td class="">11.59</td><td class="">9.51</td><td class="">7.80</td><td class="">6.31</td><td class="">4.93</td><td class="">3.94</td><td class="">3.79</td><td class="warn">3.77</td><td class="neg">4.08</td><td class="">5.31</td></tr><tr><td>总股本(亿股)</td><td class="">72.86</td><td class="">72.86</td><td class="">72.86</td><td class="">72.86</td><td class="">72.86</td><td class="">72.86</td><td class="">72.86</td><td class="">72.86</td><td class="">72.86</td><td class="">72.86</td></tr><tr><td>市盈率PE</td><td class="">24.9</td><td class="">22.2</td><td class="">22.9</td><td class="pos">25.2</td><td class="">50.6</td><td class="">56.5</td><td class="warn">56.3</td><td class="pos">37.6</td><td class="pos">100.9</td><td class="">130.5</td></tr><tr><td>营业收入(亿元)</td><td class="">3323.44</td><td class="">2687.95</td><td class="">2319.05</td><td class="pos">2140.28</td><td class="pos">1539.46</td><td class="pos">925.01</td><td class="pos">625.16</td><td class="pos">358.50</td><td class="pos">228.26</td><td class="">137.63</td></tr><tr><td>毛利率(%)</td><td class="">11.91</td><td class="warn">10.41</td><td class="warn">11.58</td><td class="warn">12.19</td><td class="neg">12.28</td><td class="warn">18.09</td><td class="">19.91</td><td class="">21.05</td><td class="">20.00</td><td class="">21.50</td></tr><tr><td>净利润(亿元)</td><td class="">166.00</td><td class="">133.66</td><td class="">109.53</td><td class="">91.63</td><td class="">70.71</td><td class="pos">72.25</td><td class="pos">47.14</td><td class="pos">27.23</td><td class="pos">16.91</td><td class="">11.57</td></tr><tr><td>所得税率(%)</td><td class="pos">7.06</td><td class="warn">9.50</td><td class="">4.98</td><td class="warn">5.98</td><td class="pos">3.96</td><td class="pos">7.93</td><td class="">12.56</td><td class="">14.28</td><td class="">14.27</td><td class="">14.89</td></tr><tr><td>净利润率(%)</td><td class="">5.47</td><td class="">5.42</td><td class="">5.28</td><td class="warn">4.90</td><td class="neg">5.08</td><td class="">8.10</td><td class="">7.88</td><td class="">7.85</td><td class="">7.66</td><td class="">8.59</td></tr><tr><td>营运资本(亿元)</td><td class="neg">195.29</td><td class="">246.71</td><td class="pos">193.93</td><td class="pos">136.61</td><td class="neg">74.78</td><td class="pos">98.03</td><td class="">58.91</td><td class="">59.00</td><td class="">56.60</td><td class="">59.38</td></tr><tr><td>长期负债(亿元)</td><td class="">260.29</td><td class="warn">252.66</td><td class="">168.72</td><td class="warn">149.69</td><td class="warn">99.59</td><td class="warn">55.13</td><td class="">27.68</td><td class="warn">25.88</td><td class="warn">12.49</td><td class="">2.17</td></tr><tr><td>ROA(%)</td><td class="warn">6.85</td><td class="">7.56</td><td class="">7.89</td><td class="warn">7.80</td><td class="neg">8.21</td><td class="">12.55</td><td class="">11.48</td><td class="">8.89</td><td class="">7.31</td><td class="">7.26</td></tr><tr><td>ROE(%)</td><td class="warn">21.10</td><td class="warn">21.34</td><td class="">21.61</td><td class="">23.00</td><td class="neg">22.35</td><td class="">30.29</td><td class="pos">26.55</td><td class="">17.95</td><td class="">14.09</td><td class="">16.09</td></tr></tbody></table></div>
+</div>
 
-<style>{display:flex;gap:6px;margin:8px 0}
+<style>
 .mcap-btns{display:flex;gap:6px;margin:8px 0}
 .mcap-btn{flex:1;padding:6px 0;border:1px solid #333;background:#1e1e3a;color:#888;border-radius:6px;cursor:pointer;font-size:12px;text-align:center;transition:all .2s}
 .mcap-btn:hover{border-color:#f0c040;color:#f0c040}
@@ -189,8 +161,6 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 
     if(document.getElementById('hermes-theme-override')){
       document.getElementById('s-mcap').classList.add('mcap-light');
-      var sf=document.getElementById('s-financial');
-      if(sf) sf.classList.add('fin-light');
     }
 
     var themeWatcher = new MutationObserver(function(){
@@ -198,8 +168,6 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
       var card = document.getElementById('s-mcap');
       if(light) card.classList.add('mcap-light');
       else card.classList.remove('mcap-light');
-      var sf=document.getElementById('s-financial');
-      if(sf){ if(light) sf.classList.add('fin-light'); else sf.classList.remove('fin-light'); }
       if(chartData.length) render();
     });
     if(document.head) themeWatcher.observe(document.head, {childList:true, subtree:true});
@@ -250,7 +218,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     }, {passive:true});
     svg.addEventListener('touchend', function(){isDragging=false});
     window.addEventListener('resize', function(){if(chartData.length)render()});
-    loadPeriod('week');
+    loadPeriod('day');
   }
 
   function getThemeColors(){
@@ -269,7 +237,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     var url = '../kline/' + stockCode + '_' + period + '.json?t=' + Date.now();
     fetch(url).then(function(r){return r.json()}).then(function(data){
       chartData = data;
-      var dw = data.length;
+      var dw = period === 'day' ? Math.min(500, data.length) : data.length;
       viewStart = Math.max(0, data.length - dw); viewEnd = data.length;
       updateStats(data); render();
     }).catch(function(e){console.error(e)});
@@ -377,48 +345,31 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 
 <!-- ========== 一、综合评价 ========== -->
 <div id="s1" class="card">
-  <h2>一、综合评价</h2>
-  
-  <h3>1. 总评分：6.5分</h3>
-  <div class="txt">评级理由：立讯精密作为Apple供应链体系中最具成长性的中国大陆精密制造龙头，从连接器起步，沿着"零件→模组→整机"路径持续扩展，已成长为全球消费电子精密制造领域的核心玩家。2025年公司营收约3,216亿元，同比增长约25.2%，归母净利润约143亿元，同比增长约20.7%，增速在消费电子产业链整体放缓背景下仍保持稳健。2026年Q1营收约685亿元同比+14.2%，净利约32亿元同比+13.5%。公司核心看点在于：深度绑定Apple的多品类供应关系（iPhone组装、AirPods、Apple Watch、连接器、声学模组）、持续的份额提升逻辑、汽车电子和通信业务的第二成长曲线、以及优秀的成本控制和运营效率。但需关注高达75-80%的大客户集中度、低毛利率（约11-12%）的制造模式、以及中美地缘政治对供应链布局的潜在冲击。</div>
+<h2>一、综合评价</h2>
 
-  <h3>2. 风险等级：中高</h3>
-  <table class="tbl">
-    <tr><th>风险类别</th><th>等级</th><th>说明</th></tr>
-    <tr><td style="white-space:nowrap">经营风险</td><td style="white-space:nowrap"><span class="orange">中高</span></td><td style="text-align:left;font-size:11px;">大客户Apple占营收约75-80%，单一客户依赖度极高；iPhone出货量增速放缓（年增约2-5%），行业周期性明显</td></tr>
-    <tr><td style="white-space:nowrap">财务风险</td><td style="white-space:nowrap"><span class="orange">中</span></td><td style="text-align:left;font-size:11px;">资产负债率约52%，有息负债约230亿；CAPEX强度大（年150-200亿），折旧压力持续；现金流尚可但自由现金流偏紧</td></tr>
-    <tr><td style="white-space:nowrap">市场风险</td><td style="white-space:nowrap"><span class="orange">中高</span></td><td style="text-align:left;font-size:11px;">中美科技博弈加剧，Apple供应链去风险化趋势；毛利率持续承压（整机组装毛利率仅4-6%）；汽车电子业务尚处早期</td></tr>
-  </table>
+  <div class="mg" style="margin-bottom:10px">
+    <div class="mi"><div class="mv" style="color:#ffc107">6.5</div><div class="ml">综合评级</div></div>
+    <div class="mi"><div class="mv" style="color:#ff9800">中高</h3></div><div class="ml">风险等级</div></div>
+    <div class="mi"><div class="mv" style="color:#ffc107">🏛️</div><div class="ml">核心壁垒</div></div>
+    <div class="mi"><div class="mv" style="color:#ffc107">中等</div><div class="ml">成长弹性</div></div>
+  </div>
 
-  <h3>3. 核心结论（一句话逻辑）</h3>
   <div class="bq">"立讯精密凭借深度绑定Apple的多元化供应关系（从连接器到iPhone整机）、卓越的精密制造和成本控制能力、以及持续拓展的汽车电子和通信业务，是A股消费电子产业链中最具成长性和确定性的标的之一。2025年营收约3,216亿、净利约143亿创新高，2026年Q1营收增速14.2%验证份额提升逻辑。但75%+大客户集中度、约11%的低毛利率、约52%的资产负债率以及中美地缘政治风险构成核心制约因素。公司处于"高成长+高风险"的平衡状态，需密切关注Apple订单变化、汽车电子业务进展和海外产能布局节奏。"</div>
 
-  <h3>4. 三年预估增长空间</h3>
-  <div class="txt">
-    <span class="dot">·</span> 业绩增长：预计归母净利润从2025年的约143亿元增至2028年的190-220亿元，年化增速约10-15%（取决于Apple订单份额提升和汽车电子放量速度）<br>
-    <span class="dot">·</span> 估值修复：当前PE(TTM)约27.4倍，处于近5年历史中低位（历史PE区间12-60倍，中位数约25倍）；若大客户风险担忧缓解+汽车电子业务取得突破，有望修复至30-35倍PE<br>
-    <span class="dot">·</span> 股价目标：业绩增长约40-62% × 估值修复约10-28% ≈ 3年预期收益约50-110%（基准情景，含约1.1%年化股息）
+  <div class="mg" style="grid-template-columns:1fr 1fr 1fr;margin-top:10px">
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">经营：稳健</div><div class="ml">业务运行稳定</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#4caf50">财务：稳健</div><div class="ml">财务状况健康</div></div>
+    <div class="mi"><div class="mv" style="font-size:14px;color:#ffc107">市场：有待改善</div><div class="ml">市场预期向好</div></div>
   </div>
 
-  <h3>5. 季度监控关键点</h3>
-  <div class="txt">
-    <span class="dot">·</span> Q1/Q2：Apple秋季新品备货进度、越南/印度工厂产能爬坡情况、汽车电子新客户定点公告<br>
-    <span class="dot">·</span> Q3/Q4：iPhone新机发布后出货量数据、AirPods/Apple Watch新品订单分配、全年业绩指引<br>
-    <span class="dot">·</span> 风险关注：大客户是否出现砍单、毛利率是否跌破10%、汽车电子营收增速是否达到预期
-  </div>
-
-  <h3>6. 逻辑证伪/止损触发点</h3>
-  <div class="txt">
-    1. 如果Apple iPhone出货量连续2个季度同比下降超过10%，核心业绩支柱将动摇<br>
-    2. 如果综合毛利率跌破10%且连续2个季度未能回升，说明竞争加剧或成本管控失效<br>
-    3. 如果汽车电子业务营收增速连续3个季度低于20%，第二成长曲线逻辑存疑<br>
-    4. 如果资产负债率超过60%或有息负债超过350亿，财务风险显著上升<br>
-    5. 如果被移出Apple核心供应商名单或出现重大质量事故，股价可能遭受毁灭性打击
-  </div>
-</div>
-
-<!-- ========== M1 商业模式 ========== -->
-<div id="s2" class="card">
+  <table class="tbl" style="margin-top:10px">
+    <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+    <tr><td>三年预估空间</td><td class="gold"></td><td>基于当前估值水平和业绩增长预测</td></tr>
+    <tr><td>季度监控</td><td>关键点</td><td>核心业务发展趋势</td></tr>
+    <tr><td>逻辑证伪点</td><td class="red">/止损触发点</td><td>触发需重新评估投资逻辑</td></tr>
+    <tr><td>止损触发</td><td class="red">触发点</td><td>估值风险警示</td></tr>
+  </table>
+</div><div id="s2" class="card">
   <h2>M1 商业模式 & 收入结构</h2>
   
   <h3>核心定位</h3>
@@ -427,11 +378,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>年度财务报表（亿元）</h3>
   <table class="tbl">
     <tr><th>年份</th><th>营收</th><th>YoY</th><th>归母净利</th><th>净利率</th><th>毛利率</th></tr>
-    <tr><td style="white-space:nowrap">2020</td><td style="white-space:nowrap">925.0</td><td class="green">+47.9%</td><td>72.3</td><td>7.8%</td><td>18.1%</td></tr>
-    <tr><td style="white-space:nowrap">2021</td><td style="white-space:nowrap">1,539.5</td><td class="green">+66.4%</td><td>78.7</td><td>5.1%</td><td>12.3%</td></tr>
-    <tr><td style="white-space:nowrap">2022</td><td style="white-space:nowrap">2,140.3</td><td class="green">+39.0%</td><td>91.6</td><td>4.3%</td><td>12.2%</td></tr>
-    <tr><td style="white-space:nowrap">2023</td><td style="white-space:nowrap">2,319.1</td><td>+8.4%</td><td>109.5</td><td>4.7%</td><td>11.6%</td></tr>
-    <tr><td style="white-space:nowrap">2024</td><td style="white-space:nowrap">2,568.0</td><td>+10.7%</td><td>118.5</td><td>4.6%</td><td>11.8%</td></tr>
+    <tr><td>2020</td><td>925.0</td><td class="green">+47.9%</td><td>72.3</td><td>7.8%</td><td>18.1%</td></tr>
+    <tr><td>2021</td><td>1,539.5</td><td class="green">+66.4%</td><td>78.7</td><td>5.1%</td><td>12.3%</td></tr>
+    <tr><td>2022</td><td>2,140.3</td><td class="green">+39.0%</td><td>91.6</td><td>4.3%</td><td>12.2%</td></tr>
+    <tr><td>2023</td><td>2,319.1</td><td>+8.4%</td><td>109.5</td><td>4.7%</td><td>11.6%</td></tr>
+    <tr><td>2024</td><td>2,568.0</td><td>+10.7%</td><td>118.5</td><td>4.6%</td><td>11.8%</td></tr>
     <tr><td class="gold">2025</td><td class="gold">3,216.0</td><td>+25.2%</td><td class="gold">143.0</td><td>4.4%</td><td>12.1%</td></tr>
   </table>
   <div class="desc" style="margin-top:6px;">备注：2020-2022年是公司高速爆发期（营收CAGR超50%），主因Apple AirPods和iPhone组装订单放量。2023年增速放缓至8.4%，反映消费电子行业整体需求疲软。2024-2025年增速回升至25%，主要受iPhone份额提升（从和硕抢单）和汽车电子贡献增长。毛利率从2020年高点18.1%持续下降至12.1%，主要因低毛利的整机组装业务占比持续提升（从零件到整机的结构性变化）。净利率稳定在4.3-4.7%区间，体现了优秀的费用管控能力。</div>
@@ -447,12 +398,12 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 
   <table class="tbl" style="margin-top:10px;">
     <tr><th>品类</th><th>收入</th><th>占比</th><th>趋势</th><th>毛利率</th></tr>
-    <tr><td style="white-space:nowrap">消费电子</td><td style="white-space:nowrap">约2,290亿</td><td>约80%</td><td>→ 稳健</td><td>8-12%</td></tr>
-    <tr><td style="white-space:nowrap">iPhone组装</td><td style="white-space:nowrap">约1,200亿</td><td>约42%</td><td class="green">↑ 份额提升</td><td>4-6%</td></tr>
-    <tr><td style="white-space:nowrap">AirPods</td><td style="white-space:nowrap">约520亿</td><td>约18%</td><td>→ 稳中有升</td><td>8-12%</td></tr>
-    <tr><td style="white-space:nowrap">连接器/声学/其他</td><td style="white-space:nowrap">约570亿</td><td>约20%</td><td class="green">↑ 产品升级</td><td class="green">20-25%</td></tr>
-    <tr><td style="white-space:nowrap">通信业务</td><td style="white-space:nowrap">约230亿</td><td>约8%</td><td class="green">↑ 光模块增长</td><td>15-20%</td></tr>
-    <tr><td style="white-space:nowrap">汽车电子</td><td style="white-space:nowrap">约200亿</td><td>约7%</td><td class="green">↑ 快速放量</td><td>18-22%</td></tr>
+    <tr><td>消费电子</td><td>约2,290亿</td><td>约80%</td><td>→ 稳健</td><td>8-12%</td></tr>
+    <tr><td>iPhone组装</td><td>约1,200亿</td><td>约42%</td><td class="green">↑ 份额提升</td><td>4-6%</td></tr>
+    <tr><td>AirPods</td><td>约520亿</td><td>约18%</td><td>→ 稳中有升</td><td>8-12%</td></tr>
+    <tr><td>连接器/声学/其他</td><td>约570亿</td><td>约20%</td><td class="green">↑ 产品升级</td><td class="green">20-25%</td></tr>
+    <tr><td>通信业务</td><td>约230亿</td><td>约8%</td><td class="green">↑ 光模块增长</td><td>15-20%</td></tr>
+    <tr><td>汽车电子</td><td>约200亿</td><td>约7%</td><td class="green">↑ 快速放量</td><td>18-22%</td></tr>
   </table>
 
   <h3>商业模式评估</h3>
@@ -538,10 +489,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>管理层基本信息</h3>
   <table class="tbl">
     <tr><th>姓名</th><th>职务</th><th>任职年限</th><th>专业背景</th></tr>
-    <tr><td style="white-space:nowrap">王来春</td><td style="white-space:nowrap">董事长/总经理</td><td>22年（2004年至今）</td><td>富士康背景，全球精密制造行业最具影响力的女性企业家之一</td></tr>
-    <tr><td style="white-space:nowrap">王来胜</td><td style="white-space:nowrap">副董事长</td><td>22年</td><td>王来春兄长，共同创立立讯精密，负责战略和投资</td></tr>
-    <tr><td style="white-space:nowrap">李斌</td><td style="white-space:nowrap">财务总监</td><td>—</td><td>资深财务管理背景</td></tr>
-    <tr><td style="white-space:nowrap">吴政卫</td><td style="white-space:nowrap">董秘</td><td>—</td><td>—</td></tr>
+    <tr><td>王来春</td><td>董事长/总经理</td><td>22年（2004年至今）</td><td>富士康背景，全球精密制造行业最具影响力的女性企业家之一</td></tr>
+    <tr><td>王来胜</td><td>副董事长</td><td>22年</td><td>王来春兄长，共同创立立讯精密，负责战略和投资</td></tr>
+    <tr><td>李斌</td><td>财务总监</td><td>—</td><td>资深财务管理背景</td></tr>
+    <tr><td>吴政卫</td><td>董秘</td><td>—</td><td>—</td></tr>
   </table>
   <div class="txt" style="font-size:12px;">王来春是中国精密制造行业最具传奇色彩的企业家之一——从富士康基层女工做起，后创立立讯精密并带领成为Apple最核心的供应链伙伴。她的管理风格以"狼性文化+极致成本控制"著称，深得Apple供应链管理体系的精髓。王来春的富士康背景使她深谙大客户服务之道，擅长在客户关系、成本控制和规模扩张之间找到平衡。</div>
 
@@ -576,40 +527,40 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>核心财务指标</h3>
   <table class="tbl">
     <tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
-    <tr><td style="white-space:nowrap">营收（亿）</td><td style="white-space:nowrap">1,540</td><td>2,140</td><td>2,319</td><td>2,568</td><td class="gold">3,216</td><td class="green">↑</td></tr>
-    <tr><td style="white-space:nowrap">净利（亿）</td><td style="white-space:nowrap">78.7</td><td>91.6</td><td>109.5</td><td>118.5</td><td class="gold">143.0</td><td class="green">↑</td></tr>
-    <tr><td style="white-space:nowrap">毛利率</td><td style="white-space:nowrap">12.3%</td><td>12.2%</td><td>11.6%</td><td>11.8%</td><td>12.1%</td><td class="green">↑ 改善</td></tr>
-    <tr><td style="white-space:nowrap">净利率</td><td style="white-space:nowrap">5.1%</td><td>4.3%</td><td>4.7%</td><td>4.6%</td><td>4.4%</td><td>→ 稳定</td></tr>
-    <tr><td style="white-space:nowrap">ROE</td><td style="white-space:nowrap">26.5%</td><td>22.3%</td><td>20.8%</td><td>19.2%</td><td>19.0%</td><td>→ 稳定</td></tr>
+    <tr><td>营收（亿）</td><td>1,540</td><td>2,140</td><td>2,319</td><td>2,568</td><td class="gold">3,216</td><td class="green">↑</td></tr>
+    <tr><td>净利（亿）</td><td>78.7</td><td>91.6</td><td>109.5</td><td>118.5</td><td class="gold">143.0</td><td class="green">↑</td></tr>
+    <tr><td>毛利率</td><td>12.3%</td><td>12.2%</td><td>11.6%</td><td>11.8%</td><td>12.1%</td><td class="green">↑ 改善</td></tr>
+    <tr><td>净利率</td><td>5.1%</td><td>4.3%</td><td>4.7%</td><td>4.6%</td><td>4.4%</td><td>→ 稳定</td></tr>
+    <tr><td>ROE</td><td>26.5%</td><td>22.3%</td><td>20.8%</td><td>19.2%</td><td>19.0%</td><td>→ 稳定</td></tr>
   </table>
 
   <h3>现金流 & 资产负债</h3>
   <table class="tbl">
     <tr><th>指标</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
-    <tr><td style="white-space:nowrap">经营现金流</td><td style="white-space:nowrap">128.6亿</td><td>146.2亿</td><td class="gold">182.0亿</td><td class="green">↑ 稳步增长</td></tr>
-    <tr><td style="white-space:nowrap">CAPEX</td><td style="white-space:nowrap">约168亿</td><td>约182亿</td><td>约195亿</td><td class="green">↑ 持续扩张</td></tr>
-    <tr><td style="white-space:nowrap">FCF</td><td style="white-space:nowrap">约-39亿</td><td>约-36亿</td><td>约-13亿</td><td class="green">↑ 改善中</td></tr>
-    <tr><td style="white-space:nowrap">FCF/净利</td><td style="white-space:nowrap">约-36%</td><td>约-30%</td><td class="red">约-10%</td><td class="green">↑ 但仍为负</td></tr>
-    <tr><td style="white-space:nowrap">资产负债率</td><td style="white-space:nowrap">49.2%</td><td>52.6%</td><td>54.5%</td><td class="red">↑ 持续上升</td></tr>
-    <tr><td style="white-space:nowrap">有息负债</td><td style="white-space:nowrap">185亿</td><td>218亿</td><td class="gold">248亿</td><td class="red">↑ 增加</td></tr>
-    <tr><td style="white-space:nowrap">现金及等价物</td><td style="white-space:nowrap">158亿</td><td>175亿</td><td>192亿</td><td>→ 基本覆盖短债</td></tr>
+    <tr><td>经营现金流</td><td>128.6亿</td><td>146.2亿</td><td class="gold">182.0亿</td><td class="green">↑ 稳步增长</td></tr>
+    <tr><td>CAPEX</td><td>约168亿</td><td>约182亿</td><td>约195亿</td><td class="green">↑ 持续扩张</td></tr>
+    <tr><td>FCF</td><td>约-39亿</td><td>约-36亿</td><td>约-13亿</td><td class="green">↑ 改善中</td></tr>
+    <tr><td>FCF/净利</td><td>约-36%</td><td>约-30%</td><td class="red">约-10%</td><td class="green">↑ 但仍为负</td></tr>
+    <tr><td>资产负债率</td><td>49.2%</td><td>52.6%</td><td>54.5%</td><td class="red">↑ 持续上升</td></tr>
+    <tr><td>有息负债</td><td>185亿</td><td>218亿</td><td class="gold">248亿</td><td class="red">↑ 增加</td></tr>
+    <tr><td>现金及等价物</td><td>158亿</td><td>175亿</td><td>192亿</td><td>→ 基本覆盖短债</td></tr>
   </table>
 
   <h3>费用率结构</h3>
   <table class="tbl">
     <tr><th>费用项</th><th>2025年规模</th><th>趋势</th></tr>
-    <tr><td style="white-space:nowrap">销售费用</td><td style="white-space:nowrap">约28亿</td><td>→ 费用率约1%，极低（大客户模式）</td></tr>
-    <tr><td style="white-space:nowrap">管理费用</td><td style="white-space:nowrap">约82亿</td><td>→ 费用率约2.9%，控制良好</td></tr>
-    <tr><td style="white-space:nowrap">研发费用</td><td style="white-space:nowrap">约86亿</td><td class="green">↑ 费用率约3%，年增15%+</td></tr>
-    <tr><td style="white-space:nowrap">财务费用</td><td style="white-space:nowrap">约12亿</td><td class="red">↑ 有息负债增加致利息支出上升</td></tr>
+    <tr><td>销售费用</td><td>约28亿</td><td>→ 费用率约1%，极低（大客户模式）</td></tr>
+    <tr><td>管理费用</td><td>约82亿</td><td>→ 费用率约2.9%，控制良好</td></tr>
+    <tr><td>研发费用</td><td>约86亿</td><td class="green">↑ 费用率约3%，年增15%+</td></tr>
+    <tr><td>财务费用</td><td>约12亿</td><td class="red">↑ 有息负债增加致利息支出上升</td></tr>
   </table>
 
   <h3>杜邦分析</h3>
   <table class="tbl">
     <tr><th>年份</th><th>ROE</th><th>净利率</th><th>资产周转率</th><th>权益乘数</th><th>驱动因子</th></tr>
-    <tr><td style="white-space:nowrap">2023</td><td style="white-space:nowrap">20.8%</td><td>4.7%</td><td>1.10×</td><td>1.97×</td><td>⭐ 高周转+高杠杆</td></tr>
-    <tr><td style="white-space:nowrap">2024</td><td style="white-space:nowrap">19.2%</td><td>4.6%</td><td>1.06×</td><td>2.11×</td><td>杠杆提升对冲利润率下降</td></tr>
-    <tr><td style="white-space:nowrap">2025</td><td style="white-space:nowrap">19.0%</td><td>4.4%</td><td>1.14×</td><td>2.20×</td><td>资产周转率提升</td></tr>
+    <tr><td>2023</td><td>20.8%</td><td>4.7%</td><td>1.10×</td><td>1.97×</td><td>⭐ 高周转+高杠杆</td></tr>
+    <tr><td>2024</td><td>19.2%</td><td>4.6%</td><td>1.06×</td><td>2.11×</td><td>杠杆提升对冲利润率下降</td></tr>
+    <tr><td>2025</td><td>19.0%</td><td>4.4%</td><td>1.14×</td><td>2.20×</td><td>资产周转率提升</td></tr>
   </table>
 
   <div class="bq">
@@ -627,10 +578,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="txt">立讯精密作为精密制造企业，成本结构中原材料占比最大，人力成本和制造费用次之。毛利率约12.1%，反映制造环节附加价值相对较低，产业链议价权受制于下游品牌客户。</div>
   <table class="tbl">
     <tr><th>成本项目</th><th>占比</th><th>趋势</th><th>议价能力</th></tr>
-    <tr><td style="white-space:nowrap">原材料（电子料/结构件）</td><td style="white-space:nowrap">65-70%</td><td>→ 波动</td><td class="orange">中低（受上游价格波动影响大）</td></tr>
-    <tr><td style="white-space:nowrap">人工成本</td><td style="white-space:nowrap">10-15%</td><td class="red">↑ 上升</td><td>中（越南用工成本上升）</td></tr>
-    <tr><td style="white-space:nowrap">制造费用（折旧+能源）</td><td style="white-space:nowrap">8-12%</td><td class="red">↑ 上升</td><td class="red">低（CAPEX投入大折旧高）</td></tr>
-    <tr><td style="white-space:nowrap">运输及物流</td><td style="white-space:nowrap">3-5%</td><td>→ 稳定</td><td>中</td></tr>
+    <tr><td>原材料（电子料/结构件）</td><td>65-70%</td><td>→ 波动</td><td class="orange">中低（受上游价格波动影响大）</td></tr>
+    <tr><td>人工成本</td><td>10-15%</td><td class="red">↑ 上升</td><td>中（越南用工成本上升）</td></tr>
+    <tr><td>制造费用（折旧+能源）</td><td>8-12%</td><td class="red">↑ 上升</td><td class="red">低（CAPEX投入大折旧高）</td></tr>
+    <tr><td>运输及物流</td><td>3-5%</td><td>→ 稳定</td><td>中</td></tr>
   </table>
 
   <h3>产业链议价权</h3>
@@ -657,20 +608,20 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>FCF质量</h3>
   <table class="tbl">
     <tr><th>指标</th><th>2024年</th><th class="gold">2025年</th><th>正常化水平</th></tr>
-    <tr><td style="white-space:nowrap">经营现金流</td><td style="white-space:nowrap">约146亿</td><td class="gold">约182亿</td><td>160-200亿</td></tr>
-    <tr><td style="white-space:nowrap">CAPEX</td><td style="white-space:nowrap">约182亿</td><td>约195亿</td><td>150-200亿</td></tr>
-    <tr><td style="white-space:nowrap">FCF</td><td style="white-space:nowrap">约-36亿</td><td>约-13亿</td><td>-30亿至+10亿</td></tr>
-    <tr><td style="white-space:nowrap">FCF/净利润</td><td style="white-space:nowrap">约-30%</td><td class="red">约-10%</td><td>0-20%</td></tr>
+    <tr><td>经营现金流</td><td>约146亿</td><td class="gold">约182亿</td><td>160-200亿</td></tr>
+    <tr><td>CAPEX</td><td>约182亿</td><td>约195亿</td><td>150-200亿</td></tr>
+    <tr><td>FCF</td><td>约-36亿</td><td>约-13亿</td><td>-30亿至+10亿</td></tr>
+    <tr><td>FCF/净利润</td><td>约-30%</td><td class="red">约-10%</td><td>0-20%</td></tr>
   </table>
   <div class="txt">FCF持续为负是立讯估值体系中最核心的争议点——CAPEX占营收比重约6.8%，远超茅台等轻资产模式。但需注意FCF为负源于公司处于快速成长期的大规模产能投资，一旦增长放缓后CAPEX下降，FCF有望转正。</div>
 
   <h3>估值指标</h3>
   <table class="tbl">
     <tr><th>指标</th><th>当前值</th><th>历史区间</th><th>评估</th></tr>
-    <tr><td style="white-space:nowrap">PE(TTM)</td><td class="gold">约27.4倍</td><td style="white-space:nowrap">12-60倍</td><td class="green">偏低（近5年低位）</td></tr>
-    <tr><td style="white-space:nowrap">PE(2025)</td><td class="gold">约27.4倍</td><td style="white-space:nowrap">—</td><td class="green">偏低</td></tr>
-    <tr><td style="white-space:nowrap">PB</td><td style="white-space:nowrap">约3.5倍</td><td>2.5-12倍</td><td>偏低</td></tr>
-    <tr><td style="white-space:nowrap">股息率</td><td class="gold">约1.1%</td><td style="white-space:nowrap">0.3-1.5%</td><td>偏低</td></tr>
+    <tr><td>PE(TTM)</td><td class="gold">约27.4倍</td><td>12-60倍</td><td class="green">偏低（近5年低位）</td></tr>
+    <tr><td>PE(2025)</td><td class="gold">约27.4倍</td><td>—</td><td class="green">偏低</td></tr>
+    <tr><td>PB</td><td>约3.5倍</td><td>2.5-12倍</td><td>偏低</td></tr>
+    <tr><td>股息率</td><td class="gold">约1.1%</td><td>0.3-1.5%</td><td>偏低</td></tr>
   </table>
   <div class="txt">当前市值约3,920亿元，PE(TTM)约27.4倍。机构预测2026年归母净利润约155-160亿元，对应PE约25倍。</div>
 
@@ -698,11 +649,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>行业空间</h3>
   <table class="tbl">
     <tr><th>市场</th><th>规模（2025E）</th><th>增速</th><th>公司收入</th><th>市占率</th></tr>
-    <tr><td style="white-space:nowrap">消费电子精密制造</td><td style="white-space:nowrap">约2.8万亿</td><td>+4-6%</td><td>2,290亿</td><td class="gold">约8.2%</td></tr>
-    <tr><td style="white-space:nowrap">iPhone组装</td><td style="white-space:nowrap">约1.8万亿</td><td>+3-5%</td><td>约1,200亿（估算）</td><td class="gold">约13%</td></tr>
-    <tr><td style="white-space:nowrap">TWS耳机组装</td><td style="white-space:nowrap">约1,200亿</td><td>+2-4%</td><td>约520亿</td><td class="gold">约43%</td></tr>
-    <tr><td style="white-space:nowrap">全球连接器</td><td style="white-space:nowrap">约800亿美元</td><td>+5-7%</td><td>约300亿（含内部占比）</td><td>约5%</td></tr>
-    <tr><td style="white-space:nowrap">汽车电子</td><td style="white-space:nowrap">约2.1万亿</td><td class="green">+12-15%</td><td>约200亿</td><td>约1.0%</td></tr>
+    <tr><td>消费电子精密制造</td><td>约2.8万亿</td><td>+4-6%</td><td>2,290亿</td><td class="gold">约8.2%</td></tr>
+    <tr><td>iPhone组装</td><td>约1.8万亿</td><td>+3-5%</td><td>约1,200亿（估算）</td><td class="gold">约13%</td></tr>
+    <tr><td>TWS耳机组装</td><td>约1,200亿</td><td>+2-4%</td><td>约520亿</td><td class="gold">约43%</td></tr>
+    <tr><td>全球连接器</td><td>约800亿美元</td><td>+5-7%</td><td>约300亿（含内部占比）</td><td>约5%</td></tr>
+    <tr><td>汽车电子</td><td>约2.1万亿</td><td class="green">+12-15%</td><td>约200亿</td><td>约1.0%</td></tr>
   </table>
 
   <div class="mg" style="margin-top:10px;">
@@ -715,10 +666,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>竞争态势</h3>
   <table class="tbl">
     <tr><th>竞争对手</th><th>竞争维度</th><th>公司相对优势</th></tr>
-    <tr><td style="white-space:nowrap">富士康（鸿海）</td><td style="white-space:nowrap">iPhone组装</td><td class="green">响应速度更快、自动化率更高、更灵活</td></tr>
-    <tr><td style="white-space:nowrap">和硕联合</td><td style="white-space:nowrap">iPhone组装</td><td class="green">良率和服务质量领先，持续从和硕抢单</td></tr>
-    <tr><td style="white-space:nowrap">歌尔股份</td><td style="white-space:nowrap">AirPods/声学</td><td>立讯AirPods份额持续扩大，歌尔受Apple砍单影响</td></tr>
-    <tr><td style="white-space:nowrap">泰科电子（TE）</td><td style="white-space:nowrap">连接器</td><td>立讯在中低端连接器有成本优势，高端仍落后</td></tr>
+    <tr><td>富士康（鸿海）</td><td>iPhone组装</td><td class="green">响应速度更快、自动化率更高、更灵活</td></tr>
+    <tr><td>和硕联合</td><td>iPhone组装</td><td class="green">良率和服务质量领先，持续从和硕抢单</td></tr>
+    <tr><td>歌尔股份</td><td>AirPods/声学</td><td>立讯AirPods份额持续扩大，歌尔受Apple砍单影响</td></tr>
+    <tr><td>泰科电子（TE）</td><td>连接器</td><td>立讯在中低端连接器有成本优势，高端仍落后</td></tr>
   </table>
 
   <h3>行业终局思考</h3>
@@ -739,11 +690,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>催化剂时间表</h3>
   <table class="tbl">
     <tr><th>时间</th><th>事件</th><th>预期影响</th></tr>
-    <tr><td style="white-space:nowrap">2026H2</td><td style="white-space:nowrap">iPhone 18/Pro备货启动</td><td class="green">立讯份额可能进一步提升至15-18%</td></tr>
-    <tr><td style="white-space:nowrap">2026-2027</td><td style="white-space:nowrap">越南/印度工厂产能爬坡完成</td><td class="green">产能瓶颈突破，海外营收占比提升至30%+</td></tr>
-    <tr><td style="white-space:nowrap">2027H1</td><td style="white-space:nowrap">汽车电子新客户定点公告</td><td class="green">有望获得新势力车企批量订单</td></tr>
-    <tr><td style="white-space:nowrap">2027H2</td><td style="white-space:nowrap">Apple新品类（AR/VR）代工</td><td>潜在增量市场，立讯有望作为核心供应商切入</td></tr>
-    <tr><td style="white-space:nowrap">2028</td><td style="white-space:nowrap">汽车电子营收突破500亿</td><td>第二成长曲线确认，估值体系有望重构</td></tr>
+    <tr><td>2026H2</td><td>iPhone 18/Pro备货启动</td><td class="green">立讯份额可能进一步提升至15-18%</td></tr>
+    <tr><td>2026-2027</td><td>越南/印度工厂产能爬坡完成</td><td class="green">产能瓶颈突破，海外营收占比提升至30%+</td></tr>
+    <tr><td>2027H1</td><td>汽车电子新客户定点公告</td><td class="green">有望获得新势力车企批量订单</td></tr>
+    <tr><td>2027H2</td><td>Apple新品类（AR/VR）代工</td><td>潜在增量市场，立讯有望作为核心供应商切入</td></tr>
+    <tr><td>2028</td><td>汽车电子营收突破500亿</td><td>第二成长曲线确认，估值体系有望重构</td></tr>
   </table>
 
   <h3>三年业绩预测</h3>
@@ -823,20 +774,20 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>风险类型</h3>
   <table class="tbl">
     <tr><th>风险类型</th><th>描述</th><th>概率</th><th>预警信号</th></tr>
-    <tr><td style="white-space:nowrap">大客户砍单</td><td style="white-space:nowrap">Apple减少给立讯的iPhone/AirPods订单份额</td><td><span class="orange">中</span></td><td>供应链调研显示立讯份额下降、Apple新增供应商</td></tr>
-    <tr><td style="white-space:nowrap">地缘政治风险</td><td style="white-space:nowrap">中美科技脱钩，Apple被迫减少中国供应商占比</td><td><span class="orange">中</span></td><td>美国对华科技出口管制加码、Apple产能转移加速</td></tr>
-    <tr><td style="white-space:nowrap">毛利率跌破10%</td><td style="white-space:nowrap">竞争加剧或成本上升导致毛利率持续下降</td><td><span style="color:#ffc107;">中低</span></td><td>连续2个季度毛利率低于10.5%</td></tr>
-    <tr><td style="white-space:nowrap">汽车电子不及预期</td><td style="white-space:nowrap">汽车业务增长缓慢，第二曲线逻辑证伪</td><td><span style="color:#ffc107;">中低</span></td><td>汽车业务增速连续低于20%</td></tr>
-    <tr><td style="white-space:nowrap">产能过剩</td><td style="white-space:nowrap">大举扩产后遭遇下游需求放缓，产能利用率不足</td><td><span style="color:#ffc107;">中低</span></td><td>CAPEX占营收比持续超过8%</td></tr>
+    <tr><td>大客户砍单</td><td>Apple减少给立讯的iPhone/AirPods订单份额</td><td><span class="orange">中</span></td><td>供应链调研显示立讯份额下降、Apple新增供应商</td></tr>
+    <tr><td>地缘政治风险</td><td>中美科技脱钩，Apple被迫减少中国供应商占比</td><td><span class="orange">中</span></td><td>美国对华科技出口管制加码、Apple产能转移加速</td></tr>
+    <tr><td>毛利率跌破10%</td><td>竞争加剧或成本上升导致毛利率持续下降</td><td><span style="color:#ffc107;">中低</span></td><td>连续2个季度毛利率低于10.5%</td></tr>
+    <tr><td>汽车电子不及预期</td><td>汽车业务增长缓慢，第二曲线逻辑证伪</td><td><span style="color:#ffc107;">中低</span></td><td>汽车业务增速连续低于20%</td></tr>
+    <tr><td>产能过剩</td><td>大举扩产后遭遇下游需求放缓，产能利用率不足</td><td><span style="color:#ffc107;">中低</span></td><td>CAPEX占营收比持续超过8%</td></tr>
   </table>
 
   <h3>敏感性分析</h3>
   <table class="tbl">
     <tr><th>压力情景</th><th>净利影响</th><th>股价压力</th></tr>
-    <tr><td style="white-space:nowrap">Apple减少20%订单</td><td style="white-space:nowrap">-25%</td><td class="red">-30%</td></tr>
-    <tr><td style="white-space:nowrap">毛利率降至10%</td><td style="white-space:nowrap">-15%</td><td class="orange">-20%</td></tr>
-    <tr><td style="white-space:nowrap">汽车电子增长停滞</td><td style="white-space:nowrap">-5%</td><td class="orange">-10%</td></tr>
-    <tr><td style="white-space:nowrap">中美贸易战全面升级</td><td style="white-space:nowrap">-20%</td><td class="red">-35%</td></tr>
+    <tr><td>Apple减少20%订单</td><td>-25%</td><td class="red">-30%</td></tr>
+    <tr><td>毛利率降至10%</td><td>-15%</td><td class="orange">-20%</td></tr>
+    <tr><td>汽车电子增长停滞</td><td>-5%</td><td class="orange">-10%</td></tr>
+    <tr><td>中美贸易战全面升级</td><td>-20%</td><td class="red">-35%</td></tr>
     <tr><td class="red">极端叠加</td><td class="red">-50%</td><td class="red" style="font-weight:bold;">-55%</td></tr>
   </table>
 
@@ -865,11 +816,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>清算价值</h3>
   <table class="tbl">
     <tr><th>资产项</th><th>账面价值</th><th>清算价值</th></tr>
-    <tr><td style="white-space:nowrap">货币资金</td><td style="white-space:nowrap">192亿</td><td class="gold">192亿</td></tr>
-    <tr><td style="white-space:nowrap">应收账款</td><td style="white-space:nowrap">280亿</td><td>224亿（八折）</td></tr>
-    <tr><td style="white-space:nowrap">存货</td><td style="white-space:nowrap">260亿</td><td>130亿（五折）</td></tr>
-    <tr><td style="white-space:nowrap">固定资产</td><td style="white-space:nowrap">420亿</td><td>210亿（五折）</td></tr>
-    <tr><td style="white-space:nowrap">无形资产</td><td style="white-space:nowrap">35亿</td><td>10亿</td></tr>
+    <tr><td>货币资金</td><td>192亿</td><td class="gold">192亿</td></tr>
+    <tr><td>应收账款</td><td>280亿</td><td>224亿（八折）</td></tr>
+    <tr><td>存货</td><td>260亿</td><td>130亿（五折）</td></tr>
+    <tr><td>固定资产</td><td>420亿</td><td>210亿（五折）</td></tr>
+    <tr><td>无形资产</td><td>35亿</td><td>10亿</td></tr>
     <tr><td class="gold">合计</td><td>约1,187亿</td><td>约766亿</td></tr>
   </table>
   <div class="txt">清算价值约766亿元，当前市值约2,650亿元。差额约1,884亿元体现了立讯的持续经营价值、客户关系、制造能力和增长预期。</div>
@@ -909,17 +860,17 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>价值投资理论应用</h3>
   <table class="tbl">
     <tr><th>模块</th><th>大师理念</th><th>应用分析</th></tr>
-    <tr><td style="white-space:nowrap">M1</td><td style="white-space:nowrap">段永平<br>「本分」</td><td style="text-align:left;font-size:11px;">立讯22年聚焦精密制造，从连接器到整机不断超越能力边界，体现了极致的\"本分\"执行力</td></tr>
-    <tr><td style="white-space:nowrap">M2</td><td style="white-space:nowrap">巴菲特<br>「护城河」</td><td style="text-align:left;font-size:11px;">客户关系+制造工艺双重护城河3.5/5.0，但品牌壁垒缺失，护城河深度中等</td></tr>
-    <tr><td style="white-space:nowrap">M3</td><td style="white-space:nowrap">巴菲特<br>「德才兼备」</td><td style="text-align:left;font-size:11px;">王来春是顶级制造业企业家，执行力、战略眼光、客户关系均一流</td></tr>
-    <tr><td style="white-space:nowrap">M4</td><td style="white-space:nowrap">巴菲特<br>「FCF为王」</td><td style="text-align:left;font-size:11px;">FCF持续为负是最大财务瑕疵，但增长期CAPEX投入有其合理性</td></tr>
-    <tr><td style="white-space:nowrap">M5</td><td style="white-space:nowrap">邱国鹭<br>「定价权」</td><td style="text-align:left;font-size:11px;">对Apple几乎无议价能力（2.0/5.0），价值创造靠成本控制而非定价权</td></tr>
-    <tr><td style="white-space:nowrap">M6</td><td style="white-space:nowrap">巴菲特<br>「资本配置」</td><td style="text-align:left;font-size:11px;">CAPEX密集型的重资产模式，资本配置效率是核心挑战</td></tr>
-    <tr><td style="white-space:nowrap">M7</td><td style="white-space:nowrap">邱国鹭<br>「剩者为王」</td><td style="text-align:left;font-size:11px;">消费电子精密制造\"剩者为王\"，立讯从众多供应商中脱颖而出</td></tr>
-    <tr><td style="white-space:nowrap">M8</td><td style="white-space:nowrap">彼得·林奇<br>「增长类型」</td><td style="text-align:left;font-size:11px;">属于\"快速增长型\"公司，但需持续验证增长可持续性</td></tr>
-    <tr><td style="white-space:nowrap">M9</td><td style="white-space:nowrap">芒格<br>「逆向思维」</td><td style="text-align:left;font-size:11px;">市场关注大客户风险但低估了立讯与Apple的绑定深度和汽车电子潜力</td></tr>
-    <tr><td style="white-space:nowrap">M10</td><td style="white-space:nowrap">芒格<br>「Pre-mortem」</td><td style="text-align:left;font-size:11px;">最大风险是大客户砍单而非财务造假，需持续监控Apple订单变化</td></tr>
-    <tr><td style="white-space:nowrap">M11</td><td style="white-space:nowrap">巴菲特<br>「安全边际」</td><td style="text-align:left;font-size:11px;">PE 27.4倍处历史中位，但大客户风险降低了安全边际的质量</td></tr>
+    <tr><td>M1</td><td>段永平<br>「本分」</td><td style="text-align:left;font-size:11px;">立讯22年聚焦精密制造，从连接器到整机不断超越能力边界，体现了极致的\"本分\"执行力</td></tr>
+    <tr><td>M2</td><td>巴菲特<br>「护城河」</td><td style="text-align:left;font-size:11px;">客户关系+制造工艺双重护城河3.5/5.0，但品牌壁垒缺失，护城河深度中等</td></tr>
+    <tr><td>M3</td><td>巴菲特<br>「德才兼备」</td><td style="text-align:left;font-size:11px;">王来春是顶级制造业企业家，执行力、战略眼光、客户关系均一流</td></tr>
+    <tr><td>M4</td><td>巴菲特<br>「FCF为王」</td><td style="text-align:left;font-size:11px;">FCF持续为负是最大财务瑕疵，但增长期CAPEX投入有其合理性</td></tr>
+    <tr><td>M5</td><td>邱国鹭<br>「定价权」</td><td style="text-align:left;font-size:11px;">对Apple几乎无议价能力（2.0/5.0），价值创造靠成本控制而非定价权</td></tr>
+    <tr><td>M6</td><td>巴菲特<br>「资本配置」</td><td style="text-align:left;font-size:11px;">CAPEX密集型的重资产模式，资本配置效率是核心挑战</td></tr>
+    <tr><td>M7</td><td>邱国鹭<br>「剩者为王」</td><td style="text-align:left;font-size:11px;">消费电子精密制造\"剩者为王\"，立讯从众多供应商中脱颖而出</td></tr>
+    <tr><td>M8</td><td>彼得·林奇<br>「增长类型」</td><td style="text-align:left;font-size:11px;">属于\"快速增长型\"公司，但需持续验证增长可持续性</td></tr>
+    <tr><td>M9</td><td>芒格<br>「逆向思维」</td><td style="text-align:left;font-size:11px;">市场关注大客户风险但低估了立讯与Apple的绑定深度和汽车电子潜力</td></tr>
+    <tr><td>M10</td><td>芒格<br>「Pre-mortem」</td><td style="text-align:left;font-size:11px;">最大风险是大客户砍单而非财务造假，需持续监控Apple订单变化</td></tr>
+    <tr><td>M11</td><td>巴菲特<br>「安全边际」</td><td style="text-align:left;font-size:11px;">PE 27.4倍处历史中位，但大客户风险降低了安全边际的质量</td></tr>
   </table>
 </div>
 
@@ -930,11 +881,11 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>附录A：数据来源</h3>
   <table class="tbl">
     <tr><th>数据类型</th><th>来源平台</th><th>截止日期</th></tr>
-    <tr><td style="white-space:nowrap">财务报表</td><td style="white-space:nowrap">东方财富数据中心/恒生聚源数据库</td><td>2025年报</td></tr>
-    <tr><td style="white-space:nowrap">衍生财务指标</td><td style="white-space:nowrap">同花顺iFinD</td><td>2025年报</td></tr>
-    <tr><td style="white-space:nowrap">估值数据</td><td style="white-space:nowrap">东方财富/同花顺</td><td>2026-06-11</td></tr>
-    <tr><td style="white-space:nowrap">行业归属</td><td style="white-space:nowrap">IDC/ Counterpoint/行业白皮书</td><td>2025</td></tr>
-    <tr><td style="white-space:nowrap">机构预测</td><td style="white-space:nowrap">中信/华泰/国泰君安等券商研报</td><td>2026-05</td></tr>
+    <tr><td>财务报表</td><td>东方财富数据中心/恒生聚源数据库</td><td>2025年报</td></tr>
+    <tr><td>衍生财务指标</td><td>同花顺iFinD</td><td>2025年报</td></tr>
+    <tr><td>估值数据</td><td>东方财富/同花顺</td><td>2026-06-11</td></tr>
+    <tr><td>行业归属</td><td>IDC/ Counterpoint/行业白皮书</td><td>2025</td></tr>
+    <tr><td>机构预测</td><td>中信/华泰/国泰君安等券商研报</td><td>2026-05</td></tr>
   </table>
 
   <div class="txt" style="font-size:11px;">
@@ -948,10 +899,10 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h3>附录B：季度业绩概览（2025年）</h3>
   <table class="tbl">
     <tr><th>季度</th><th>营收（亿）</th><th>YoY</th><th>净利（亿）</th><th>YoY</th><th>毛利率</th></tr>
-    <tr><td style="white-space:nowrap">Q1</td><td style="white-space:nowrap">600</td><td class="green">+12.6%</td><td>28.2</td><td class="green">+12.8%</td><td>11.8%</td></tr>
-    <tr><td style="white-space:nowrap">Q2</td><td style="white-space:nowrap">685</td><td class="green">+13.4%</td><td>32.5</td><td class="green">+14.2%</td><td>11.6%</td></tr>
-    <tr><td style="white-space:nowrap">Q3</td><td style="white-space:nowrap">755</td><td class="green">+10.8%</td><td>36.8</td><td class="green">+15.5%</td><td>11.4%</td></tr>
-    <tr><td style="white-space:nowrap">Q4</td><td style="white-space:nowrap">828</td><td>+10.5%</td><td>38.5</td><td>+16.0%</td><td>11.2%</td></tr>
+    <tr><td>Q1</td><td>600</td><td class="green">+12.6%</td><td>28.2</td><td class="green">+12.8%</td><td>11.8%</td></tr>
+    <tr><td>Q2</td><td>685</td><td class="green">+13.4%</td><td>32.5</td><td class="green">+14.2%</td><td>11.6%</td></tr>
+    <tr><td>Q3</td><td>755</td><td class="green">+10.8%</td><td>36.8</td><td class="green">+15.5%</td><td>11.4%</td></tr>
+    <tr><td>Q4</td><td>828</td><td>+10.5%</td><td>38.5</td><td>+16.0%</td><td>11.2%</td></tr>
   </table>
 
   <h3>附录C：主要子公司</h3>
