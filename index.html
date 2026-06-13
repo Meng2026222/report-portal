@@ -585,7 +585,20 @@ html{scroll-behavior:smooth}
         </div>
       </div>
     </div>
+
+  <!-- ===== COMMENTS (game: pc) ===== -->
+  <div class="comment-toggle" id="commentToggle-pc" onclick="toggleComments('pc')">
+    💬 留言 <span class="count" id="commentCount-pc">0</span>
+    <span class="arrow">▲</span>
   </div>
+  <div class="comment-fullscreen" id="commentFs-pc">
+    <div class="comment-fs-header" onclick="if(document.getElementById('commentFs-pc').classList.contains('peek'))expandComments('pc')">
+      💬 留言 <span class="count" id="commentFsCount-pc">0</span>
+      <button class="comment-fs-close" onclick="event.stopPropagation();toggleComments('pc')">▼ 收起</button>
+    </div>
+    <div class="comment-fs-body"><div class="waline-wrap"><div id="comment-pc"></div></div></div>
+  </div>
+</div>
 
   <!-- === Quiz Game Container === -->
   <div class="game-container" id="quizContainer" style="display:none">
@@ -639,7 +652,20 @@ html{scroll-behavior:smooth}
         </div>
       </div>
     </div>
+
+  <!-- ===== COMMENTS (game: quiz) ===== -->
+  <div class="comment-toggle" id="commentToggle-quiz" onclick="toggleComments('quiz')">
+    💬 留言 <span class="count" id="commentCount-quiz">0</span>
+    <span class="arrow">▲</span>
   </div>
+  <div class="comment-fullscreen" id="commentFs-quiz">
+    <div class="comment-fs-header" onclick="if(document.getElementById('commentFs-quiz').classList.contains('peek'))expandComments('quiz')">
+      💬 留言 <span class="count" id="commentFsCount-quiz">0</span>
+      <button class="comment-fs-close" onclick="event.stopPropagation();toggleComments('quiz')">▼ 收起</button>
+    </div>
+    <div class="comment-fs-body"><div class="waline-wrap"><div id="comment-quiz"></div></div></div>
+  </div>
+</div>
 
   <!-- === Match Game Container === -->
   <div class="game-container" id="matchContainer" style="display:none">
@@ -1110,9 +1136,10 @@ function toggleChapter(bookId,archIdx,chIdx) { document.getElementById('chB_'+bo
 function backToHub() {
   document.querySelectorAll('.game-container').forEach(el => { el.style.display='none'; el.classList.remove('active') })
   document.getElementById('gameHub').style.display='block'
+  showFeedback()
 }
-function switchToQuiz() { window._currentGid='quiz'; document.getElementById('gameHub').style.display='none'; const c=document.getElementById('quizContainer'); c.style.display='block'; c.classList.add('active') }
-function switchToMatch() { window._currentGid='match'; document.getElementById('gameHub').style.display='none'; const c=document.getElementById('matchContainer'); c.style.display='block'; c.classList.add('active') }
+function switchToQuiz() { window._currentGid='quiz'; document.getElementById('gameHub').style.display='none'; const c=document.getElementById('quizContainer'); c.style.display='block'; c.classList.add('active'); hideFeedback() }
+function switchToMatch() { window._currentGid='match'; document.getElementById('gameHub').style.display='none'; const c=document.getElementById('matchContainer'); c.style.display='block'; c.classList.add('active'); hideFeedback() }
 function switchToPC() {
   document.getElementById('gameHub').style.display='none';
   const c=document.getElementById('pcContainer');
@@ -1125,6 +1152,7 @@ function switchToPC() {
     html += '<span class="pc-into-mod-tag" style="background:'+mods[i].color+'20;color:'+mods[i].color+';border:1px solid '+mods[i].color+'30">'+mods[i].icon+' '+mods[i].name+'</span>';
   }
   document.getElementById('pcIntroModules').innerHTML = html;
+  hideFeedback()
 }
 function goHome() {
   // Close all overlays and return to reports tab
@@ -1274,6 +1302,8 @@ function updateHeaderBtn() {
     btn.onclick = function() { openLogin() }
   }
 }
+function showFeedback() { var fb = document.getElementById('feedbackForm'); if(fb) fb.style.display = ''; }
+function hideFeedback() { var fb = document.getElementById('feedbackForm'); if(fb) fb.style.display = 'none'; }
 
 // ===== NICKNAME =====
 function showNicknameDialog(user) {
