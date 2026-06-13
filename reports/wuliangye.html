@@ -24,6 +24,13 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 .dim-fill{height:100%;border-radius:5px}
 .dim-sc{width:28px;text-align:right;font-size:12px;font-weight:bold;flex-shrink:0}
 .c9{background:#4caf50}.c7{background:#8bc34a}.c6{background:#ffc107}
+
+html{scroll-behavior:smooth}
+[id^="s"]{scroll-margin-top:70px}
+.back-top{position:fixed;right:16px;bottom:16px;width:40px;height:40px;border-radius:50%;background:#f0c040;color:#000;border:none;font-size:18px;cursor:pointer;opacity:.7;transition:.3s;z-index:99;line-height:40px;text-align:center;padding:0}
+.back-top:hover{opacity:1}
+.tbl-wrap{overflow-x:auto;margin:8px 0}
+.tbl{min-width:600px}
 .tbl{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}
 .tbl th{background:#1e1e3a;color:#f0c040;padding:7px 5px;text-align:center;font-weight:500}
 .tbl td{padding:6px 5px;text-align:center;border-bottom:1px solid #1e1e3a}
@@ -486,12 +493,12 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="txt">评级理由：五粮液是中国浓香型白酒的绝对龙头和行业第二，核心产品"普五"（第八代五粮液）是千元价位带的标杆产品，品牌力仅次于茅台。2025年公司营收约833亿元，归母净利润约315亿元。2026年Q1营收约280亿元同比+12%，净利约110亿元同比+13%，开局良好。核心看点在于：浓香白酒消费基础广泛（受众大于酱香）、普五在千元价位带的统治力、远超茅台的分红率（约60%分红率+约4.5%股息率）、以及估值处于历史低位（PE约15倍）。需关注茅台批价下行对千元价位带的挤压效应、白酒行业整体需求放缓、以及浓香白酒产能过剩的行业性问题。综合评级7.5分（高于茅台7.0分，因估值更具性价比）。</div>
 
   <h3>2. 风险等级：中低</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>风险类别</th><th>等级</th><th>说明</th></tr>
     <tr><td>品牌竞争风险</td><td><span class="orange">中</span></td><td style="text-align:left;font-size:11px;">普五批价约950元，若茅台批价持续下行跌破2,000元，将对千元价位带形成挤压</td></tr>
     <tr><td>财务风险</td><td><span class="green">极低</span></td><td style="text-align:left;font-size:11px;">资产负债率约22%，货币资金超1,200亿，零有息负债，经营现金流充沛</td></tr>
     <tr><td>行业风险</td><td><span class="orange">中</span></td><td style="text-align:left;font-size:11px;">白酒行业产量持续下降，浓香型产能过剩问题突出</td></tr>
-  </table>
+  </table></div>
 
   <h3>3. 核心结论（一句话逻辑）</h3>
   <div class="bq">"五粮液作为中国浓香型白酒绝对龙头和行业第二品牌，以普五千元价位带的统治力、75%+的毛利率、约60%的分红率和约15倍PE的极致性价比，成为白酒板块中兼具品牌确定性和估值安全边际的优质标的。2025年营收833亿、净利315亿保持稳健增长，2026年Q1双位数增长验证需求韧性。核心看点在于：公司拥有庞大的优质基酒产能（年产20万吨+）、经销商体系稳固（2,000+家）、以及浓香白酒消费基础更广泛。但需关注普五批价能否站稳950元、茅台价格下行对千元带的挤压、以及白酒行业整体需求放缓趋势。当前15倍PE对应约4.5%股息率+3%增长，已具备类债配置价值。"</div>
@@ -526,7 +533,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="txt">中国浓香型白酒的标杆企业和行业第二品牌——五粮液是中国最具代表性的浓香型白酒企业，核心产品"普五"（第八代五粮液）是千元价位带的绝对王者。公司通过"1+3"产品战略（1个核心品牌+3个高端系列：经典五粮液、五粮液1618、低度五粮液）覆盖高端消费市场，同时以系列酒（五粮春、五粮醇、五粮特曲等）覆盖中低端市场。</div>
 
   <h3>年度财务摘要（亿元）</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>年份</th><th>营收</th><th>YoY</th><th>归母净利</th><th>净利率</th><th>毛利率</th></tr>
     <tr><td>2020</td><td>573.2</td><td class="green">+14.4%</td><td>199.6</td><td>34.8%</td><td>74.2%</td></tr>
     <tr><td>2021</td><td>662.1</td><td class="green">+15.5%</td><td>233.8</td><td>35.3%</td><td>75.4%</td></tr>
@@ -534,7 +541,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     <tr><td>2023</td><td>832.7</td><td class="green">+12.6%</td><td>302.1</td><td>36.3%</td><td>75.8%</td></tr>
     <tr><td>2024</td><td>885.0</td><td>+6.3%</td><td>324.5</td><td>36.7%</td><td>76.2%</td></tr>
     <tr><td class="gold">2025</td><td class="gold">833.0</td><td>-5.9%</td><td class="gold">315.0</td><td>37.8%</td><td>75.9%</td></tr>
-  </table>
+  </table></div>
   <div class="desc" style="margin-top:6px;">备注：五粮液营收从2020年573亿增长至2025年833亿，5年CAGR约7.8%，增速稳健。2024年营收增速放缓至6.3%（受茅台批价下行和行业需求疲弱双重影响）。毛利率稳定在75-76%，净利率持续提升至37.8%左右，体现了优秀的产品结构升级能力。2026年Q1营收280亿（+12%），净利110亿（+13%），增速领先茅台，表现优异。</div>
 
   <h3>分产品收入结构（2025年）</h3>
@@ -543,7 +550,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="hb"><span class="hl">系列酒</span><div class="ht"><div class="hf" style="width:22%;background:linear-gradient(90deg,#4caf50,#2e7d32);"></div></div><span class="hv">≈22% · 约210亿</span></div>
   <div class="hb"><span class="hl">其他业务</span><div class="ht"><div class="hf" style="width:7%;background:#555;"></div></div><span class="hv">≈7% · 约70亿</span></div>
 
-  <table class="tbl" style="margin-top:10px;">
+  <div class="tbl-wrap"><table class="tbl" style="margin-top:10px;">
     <tr><th>品类</th><th>收入</th><th>占比</th><th>趋势</th><th>毛利率</th></tr>
     <tr><td>五粮液酒（总量）</td><td>约680亿</td><td>约71%</td><td>→ 稳健</td><td class="green">≈82%</td></tr>
     <tr><td>普五（核心大单品）</td><td>约530亿</td><td>约55%</td><td>→ 稳健</td><td class="green">≈80%</td></tr>
@@ -551,16 +558,16 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     <tr><td>五粮液1618</td><td>约50亿</td><td>约5%</td><td>→ 成熟</td><td>≈78%</td></tr>
     <tr><td>系列酒（五粮春等）</td><td>约210亿</td><td>约22%</td><td class="green">↑ 较快</td><td>55-65%</td></tr>
     <tr><td>其他</td><td>约70亿</td><td>约7%</td><td>→ 稳定</td><td>40-50%</td></tr>
-  </table>
+  </table></div>
 
   <h3>商业模式评估</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>维度</th><th>评估</th><th>证据</th></tr>
     <tr><td>核心定位</td><td class="gold">行业第二，浓香第一</td><td style="text-align:left;font-size:11px;">浓香型白酒不依赖茅台镇地理限制，产能扩展更灵活</td></tr>
     <tr><td>盈利模式</td><td class="gold">品牌溢价+规模效应</td><td style="text-align:left;font-size:11px;">毛利率75%+，净利率37%+，ROE约22%，均为A股顶级</td></tr>
     <tr><td>增长引擎</td><td class="green">高端升级+系列酒放量</td><td style="text-align:left;font-size:11px;">经典五粮液培育千元以上新价格带、系列酒五粮春快速放量</td></tr>
     <tr><td>现金流模式</td><td class="green">印钞机模式</td><td style="text-align:left;font-size:11px;">经营现金流超350亿，货币资金1,200亿+，零有息负债</td></tr>
-  </table>
+  </table></div>
 
   <div class="bq">
     <b>核心结论：</b><br>
@@ -632,13 +639,13 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h2>M3 管理层分析</h2>
 
   <h3>管理层基本信息</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>姓名</th><th>职务</th><th>任职年限</th><th>专业背景</th></tr>
     <tr><td>曾从钦</td><td>董事长</td><td>5年（2022.1上任）</td><td>原宜宾市副市长，五粮液集团内部晋升</td></tr>
     <tr><td>蒋文格</td><td>总经理</td><td>4年（2022年上任）</td><td>长期五粮液工作经历，市场运营经验丰富</td></tr>
     <tr><td>章欣</td><td>副总经理/董秘</td><td>—</td><td>—</td></tr>
     <tr><td>罗术</td><td>财务总监</td><td>—</td><td>—</td></tr>
-  </table>
+  </table></div>
   <div class="txt" style="font-size:12px;">曾从钦+蒋文格组合延续了五粮液管理层的"政府+企业"混合模式。曾从钦作为从宜宾市政府转任的国企领导，在推动五粮液渠道改革和品牌价盘管控方面表现出良好的执行力。2022年曾从钦上任后，五粮液批价从920元回升至950元，体现管理层控价能力。五粮液属宜宾市国资委控股，管理层受国企体制约束但稳定性较好。</div>
 
   <h3>管理层能力评估</h3>
@@ -669,17 +676,17 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h2>M4 财务复盘 & 资本配置</h2>
 
   <h3>核心财务指标</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
     <tr><td>营收（亿）</td><td>662</td><td>740</td><td>833</td><td>885</td><td class="gold">833</td><td class="green">↑</td></tr>
     <tr><td>净利（亿）</td><td>234</td><td>267</td><td>302</td><td>325</td><td class="gold">315</td><td class="green">↑</td></tr>
     <tr><td>毛利率</td><td>75.4%</td><td>75.7%</td><td>75.8%</td><td class="green">76.2%</td><td>75.9%</td><td>→ 稳定</td></tr>
     <tr><td>净利率</td><td>35.3%</td><td>36.1%</td><td>36.3%</td><td class="green">36.7%</td><td>37.8%</td><td>→ 微降</td></tr>
     <tr><td>ROE</td><td>24.7%</td><td>25.1%</td><td>23.6%</td><td>22.5%</td><td>22.0%</td><td>→ 高位回落</td></tr>
-  </table>
+  </table></div>
 
   <h3>现金流 & 资产负债</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>指标</th><th>2023</th><th>2024</th><th class="gold">2025</th><th>趋势</th></tr>
     <tr><td>经营现金流</td><td>320亿</td><td>340亿</td><td class="gold">375亿</td><td class="green">↑ 充沛</td></tr>
     <tr><td>货币资金</td><td>1,150亿</td><td>1,180亿</td><td class="gold">1,220亿</td><td class="green">↑ 充裕</td></tr>
@@ -687,24 +694,24 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     <tr><td>有息负债</td><td>≈0</td><td>≈0</td><td class="green">≈0</td><td class="green">零有息负债</td></tr>
     <tr><td>分红率</td><td>55%</td><td>58%</td><td class="gold">60%</td><td class="green">↑ 持续提升</td></tr>
     <tr><td>股息率</td><td>3.2%</td><td>4.0%</td><td class="gold">4.5%</td><td class="green">↑ 历史高位</td></tr>
-  </table>
+  </table></div>
 
   <h3>费用率结构</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>费用项</th><th>2025年规模</th><th>趋势</th></tr>
     <tr><td>销售费用</td><td>约85亿</td><td class="green">↑ 费用率约8.9%，略高于茅台但低于行业</td></tr>
     <tr><td>管理费用</td><td>约45亿</td><td>→ 费用率约4.7%，国企体制偏高</td></tr>
     <tr><td>研发费用</td><td>约8亿</td><td>→ 极低（白酒行业）</td></tr>
     <tr><td>财务费用</td><td>为负（利息收入）</td><td class="green">→ 1,220亿货币资金产生利息收入</td></tr>
-  </table>
+  </table></div>
 
   <h3>杜邦分析</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>年份</th><th>ROE</th><th>净利率</th><th>资产周转率</th><th>权益乘数</th><th>驱动因子</th></tr>
     <tr><td>2022</td><td class="gold">25.1%</td><td>36.1%</td><td>0.58×</td><td>1.26×</td><td>⭐ 高净利率+高周转</td></tr>
     <tr><td>2024</td><td>22.5%</td><td>36.7%</td><td>0.52×</td><td>1.27×</td><td>净利率微升但周转率降</td></tr>
     <tr><td>2025</td><td>22.0%</td><td>37.8%</td><td>0.52×</td><td>1.28×</td><td>周转率下降拖累ROE</td></tr>
-  </table>
+  </table></div>
 
   <div class="bq">
     <b>核心结论：财务质量评分：9.0/10（A股顶级）</b><br>
@@ -718,21 +725,21 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 
   <h3>成本结构</h3>
   <div class="txt">五粮液毛利率75%以上，意味着产品成本仅占售价的约25%。成本结构中，粮食成本占比较小，核心的成本优势来自于规模效应——五粮液年产20万吨优质基酒，规模远超所有浓香竞争对手，从而在粮食采购、酿造、窖池维护等方面均摊成本更低。</div>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>成本项目</th><th>占比</th><th>趋势</th><th>议价能力</th></tr>
     <tr><td>原材料（粮食+酒曲）</td><td>35-40%</td><td>→ 稳定</td><td class="green">极高</td></tr>
     <tr><td>人工成本</td><td>20-25%</td><td class="red">↑</td><td>中</td></tr>
     <tr><td>包装材料</td><td>15-20%</td><td>→ 稳定</td><td class="green">极高</td></tr>
     <tr><td>能源折旧及</td><td>10-15%</td><td>→ 稳定</td><td class="green">极高</td></tr>
-  </table>
+  </table></div>
 
   <h3>产业链议价权</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>维度</th><th>评估</th><th>证据</th></tr>
     <tr><td>对上游议价能力</td><td class="green">极高</td><td>采购量大，供应商高度依赖</td></tr>
     <tr><td>对下游议价能力</td><td class="green">高</td><td>出厂价950 vs 批价950-1,000，渠道利润空间较小</td></tr>
     <tr><td>终端消费者议价力</td><td class="gold">极弱</td><td>千元价位带标杆，消费者几乎没有议价能力</td></tr>
-  </table>
+  </table></div>
 
   <div class="bq">
     <b>核心结论：</b><br>
@@ -747,22 +754,22 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h2>M6 FCF效率 & 估值</h2>
 
   <h3>FCF质量</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>指标</th><th>2024年</th><th class="gold">2025年</th><th>正常化水平</th></tr>
     <tr><td>经营现金流</td><td>约340亿</td><td class="gold">约375亿</td><td>330-380亿</td></tr>
     <tr><td>CAPEX</td><td>约15亿</td><td>约18亿</td><td>15-20亿</td></tr>
     <tr><td>FCF</td><td>约325亿</td><td class="gold">约357亿</td><td>310-360亿</td></tr>
     <tr><td>FCF/净利润</td><td>约100%</td><td class="green">约102%</td><td>95-105%</td></tr>
-  </table>
+  </table></div>
 
   <h3>估值指标</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>指标</th><th>当前值</th><th>历史区间</th><th>评估</th></tr>
     <tr><td>PE(TTM)</td><td class="gold">约24.6倍</td><td>8-45倍</td><td class="green">偏低（近5年低位）</td></tr>
     <tr><td>PE(2026E)</td><td class="gold">约22.0倍</td><td>—</td><td class="green">偏低</td></tr>
     <tr><td>PB</td><td>约3.5倍</td><td>2-10倍</td><td>中性偏低</td></tr>
     <tr><td>股息率</td><td class="gold">约4.5%</td><td>1.5-5.0%</td><td class="green">历史高位</td></tr>
-  </table>
+  </table></div>
   <div class="txt">当前市值约5,250亿元，PE(TTM)约24.6倍。机构预测2026年归母净利润约380-400亿元，对应PE约22.0-23.0倍。</div>
 
   <h3>白酒板块PE对比</h3>
@@ -785,12 +792,12 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h2>M7 增量市占率 & 行业终局</h2>
 
   <h3>行业空间</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>市场</th><th>规模（2025E）</th><th>增速</th><th>五粮液收入</th><th>市占率</th></tr>
     <tr><td>白酒行业</td><td>约7,800亿</td><td>+5%</td><td>833亿</td><td class="gold">约12.3%</td></tr>
     <tr><td>千元价位带</td><td>约1,200亿</td><td>+6-8%</td><td>约530亿</td><td class="gold">约44%</td></tr>
     <tr><td>浓香型白酒</td><td>约3,900亿</td><td>+3-5%</td><td>约890亿</td><td class="gold">约23%</td></tr>
-  </table>
+  </table></div>
 
   <div class="mg" style="margin-top:10px;">
     <div class="mi"><div class="mv gold">12.3%</div><div class="ml">白酒行业市占率</div></div>
@@ -800,13 +807,13 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   </div>
 
   <h3>竞争态势</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>竞争对手</th><th>竞争维度</th><th>五粮液相对优势</th></tr>
     <tr><td>贵州茅台</td><td>高端品牌</td><td class="green">浓香受众更广，千元价位绝对优势，产能更大</td></tr>
     <tr><td>泸州老窖</td><td>千元价位</td><td class="green">品牌力和规模均显著领先国窖1573</td></tr>
     <tr><td>洋河股份</td><td>次高端</td><td class="green">品牌力和高端化能力碾压洋河</td></tr>
     <tr><td>山西汾酒</td><td>清香型</td><td>品类不同，直接竞争有限</td></tr>
-  </table>
+  </table></div>
 
   <h3>行业终局思考</h3>
   <div class="txt">白酒行业\"少喝酒、喝好酒\"的消费升级趋势下，千元价位带是最确定的增长极。五粮液作为千元价位带绝对龙头（44%市占率），将充分受益于这一趋势。行业终局大概率呈现"茅五泸"三强格局：茅台在超高端（2,000元+）独占鳌头，五粮液在千元价位带（950-1,000元）主导，泸州老窖在800-1,000元价位带竞争。五粮液面临的最大挑战是茅台品牌力的"天花板效应"——茅台批价越高，千元价位带空间越大；茅台批价下行，则千元价位带受挤压。</div>
@@ -823,14 +830,14 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <h2>M8 三年资本计划 & 催化剂</h2>
 
   <h3>催化剂时间表</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>时间</th><th>事件</th><th>预期影响</th></tr>
     <tr><td>2026H2</td><td>普五批价企稳回升至1,000+元</td><td class="green">提振渠道信心，利润弹性释放</td></tr>
     <tr><td>2026-2027</td><td>经典五粮液放量至100亿</td><td class="green">提升产品结构，毛利率有望突破77%</td></tr>
     <tr><td>2027</td><td>分红率提升至65%+</td><td>股息率提升至5%+</td></tr>
     <tr><td>2027H1</td><td>系列酒营收突破300亿</td><td>五粮春+五粮醇全国化加速</td></tr>
     <tr><td>2028</td><td>营收突破1,200亿</td><td>5年复合增长率约10%</td></tr>
-  </table>
+  </table></div>
 
   <h3>三年业绩预测</h3>
   <div class="scn">
@@ -839,12 +846,12 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     <div class="scc sc3"><h4>😟 悲观</h4><div class="pct">+3% CAGR</div><div class="dt">2028净利380亿</div></div>
   </div>
 
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>情景</th><th>2026E</th><th>2027E</th><th>2028E</th><th>毛利率</th></tr>
     <tr><td class="green">乐观</td><td>净利390亿</td><td>440亿</td><td>500亿</td><td>76.5→78.0%</td></tr>
     <tr><td class="gold">基准</td><td>净利375亿</td><td>405亿</td><td>440亿</td><td>→ 76.0%</td></tr>
     <tr><td class="red">悲观</td><td>净利355亿</td><td>365亿</td><td>380亿</td><td>74.0→73.0%</td></tr>
-  </table>
+  </table></div>
 
   <div class="bq">
     <b>核心结论：</b><br>
@@ -857,7 +864,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
 <div id="s10" class="card">
   <h2>M9 预期差 & 市场共识</h2>
 
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>议题</th><th>市场共识</th><th>独立判断</th><th>方向</th></tr>
     <tr>
       <td>成长性</td>
@@ -889,7 +896,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
       <td style="color:#4caf50;">五粮春全国化+毛利率改善将超预期</td>
       <td><span class="tg tgg">正向</span></td>
     </tr>
-  </table>
+  </table></div>
 
   <div class="bq">
     <b>关键解读：</b><br>
@@ -905,23 +912,23 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   <div class="desc">假设3年后亏损30%，最可能的原因：</div>
 
   <h3>风险类型</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>风险类型</th><th>描述</th><th>概率</th><th>预警信号</th></tr>
     <tr><td>茅台挤压效应</td><td>茅台批价跌破2,000元大幅挤压千元带</td><td><span class="orange">中</span></td><td>普五批价跌破900元且持续3个月</td></tr>
     <tr><td>行业需求放缓</td><td>白酒行业整体需求大幅萎缩</td><td><span style="color:#ffc107;">中低</span></td><td>营收增速连续两季低于3%</td></tr>
     <tr><td>消费税改革</td><td>对白酒加征额外税负</td><td><span style="color:#ffc107;">中低</span></td><td>政策草案公布</td></tr>
     <tr><td>产能过剩</td><td>浓香型行业性产能过剩导致价格战</td><td><span style="color:#ffc107;">中低</span></td><td>中低端产品批价大幅下降</td></tr>
     <tr><td>渠道压货</td><td>渠道库存过高引发抛售</td><td><span style="color:#ffc107;">中低</span></td><td>经销商库存超过3个月</td></tr>
-  </table>
+  </table></div>
 
   <h3>敏感性分析</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>压力情景</th><th>净利影响</th><th>股价压力</th></tr>
     <tr><td>普五批价跌破900元</td><td>-10%</td><td class="orange">-15%</td></tr>
     <tr><td>消费税加征20%</td><td>-8%</td><td class="orange">-10%</td></tr>
     <tr><td>行业需求萎缩10%</td><td>-15%</td><td class="red">-20%</td></tr>
     <tr><td class="red">极端叠加</td><td class="red">-30%</td><td class="red" style="font-weight:bold;">-35%</td></tr>
-  </table>
+  </table></div>
 
   <h3>三情景估值</h3>
   <div class="scn">
@@ -931,7 +938,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   </div>
 
   <h3>避雷清单</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>检查项</th><th>结果</th></tr>
     <tr><td>商誉占净资产>50%？</td><td><span class="tg tgg">否 ✓ 商誉几乎为零</span></td></tr>
     <tr><td>应收账款增速>收入增速？</td><td><span class="tg tgg">否 ✓ 先款后货模式</span></td></tr>
@@ -940,20 +947,20 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     <tr><td>关联交易异常？</td><td><span class="tg tgg">否 ✓ 国企治理规范</span></td></tr>
     <tr><td>大股东高比例质押？</td><td><span class="tg tgg">否 ✓ 国资委持股0质押</span></td></tr>
     <tr><td>审计意见非标准？</td><td><span class="tg tgg">否 ✓ 标准无保留意见</span></td></tr>
-  </table>
+  </table></div>
   <div style="padding:10px;background:#1a3a1a;border-radius:8px;text-align:center;margin-top:8px;border:1px solid #2a5a2a;">
     <span style="color:#4caf50;">✅ 财务极度健康，不存在财务造假风险。主要风险在于行业周期性和茅台挤压效应</span>
   </div>
 
   <h3>清算价值</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>资产项</th><th>账面价值</th><th>清算价值</th></tr>
     <tr><td>货币资金</td><td>1,220亿</td><td class="gold">1,220亿</td></tr>
     <tr><td>存货（含基酒）</td><td>350亿</td><td>280亿</td></tr>
     <tr><td>固定资产</td><td>120亿</td><td>60亿</td></tr>
     <tr><td>无形资产（品牌）</td><td>30亿</td><td>10亿</td></tr>
     <tr><td class="gold">合计</td><td>约1,720亿</td><td>约1,570亿</td></tr>
-  </table>
+  </table></div>
   <div class="txt">清算价值约1,570亿元，当前市值约5,250亿元。差额约3,680亿体现了五粮液的品牌价值和持续经营能力。</div>
 </div>
 
@@ -988,7 +995,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   </div>
 
   <h3>价值投资理论应用</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>模块</th><th>大师理念</th><th>应用分析</th></tr>
     <tr><td>M1</td><td>段永平<br>「本分」</td><td style="text-align:left;font-size:11px;">聚焦浓香白酒主业数十年，\"1+3\"产品战略清晰专注</td></tr>
     <tr><td>M2</td><td>巴菲特<br>「护城河」</td><td style="text-align:left;font-size:11px;">品牌+产能+渠道三重护城河3.8/5.0，浓香第一品牌</td></tr>
@@ -1001,21 +1008,21 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
     <tr><td>M9</td><td>芒格<br>「逆向思维」</td><td style="text-align:left;font-size:11px;">市场低估了五粮液的分红潜力和品牌韧性</td></tr>
     <tr><td>M10</td><td>芒格<br>「Pre-mortem」</td><td style="text-align:left;font-size:11px;">茅台挤压+行业放缓是核心风险，但财务安全垫极厚</td></tr>
     <tr><td>M11</td><td>巴菲特<br>「安全边际」</td><td style="text-align:left;font-size:11px;">PE 15倍+股息率4.5%+零负债=极致安全边际</td></tr>
-  </table>
+  </table></div>
 </div>
 
 <div id="s13" class="card">
   <h2>附录</h2>
   
   <h3>附录A：数据来源</h3>
-  <table class="tbl">
+  <div class="tbl-wrap"><table class="tbl">
     <tr><th>数据类型</th><th>来源平台</th><th>截止日期</th></tr>
     <tr><td>财务报表</td><td>东方财富数据中心/恒生聚源数据库</td><td>2025年报</td></tr>
     <tr><td>衍生财务指标</td><td>同花顺iFinD</td><td>2025年报</td></tr>
     <tr><td>估值数据</td><td>东方财富/同花顺</td><td>2026-06-11</td></tr>
     <tr><td>行业归属</td><td>中酒协/Euromonitor</td><td>2025</td></tr>
     <tr><td>机构预测</td><td>中信/华泰/国泰君安等券商研报</td><td>2026-05</td></tr>
-  </table>
+  </table></div>
 
   <div class="txt" style="font-size:11px;">
     <b>数据声明：</b><br>
@@ -1041,5 +1048,7 @@ h4{font-size:13px;color:#aaa;margin:10px 0 4px}
   分析工具：恒生聚源数据库 + 价值投资分析框架
 </div>
 
+
+<button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 </body>
 </html>
