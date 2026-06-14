@@ -190,6 +190,7 @@ html{scroll-behavior:smooth}
 .nickname-msg.ok{color:#4caf50}
 .nickname-confirm-btn{width:100%;padding:8px;border:none;border-radius:6px;background:var(--accent);color:#1a1a1a;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
 .nickname-confirm-btn:disabled{opacity:.5;cursor:default}
+.nickname-pwd-hint{font-size:10px;color:var(--m5);margin:-2px 0 8px;text-align:center}
 
 /* ===== BACK TO TOP ===== */
 .back-top{position:fixed;right:16px;bottom:16px;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#1a1a1a;border:none;font-size:18px;cursor:pointer;opacity:.7;transition:.3s;z-index:101;line-height:40px;text-align:center;padding:0}
@@ -1379,6 +1380,14 @@ function saveNickname() {
       if (!fr.ok) { msg.textContent='保存失败('+fr.status+')'; return }
       localStorage.setItem('SUPABASE_NICKNAME',nick); localStorage.setItem('NICKNAME_CHANGED_AT',String(Date.now()))
       getSupabase().from('comments').update({author_name:nick}).eq('user_id',user.id).then(function(){})
+      // If password was entered, save it too
+      var pwd=document.getElementById('nicknamePwdInput').value.trim()
+      if (pwd&&pwd.length>=6) {
+        var token=localStorage.getItem('SUPABASE_AUTH_TOKEN')
+        if (token) {
+          fetch(SUPABASE_URL+'/auth/v1/user', {method:'PUT', headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+token,'Content-Type':'application/json'}, body:JSON.stringify({password:pwd})})
+        }
+      }
       closeNicknameDialog(); updateHeaderBtn()
     }).catch(function(){btn.disabled=false;btn.textContent='确定';msg.textContent='网络错误'})
   })
@@ -1809,6 +1818,10 @@ document.addEventListener('DOMContentLoaded', () => {
       <input type="text" id="nicknameInput" maxlength="12" placeholder="2-12个字符" autocomplete="off">
       <button class="nickname-random-btn" onclick="fillRandomNickname()" title="随机生成">🎲</button>
     </div>
+    <div class="nickname-row">
+      <input type="password" id="nicknamePwdInput" placeholder="设置密码（可选，留空不设）" autocomplete="new-password">
+    </div>
+    <div class="nickname-pwd-hint">设置密码后可直接用邮箱+密码登录，无需每次收验证邮件</div>
     <div class="nickname-msg" id="nicknameMsg"></div>
     <button class="nickname-confirm-btn" id="nicknameConfirmBtn" onclick="saveNickname()">确定</button>
   </div>
